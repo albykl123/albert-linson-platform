@@ -11,7 +11,7 @@ data = {
     "secondary_email": "albertkalampadan@gmail.com",
     "phone": "+91 9910705796",
     "linkedin": "https://linkedin.com/in/albert-linson",
-    "github": "https://github.com/albertlinson",
+    "github": "https://github.com/albykl123",
     "portfolio_url": "https://albert-linson-platform.albertkalampadan.workers.dev",
     "languages": [
       { "name": "English", "proficiency": "Fluent / Professional" },
@@ -607,7 +607,7 @@ data = {
         "Implemented Electron GUI with desktop tray controls, system metrics graphs, and real-time audio visualization.",
         "Integrated multi-provider AI backends with automatic failover between local and cloud APIs."
       ],
-      "github_url": "https://github.com/albertlinson/jarvis-assistant",
+      "github_url": "https://github.com/albykl123/jarvis-assistant",
       "status": "Completed & Tested"
     },
     {
@@ -623,7 +623,7 @@ data = {
         "Implemented kernel memory paging, segmentation, and hardware timer interrupt handlers (PIC/PIT).",
         "Created an interactive command-line shell with system diagnostic commands."
       ],
-      "github_url": "https://github.com/albertlinson/lunova-os",
+      "github_url": "https://github.com/albykl123/lunova-os",
       "status": "Active Research Project"
     },
     {
@@ -639,7 +639,7 @@ data = {
         "Developed genuine vector PDF generator using ReportLab and native DOCX generator with 0 tables for pure ATS parseability.",
         "Integrated strict Factuality Guard replacing hallucinated claims with structured placeholders."
       ],
-      "github_url": "https://github.com/albertlinson/atsforge-ai",
+      "github_url": "https://github.com/albykl123/atsforge-ai",
       "status": "Production-Ready"
     },
     {
@@ -654,7 +654,7 @@ data = {
         "Constructed vector similarity search matching plot synopses, cinematic tropes, and director styles.",
         "Designed cinematic UI with fluid poster transitions, thematic filtering, and trailer previews."
       ],
-      "github_url": "https://github.com/albertlinson/cinematrix-ai",
+      "github_url": "https://github.com/albykl123/cinematrix-ai",
       "status": "Completed"
     },
     {
@@ -669,7 +669,7 @@ data = {
         "Engineered real-time audio-reactive procedural canvas visualizations reacting to audio frequency bins.",
         "Created responsive playlist controls and spatial audio filter adjustments."
       ],
-      "github_url": "https://github.com/albertlinson/auriva",
+      "github_url": "https://github.com/albykl123/auriva",
       "status": "Completed"
     },
     {
@@ -684,7 +684,7 @@ data = {
         "Designed accessible, mobile-first citizen interfaces and streamlined grievance redressal navigation compliant with municipal usability standards.",
         "Conducted end-user usability testing across diverse citizen demographics in Delhi."
       ],
-      "github_url": "https://github.com/albertlinson/mcd-civic-dashboard",
+      "github_url": "https://github.com/albykl123/mcd-civic-dashboard",
       "status": "Deployed & Verified"
     },
     {
@@ -699,7 +699,7 @@ data = {
         "Implemented hands-free voice command execution for common system tasks.",
         "Designed conversational response trees with natural speech synthesis."
       ],
-      "github_url": "https://github.com/albertlinson/speechobot",
+      "github_url": "https://github.com/albykl123/speechobot",
       "status": "Completed"
     },
     {

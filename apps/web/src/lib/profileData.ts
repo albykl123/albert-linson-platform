@@ -111,6 +111,16 @@ export interface ProfileData {
     github_url: string;
     status: string;
   }>;
+  github_repositories?: Array<{
+    name: string;
+    full_name: string;
+    url: string;
+    description: string;
+    language: string;
+    is_source: boolean;
+    visibility: string;
+    role: string;
+  }>;
 }
 
 export const masterProfile: ProfileData = profileJson as ProfileData;

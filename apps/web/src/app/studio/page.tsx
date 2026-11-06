@@ -297,7 +297,7 @@ I welcome the opportunity to discuss how my technical skills, analytical discipl
 Sincerely,
 Albert Kalampadan Linson
 Delhi, India | +91 9910705796 | albertkalampadan@gmail.com
-LinkedIn: linkedin.com/in/albert-linson | GitHub: github.com/albertlinson`;
+LinkedIn: linkedin.com/in/albert-linson | GitHub: github.com/albykl123`;
   }, [targetCompany, targetJobTitle]);
 
   const [coverLetterText, setCoverLetterText] = useState(generatedCoverLetter);

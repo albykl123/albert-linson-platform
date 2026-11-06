@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { masterProfile } from "@/lib/profileData";
 import { ProjectDemosModal } from "@/components/ProjectDemosModal";
+import githubReposData from "@/data/github_repos.json";
 import { 
   FolderGit2, 
   ExternalLink, 
@@ -23,11 +24,15 @@ import {
   Copy,
   Check,
   Zap,
-  Play
+  Play,
+  Github,
+  GitFork,
+  Star,
+  GitBranch
 } from "lucide-react";
 
 export default function ProjectsAndResearchPage() {
-  const [activeTab, setActiveTab] = useState<"all" | "projects" | "research">("all");
+  const [activeTab, setActiveTab] = useState<"all" | "projects" | "github" | "research">("all");
   const [searchQuery, setSearchQuery] = useState("");
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [demoTarget, setDemoTarget] = useState<"jarvis" | "auriva" | "cinematrix">("jarvis");
@@ -41,6 +46,8 @@ export default function ProjectsAndResearchPage() {
       const hash = window.location.hash;
       if (tabParam === "research" || hash === "#research") {
         setActiveTab("research");
+      } else if (tabParam === "github" || hash === "#github") {
+        setActiveTab("github");
       } else if (tabParam === "projects" || hash === "#projects") {
         setActiveTab("projects");
       }
@@ -78,6 +85,20 @@ export default function ProjectsAndResearchPage() {
     );
   });
 
+  // Filter GitHub repositories directly from authenticated @albykl123 account
+  const verifiedGithubRepos = (githubReposData as any[]).filter(
+    (r) => r.name !== "albykl1231" && r.name !== "pandas.pd"
+  );
+  const filteredGithubRepos = verifiedGithubRepos.filter((r) => {
+    if (!searchQuery) return true;
+    const q = searchQuery.toLowerCase();
+    return (
+      r.name.toLowerCase().includes(q) ||
+      (r.description && r.description.toLowerCase().includes(q)) ||
+      (r.language && r.language.toLowerCase().includes(q))
+    );
+  });
+
   // Filter research
   const filteredResearch = masterProfile.research.filter((r) => {
     if (!searchQuery) return true;
@@ -90,7 +111,7 @@ export default function ProjectsAndResearchPage() {
     );
   });
 
-  const totalCount = masterProfile.projects.length + masterProfile.research.length;
+  const totalCount = masterProfile.projects.length + verifiedGithubRepos.length + masterProfile.research.length;
 
   return (
     <div className="bg-corporate-white text-corporate-slate min-h-screen py-16 px-4 sm:px-6 lg:px-8">
@@ -156,7 +177,7 @@ export default function ProjectsAndResearchPage() {
         {/* Controls Bar: Tabs & Search */}
         <div className="mb-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
           {/* Filter Tabs */}
-          <div className="inline-flex p-1 rounded-xl bg-corporate-pale border border-corporate-border shadow-sm">
+          <div className="inline-flex p-1 rounded-xl bg-corporate-pale border border-corporate-border shadow-sm flex-wrap gap-1">
             <button
               onClick={() => setActiveTab("all")}
               className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all ${
@@ -177,6 +198,17 @@ export default function ProjectsAndResearchPage() {
             >
               <FolderGit2 className="h-3.5 w-3.5" />
               <span>Software Systems ({masterProfile.projects.length})</span>
+            </button>
+            <button
+              onClick={() => setActiveTab("github")}
+              className={`px-4 py-2 rounded-lg text-xs font-semibold transition-all flex items-center space-x-1.5 ${
+                activeTab === "github"
+                  ? "bg-corporate-white text-corporate-cobalt shadow-sm border border-corporate-border"
+                  : "text-gray-600 hover:text-corporate-slate"
+              }`}
+            >
+              <Github className="h-3.5 w-3.5" />
+              <span>Connected GitHub ({verifiedGithubRepos.length})</span>
             </button>
             <button
               onClick={() => setActiveTab("research")}
@@ -258,10 +290,12 @@ export default function ProjectsAndResearchPage() {
                                 href={project.github_url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="p-1 text-gray-400 hover:text-corporate-slate transition-colors"
+                                className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg border border-corporate-border bg-corporate-white hover:bg-corporate-pale text-corporate-slate text-[11px] font-semibold transition-all shadow-xs"
                                 title="View GitHub Repository"
                               >
-                                <ExternalLink className="h-4 w-4" />
+                                <Github className="h-3 w-3 text-slate-700" />
+                                <span>Code</span>
+                                <ArrowUpRight className="h-2.5 w-2.5 text-gray-400" />
                               </a>
                             )}
                           </div>
@@ -303,6 +337,104 @@ export default function ProjectsAndResearchPage() {
                     </div>
                   );
                 })}
+              </div>
+            )}
+          </section>
+        )}
+
+        {/* SECTION: CONNECTED GITHUB REPOSITORIES (@albykl123) */}
+        {(activeTab === "all" || activeTab === "github") && (
+          <section id="github" className="mb-16">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 pb-3 border-b border-corporate-border gap-2">
+              <div className="flex items-center space-x-2">
+                <Github className="h-5 w-5 text-corporate-cobalt" />
+                <h2 className="text-xl sm:text-2xl font-bold text-corporate-slate tracking-tight">
+                  Connected GitHub Repositories ({filteredGithubRepos.length})
+                </h2>
+              </div>
+              <div className="flex items-center space-x-2">
+                <span className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[10px] font-semibold">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Connected: @albykl123</span>
+                </span>
+                <a
+                  href="https://github.com/albykl123"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg border border-corporate-border hover:bg-corporate-pale text-xs font-semibold text-corporate-slate transition-colors"
+                >
+                  <span>View Profile</span>
+                  <ExternalLink className="h-3 w-3 text-gray-400" />
+                </a>
+              </div>
+            </div>
+
+            {filteredGithubRepos.length === 0 ? (
+              <div className="p-8 text-center text-xs text-gray-500 rounded-xl bg-corporate-pale border border-corporate-border">
+                No GitHub repositories found matching &ldquo;{searchQuery}&rdquo;.
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredGithubRepos.map((repo) => (
+                  <div
+                    key={repo.id}
+                    className="p-5 rounded-2xl bg-corporate-white border border-corporate-border shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow group"
+                  >
+                    <div>
+                      <div className="flex items-start justify-between gap-2 mb-2">
+                        <div className="flex items-center space-x-1.5">
+                          <FolderGit2 className="h-4 w-4 text-corporate-cobalt" />
+                          <span className="text-xs font-bold text-corporate-slate group-hover:text-corporate-cobalt transition-colors truncate max-w-[170px]">
+                            {repo.name}
+                          </span>
+                        </div>
+                        <span className={`text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
+                          repo.private
+                            ? "bg-amber-50 text-amber-700 border-amber-200"
+                            : "bg-emerald-50 text-emerald-700 border-emerald-200"
+                        }`}>
+                          {repo.private ? "Private Platform" : "Public Repo"}
+                        </span>
+                      </div>
+
+                      <p className="text-xs text-gray-600 mt-2 leading-relaxed min-h-[40px] line-clamp-3">
+                        {repo.description || "Active engineering repository hosted on GitHub."}
+                      </p>
+
+                      <div className="mt-4 flex items-center space-x-3 text-[11px] text-gray-500">
+                        {repo.language && (
+                          <div className="flex items-center space-x-1 font-medium text-corporate-slate">
+                            <span className="h-2 w-2 rounded-full bg-corporate-cobalt" />
+                            <span>{repo.language}</span>
+                          </div>
+                        )}
+                        <div className="flex items-center space-x-1">
+                          <Star className="h-3 w-3 text-amber-500" />
+                          <span>{repo.stars || 0}</span>
+                        </div>
+                        <div className="flex items-center space-x-1">
+                          <GitFork className="h-3 w-3 text-gray-400" />
+                          <span>{repo.forks || 0}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-5 pt-3 border-t border-corporate-border flex items-center justify-between">
+                      <span className="text-[10px] text-gray-400 font-mono">
+                        {repo.default_branch || "main"}
+                      </span>
+                      <a
+                        href={repo.html_url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center space-x-1 text-xs font-semibold text-corporate-cobalt hover:text-blue-700 transition-colors"
+                      >
+                        <span>Open Repo</span>
+                        <ArrowUpRight className="h-3.5 w-3.5" />
+                      </a>
+                    </div>
+                  </div>
+                ))}
               </div>
             )}
           </section>
