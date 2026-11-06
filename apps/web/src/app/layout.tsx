@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { AvatarChatbot } from "@/components/AvatarChatbot";
+import { AnalyticsTracker } from "@/components/AnalyticsTracker";
 
 export const metadata: Metadata = {
   title: "Albert Linson — Personal Intelligence Platform",
@@ -37,6 +38,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body className="bg-midnight-950 text-gray-100 flex min-h-screen flex-col antialiased selection:bg-electric-500/30 selection:text-white">
+        <AnalyticsTracker />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

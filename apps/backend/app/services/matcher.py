@@ -25,7 +25,11 @@ KNOWN_SKILLS = {
     "tensorflow", "pandas", "numpy", "data analysis",
     # Soft & Management
     "agile", "scrum", "project management", "cross-functional", "system architecture",
-    "code review", "problem solving", "mentorship", "leadership", "communication"
+    "code review", "problem solving", "mentorship", "leadership", "communication",
+    # US IT Recruitment & Talent Acquisition
+    "us it recruitment", "talent sourcing", "candidate screening", "talent acquisition",
+    "technical staffing", "ats", "ats workflows", "boolean search", "interview coordination",
+    "client acquisition", "lead generation", "requisition mapping"
 }
 
 
