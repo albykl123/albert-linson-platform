@@ -79,6 +79,29 @@ jobs:
         working-directory: apps/web
         run: npm ci || npm install
 
+      - name: Provision or Verify Cloudflare D1 Database & R2 Bucket
+        working-directory: apps/web
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          echo "Checking and preparing Cloudflare D1 database..."
+          D1_CREATE_OUT=$(npx wrangler d1 create albert-linson-db 2>&1 || true)
+          echo "$D1_CREATE_OUT"
+          NEW_ID=$(echo "$D1_CREATE_OUT" | grep -oE "database_id = \"[a-f0-9-]+\"" | cut -d'"' -f2 || true)
+          if [ -n "$NEW_ID" ]; then
+            echo "Captured new D1 UUID: $NEW_ID"
+            sed -i "s/database_id = \".*\"/database_id = \"$NEW_ID\"/" wrangler.toml
+          else
+            LIST_ID=$(npx wrangler d1 list --json 2>/dev/null | grep -oE '"uuid":"[a-f0-9-]+"' | head -n 1 | cut -d'"' -f4 || true)
+            if [ -n "$LIST_ID" ]; then
+              echo "Matched existing D1 UUID: $LIST_ID"
+              sed -i "s/database_id = \".*\"/database_id = \"$LIST_ID\"/" wrangler.toml
+            fi
+          fi
+          echo "Checking Cloudflare R2 bucket..."
+          npx wrangler r2 bucket create albert-linson-resumes 2>&1 || true
+
       - name: Build Next.js Application with OpenNext
         working-directory: apps/web
         env:
