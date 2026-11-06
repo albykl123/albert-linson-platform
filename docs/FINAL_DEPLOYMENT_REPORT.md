@@ -5,11 +5,11 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployed Commit:** `69e6a04` ("feat(navigation): merge projects & research into unified showcase, merge resume & skills with 4-tier matrix switcher")  
-**Active Cloudflare Worker Version ID:** `aab821e2-c22f-4f94-a220-bc5d27f270eb`  
+**Latest Deployed Commit:** `d425efe` ("feat(avatar): add 3D interactive holographic avatar with mouse hover parallax and global AI recruiter chatbot")  
+**Active Cloudflare Worker Version ID:** `8f95da08-c293-4d5a-aef8-08bb8877fb7d`  
 **Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
-**Latest Successful CI/CD Run:** [Run 42243661632](https://github.com/albykl123/albert-linson-platform/actions/runs/42243661632) (Duration: 2m52s, 100% Pass)  
-**Release Acceptance Status:** **MASTER PROJECT LIVE & UNIFIED SECTIONS DEPLOYED — 100% PRODUCTION VERIFIED**  
+**Latest Successful CI/CD Run:** [Run 42249676200](https://github.com/albykl123/albert-linson-platform/actions/runs/42249676200) (Duration: 2m43s, 100% Pass)  
+**Release Acceptance Status:** **MASTER PROJECT LIVE & 3D INTERACTIVE AVATAR CHATBOT DEPLOYED — 100% PRODUCTION VERIFIED**  
 **Free Tier Cost:** $0.00 / Month (100% Zero-Cost Free Developer Stack)  
 
 ---
@@ -87,7 +87,12 @@ The platform has been audited, migrated to the official OpenNext Cloudflare Work
 - **Streamlined Navigation Bar:** Reduced menu from 9 items down to 7 streamlined links (About, Experience, Leadership, Education, Projects & Research, Resume & Skills, FreeStack), optimizing mobile responsiveness and eliminating desktop clutter.
 - **Backward Compatibility:** Dedicated routes (`/research`, `/skills`) seamlessly maintain backwards compatibility with unified banner guides and direct access.
 
-### 3.6. Security & Administration
+### 3.6. 3D Interactive Holographic Avatar & Global AI Recruiter Chatbot
+- **Interactive Mouse Tracking & 3D Tilt:** Hero section avatar features real-time cursor tracking with dynamic 3D perspective tilt (`rotateX`, `rotateY`), floating HUD cards with multi-plane stereoscopic parallax depth, specular holographic light reflections, and pulsing pedestal rings.
+- **Global Floating Copilot Widget:** Omnipresent on every page with a miniature avatar badge, live green status pulse, and interactive hover tooltip speech bubbles.
+- **Recruiter AI Chatbot (`/api/chat`):** Interactive digital twin responding in real time to queries regarding Albert's verified US IT recruitment track record, software projects, academic credentials, and interview availability. Features zero-latency deterministic matching and OpenRouter multi-model fallback with anti-hallucination guardrails.
+
+### 3.7. Security & Administration
 - **Zero Hardcoded Secrets:** Replaced all legacy passcodes with server-side cookie authentication validating `ADMIN_SECRET_KEY`.
 - **Secret Isolation:** API tokens (`CLOUDFLARE_API_TOKEN`, `OPENROUTER_API_KEY`) run strictly server-side and are never exposed in browser bundles or `NEXT_PUBLIC_` variables.
 
@@ -180,8 +185,9 @@ Health check executed against live production URL:
 | `/api/ai` | POST | `200 OK` | 150 B | OpenRouter Multi-Model Gateway (`openrouter/free`) |
 | `/api/auth` | GET/POST | `200/401` | 23 B | Timing-attack resistant session authorization |
 | `/api/autopilot` | GET/POST | `200 OK` | ~8.2 KB | Autonomous Job Market Auto-Pilot Engine (Zero-Approval Required) |
+| `/api/chat` | POST | `200 OK` | ~450 B | Albert AI Digital Twin & Recruiter Copilot Gateway |
 
-**All 17 production endpoints responded with HTTP 200 OK.**
+**All 18 production endpoints responded with HTTP 200 OK.**
 
 ---
 
