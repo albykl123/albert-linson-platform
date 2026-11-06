@@ -57,9 +57,8 @@ export function Footer() {
               <li><Link href="/experience" className="hover:text-swiss-navy transition-colors">Professional Experience</Link></li>
               <li><Link href="/leadership" className="hover:text-swiss-navy transition-colors">Leadership & Engagement</Link></li>
               <li><Link href="/education" className="hover:text-swiss-navy transition-colors">Education & Credentials</Link></li>
-              <li><Link href="/skills" className="hover:text-swiss-navy transition-colors">Skills Library</Link></li>
-              <li><Link href="/projects" className="hover:text-swiss-navy transition-colors">Software Projects</Link></li>
-              <li><Link href="/research" className="hover:text-swiss-navy transition-colors">Academic Research (2 Papers)</Link></li>
+              <li><Link href="/projects" className="hover:text-swiss-navy transition-colors font-medium">Projects & Research</Link></li>
+              <li><Link href="/resume" className="hover:text-swiss-navy transition-colors font-medium">Resume & Skills</Link></li>
             </ul>
           </div>
 

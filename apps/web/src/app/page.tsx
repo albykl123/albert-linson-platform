@@ -227,10 +227,10 @@ export default function HomePage() {
             </h2>
           </div>
           <Link
-            href="/research"
+            href="/projects?tab=research"
             className="mt-4 sm:mt-0 inline-flex items-center space-x-1 text-sm font-semibold text-swiss-blue hover:text-swiss-navy transition-colors"
           >
-            <span>Read full methodologies</span>
+            <span>Read full methodologies & manuscripts</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

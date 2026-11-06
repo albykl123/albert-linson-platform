@@ -1,11 +1,42 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
+import Link from "next/link";
 import { masterProfile } from "@/lib/profileData";
-import { GraduationCap, BookOpen, ExternalLink, FileText, CheckCircle2, ArrowUpRight } from "lucide-react";
+import { 
+  GraduationCap, 
+  BookOpen, 
+  ExternalLink, 
+  CheckCircle2, 
+  ArrowUpRight, 
+  FolderGit2, 
+  ArrowRight,
+  Sparkles
+} from "lucide-react";
 
 export default function ResearchPage() {
+  const [activeTab, setActiveTab] = useState<"research" | "projects">("research");
+
   return (
     <div className="bg-corporate-white text-corporate-slate min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-5xl mx-auto">
+        {/* Unified Banner */}
+        <div className="mb-6 p-4 rounded-xl bg-corporate-pale border border-corporate-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-2 text-xs text-corporate-slate">
+            <Sparkles className="h-4 w-4 text-corporate-cobalt shrink-0" />
+            <span>
+              Academic research has been unified into the comprehensive <strong>Projects & Research</strong> portfolio.
+            </span>
+          </div>
+          <Link
+            href="/projects"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-corporate-cobalt text-white text-xs font-semibold hover:bg-corporate-cobalt/90 transition-all shadow-sm shrink-0"
+          >
+            <span>Explore All Works</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="mb-12 border-b border-corporate-border pb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-corporate-cobalt">Academic Inquiries</span>
@@ -15,6 +46,17 @@ export default function ResearchPage() {
           <p className="text-gray-600 mt-3 text-base max-w-2xl leading-relaxed">
             Strictly limited to authentic research manuscripts in software testing reliability and multi-modal ultrasound diagnostics. Other technical initiatives belong in the software projects showcase.
           </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="/projects#projects"
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-lg border border-corporate-border bg-corporate-white text-corporate-slate hover:bg-corporate-pale text-xs font-semibold transition-all shadow-sm"
+            >
+              <FolderGit2 className="h-3.5 w-3.5 text-corporate-cobalt" />
+              <span>View All 8 Software Projects</span>
+              <ArrowRight className="h-3.5 w-3.5" />
+            </Link>
+          </div>
         </div>
 
         {/* The Two Research Papers */}

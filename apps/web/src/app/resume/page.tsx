@@ -1,11 +1,45 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { masterProfile } from "@/lib/profileData";
-import { Printer, Download, MapPin, Mail, Phone, ExternalLink, Globe, FileText, CheckCircle2 } from "lucide-react";
+import { masterProfile, SkillItem } from "@/lib/profileData";
+import { 
+  Printer, 
+  Download, 
+  MapPin, 
+  Mail, 
+  Phone, 
+  ExternalLink, 
+  Globe, 
+  FileText, 
+  CheckCircle2,
+  Sparkles,
+  Layout,
+  Server,
+  Smartphone,
+  Cpu,
+  Wrench,
+  Users,
+  Layers,
+  ArrowRight
+} from "lucide-react";
 
-export default function ResumePage() {
+export default function ResumeAndSkillsPage() {
+  const [viewMode, setViewMode] = useState<"resume" | "skills" | "combined">("resume");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const params = new URLSearchParams(window.location.search);
+      const v = params.get("view");
+      const hash = window.location.hash;
+      if (v === "skills" || hash === "#skills") {
+        setViewMode("skills");
+      } else if (v === "combined" || hash === "#combined") {
+        setViewMode("combined");
+      }
+    }
+  }, []);
+
   const handlePrint = () => {
     window.print();
   };
@@ -41,7 +75,7 @@ ${masterProfile.education
   )
   .join("\n\n")}
 
-SKILLS MATRIX
+SKILLS MATRIX (4 DOMAIN CLUSTERS)
 --------------------------------------------------------------------------------
 * Frontend & Design: ${masterProfile.skills.frontend_and_design.join(", ")}
 * Backend & Cloud: ${masterProfile.skills.backend_and_cloud.join(", ")}
@@ -95,226 +129,539 @@ ${(masterProfile.certifications || [])
     URL.revokeObjectURL(url);
   };
 
+  const levels = masterProfile.skill_levels;
+  const profSkills = levels?.professional_work || levels?.professional_experience || [];
+  const projSkills = levels?.project_experience || [];
+  const acadSkills = levels?.academic_experience || [];
+  const learnSkills = levels?.currently_learning || levels?.learning_familiarity || [];
+
   return (
     <div className="bg-paper-offwhite text-paper-graphite min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
         {/* Action Toolbar (Hidden during print) */}
-        <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-4 border-b border-paper-border print:hidden">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b border-paper-border print:hidden">
           <div>
-            <span className="text-xs font-bold uppercase tracking-widest text-paper-beige">Paper & Typography Experience</span>
-            <h1 className="text-2xl font-bold text-paper-graphite mt-1 tracking-tight">Verified Professional Resume</h1>
+            <div className="inline-flex items-center space-x-1.5 text-xs font-semibold text-blue-700 mb-1">
+              <Sparkles className="h-3.5 w-3.5" />
+              <span>Unified Document & Capabilities Matrix</span>
+            </div>
+            <h1 className="text-2xl font-bold text-paper-graphite tracking-tight">
+              Master Resume & Verified Skills
+            </h1>
           </div>
-          <div className="flex items-center space-x-3">
+
+          <div className="flex flex-wrap items-center gap-2">
+            {/* View Switcher */}
+            <div className="inline-flex p-1 rounded-lg bg-paper-surface border border-paper-border shadow-sm">
+              <button
+                onClick={() => setViewMode("resume")}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                  viewMode === "resume"
+                    ? "bg-paper-graphite text-paper-offwhite shadow-sm"
+                    : "text-gray-600 hover:text-paper-graphite"
+                }`}
+              >
+                Master Resume
+              </button>
+              <button
+                onClick={() => setViewMode("skills")}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                  viewMode === "skills"
+                    ? "bg-paper-graphite text-paper-offwhite shadow-sm"
+                    : "text-gray-600 hover:text-paper-graphite"
+                }`}
+              >
+                4-Tier Skills Library
+              </button>
+              <button
+                onClick={() => setViewMode("combined")}
+                className={`px-3 py-1.5 rounded-md text-xs font-semibold transition-all ${
+                  viewMode === "combined"
+                    ? "bg-paper-graphite text-paper-offwhite shadow-sm"
+                    : "text-gray-600 hover:text-paper-graphite"
+                }`}
+              >
+                Combined View
+              </button>
+            </div>
+
+            {/* Document Export Buttons */}
             <button
               onClick={handlePrint}
-              className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-lg bg-paper-surface border border-paper-border hover:bg-paper-border/50 text-paper-graphite text-xs font-semibold shadow-sm transition-all"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-paper-surface border border-paper-border hover:bg-paper-border/50 text-paper-graphite text-xs font-semibold shadow-sm transition-all"
+              title="Print Vector PDF"
             >
               <Printer className="h-4 w-4 text-paper-graphite" />
-              <span>Print / Vector PDF</span>
+              <span>PDF / Print</span>
             </button>
             <button
               onClick={handleDownloadTxt}
-              className="inline-flex items-center space-x-1.5 px-4 py-2 rounded-lg bg-paper-graphite text-paper-offwhite hover:bg-paper-graphite/90 text-xs font-semibold shadow-sm transition-all"
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-blue-700 text-white hover:bg-blue-800 text-xs font-semibold shadow-sm transition-all"
+              title="Download ATS Plain Text"
             >
               <Download className="h-4 w-4" />
-              <span>Download ATS TXT</span>
+              <span>Download TXT</span>
             </button>
           </div>
         </div>
 
-        {/* The Paper Sheet Container */}
-        <div className="bg-white p-8 sm:p-14 rounded-2xl border border-paper-border shadow-xl print:p-0 print:border-none print:shadow-none font-sans">
-          {/* Header */}
-          <header className="border-b-2 border-paper-graphite pb-6 mb-8 text-center sm:text-left">
-            <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-paper-graphite uppercase">
-              {masterProfile.personal.full_legal_name}
-            </h1>
-            <p className="text-sm font-semibold text-gray-700 mt-1">
-              {masterProfile.personal.sub_headline}
-            </p>
+        {/* VIEW 1: MASTER RESUME SHEET */}
+        {(viewMode === "resume" || viewMode === "combined") && (
+          <div className="bg-white p-8 sm:p-14 rounded-2xl border border-paper-border shadow-xl print:p-0 print:border-none print:shadow-none font-sans mb-12">
+            {/* Header */}
+            <header className="border-b-2 border-paper-graphite pb-6 mb-8 text-center sm:text-left">
+              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-paper-graphite uppercase">
+                {masterProfile.personal.full_legal_name}
+              </h2>
+              <p className="text-sm font-semibold text-gray-700 mt-1">
+                {masterProfile.personal.sub_headline}
+              </p>
 
-            <div className="mt-4 flex flex-wrap items-center justify-center sm:justify-start gap-y-1 gap-x-4 text-xs text-gray-600">
-              <span className="inline-flex items-center space-x-1">
-                <MapPin className="h-3.5 w-3.5 text-gray-400" />
-                <span>{masterProfile.personal.location}</span>
-              </span>
-              <span>&bull;</span>
-              <span className="inline-flex items-center space-x-1">
-                <Mail className="h-3.5 w-3.5 text-gray-400" />
-                <span>{masterProfile.personal.email}</span>
-              </span>
-              <span>&bull;</span>
-              <span className="inline-flex items-center space-x-1">
-                <Phone className="h-3.5 w-3.5 text-gray-400" />
-                <span>{masterProfile.personal.phone}</span>
-              </span>
-              <span>&bull;</span>
-              <a href={masterProfile.personal.linkedin} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
-                LinkedIn
-              </a>
-              <span>&bull;</span>
-              <a href={masterProfile.personal.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
-                GitHub
-              </a>
-            </div>
-          </header>
-
-          {/* Professional Summary */}
-          <section className="mb-8">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
-              Professional Summary
-            </h2>
-            <p className="text-xs sm:text-sm text-gray-800 leading-relaxed text-justify">
-              {masterProfile.summary}
-            </p>
-          </section>
-
-          {/* Professional Experience */}
-          <section className="mb-8">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4">
-              Professional Experience
-            </h2>
-            <div className="space-y-6">
-              {masterProfile.experience.map((exp) => (
-                <div key={exp.id}>
-                  <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
-                    <div>
-                      <span className="text-sm font-bold text-paper-graphite">{exp.role}</span>
-                      <span className="text-sm font-semibold text-gray-700"> &bull; {exp.company}</span>
-                    </div>
-                    <span className="text-xs text-gray-500 font-medium">{exp.period}</span>
-                  </div>
-                  <div className="text-[11px] text-gray-600 italic mb-2">
-                    {exp.location} | {exp.employment_type || "Full-Time"}
-                  </div>
-                  <ul className="list-disc pl-4 space-y-1 text-xs text-gray-800 leading-relaxed">
-                    {exp.highlights.map((h, i) => (
-                      <li key={i}>{h}</li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Education */}
-          <section className="mb-8">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4">
-              Education
-            </h2>
-            <div className="space-y-4">
-              {masterProfile.education.map((edu) => (
-                <div key={edu.id} className="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs">
-                  <div>
-                    <div className="font-bold text-sm text-paper-graphite">{edu.degree}</div>
-                    <div className="text-gray-700 font-medium">{edu.institution} &bull; {edu.location}</div>
-                    <div className="text-gray-600 mt-0.5">{edu.details}</div>
-                  </div>
-                  <div className="text-gray-500 font-medium mt-1 sm:mt-0">{edu.period}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Technical Skills */}
-          <section className="mb-8">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
-              Technical & Professional Skills
-            </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 text-xs text-gray-800">
-              <div>
-                <span className="font-bold">Frontend & Design: </span>
-                <span>{masterProfile.skills.frontend_and_design.join(", ")}</span>
+              <div className="mt-4 flex flex-wrap items-center justify-center sm:justify-start gap-y-1 gap-x-4 text-xs text-gray-600">
+                <span className="inline-flex items-center space-x-1">
+                  <MapPin className="h-3.5 w-3.5 text-gray-400" />
+                  <span>{masterProfile.personal.location}</span>
+                </span>
+                <span>&bull;</span>
+                <span className="inline-flex items-center space-x-1">
+                  <Mail className="h-3.5 w-3.5 text-gray-400" />
+                  <span>{masterProfile.personal.email}</span>
+                </span>
+                <span>&bull;</span>
+                <span className="inline-flex items-center space-x-1">
+                  <Phone className="h-3.5 w-3.5 text-gray-400" />
+                  <span>{masterProfile.personal.phone}</span>
+                </span>
+                <span>&bull;</span>
+                <a href={masterProfile.personal.linkedin} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
+                  LinkedIn
+                </a>
+                <span>&bull;</span>
+                <a href={masterProfile.personal.github} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
+                  GitHub
+                </a>
               </div>
-              <div>
-                <span className="font-bold">Backend & Cloud: </span>
-                <span>{masterProfile.skills.backend_and_cloud.join(", ")}</span>
-              </div>
-              <div>
-                <span className="font-bold">US IT Recruitment: </span>
-                <span>{masterProfile.skills.recruitment_and_business.join(", ")}</span>
-              </div>
-              <div>
-                <span className="font-bold">AI & Analytics: </span>
-                <span>{masterProfile.skills.analytics_and_ai.join(", ")}</span>
-              </div>
-            </div>
-          </section>
+            </header>
 
-          {/* Academic Research (EXACTLY TWO PAPERS) */}
-          <section className="mb-8">
-            <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
-              Academic Research (Exactly 2 Papers)
-            </h2>
-            <div className="space-y-4">
-              {masterProfile.research.map((r, i) => (
-                <div key={r.id} className="text-xs text-gray-800">
-                  <div className="font-bold text-sm text-paper-graphite">
-                    [{i + 1}] {r.title}
-                  </div>
-                  <div className="text-gray-600 font-medium italic mt-0.5">
-                    {r.role} &bull; {r.category} &bull; Status: {r.status}
-                  </div>
-                  <p className="mt-1 text-gray-700 leading-relaxed">
-                    {r.abstract}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </section>
-
-          {/* Leadership, Campus Involvement & Event Management */}
-          {masterProfile.leadership && (
+            {/* Professional Summary */}
             <section className="mb-8">
-              <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
-                <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
-                  Leadership, Campus Involvement & Event Management
-                </h2>
-                <Link href="/leadership" className="text-[11px] text-blue-700 hover:underline print:hidden">
-                  View all {masterProfile.leadership?.length || 14} records &rarr;
-                </Link>
-              </div>
-              <div className="space-y-4">
-                {masterProfile.leadership.slice(0, 5).map((lead) => (
-                  <div key={lead.id} className="text-xs text-gray-800">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
+                Professional Summary
+              </h3>
+              <p className="text-xs sm:text-sm text-gray-800 leading-relaxed text-justify">
+                {masterProfile.summary}
+              </p>
+            </section>
+
+            {/* Professional Experience */}
+            <section className="mb-8">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4">
+                Professional Experience
+              </h3>
+              <div className="space-y-6">
+                {masterProfile.experience.map((exp) => (
+                  <div key={exp.id}>
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
                       <div>
-                        <span className="font-bold text-sm text-paper-graphite">{lead.title}</span>
-                        <span className="text-gray-700 font-medium"> &bull; {lead.organization} ({lead.institution})</span>
+                        <span className="text-sm font-bold text-paper-graphite">{exp.role}</span>
+                        <span className="text-sm font-semibold text-gray-700"> &bull; {exp.company}</span>
                       </div>
-                      <span className="text-gray-500 font-medium text-[11px]">{lead.period}</span>
+                      <span className="text-xs text-gray-500 font-medium">{exp.period}</span>
                     </div>
-                    <div className="text-[11px] text-gray-600 italic mt-0.5">
-                      Category: {lead.category} &bull; Role: {lead.role_level}
+                    <div className="text-[11px] text-gray-600 italic mb-2">
+                      {exp.location} | {exp.employment_type || "Full-Time"}
                     </div>
-                    <ul className="list-disc pl-4 space-y-0.5 text-xs text-gray-700 mt-1">
-                      {lead.responsibilities.map((resp, rIdx) => (
-                        <li key={rIdx}>{resp}</li>
+                    <ul className="list-disc pl-4 space-y-1 text-xs text-gray-800 leading-relaxed">
+                      {exp.highlights.map((h, i) => (
+                        <li key={i}>{h}</li>
                       ))}
                     </ul>
                   </div>
                 ))}
               </div>
             </section>
-          )}
 
-          {/* Certifications & Recognition */}
-          {masterProfile.certifications && (
-            <section>
-              <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
-                Certifications & Institutional Activities
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-800">
-                {masterProfile.certifications.map((c) => (
-                  <div key={c.id}>
-                    <span className="font-bold">{c.name}</span> ({c.issuer})
-                    <div className="text-gray-600">{c.description}</div>
+            {/* Education */}
+            <section className="mb-8">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4">
+                Education Credentials
+              </h3>
+              <div className="space-y-4">
+                {masterProfile.education.map((edu) => (
+                  <div key={edu.id} className="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs">
+                    <div>
+                      <div className="font-bold text-sm text-paper-graphite">{edu.degree}</div>
+                      <div className="text-gray-700 font-medium">{edu.institution} &bull; {edu.location}</div>
+                      <div className="text-gray-600 mt-0.5">{edu.details}</div>
+                    </div>
+                    <div className="text-gray-500 font-medium mt-1 sm:mt-0">{edu.period}</div>
                   </div>
                 ))}
               </div>
             </section>
-          )}
-        </div>
+
+            {/* Technical Skills Overview with Deep-Dive Link */}
+            <section className="mb-8">
+              <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
+                  Core Skills & Competencies
+                </h3>
+                <button
+                  onClick={() => setViewMode("skills")}
+                  className="text-[11px] text-blue-700 hover:underline print:hidden font-medium inline-flex items-center space-x-1"
+                >
+                  <span>View 4-Tier Evidence Library</span>
+                  <ArrowRight className="h-3 w-3" />
+                </button>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-2 gap-x-6 text-xs text-gray-800">
+                <div>
+                  <span className="font-bold">Frontend & Design: </span>
+                  <span>{masterProfile.skills.frontend_and_design.join(", ")}</span>
+                </div>
+                <div>
+                  <span className="font-bold">Backend & Cloud: </span>
+                  <span>{masterProfile.skills.backend_and_cloud.join(", ")}</span>
+                </div>
+                <div>
+                  <span className="font-bold">US IT Recruitment: </span>
+                  <span>{masterProfile.skills.recruitment_and_business.join(", ")}</span>
+                </div>
+                <div>
+                  <span className="font-bold">AI & Analytics: </span>
+                  <span>{masterProfile.skills.analytics_and_ai.join(", ")}</span>
+                </div>
+              </div>
+            </section>
+
+            {/* Academic Research (EXACTLY TWO PAPERS) */}
+            <section className="mb-8">
+              <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
+                  Academic Research (Exactly 2 Papers)
+                </h3>
+                <Link href="/projects#research" className="text-[11px] text-blue-700 hover:underline print:hidden">
+                  Methodology & Papers &rarr;
+                </Link>
+              </div>
+              <div className="space-y-4">
+                {masterProfile.research.map((r, i) => (
+                  <div key={r.id} className="text-xs text-gray-800">
+                    <div className="font-bold text-sm text-paper-graphite">
+                      [{i + 1}] {r.title}
+                    </div>
+                    <div className="text-gray-600 font-medium italic mt-0.5">
+                      {r.role} &bull; {r.category} &bull; Status: {r.status}
+                    </div>
+                    <p className="mt-1 text-gray-700 leading-relaxed">
+                      {r.abstract}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Leadership, Campus Involvement & Event Management */}
+            {masterProfile.leadership && (
+              <section className="mb-8">
+                <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
+                    Leadership, Campus Involvement & Event Management
+                  </h3>
+                  <Link href="/leadership" className="text-[11px] text-blue-700 hover:underline print:hidden">
+                    View all {masterProfile.leadership?.length || 14} records &rarr;
+                  </Link>
+                </div>
+                <div className="space-y-4">
+                  {masterProfile.leadership.slice(0, 5).map((lead) => (
+                    <div key={lead.id} className="text-xs text-gray-800">
+                      <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
+                        <div>
+                          <span className="font-bold text-sm text-paper-graphite">{lead.title}</span>
+                          <span className="text-gray-700 font-medium"> &bull; {lead.organization} ({lead.institution})</span>
+                        </div>
+                        <span className="text-gray-500 font-medium text-[11px]">{lead.period}</span>
+                      </div>
+                      <div className="text-[11px] text-gray-600 italic mt-0.5">
+                        Category: {lead.category} &bull; Role: {lead.role_level}
+                      </div>
+                      <ul className="list-disc pl-4 space-y-0.5 text-xs text-gray-700 mt-1">
+                        {lead.responsibilities.map((resp, rIdx) => (
+                          <li key={rIdx}>{resp}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Certifications & Recognition */}
+            {masterProfile.certifications && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
+                  Certifications & Institutional Activities
+                </h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-800">
+                  {masterProfile.certifications.map((c) => (
+                    <div key={c.id}>
+                      <span className="font-bold">{c.name}</span> ({c.issuer})
+                      <div className="text-gray-600">{c.description}</div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        )}
+
+        {/* VIEW 2: 4-TIER EVIDENCE-BACKED SKILLS MATRIX */}
+        {(viewMode === "skills" || viewMode === "combined") && (
+          <div id="skills" className="space-y-12 mb-12">
+            <div className="p-6 rounded-2xl bg-white border border-paper-border shadow-sm">
+              <span className="text-xs font-bold uppercase tracking-widest text-blue-700">Evidence-Backed Capability Matrix</span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-paper-graphite mt-1 tracking-tight">
+                4-Tier Structured Skills Library
+              </h2>
+              <p className="text-xs sm:text-sm text-gray-600 mt-2 leading-relaxed">
+                Every listed skill is categorized strictly by proof-of-application: professional employment, verified software builds, academic curricula, or exploratory engineering.
+              </p>
+            </div>
+
+            {/* Tier 1: Professional Work */}
+            <section className="p-8 rounded-2xl bg-white border border-paper-border shadow-sm">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="h-9 w-9 rounded-lg bg-blue-700 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                  1
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-paper-graphite tracking-tight">
+                    Demonstrated Through Professional Work
+                  </h3>
+                  <p className="text-xs text-gray-600">
+                    Applied in commercial roles at Innova Solutions, Herbal Energy, Algospark Technologies, METVY, and MCD.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                {profSkills.map((s: SkillItem) => (
+                  <div key={s.name} className="p-4 rounded-xl bg-paper-offwhite border border-paper-border shadow-sm">
+                    <div className="flex items-center justify-between text-[11px] text-blue-700 font-semibold mb-1">
+                      <span>{s.category}</span>
+                      <span className="px-1.5 py-0.5 rounded bg-white text-[10px] text-gray-700 border border-paper-border">Employment</span>
+                    </div>
+                    <div className="font-bold text-sm text-paper-graphite">{s.name}</div>
+                    <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                      <span className="font-medium text-gray-800">Evidence: </span>{s.evidence}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Tier 2: Projects */}
+            <section className="p-8 rounded-2xl bg-white border border-paper-border shadow-sm">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="h-9 w-9 rounded-lg bg-gray-800 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                  2
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-paper-graphite tracking-tight">
+                    Demonstrated Through Working Projects
+                  </h3>
+                  <p className="text-xs text-gray-600">
+                    Architected and deployed in verified builds (JARVIS, Lunova OS, ATSForge, CINEMATRIX, AURIVA, Platform).
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                {projSkills.map((s: SkillItem) => (
+                  <div key={s.name} className="p-4 rounded-xl bg-paper-offwhite border border-paper-border shadow-sm">
+                    <div className="flex items-center justify-between text-[11px] text-blue-700 font-semibold mb-1">
+                      <span>{s.category}</span>
+                      <span className="px-1.5 py-0.5 rounded bg-white text-[10px] text-gray-700 border border-paper-border">Verified Build</span>
+                    </div>
+                    <div className="font-bold text-sm text-paper-graphite">{s.name}</div>
+                    <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                      <span className="font-medium text-gray-800">Evidence: </span>{s.evidence}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Tier 3: Academic Rigor */}
+            <section className="p-8 rounded-2xl bg-white border border-paper-border shadow-sm">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="h-9 w-9 rounded-lg bg-indigo-700 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                  3
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-paper-graphite tracking-tight">
+                    Academic Experience (University Coursework)
+                  </h3>
+                  <p className="text-xs text-gray-600">
+                    Core computer science foundations completed during BCA and MCA curricula at CHRIST (Deemed to be University).
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                {acadSkills.map((s: SkillItem) => (
+                  <div key={s.name} className="p-4 rounded-xl bg-paper-offwhite border border-paper-border shadow-sm">
+                    <div className="flex items-center justify-between text-[11px] text-indigo-700 font-semibold mb-1">
+                      <span>{s.category}</span>
+                      <span className="px-1.5 py-0.5 rounded bg-white text-[10px] text-gray-700 border border-paper-border">Academic Rigor</span>
+                    </div>
+                    <div className="font-bold text-sm text-paper-graphite">{s.name}</div>
+                    <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                      <span className="font-medium text-gray-800">Context: </span>{s.evidence}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Tier 4: Active Learning */}
+            <section className="p-8 rounded-2xl bg-white border border-paper-border shadow-sm">
+              <div className="flex items-center space-x-3 mb-4">
+                <div className="h-9 w-9 rounded-lg bg-gray-500 text-white flex items-center justify-center font-bold text-sm shadow-sm">
+                  4
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-paper-graphite tracking-tight">
+                    Currently Learning & Exploratory Lab
+                  </h3>
+                  <p className="text-xs text-gray-600">
+                    Modern technologies under active investigation, course study, or experimental testing.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+                {learnSkills.map((s: SkillItem) => (
+                  <div key={s.name} className="p-4 rounded-xl bg-paper-offwhite border border-paper-border shadow-sm">
+                    <div className="flex items-center justify-between text-[11px] text-gray-500 font-semibold mb-1">
+                      <span>{s.category}</span>
+                      <span className="px-1.5 py-0.5 rounded bg-white text-[10px] text-gray-600 border border-paper-border">Active Study</span>
+                    </div>
+                    <div className="font-bold text-sm text-paper-graphite">{s.name}</div>
+                    <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                      <span className="font-medium text-gray-800">Context: </span>{s.evidence}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Domain Matrix Breakdown */}
+            <section className="p-8 rounded-2xl bg-white border border-paper-border shadow-sm">
+              <h3 className="text-xl font-bold text-paper-graphite tracking-tight mb-6">
+                Complete Technology & Domain Matrix
+              </h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="p-5 rounded-xl bg-paper-offwhite border border-paper-border">
+                  <h4 className="font-bold text-sm text-paper-graphite mb-3 flex items-center space-x-2">
+                    <Layout className="h-4 w-4 text-blue-700" />
+                    <span>Frontend Development</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(masterProfile.skills.frontend_development || [
+                      "HTML5", "CSS3", "JavaScript (ES6+)", "Bootstrap", "React", "Next.js", "TypeScript", "Tailwind CSS"
+                    ]).map((skill) => (
+                      <span key={skill} className="px-2.5 py-0.5 text-xs rounded-md bg-white text-gray-800 font-medium border border-paper-border">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-xl bg-paper-offwhite border border-paper-border">
+                  <h4 className="font-bold text-sm text-paper-graphite mb-3 flex items-center space-x-2">
+                    <Server className="h-4 w-4 text-blue-700" />
+                    <span>Backend & Cloud</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(masterProfile.skills.programming_and_backend || [
+                      "Python", "FastAPI", "SQL", "MySQL", "SQLite / Cloudflare D1", "Node.js", "RESTful API Design"
+                    ]).map((skill) => (
+                      <span key={skill} className="px-2.5 py-0.5 text-xs rounded-md bg-white text-gray-800 font-medium border border-paper-border">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-xl bg-paper-offwhite border border-paper-border">
+                  <h4 className="font-bold text-sm text-paper-graphite mb-3 flex items-center space-x-2">
+                    <Smartphone className="h-4 w-4 text-blue-700" />
+                    <span>Android Development</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(masterProfile.skills.android_development || [
+                      "Kotlin", "Jetpack Compose", "Android Studio", "Gradle", "Android UI Prototyping"
+                    ]).map((skill) => (
+                      <span key={skill} className="px-2.5 py-0.5 text-xs rounded-md bg-white text-gray-800 font-medium border border-paper-border">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-xl bg-paper-offwhite border border-paper-border">
+                  <h4 className="font-bold text-sm text-paper-graphite mb-3 flex items-center space-x-2">
+                    <Cpu className="h-4 w-4 text-blue-700" />
+                    <span>AI & Development Tools</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(masterProfile.skills.ai_and_development || [
+                      "OpenRouter", "Ollama", "Hugging Face", "Google Colab", "Docker", "Machine Learning"
+                    ]).map((skill) => (
+                      <span key={skill} className="px-2.5 py-0.5 text-xs rounded-md bg-white text-gray-800 font-medium border border-paper-border">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-xl bg-paper-offwhite border border-paper-border">
+                  <h4 className="font-bold text-sm text-paper-graphite mb-3 flex items-center space-x-2">
+                    <Wrench className="h-4 w-4 text-blue-700" />
+                    <span>Design & Dev Tools</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(masterProfile.skills.design || [
+                      "Figma", "Adobe XD", "UI/UX Design", "Responsive Web Design"
+                    ]).concat(masterProfile.skills.development_tools || ["Git", "GitHub", "VS Code", "Linux"]).map((skill) => (
+                      <span key={skill} className="px-2.5 py-0.5 text-xs rounded-md bg-white text-gray-800 font-medium border border-paper-border">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-5 rounded-xl bg-paper-offwhite border border-paper-border">
+                  <h4 className="font-bold text-sm text-paper-graphite mb-3 flex items-center space-x-2">
+                    <Users className="h-4 w-4 text-blue-700" />
+                    <span>Recruitment & Leadership</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-1.5">
+                    {(masterProfile.skills.professional_skills || [
+                      "Full-Cycle US IT Recruitment", "Talent Acquisition", "Candidate Sourcing", "Event Management", "Team Leadership", "Peer Education"
+                    ]).map((skill) => (
+                      <span key={skill} className="px-2.5 py-0.5 text-xs rounded-md bg-white text-gray-800 font-medium border border-paper-border">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+        )}
       </div>
     </div>
   );

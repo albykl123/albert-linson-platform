@@ -1,4 +1,7 @@
+"use client";
+
 import React from "react";
+import Link from "next/link";
 import { masterProfile, SkillItem } from "@/lib/profileData";
 import { 
   Code2, 
@@ -6,13 +9,11 @@ import {
   Smartphone, 
   Cpu, 
   Users, 
-  TrendingUp, 
   Server, 
-  FileSearch, 
   Wrench,
-  CheckCircle2,
   Sparkles,
-  BookOpen
+  ArrowRight,
+  FileText
 } from "lucide-react";
 
 export default function SkillsPage() {
@@ -26,6 +27,24 @@ export default function SkillsPage() {
   return (
     <div className="bg-corporate-white text-corporate-slate min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
+        {/* Unified Section Banner */}
+        <div className="mb-6 p-4 rounded-xl bg-corporate-pale border border-corporate-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center space-x-2 text-xs text-corporate-slate">
+            <Sparkles className="h-4 w-4 text-corporate-cobalt shrink-0" />
+            <span>
+              The Skills Library is now unified with the <strong>Master Resume & Skills Architecture</strong> for instant cross-verification.
+            </span>
+          </div>
+          <Link
+            href="/resume"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-corporate-cobalt text-white text-xs font-semibold hover:bg-corporate-cobalt/90 transition-all shadow-sm shrink-0"
+          >
+            <FileText className="h-3.5 w-3.5" />
+            <span>View Full Master Resume</span>
+            <ArrowRight className="h-3.5 w-3.5" />
+          </Link>
+        </div>
+
         {/* Header */}
         <div className="mb-12 border-b border-corporate-border pb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-corporate-cobalt">Structured Skills Library</span>

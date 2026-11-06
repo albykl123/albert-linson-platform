@@ -39,10 +39,8 @@ export function Navbar() {
     { href: "/experience", label: "Experience" },
     { href: "/leadership", label: "Leadership" },
     { href: "/education", label: "Education" },
-    { href: "/skills", label: "Skills" },
-    { href: "/projects", label: "Projects" },
-    { href: "/research", label: "Research" },
-    { href: "/resume", label: "Resume" },
+    { href: "/projects", label: "Projects & Research", activeRoutes: ["/projects", "/research"] },
+    { href: "/resume", label: "Resume & Skills", activeRoutes: ["/resume", "/skills"] },
     { href: "/freestack", label: "FreeStack" },
   ];
 
@@ -67,7 +65,7 @@ export function Navbar() {
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-1">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.activeRoutes && link.activeRoutes.includes(pathname));
             return (
               <Link
                 key={link.href}
@@ -139,7 +137,7 @@ export function Navbar() {
       {isOpen && (
         <div className="sm:hidden border-b border-swiss-divider bg-swiss-white px-4 py-4 space-y-1 shadow-lg animate-in fade-in duration-150">
           {navLinks.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.activeRoutes && link.activeRoutes.includes(pathname));
             return (
               <Link
                 key={link.href}
