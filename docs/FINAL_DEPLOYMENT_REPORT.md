@@ -5,8 +5,8 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployment Commit:** `d83bdf0`  
-**Successful GitHub Actions Run:** [Run 42198726899](https://github.com/albykl123/albert-linson-platform/actions/runs/42198726899)  
+**Latest Deployment Commit:** `bce9786`  
+**Successful GitHub Actions Run:** [Run 42201203738](https://github.com/albykl123/albert-linson-platform/actions/runs/42201203738)  
 **Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
 **Deployment Automation:** GitHub Actions CI/CD (`.github/workflows/deploy.yml`)  
 **Free Tier Cost:** \$0.00 / Month (100% Zero-Cost Free Developer Stack)  
@@ -125,7 +125,8 @@ The following GitHub Repository Secrets have been configured and verified:
 - **Safety Branch:** `checkpoint-pre-deployment-audit`
 - **Active Branch:** `main`
 - **Recent Commit Log:**
-  - `d83bdf0` — `fix(auth): ensure reliable verification with configured secret and owner key` (AUDIT VERIFIED)
+  - `bce9786` — `fix(security): rotate ADMIN_SECRET_KEY, purge compromised credentials, and enforce dynamic session tokens` (AUDIT VERIFIED)
+  - `d83bdf0` — `fix(auth): ensure reliable verification with configured secret and owner key`
   - `9e0d6b7` — `fix(audit): refine portfolio metrics, add server secret bindings, D1 and AI verification routes`
   - `a263776` — `docs: finalize deployment report with live verified Cloudflare Worker URL`
   - `722be19` — `ci: add Cloudflare API pre-flight diagnostics and backoff retry for deployment`
@@ -180,9 +181,23 @@ Health check executed against live production URL:
 ### 8.2. Credential Protection & Secret Isolation
 - **Zero Client Credential Leakage:** No API tokens (`ADMIN_SECRET_KEY`, `CLOUDFLARE_API_TOKEN`, `OPENROUTER_API_KEY`) are prefixed with `NEXT_PUBLIC_`. They are excluded from browser bundles.
 - **Server-Side AI Gateway:** OpenRouter requests are mediated exclusively through the server-side edge runtime (`/api/ai`), keeping the bearer token completely private.
-- **Admin Access Control:** Authenticates via constant-time string comparison. Unauthenticated requests to `/api/auth` return HTTP 401/403. Successful logins issue an `HttpOnly`, `SameSite=Strict`, `Secure` session cookie (`albert_admin_session`).
+- **Admin Access Control:** Authenticates via constant-time string comparison. Unauthenticated requests to `/api/auth` return HTTP 401/403. Successful logins issue an `HttpOnly`, `SameSite=Strict`, `Secure` session cookie (`albert_admin_session_v3`).
 
-### 8.3. Cloudflare D1 & R2 Resource Analysis
+### 8.3. Cryptographic Secret Rotation & Incident Remediation
+- **Compromised Secret Invalidation:** The previous admin secret key was treated as fully compromised and eradicated from source code, tests, and configuration.
+- **Cryptographic Rotation:** A new 256-bit URL-safe token was generated using `System.Security.Cryptography.RandomNumberGenerator`. Its raw value was never printed in logs, console output, chat, or committed to git.
+- **Automated Cloudflare Secret Sync:** Added `syncWorkerSecrets()` to CI/CD pipeline (`scripts/prepare-cloudflare.mjs`) to synchronize encrypted Worker secrets (`ADMIN_SECRET_KEY` and `OPENROUTER_API_KEY`) via Cloudflare API (`PUT /accounts/${accountId}/workers/scripts/albert-linson-platform/secrets`).
+- **Session Salt Invalidation (v3):** Admin session tokens are derived as `SHA-256(ADMIN_SECRET + ":albert-platform-session-salt-v3")` and stored in `albert_admin_session_v3`. All historical sessions are immediately invalidated upon rotation.
+- **Live Verification Results (Executed post-deployment):**
+  - **Compromised Key Rejection:** `POST /api/auth` with previous key returned `HTTP 401 Unauthorized`.
+  - **Rotated Key Acceptance:** `POST /api/auth` with rotated key returned `HTTP 200 OK` (`authenticated: true`) and issued `albert_admin_session_v3`.
+  - **Session Cookie Persistence:** `GET /api/auth` with session cookie returned `HTTP 200 OK` (`authenticated: true`).
+  - **Legacy Cookie Invalidation:** Requests presenting legacy `albert_admin_session` cookies are rejected (`authenticated: false`).
+  - **Unauthenticated Protection:** Unauthenticated requests to `/api/auth` return `authenticated: false`.
+  - **Live AI Edge Gateway:** `POST /api/ai` successfully routed through OpenRouter (`OpenRouter Multi-Model Edge Gateway`) with `HTTP 200 OK`.
+  - **Live D1 Database:** `GET /api/db` verified D1 database binding (`albert-linson-db`).
+
+### 8.4. Cloudflare D1 & R2 Resource Analysis
 - **Cloudflare D1 Database (`albert-linson-db`):** Fully active, bound (`DB`), and mapped to UUID `167e5c06-fe0e-4147-8187-0849fbcce576`.
 - **Cloudflare R2 Object Storage (`albert-linson-resumes`):** Currently **on standby** because R2 service activation requires a manual one-time opt-in via Cloudflare Dashboard (error `10042`). The binding is cleanly commented out in `wrangler.toml` to prevent deployment blocking. Client-side vector PDF generation (`window.print()`), TXT download, and ATS analysis operate 100% independently without R2 dependencies.
 
