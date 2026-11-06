@@ -5,10 +5,10 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployed Commit:** `af1c837` ("feat(avatar): integrate cutout subject avatar, interactive mouse follower companion and contextual talking speech bubbles")  
-**Active Cloudflare Worker Version ID:** Verified in CI/CD Run `42252740125`  
+**Latest Deployed Commit:** `2aa0aa5` ("refactor(avatar): streamline UX by removing cursor-following companion, retaining 3D hero avatar and bottom-right executive AI copilot")  
+**Active Cloudflare Worker Version ID:** Verified in CI/CD Run `42255635764`  
 **Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
-**Latest Successful CI/CD Run:** [Run 42252740125](https://github.com/albykl123/albert-linson-platform/actions/runs/42252740125) (Duration: 2m43s, 100% Pass)  
+**Latest Successful CI/CD Run:** [Run 42255635764](https://github.com/albykl123/albert-linson-platform/actions/runs/42255635764) (Duration: 2m40s, 100% Pass)  
 **Release Acceptance Status:** **MASTER PROJECT LIVE & 3D INTERACTIVE AVATAR CHATBOT DEPLOYED — 100% PRODUCTION VERIFIED**  
 **Free Tier Cost:** $0.00 / Month (100% Zero-Cost Free Developer Stack)  
 
@@ -87,16 +87,11 @@ The platform has been audited, migrated to the official OpenNext Cloudflare Work
 - **Streamlined Navigation Bar:** Reduced menu from 9 items down to 7 streamlined links (About, Experience, Leadership, Education, Projects & Research, Resume & Skills, FreeStack), optimizing mobile responsiveness and eliminating desktop clutter.
 - **Backward Compatibility:** Dedicated routes (`/research`, `/skills`) seamlessly maintain backwards compatibility with unified banner guides and direct access.
 
-### 3.6. 3D Cutout Avatar, Interactive Mouse Follower Companion & Global AI Recruiter Chatbot
+### 3.6. 3D Cutout Avatar & Global Executive AI Recruiter Chatbot
 - **Transparent Subject Cutout:** Extracted high-definition subject cutout from user source image (`/albert-avatar-cutout.png`, 866x327 px, 4-channel BGRA), completely removing background and eliminating checkerboard transparency artifacts.
-- **Interactive 3D Holographic Stage (Homepage):** Hero section avatar features real-time cursor tracking with dynamic 3D perspective tilt (`rotateX`, `rotateY`), floating HUD cards with multi-plane stereoscopic parallax depth, specular holographic light reflections, concentric neon floor rings under feet, and instant click-to-chat.
-- **Interactive Mouse Follower Companion (`AvatarFollower`):**
-  - Omnipresent across desktop sessions (`pointer: fine`), tracking cursor movement via smooth `requestAnimationFrame` lerp damping (`dx * 0.14`).
-  - Dynamic velocity-based banking tilt (`-15deg` to `+15deg`) and responsive viewport edge collision detection.
-  - Floating animated speech bubble with section-aware dialogue bank (`#hero`, `#experience`, `#projects`, `#education`, `#resume`, `#leadership`, `#freestack`, `default`) that reacts dynamically to `document.elementFromPoint()`.
-  - Non-blocking ergonomics: outer container uses `pointer-events-none` so visitors can click any website links or buttons unimpeded; clicking the avatar cutout directly launches the conversational chatbot.
-  - Automatically hidden during mobile/touch sessions and while the chatbot window is open.
-- **Global Floating Copilot Widget:** Omnipresent on every page with a miniature avatar badge, live green status pulse, and interactive hover tooltip speech bubbles.
+- **Interactive 3D Stage (Homepage):** Hero section avatar stands directly and transparently on the page with natural ground contact shadows (`bg-black/15 blur-md`), real-time cursor tracking with smooth 3D perspective tilt (`rotateX`, `rotateY`), floating hover speech bubble (*"Hi, I'm Albert's AI Twin! Click me to chat 👋"*), and interactive trigger pill (*"Albert AI Digital Twin • Chat"*).
+- **Streamlined Executive UX:** Cursor-following mouse companion was completely removed based on UX audit to ensure zero visual distraction while recruiters and hiring managers scan resumes, experience, and project metrics.
+- **Global Pinned Copilot Widget (Bottom Right):** Omnipresent on every page with a miniature avatar badge, live green status pulse, and interactive hover tooltip speech bubbles. Never obstructs content or chases the pointer.
 - **Recruiter AI Chatbot (`/api/chat`):** Interactive digital twin responding in real time to queries regarding Albert's verified US IT recruitment track record, software projects, academic credentials, and interview availability. Features zero-latency deterministic matching and OpenRouter multi-model fallback with anti-hallucination guardrails.
 
 ### 3.7. Security & Administration
