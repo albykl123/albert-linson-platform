@@ -5,7 +5,9 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployment Commit:** `f1ce279`  
+**Latest Deployment Commit:** `722be19`  
+**Successful GitHub Actions Run:** [Run 42195571924](https://github.com/albykl123/albert-linson-platform/actions/runs/42195571924)  
+**Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
 **Deployment Automation:** GitHub Actions CI/CD (`.github/workflows/deploy.yml`)  
 **Free Tier Cost:** \$0.00 / Month (100% Zero-Cost Free Developer Stack)  
 
@@ -43,12 +45,12 @@ The platform has been audited, migrated to the official OpenNext Cloudflare Work
 
 | Component | Technology | Free Tier Allocation | Provisioning Status |
 |---|---|---|---|
-| **Edge Compute** | Cloudflare Workers (`nodejs_compat`) | 100,000 requests / day free | Configured via `wrangler.toml` & OpenNext |
-| **Asset CDN** | Cloudflare Workers Assets | Unlimited free static bandwidth | Mapped to `.open-next/assets` |
-| **Relational DB** | Cloudflare D1 (`albert-linson-db`) | 5 GB storage, 5M reads/day | Automated pipeline provisioner |
-| **Object Storage**| Cloudflare R2 (`albert-linson-resumes`) | 10 GB storage, 1M writes/mo | Automated pipeline provisioner |
+| **Edge Compute** | Cloudflare Workers (`nodejs_compat`) | 100,000 requests / day free | **Live & Deployed** (`albert-linson-platform.albertkalampadan.workers.dev`) |
+| **Asset CDN** | Cloudflare Workers Assets | Unlimited free static bandwidth | Mapped to `.open-next/assets` (Global Anycast) |
+| **Relational DB** | Cloudflare D1 (`albert-linson-db`) | 5 GB storage, 5M reads/day | **Provisioned & Bound** (UUID `167e5c06-fe0e-4147-8187-0849fbcce576`) |
+| **Object Storage**| Cloudflare R2 (`albert-linson-resumes`) | 10 GB storage, 1M writes/mo | Standby (Enable in Cloudflare Dash if PDF bucket storage needed) |
 | **AI Inference**  | OpenRouter Free Cascade | Free tier zero-cost models | `openrouter/free` & Gemini 2.0 Flash Free |
-| **CI/CD**         | GitHub Actions | 2,000 free runner mins / mo | Automated on push to `main` |
+| **CI/CD**         | GitHub Actions | 2,000 free runner mins / mo | Automated on push to `main` (Pass 100%) |
 
 ---
 
@@ -123,6 +125,10 @@ The following GitHub Repository Secrets have been configured and verified:
 - **Safety Branch:** `checkpoint-pre-deployment-audit`
 - **Active Branch:** `main`
 - **Recent Commit Log:**
+  - `722be19` — `ci: add Cloudflare API pre-flight diagnostics and backoff retry for deployment` (SUCCESSFUL DEPLOYMENT)
+  - `d93e6b1` — `fix(deploy): use verified D1 UUID, disable inactive R2, add deployment retry`
+  - `ed82c9c` — `ci: add automated Cloudflare resource resolution and account ID binding`
+  - `8779133` — `fix(wrangler): enable workers_dev routing`
   - `f1ce279` — `ci: add automated D1 and R2 provisioning to deployment pipeline`
   - `4bdb56b` — `ci: add typescript and frontend quality gates to test-and-verify job`
   - `37c4bc8` — `docs: update deployment guide for opennext cloudflare workers and github secrets`
@@ -131,7 +137,31 @@ The following GitHub Repository Secrets have been configured and verified:
 
 ---
 
-## 7. Handover & Operations Guide
+## 7. Live Production Route Verification Results
+
+Health check executed against live production URL:  
+`https://albert-linson-platform.albertkalampadan.workers.dev`
+
+| Route | Method | Status | Verification Note |
+|---|---|---|---|
+| `/` | GET | `200 OK` | Cinematic Constellation Hero, Profile & Navigation |
+| `/about` | GET | `200 OK` | Albert Linson Bio, Core Competencies, Philosophy |
+| `/experience` | GET | `200 OK` | Interactive Career Timeline (Innova, Herbal, Algospark, MCD) |
+| `/projects` | GET | `200 OK` | Production Portfolio with Live Demos & Architecture |
+| `/research` | GET | `200 OK` | Academic Research Papers (AEGIS-Test, BioWavelet-Net, MCD) |
+| `/skills` | GET | `200 OK` | Skill Matrix with Verification Badges & Metrics |
+| `/freestack` | GET | `200 OK` | 1,369 Free Developer Cloud Services across 57 Categories |
+| `/studio` | GET | `200 OK` | ATSForge AI Studio & Interactive Workspace |
+| `/resume` | GET | `200 OK` | Instant Resume Generator & Verified Profile View |
+| `/admin` | GET | `200 OK` | Admin Authentication & Dashboard Portal |
+| `/api/profile` | GET | `200 OK` | JSON API returning complete Albert Linson profile |
+| `/api/freestack` | GET | `200 OK` | JSON API returning verified FreeStack catalog |
+
+**All 12 production endpoints responded with HTTP 200 OK.**
+
+---
+
+## 8. Handover & Operations Guide
 
 ### Local Development Commands
 ```powershell
