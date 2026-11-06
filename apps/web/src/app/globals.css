@@ -58,6 +58,73 @@ body {
 }
 
 /* Avatar Welcoming & Interaction Animations */
+@keyframes arm-wave-action {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-26deg);
+  }
+  22% {
+    transform: rotate(20deg);
+  }
+  34% {
+    transform: rotate(-24deg);
+  }
+  46% {
+    transform: rotate(18deg);
+  }
+  58% {
+    transform: rotate(-20deg);
+  }
+  70% {
+    transform: rotate(14deg);
+  }
+  82% {
+    transform: rotate(-8deg);
+  }
+  92% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.animate-arm-wave {
+  animation: arm-wave-action 2.8s ease-in-out;
+  transform-origin: 35.17% 48.5%;
+}
+
+@keyframes avatar-welcome-body {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  15% {
+    transform: rotate(-1.5deg) translateY(-2px);
+  }
+  30% {
+    transform: rotate(1deg) translateY(0px);
+  }
+  45% {
+    transform: rotate(-1.5deg) translateY(-2px);
+  }
+  60% {
+    transform: rotate(1deg) translateY(0px);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.animate-avatar-welcome-body {
+  animation: avatar-welcome-body 2.8s ease-in-out;
+  transform-origin: 50% 85%;
+}
+
 @keyframes avatar-welcome-wave {
   0% {
     transform: rotate(0deg) scale(1);
