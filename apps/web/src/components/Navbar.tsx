@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { 
   Briefcase, 
@@ -46,19 +47,21 @@ export function Navbar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-swiss-divider bg-swiss-white/95 backdrop-blur-md transition-colors">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-        {/* Brand / Logo */}
-        <Link href="/" className="group flex items-center space-x-3">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-swiss-navy text-swiss-white shadow-sm transition-transform group-hover:scale-105">
-            <span className="font-bold text-sm tracking-widest font-mono">AL</span>
+        {/* Brand / Official Handwritten Signature Logo */}
+        <Link href="/" className="group flex flex-col justify-center py-0.5">
+          <div className="relative w-[150px] sm:w-[170px] md:w-[185px] h-[34px] sm:h-[38px] transition-transform duration-200 group-hover:scale-[1.02]">
+            <Image
+              src="/images/albert-linson-signature.png"
+              alt="Albert Linson handwritten signature logo"
+              fill
+              sizes="(max-width: 640px) 150px, (max-width: 768px) 170px, 185px"
+              priority
+              className="object-contain object-left filter contrast-[1.05]"
+            />
           </div>
-          <div>
-            <div className="font-bold text-sm text-swiss-navy tracking-tight group-hover:text-swiss-blue transition-colors">
-              Albert Linson
-            </div>
-            <div className="text-[11px] text-gray-500 hidden sm:block tracking-wide">
-              Professional Intelligence Platform
-            </div>
-          </div>
+          <span className="text-[10px] text-gray-500 hidden sm:block tracking-wide font-sans pl-0.5 -mt-0.5">
+            Professional Intelligence Platform
+          </span>
         </Link>
 
         {/* Desktop Navigation */}

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { masterProfile, SkillItem } from "@/lib/profileData";
 import { 
   Printer, 
@@ -210,12 +211,26 @@ ${(masterProfile.certifications || [])
           <div className="bg-white p-8 sm:p-14 rounded-2xl border border-paper-border shadow-xl print:p-0 print:border-none print:shadow-none font-sans mb-12">
             {/* Header */}
             <header className="border-b-2 border-paper-graphite pb-6 mb-8 text-center sm:text-left">
-              <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-paper-graphite uppercase">
-                {masterProfile.personal.full_legal_name}
-              </h2>
-              <p className="text-sm font-semibold text-gray-700 mt-1">
-                {masterProfile.personal.sub_headline}
-              </p>
+              <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+                <div>
+                  <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-paper-graphite uppercase">
+                    {masterProfile.personal.full_legal_name}
+                  </h2>
+                  <p className="text-sm font-semibold text-gray-700 mt-1">
+                    {masterProfile.personal.sub_headline}
+                  </p>
+                </div>
+                {/* Official Handwritten Signature Endorsement */}
+                <div className="relative w-44 sm:w-52 h-12 shrink-0 self-center sm:self-start opacity-95">
+                  <Image
+                    src="/images/albert-linson-signature.png"
+                    alt="Albert Linson official handwritten signature"
+                    fill
+                    sizes="200px"
+                    className="object-contain object-center sm:object-right"
+                  />
+                </div>
+              </div>
 
               <div className="mt-4 flex flex-wrap items-center justify-center sm:justify-start gap-y-1 gap-x-4 text-xs text-gray-600">
                 <span className="inline-flex items-center space-x-1">

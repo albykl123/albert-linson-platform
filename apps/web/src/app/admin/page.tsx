@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { masterProfile } from "@/lib/profileData";
 import { freeStackData } from "@/lib/freestackData";
 import { FreeStackAdminModule } from "@/components/admin/FreeStackAdminModule";
@@ -112,8 +113,15 @@ export default function AdminPage() {
     return (
       <div className="min-h-screen bg-slate-50 flex items-center justify-center px-4 py-16">
         <div className="max-w-md w-full bg-white p-8 rounded-2xl border border-slate-200 shadow-xl text-center">
-          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-blue-50 border border-blue-200 text-blue-600 mb-4 shadow-sm">
-            <Lock className="h-6 w-6" />
+          <div className="relative w-48 h-12 mx-auto mb-4">
+            <Image
+              src="/images/albert-linson-signature.png"
+              alt="Albert Linson official handwritten signature"
+              fill
+              sizes="200px"
+              priority
+              className="object-contain object-center"
+            />
           </div>
           <h1 className="text-2xl font-bold text-slate-900 tracking-tight">Admin Control Center</h1>
           <p className="text-xs text-slate-500 mt-1 mb-6">
@@ -161,9 +169,20 @@ export default function AdminPage() {
         {/* Header */}
         <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center space-x-2 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold mb-2">
-              <ShieldCheck className="h-3.5 w-3.5" />
-              <span>Owner Session Active</span>
+            <div className="flex flex-wrap items-center gap-3 mb-2">
+              <div className="relative w-40 h-9">
+                <Image
+                  src="/images/albert-linson-signature.png"
+                  alt="Albert Linson official handwritten signature"
+                  fill
+                  sizes="160px"
+                  className="object-contain object-left"
+                />
+              </div>
+              <div className="inline-flex items-center space-x-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-semibold">
+                <ShieldCheck className="h-3.5 w-3.5" />
+                <span>Owner Session Active</span>
+              </div>
             </div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               Platform Administration & Telemetry

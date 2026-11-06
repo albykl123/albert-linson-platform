@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Github, Linkedin, Mail, Lock, ExternalLink, ShieldCheck } from "lucide-react";
 import { masterProfile } from "@/lib/profileData";
 
@@ -10,8 +11,16 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Identity & Mission */}
           <div className="md:col-span-2 space-y-3">
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-base text-swiss-navy">{masterProfile.personal.name}</span>
+            <div className="flex items-center space-x-3">
+              <div className="relative w-44 h-10">
+                <Image
+                  src="/images/albert-linson-signature.png"
+                  alt="Albert Linson handwritten signature logo"
+                  fill
+                  sizes="180px"
+                  className="object-contain object-left"
+                />
+              </div>
               <span className="px-2 py-0.5 text-[10px] font-semibold bg-swiss-blue/10 text-swiss-blue border border-swiss-blue/20 rounded-full">
                 Professional Profile
               </span>
