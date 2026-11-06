@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Sparkles, Mic, Volume2, RotateCcw } from "lucide-react";
+import { Sparkles, RotateCcw } from "lucide-react";
 import { openAlbertChat } from "./AvatarChatbot";
 
 interface InteractiveAvatarProps {
@@ -185,30 +185,6 @@ export function InteractiveAvatar({
               background: "#ffffff",
             }}
           />
-        </div>
-      </div>
-
-      {/* 3. Bottom Interactive Action Capsule Pill (Exact Approved Design) */}
-      <div className="relative z-20 mt-3 transition-transform duration-300 ease-out group-hover:scale-105">
-        <div
-          className={`px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#0c1527]/95 border border-cyan-400/50 text-white text-xs sm:text-[13px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md flex items-center space-x-2.5 transition-all duration-300 ${
-            isHovered ? "border-cyan-300 shadow-[0_0_25px_rgba(6,182,212,0.45)]" : ""
-          }`}
-        >
-          {/* Pulsing Live Dot */}
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
-          </span>
-
-          <span className="font-sans font-semibold tracking-wide">
-            Albert AI Digital Twin &bull; Voice &amp; Chat
-          </span>
-
-          <div className="flex items-center space-x-1.5 pl-1 text-cyan-400">
-            <Mic className="h-3.5 w-3.5" />
-            <Volume2 className="h-3.5 w-3.5" />
-          </div>
         </div>
       </div>
     </div>
