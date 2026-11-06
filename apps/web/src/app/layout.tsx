@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { AvatarChatbot } from "@/components/AvatarChatbot";
 
 export const metadata: Metadata = {
   title: "Albert Linson — Personal Intelligence Platform",
@@ -39,6 +40,7 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        <AvatarChatbot />
       </body>
     </html>
   );

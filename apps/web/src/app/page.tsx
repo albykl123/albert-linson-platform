@@ -10,90 +10,101 @@ import {
   Layers, 
   ExternalLink, 
   CheckCircle2, 
-  ArrowUpRight,
-  Shield,
-  Sparkles
+  ArrowUpRight, 
+  Shield, 
+  Sparkles 
 } from "lucide-react";
 import { masterProfile } from "@/lib/profileData";
 import { freeStackData } from "@/lib/freestackData";
+import { InteractiveAvatar } from "@/components/InteractiveAvatar";
 
 export default function HomePage() {
   return (
     <div className="bg-swiss-white text-swiss-navy min-h-screen">
-      {/* 1. Hero Section (Swiss Editorial) */}
-      <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="max-w-4xl">
-          {/* Subtle Credential Tag */}
-          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-swiss-divider bg-swiss-light text-swiss-navy text-xs font-medium mb-6">
-            <span className="h-2 w-2 rounded-full bg-swiss-blue"></span>
-            <span>Verified Professional Profile &bull; MCA (Pursuing), Christ University</span>
+      {/* 1. Hero Section (Swiss Editorial + Interactive 3D Avatar Stage) */}
+      <section className="pt-16 pb-16 sm:pt-24 sm:pb-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Executive Credentials & CTAs */}
+          <div className="lg:col-span-7">
+            {/* Subtle Credential Tag */}
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-swiss-divider bg-swiss-light text-swiss-navy text-xs font-medium mb-6">
+              <span className="h-2 w-2 rounded-full bg-swiss-blue"></span>
+              <span>Verified Professional Profile &bull; MCA (Pursuing), Christ University</span>
+            </div>
+
+            {/* Headline & Name */}
+            <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-swiss-navy leading-[1.08]">
+              {masterProfile.personal.name}
+            </h1>
+
+            <p className="mt-4 text-xl sm:text-2xl font-medium text-swiss-blue tracking-tight">
+              {masterProfile.personal.headline}
+            </p>
+
+            <p className="mt-6 text-base text-gray-700 leading-relaxed max-w-2xl">
+              {masterProfile.summary}
+            </p>
+
+            {/* Action Call-to-Actions */}
+            <div className="mt-8 flex flex-wrap gap-3 items-center">
+              <Link
+                href="/projects"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-swiss-navy text-swiss-white hover:bg-swiss-navy/90 text-sm font-semibold shadow-sm transition-all"
+              >
+                <span>View My Work</span>
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+
+              <Link
+                href="/experience"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-light hover:bg-swiss-divider/50 text-swiss-navy text-sm font-semibold transition-all"
+              >
+                <Briefcase className="h-4 w-4 text-swiss-blue" />
+                <span>Experience</span>
+              </Link>
+
+              <Link
+                href="/resume"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold transition-all"
+              >
+                <FileText className="h-4 w-4 text-swiss-blue" />
+                <span>Resume & Skills</span>
+              </Link>
+
+              <a
+                href={`mailto:${masterProfile.personal.email}`}
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-gray-700 text-sm font-medium transition-all"
+              >
+                <Mail className="h-4 w-4 text-gray-500" />
+                <span>Contact Me</span>
+              </a>
+            </div>
+
+            {/* Verified Facts Bar */}
+            <div className="mt-12 pt-6 border-t border-swiss-divider grid grid-cols-2 sm:grid-cols-4 gap-4 text-left">
+              <div>
+                <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Location</div>
+                <div className="text-sm font-semibold text-swiss-navy mt-1">{masterProfile.personal.location}</div>
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Education</div>
+                <div className="text-sm font-semibold text-swiss-navy mt-1">MCA (Pursuing) & BCA</div>
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Core Expertise</div>
+                <div className="text-sm font-semibold text-swiss-navy mt-1">Full-Stack & Recruitment</div>
+              </div>
+              <div>
+                <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Research</div>
+                <div className="text-sm font-semibold text-swiss-navy mt-1">2 Focused Manuscripts</div>
+              </div>
+            </div>
           </div>
 
-          {/* Headline & Name */}
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-swiss-navy leading-[1.08]">
-            {masterProfile.personal.name}
-          </h1>
-
-          <p className="mt-4 text-xl sm:text-2xl font-medium text-swiss-blue tracking-tight">
-            {masterProfile.personal.headline}
-          </p>
-
-          <p className="mt-6 text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl">
-            {masterProfile.summary}
-          </p>
-
-          {/* Action Call-to-Actions */}
-          <div className="mt-10 flex flex-wrap gap-3 items-center">
-            <Link
-              href="/projects"
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-swiss-navy text-swiss-white hover:bg-swiss-navy/90 text-sm font-semibold shadow-sm transition-all"
-            >
-              <span>View My Work</span>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-
-            <Link
-              href="/experience"
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-light hover:bg-swiss-divider/50 text-swiss-navy text-sm font-semibold transition-all"
-            >
-              <Briefcase className="h-4 w-4 text-swiss-blue" />
-              <span>Explore My Experience</span>
-            </Link>
-
-            <Link
-              href="/resume"
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold transition-all"
-            >
-              <FileText className="h-4 w-4 text-swiss-blue" />
-              <span>Download Resume</span>
-            </Link>
-
-            <a
-              href={`mailto:${masterProfile.personal.email}`}
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-gray-700 text-sm font-medium transition-all"
-            >
-              <Mail className="h-4 w-4 text-gray-500" />
-              <span>Contact Me</span>
-            </a>
-          </div>
-
-          {/* Verified Facts Bar */}
-          <div className="mt-16 pt-8 border-t border-swiss-divider grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
-            <div>
-              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Location</div>
-              <div className="text-sm font-semibold text-swiss-navy mt-1">{masterProfile.personal.location}</div>
-            </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Education</div>
-              <div className="text-sm font-semibold text-swiss-navy mt-1">MCA (Pursuing) & BCA</div>
-            </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Core Expertise</div>
-              <div className="text-sm font-semibold text-swiss-navy mt-1">Full-Stack & Recruitment</div>
-            </div>
-            <div>
-              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Research</div>
-              <div className="text-sm font-semibold text-swiss-navy mt-1">2 Focused Manuscripts</div>
+          {/* Right Column: 3D Holographic Interactive Avatar Stage */}
+          <div className="lg:col-span-5 flex justify-center">
+            <div className="w-full max-w-sm sm:max-w-md">
+              <InteractiveAvatar />
             </div>
           </div>
         </div>
