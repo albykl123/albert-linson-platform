@@ -98,4 +98,15 @@ jobs:
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: npx wrangler deploy
+        run: |
+          for i in 1 2 3; do
+            echo "Deployment attempt $i..."
+            if npx wrangler deploy; then
+              echo "Deployment succeeded!"
+              exit 0
+            fi
+            echo "Attempt $i failed. Waiting 10s before retry..."
+            sleep 10
+          done
+          echo "Deployment failed after 3 attempts."
+          exit 1

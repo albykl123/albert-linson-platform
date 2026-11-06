@@ -12,12 +12,12 @@ binding = "ASSETS"
 [[d1_databases]]
 binding = "DB"
 database_name = "albert-linson-db"
-database_id = "albert-linson-d1-prod"
+database_id = "167e5c06-fe0e-4147-8187-0849fbcce576"
 
-# Free-tier Cloudflare R2 Private Document Storage
-[[r2_buckets]]
-binding = "RESUME_STORAGE"
-bucket_name = "albert-linson-resumes"
+# Free-tier Cloudflare R2 Private Document Storage (Enable via Cloudflare Dashboard if needed)
+# [[r2_buckets]]
+# binding = "RESUME_STORAGE"
+# bucket_name = "albert-linson-resumes"
 
 [vars]
 ENVIRONMENT = "production"
