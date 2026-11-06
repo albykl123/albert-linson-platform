@@ -343,7 +343,7 @@ export function AvatarChatbot() {
   return (
     <>
       {/* 1. Global Floating Executive Copilot Launcher (Bottom Right) */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+      <div id="site-albert-chatbot" className="fixed bottom-6 right-6 z-50 flex flex-col items-end print:hidden">
         {/* Floating Tooltip Speech Bubble (Visible prompt on every page) */}
         {!isOpen && (
           <div 
@@ -402,7 +402,7 @@ export function AvatarChatbot() {
 
       {/* 2. Expanded Interactive Chatbot Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[95vw] sm:w-[420px] max-h-[88vh] h-[660px] flex flex-col rounded-3xl bg-slate-950 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,0,0,0.85)] backdrop-blur-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 font-sans">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[95vw] sm:w-[420px] max-h-[88vh] h-[660px] flex flex-col rounded-3xl bg-slate-950 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,0,0,0.85)] backdrop-blur-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 font-sans print:hidden">
           {/* Header with Speaking Visualizer & Controls */}
           <div className="px-5 py-3.5 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center space-x-3">

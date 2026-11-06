@@ -49,7 +49,7 @@ export function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-swiss-divider bg-swiss-white/95 backdrop-blur-md transition-colors">
+    <header id="site-global-navbar" className="sticky top-0 z-50 w-full border-b border-swiss-divider bg-swiss-white/95 backdrop-blur-md transition-colors print:hidden">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
         {/* Brand / Official Handwritten Signature Logo */}
         <Link href="/" className="group flex flex-col justify-center py-0.5">

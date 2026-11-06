@@ -42,7 +42,14 @@ export default function ResumeAndSkillsPage() {
   }, []);
 
   const handlePrint = () => {
-    window.print();
+    if (viewMode !== "resume") {
+      setViewMode("resume");
+      setTimeout(() => {
+        window.print();
+      }, 150);
+    } else {
+      window.print();
+    }
   };
 
   const handleDownloadTxt = () => {
@@ -130,6 +137,218 @@ ${(masterProfile.certifications || [])
     URL.revokeObjectURL(url);
   };
 
+  const handleDownloadHtml = () => {
+    const htmlContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>${masterProfile.personal.full_legal_name} - ATS Resume</title>
+  <style>
+    @page { size: letter portrait; margin: 0.5in; }
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 10pt;
+      line-height: 1.35;
+      color: #111827;
+      background: #ffffff;
+      margin: 0 auto;
+      max-width: 8.5in;
+      padding: 0.5in;
+    }
+    h1 {
+      font-size: 19pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin: 0 0 2px 0;
+      color: #000000;
+      letter-spacing: 0.5px;
+    }
+    .subhead {
+      font-size: 9.5pt;
+      font-weight: bold;
+      color: #374151;
+      margin-bottom: 6px;
+    }
+    .contact-line {
+      font-size: 9pt;
+      color: #4b5563;
+      margin-bottom: 12px;
+      border-bottom: 2px solid #000000;
+      padding-bottom: 6px;
+    }
+    .contact-line a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    h2.section-header {
+      font-size: 10.5pt;
+      font-weight: bold;
+      text-transform: uppercase;
+      border-bottom: 1.5px solid #000000;
+      margin: 12px 0 5px 0;
+      padding-bottom: 2px;
+      color: #000000;
+      letter-spacing: 0.5px;
+    }
+    .entry {
+      margin-bottom: 9px;
+      page-break-inside: avoid;
+    }
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      font-weight: bold;
+      font-size: 9.5pt;
+      color: #000000;
+    }
+    .entry-sub {
+      font-size: 8.5pt;
+      color: #4b5563;
+      font-style: italic;
+      margin-bottom: 3px;
+    }
+    ul {
+      margin: 2px 0 5px 18px;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 2px;
+      font-size: 9pt;
+      color: #1f2937;
+      line-height: 1.3;
+    }
+    .summary-text {
+      font-size: 9pt;
+      color: #1f2937;
+      text-align: justify;
+      line-height: 1.38;
+      margin-bottom: 8px;
+    }
+    .skills-category {
+      font-size: 9pt;
+      margin-bottom: 3px;
+      color: #1f2937;
+    }
+    .skills-category strong {
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+  <h1>${masterProfile.personal.full_legal_name}</h1>
+  <div class="subhead">${masterProfile.personal.sub_headline}</div>
+  <div class="contact-line">
+    ${masterProfile.personal.location} &bull; 
+    ${masterProfile.personal.phone} &bull; 
+    <a href="mailto:${masterProfile.personal.email}">${masterProfile.personal.email}</a> &bull; 
+    <a href="${masterProfile.personal.linkedin}">LinkedIn</a> &bull; 
+    <a href="${masterProfile.personal.github}">GitHub</a>
+  </div>
+
+  <h2 class="section-header">Professional Summary</h2>
+  <div class="summary-text">${masterProfile.summary}</div>
+
+  <h2 class="section-header">Professional Experience</h2>
+  ${masterProfile.experience
+    .map(
+      (exp) => `
+  <div class="entry">
+    <div class="entry-head">
+      <span>${exp.role} &bull; ${exp.company}</span>
+      <span>${exp.period}</span>
+    </div>
+    <div class="entry-sub">${exp.location} | ${exp.employment_type || "Full-Time"}</div>
+    <ul>
+      ${exp.highlights.map((h) => `<li>${h}</li>`).join("")}
+    </ul>
+  </div>`
+    )
+    .join("")}
+
+  <h2 class="section-header">Education Credentials</h2>
+  ${masterProfile.education
+    .map(
+      (edu) => `
+  <div class="entry">
+    <div class="entry-head">
+      <span>${edu.degree} &bull; ${edu.institution}</span>
+      <span>${edu.period}</span>
+    </div>
+    <div class="entry-sub">${edu.location} &bull; ${edu.details}</div>
+  </div>`
+    )
+    .join("")}
+
+  <h2 class="section-header">Technical & Professional Competencies</h2>
+  <div class="skills-category"><strong>Frontend & UI/UX:</strong> ${masterProfile.skills.frontend_and_design.join(", ")}</div>
+  <div class="skills-category"><strong>Backend & Cloud:</strong> ${masterProfile.skills.backend_and_cloud.join(", ")}</div>
+  <div class="skills-category"><strong>US IT Recruitment:</strong> ${masterProfile.skills.recruitment_and_business.join(", ")}</div>
+  <div class="skills-category"><strong>Analytics & AI:</strong> ${masterProfile.skills.analytics_and_ai.join(", ")}</div>
+
+  <h2 class="section-header">Academic Research Manuscripts</h2>
+  ${masterProfile.research
+    .map(
+      (r, i) => `
+  <div class="entry">
+    <div class="entry-head">
+      <span>[${i + 1}] ${r.title}</span>
+      <span>Status: ${r.status}</span>
+    </div>
+    <div class="entry-sub">${r.role} &bull; ${r.category}</div>
+    <div style="font-size: 8.5pt; color: #374151; margin-top: 2px;">${r.abstract}</div>
+  </div>`
+    )
+    .join("")}
+
+  ${
+    masterProfile.leadership && masterProfile.leadership.length > 0
+      ? `
+  <h2 class="section-header">Leadership & Campus Involvement</h2>
+  ${masterProfile.leadership
+    .slice(0, 5)
+    .map(
+      (lead) => `
+  <div class="entry">
+    <div class="entry-head">
+      <span>${lead.title} &bull; ${lead.organization}</span>
+      <span>${lead.period}</span>
+    </div>
+    <div class="entry-sub">Category: ${lead.category} &bull; Role: ${lead.role_level}</div>
+    <ul>
+      ${lead.responsibilities.map((resp) => `<li>${resp}</li>`).join("")}
+    </ul>
+  </div>`
+    )
+    .join("")}
+  `
+      : ""
+  }
+
+  ${
+    masterProfile.certifications && masterProfile.certifications.length > 0
+      ? `
+  <h2 class="section-header">Certifications & Honors</h2>
+  <ul>
+    ${masterProfile.certifications.map((c) => `<li><strong>${c.name}</strong> (${c.issuer}): ${c.description}</li>`).join("")}
+  </ul>
+  `
+      : ""
+  }
+</body>
+</html>`;
+
+    const blob = new Blob([htmlContent], { type: "text/html;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = `Albert_Linson_Resume_ATS_${new Date().toISOString().slice(0, 10)}.html`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const levels = masterProfile.skill_levels;
   const profSkills = levels?.professional_work || levels?.professional_experience || [];
   const projSkills = levels?.project_experience || [];
@@ -137,8 +356,8 @@ ${(masterProfile.certifications || [])
   const learnSkills = levels?.currently_learning || levels?.learning_familiarity || [];
 
   return (
-    <div className="bg-paper-offwhite text-paper-graphite min-h-screen py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-4xl mx-auto">
+    <div className="bg-paper-offwhite text-paper-graphite min-h-screen py-12 px-4 sm:px-6 lg:px-8 print:p-0 print:m-0 print:bg-white print:min-h-0">
+      <div className="max-w-4xl mx-auto print:max-w-none print:w-full">
         {/* Action Toolbar (Hidden during print) */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b border-paper-border print:hidden">
           <div>
@@ -199,15 +418,23 @@ ${(masterProfile.certifications || [])
             <button
               onClick={handlePrint}
               className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-paper-surface border border-paper-border hover:bg-paper-border/50 text-paper-graphite text-xs font-semibold shadow-sm transition-all"
-              title="Print Vector PDF"
+              title="Print Vector PDF (Clean Pure ATS Resume, zero website elements)"
             >
               <Printer className="h-4 w-4 text-paper-graphite" />
               <span>PDF / Print</span>
             </button>
             <button
+              onClick={handleDownloadHtml}
+              className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-emerald-700 text-white hover:bg-emerald-800 text-xs font-semibold shadow-sm transition-all"
+              title="Download Clean Standalone ATS HTML Document (Opens cleanly in MS Word & Browsers)"
+            >
+              <FileText className="h-4 w-4" />
+              <span>Download ATS (HTML)</span>
+            </button>
+            <button
               onClick={handleDownloadTxt}
               className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-blue-700 text-white hover:bg-blue-800 text-xs font-semibold shadow-sm transition-all"
-              title="Download ATS Plain Text"
+              title="Download ATS Plain Text (100% Parsable)"
             >
               <Download className="h-4 w-4" />
               <span>Download TXT</span>
@@ -217,9 +444,12 @@ ${(masterProfile.certifications || [])
 
         {/* VIEW 1: MASTER RESUME SHEET */}
         {(viewMode === "resume" || viewMode === "combined") && (
-          <div className="bg-white p-8 sm:p-14 rounded-2xl border border-paper-border shadow-xl print:p-0 print:border-none print:shadow-none font-sans mb-12">
-            {/* Header */}
-            <header className="border-b-2 border-paper-graphite pb-6 mb-8 text-center sm:text-left">
+          <article 
+            id="pure-ats-resume" 
+            className="bg-white p-8 sm:p-14 rounded-2xl border border-paper-border shadow-xl print:p-0 print:m-0 print:border-none print:shadow-none print:rounded-none font-sans mb-12 print:mb-0"
+          >
+            {/* Contact Header */}
+            <div className="resume-contact-header border-b-2 border-paper-graphite pb-6 mb-8 text-center sm:text-left">
               <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
                 <div>
                   <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-paper-graphite uppercase">
@@ -265,11 +495,11 @@ ${(masterProfile.certifications || [])
                   GitHub
                 </a>
               </div>
-            </header>
+            </div>
 
             {/* Professional Summary */}
-            <section className="mb-8">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
+            <section className="mb-8 resume-entry-block">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3 resume-section-title">
                 Professional Summary
               </h3>
               <p className="text-xs sm:text-sm text-gray-800 leading-relaxed text-justify">
@@ -279,12 +509,12 @@ ${(masterProfile.certifications || [])
 
             {/* Professional Experience */}
             <section className="mb-8">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4 resume-section-title">
                 Professional Experience
               </h3>
               <div className="space-y-6">
                 {masterProfile.experience.map((exp) => (
-                  <div key={exp.id}>
+                  <div key={exp.id} className="resume-entry-block">
                     <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
                       <div>
                         <span className="text-sm font-bold text-paper-graphite">{exp.role}</span>
@@ -307,12 +537,12 @@ ${(masterProfile.certifications || [])
 
             {/* Education */}
             <section className="mb-8">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-4 resume-section-title">
                 Education Credentials
               </h3>
               <div className="space-y-4">
                 {masterProfile.education.map((edu) => (
-                  <div key={edu.id} className="flex flex-col sm:flex-row sm:items-baseline justify-between text-xs">
+                  <div key={edu.id} className="resume-entry-block flex flex-col sm:flex-row sm:items-baseline justify-between text-xs">
                     <div>
                       <div className="font-bold text-sm text-paper-graphite">{edu.degree}</div>
                       <div className="text-gray-700 font-medium">{edu.institution} &bull; {edu.location}</div>
@@ -325,9 +555,9 @@ ${(masterProfile.certifications || [])
             </section>
 
             {/* Technical Skills Overview with Deep-Dive Link */}
-            <section className="mb-8">
+            <section className="mb-8 resume-entry-block">
               <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite resume-section-title">
                   Core Skills & Competencies
                 </h3>
                 <button
@@ -361,7 +591,7 @@ ${(masterProfile.certifications || [])
             {/* Academic Research (EXACTLY TWO PAPERS) */}
             <section className="mb-8">
               <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
-                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite resume-section-title">
                   Academic Research (Exactly 2 Papers)
                 </h3>
                 <Link href="/projects#research" className="text-[11px] text-blue-700 hover:underline print:hidden">
@@ -370,7 +600,7 @@ ${(masterProfile.certifications || [])
               </div>
               <div className="space-y-4">
                 {masterProfile.research.map((r, i) => (
-                  <div key={r.id} className="text-xs text-gray-800">
+                  <div key={r.id} className="resume-entry-block text-xs text-gray-800">
                     <div className="font-bold text-sm text-paper-graphite">
                       [{i + 1}] {r.title}
                     </div>
@@ -389,7 +619,7 @@ ${(masterProfile.certifications || [])
             {masterProfile.leadership && (
               <section className="mb-8">
                 <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
-                  <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
+                  <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite resume-section-title">
                     Leadership, Campus Involvement & Event Management
                   </h3>
                   <Link href="/leadership" className="text-[11px] text-blue-700 hover:underline print:hidden">
@@ -398,7 +628,7 @@ ${(masterProfile.certifications || [])
                 </div>
                 <div className="space-y-4">
                   {masterProfile.leadership.slice(0, 5).map((lead) => (
-                    <div key={lead.id} className="text-xs text-gray-800">
+                    <div key={lead.id} className="resume-entry-block text-xs text-gray-800">
                       <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
                         <div>
                           <span className="font-bold text-sm text-paper-graphite">{lead.title}</span>
@@ -422,8 +652,8 @@ ${(masterProfile.certifications || [])
 
             {/* Certifications & Recognition */}
             {masterProfile.certifications && (
-              <section>
-                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3">
+              <section className="resume-entry-block">
+                <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite border-b border-gray-300 pb-1 mb-3 resume-section-title">
                   Certifications & Institutional Activities
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-gray-800">
@@ -436,12 +666,12 @@ ${(masterProfile.certifications || [])
                 </div>
               </section>
             )}
-          </div>
+          </article>
         )}
 
         {/* VIEW 2: 4-TIER EVIDENCE-BACKED SKILLS MATRIX */}
         {(viewMode === "skills" || viewMode === "combined") && (
-          <div id="skills" className="space-y-12 mb-12">
+          <div id="skills" className="space-y-12 mb-12 print:hidden">
             <div className="p-6 rounded-2xl bg-white border border-paper-border shadow-sm">
               <span className="text-xs font-bold uppercase tracking-widest text-blue-700">Evidence-Backed Capability Matrix</span>
               <h2 className="text-2xl sm:text-3xl font-bold text-paper-graphite mt-1 tracking-tight">
