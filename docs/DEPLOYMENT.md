@@ -1,62 +1,76 @@
 # CLOUD DEPLOYMENT GUIDE
 
 **Platform:** Albert Linson Personal Intelligence Platform  
-**Target Infrastructure:** Cloudflare (Pages / Workers / D1 / R2)  
-**Free Tier Limits:** 100% Eligible, Zero Monthly Cost, No Card Required  
+**Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
+**Database & Storage:** Cloudflare D1 (SQLite) + Cloudflare R2 (Buckets)  
+**Free Tier Limits:** 100% Eligible, Zero Monthly Cost, No Credit Card Required  
 
 ---
 
 ## 1. Prerequisites
 
-1. **GitHub Account**: Access to push repository to GitHub.
-2. **Cloudflare Account**: Free account at [cloudflare.com](https://dash.cloudflare.com).
-3. **OpenRouter API Key (Optional for AI)**: Free key from [openrouter.ai](https://openrouter.ai).
+1. **GitHub Account**: Destination repository to push code and run automated GitHub Actions CI/CD.
+2. **Cloudflare Account**: Free account at [dash.cloudflare.com](https://dash.cloudflare.com).
+3. **OpenRouter API Key (Optional for AI bullet optimization)**: Free API key from [openrouter.ai](https://openrouter.ai).
 
 ---
 
 ## 2. Automated Deployment via GitHub Actions (Recommended)
 
-1. **Push Repository to GitHub**:
-   ```powershell
-   git init
-   git add .
-   git commit -m "feat: complete Albert Linson Personal Intelligence Platform"
-   git remote add origin https://github.com/albertlinson/albert-linson-platform.git
-   git push -u origin main
-   ```
+### Step 1: Create GitHub Repository & Push
+```powershell
+git remote add origin https://github.com/<your-username>/albert-linson-platform.git
+git branch -M main
+git push -u origin main
+```
 
-2. **Add GitHub Repository Secrets**:
-   Navigate to **Settings &rarr; Secrets and variables &rarr; Actions &rarr; New repository secret**:
-   - `CLOUDFLARE_API_TOKEN`: Cloudflare API token with Pages edit permissions.
-   - `CLOUDFLARE_ACCOUNT_ID`: Cloudflare Account ID from dashboard overview.
-   - `OPENROUTER_API_KEY`: OpenRouter API key for AI resume optimization.
+### Step 2: Configure GitHub Repository Secrets
+Navigate to your GitHub repository:
+**Settings &rarr; Secrets and variables &rarr; Actions &rarr; New repository secret**
 
-3. **Automatic Deployment**:
-   - Every push to `main` triggers `.github/workflows/deploy.yml`.
-   - The workflow executes the 20-test test suite, validates JSON schemas, builds the Next.js bundle, and deploys directly to Cloudflare Pages.
-   - Generates a live, global production URL (e.g. `https://albert-linson-platform.pages.dev`).
+Add the following 4 secrets:
+| Secret Name | Description | Where to Obtain |
+|---|---|---|
+| `CLOUDFLARE_API_TOKEN` | Cloudflare API Token with `Workers Scripts:Edit`, `Account Settings:Read`, `D1:Edit` permissions | Cloudflare Dashboard &rarr; Profile &rarr; API Tokens &rarr; Create Custom Token |
+| `CLOUDFLARE_ACCOUNT_ID` | Cloudflare Account ID | Cloudflare Dashboard &rarr; Right Sidebar on any Zone / Workers overview |
+| `OPENROUTER_API_KEY` | (Optional) OpenRouter API key for LLM suggestions | [openrouter.ai/keys](https://openrouter.ai/keys) |
+| `ADMIN_SECRET_KEY` | Private passkey to unlock `/admin` and `/studio` management console | Choose any random secret string (e.g. `albert-secure-vault-2026`) |
+
+### Step 3: Trigger Automated Deployment
+- Any commit pushed to `main` triggers `.github/workflows/deploy.yml`.
+- The workflow executes:
+  1. Full Pytest test suite (20/20 tests).
+  2. JSON data validation (`profile_data.json` & 1,369 FreeStack services).
+  3. Next.js 14 compilation with `@opennextjs/cloudflare`.
+  4. Automatic deployment to Cloudflare Workers with asset binding.
+- A live global production URL will be generated: `https://albert-linson-platform.<your-subdomain>.workers.dev`.
 
 ---
 
-## 3. Direct Manual Deployment via Wrangler
+## 3. Direct PowerShell Deployment (Alternative)
 
-You can also deploy directly from PowerShell:
+To deploy directly from your local terminal using Wrangler:
 
 ```powershell
-# Authenticate with Cloudflare
+# 1. Login to Cloudflare via browser
 npx wrangler login
 
-# Create production Cloudflare D1 Database (if not existing)
+# 2. Provision Free-Tier Cloudflare D1 Database
 npx wrangler d1 create albert-linson-db
 
-# Deploy Next.js to Cloudflare Pages
-.\scripts\deploy.ps1
+# 3. Provision Free-Tier Cloudflare R2 Bucket
+npx wrangler r2 bucket create albert-linson-resumes
+
+# 4. Build and Deploy OpenNext Worker
+Set-Location apps/web
+npx @opennextjs/cloudflare
+npx wrangler deploy
 ```
 
 ---
 
 ## 4. Custom Domain Configuration (Optional)
 
-1. Open Cloudflare Dashboard &rarr; **Workers & Pages** &rarr; `albert-linson-platform`.
-2. Click **Custom Domains** &rarr; **Set up a domain**.
-3. Enter your domain (e.g. `albertlinson.com`). Cloudflare automatically provisions a free SSL certificate.
+1. Open Cloudflare Dashboard &rarr; **Compute (Workers)** &rarr; `albert-linson-platform`.
+2. Click **Settings** &rarr; **Domains & Routes** &rarr; **Add Custom Domain**.
+3. Enter your custom domain (e.g. `albertlinson.com`). Cloudflare handles DNS routing and provisions free universal SSL/TLS certificates automatically.
