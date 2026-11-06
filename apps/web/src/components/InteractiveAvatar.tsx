@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import Image from "next/image";
-import { Sparkles, Mic, Volume2 } from "lucide-react";
+import { Sparkles, Mic, Volume2, VolumeX, RotateCcw } from "lucide-react";
 import { openAlbertChat } from "./AvatarChatbot";
 
 interface InteractiveAvatarProps {
@@ -19,98 +18,105 @@ export function InteractiveAvatar({
   interactive = true,
 }: InteractiveAvatarProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isWelcoming, setIsWelcoming] = useState(true);
-  const [isSpeakingGreeting, setIsSpeakingGreeting] = useState(false);
-  const hasSpokenRef = useRef(false);
+  const [isMuted, setIsMuted] = useState(true);
+  const [hasPlayedAudio, setHasPlayedAudio] = useState(false);
 
-  // Play realistic voice greeting saying "Hi!"
-  const playVoiceGreeting = () => {
-    if (hasSpokenRef.current) return;
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) return;
-
-    try {
-      window.speechSynthesis.cancel();
-      const text = "Hi! I'm Albert's AI Twin. Welcome to my website!";
-      const utterance = new SpeechSynthesisUtterance(text);
-      utterance.rate = 1.02;
-      utterance.pitch = 1.05;
-      utterance.volume = 1.0;
-
-      const voices = window.speechSynthesis.getVoices();
-      const naturalVoice =
-        voices.find(
-          (v) =>
-            v.lang.startsWith("en") &&
-            (v.name.includes("Natural") ||
-              v.name.includes("Google") ||
-              v.name.includes("Guy") ||
-              v.name.includes("David") ||
-              v.name.includes("Daniel") ||
-              v.name.includes("George"))
-        ) || voices.find((v) => v.lang.startsWith("en"));
-
-      if (naturalVoice) {
-        utterance.voice = naturalVoice;
-      }
-
-      utterance.onstart = () => {
-        setIsSpeakingGreeting(true);
-      };
-
-      utterance.onend = () => {
-        setIsSpeakingGreeting(false);
-      };
-
-      utterance.onerror = () => {
-        setIsSpeakingGreeting(false);
-      };
-
-      window.speechSynthesis.speak(utterance);
-      hasSpokenRef.current = true;
-    } catch (err) {
-      console.warn("Speech synthesis notice:", err);
-    }
-  };
-
-  // Welcome greeting & hand wave animation on first load or refresh
+  // Initialize and play avatar walking & waving clip on first load / refresh
   useEffect(() => {
     setIsWelcoming(true);
 
-    // 1. Attempt immediate speech greeting on load
-    playVoiceGreeting();
-
-    // 2. Fallback for browser autoplay policies: trigger speech on first user gesture
-    const handleFirstGesture = () => {
-      if (!hasSpokenRef.current) {
-        playVoiceGreeting();
+    const video = videoRef.current;
+    if (video) {
+      video.currentTime = 0;
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Fallback if browser requires interaction
+        });
       }
-      window.removeEventListener("pointermove", handleFirstGesture);
-      window.removeEventListener("pointerdown", handleFirstGesture);
-      window.removeEventListener("scroll", handleFirstGesture);
-      window.removeEventListener("keydown", handleFirstGesture);
+    }
+
+    // Prepare audio playback
+    const audio = new Audio("/albert-avatar-audio.mp3");
+    audio.volume = 0.9;
+    audioRef.current = audio;
+
+    // Browser audio autoplay handling: play voice greeting on first interaction if blocked on load
+    const triggerAudioOnInteraction = () => {
+      if (!hasPlayedAudio && audioRef.current) {
+        audioRef.current.play().then(() => {
+          setHasPlayedAudio(true);
+          setIsMuted(false);
+        }).catch(() => {});
+      }
+      window.removeEventListener("pointerdown", triggerAudioOnInteraction);
+      window.removeEventListener("scroll", triggerAudioOnInteraction);
+      window.removeEventListener("keydown", triggerAudioOnInteraction);
     };
 
-    window.addEventListener("pointermove", handleFirstGesture, { passive: true });
-    window.addEventListener("pointerdown", handleFirstGesture, { passive: true });
-    window.addEventListener("scroll", handleFirstGesture, { passive: true });
-    window.addEventListener("keydown", handleFirstGesture, { passive: true });
+    window.addEventListener("pointerdown", triggerAudioOnInteraction, { passive: true });
+    window.addEventListener("scroll", triggerAudioOnInteraction, { passive: true });
+    window.addEventListener("keydown", triggerAudioOnInteraction, { passive: true });
 
-    // Settle into resting state after greeting
+    // Video duration is 5.0 seconds
     const timer = setTimeout(() => {
       setIsWelcoming(false);
-    }, 3200);
+    }, 5000);
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("pointermove", handleFirstGesture);
-      window.removeEventListener("pointerdown", handleFirstGesture);
-      window.removeEventListener("scroll", handleFirstGesture);
-      window.removeEventListener("keydown", handleFirstGesture);
+      window.removeEventListener("pointerdown", triggerAudioOnInteraction);
+      window.removeEventListener("scroll", triggerAudioOnInteraction);
+      window.removeEventListener("keydown", triggerAudioOnInteraction);
+      if (audioRef.current) {
+        audioRef.current.pause();
+      }
     };
   }, []);
+
+  // Handle replaying video clip
+  const handleReplayVideo = (e?: React.MouseEvent) => {
+    if (e) e.stopPropagation();
+    setIsWelcoming(true);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play().then(() => {
+        setIsMuted(false);
+        setHasPlayedAudio(true);
+      }).catch(() => {});
+    }
+    setTimeout(() => {
+      setIsWelcoming(false);
+    }, 5000);
+  };
+
+  // Toggle audio sound
+  const handleToggleAudio = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (audioRef.current) {
+      if (!isMuted) {
+        audioRef.current.pause();
+        setIsMuted(true);
+      } else {
+        audioRef.current.currentTime = 0;
+        audioRef.current.play().then(() => {
+          setIsMuted(false);
+          setHasPlayedAudio(true);
+        }).catch(() => {});
+      }
+    }
+  };
 
   // Mouse move handler for smooth 3D tilt
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -125,16 +131,13 @@ export function InteractiveAvatar({
     const deltaX = (x - centerX) / centerX; // -1 to 1
     const deltaY = (y - centerY) / centerY; // -1 to 1
 
-    const maxTilt = 9;
+    const maxTilt = 8;
     setRotateY(deltaX * maxTilt);
     setRotateX(-deltaY * maxTilt);
   };
 
   const handleMouseEnter = () => {
     setIsHovered(true);
-    if (!hasSpokenRef.current) {
-      playVoiceGreeting();
-    }
   };
 
   const handleMouseLeave = () => {
@@ -164,7 +167,7 @@ export function InteractiveAvatar({
       }}
       title="Click to speak or chat with Albert's AI Digital Twin"
     >
-      {/* 1. Top Speech Bubble (Exact Match to User Reference) */}
+      {/* 1. Top Speech Bubble (Exact Approved Design) */}
       <div className="relative z-20 mb-2 transition-transform duration-300 ease-out group-hover:scale-105">
         <div
           className={`relative px-4 py-2 sm:px-5 sm:py-2.5 rounded-2xl bg-[#0c1527]/95 border border-cyan-400/50 text-white text-xs sm:text-[13px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md flex items-center space-x-2 transition-all duration-300 ${
@@ -188,25 +191,40 @@ export function InteractiveAvatar({
             )}
           </span>
 
-          {/* Real-time speaking audio waveform visualizer */}
-          {isSpeakingGreeting && (
-            <div className="flex items-end space-x-0.5 h-3 ml-1">
-              <span className="w-1 bg-cyan-400 rounded-full animate-bounce h-2" />
-              <span className="w-1 bg-cyan-400 rounded-full animate-bounce [animation-delay:0.15s] h-3.5" />
-              <span className="w-1 bg-cyan-400 rounded-full animate-bounce [animation-delay:0.3s] h-2.5" />
-            </div>
+          {/* Sound Audio Controller Button */}
+          <button
+            type="button"
+            onClick={handleToggleAudio}
+            className="p-1 rounded-md text-cyan-400 hover:text-cyan-200 hover:bg-cyan-950/60 transition-colors ml-1"
+            title={isMuted ? "Unmute avatar voice" : "Mute avatar voice"}
+            aria-label="Toggle avatar greeting audio"
+          >
+            {isMuted ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5 animate-pulse" />}
+          </button>
+
+          {/* Replay Walking & Waving Clip Button */}
+          {!isWelcoming && (
+            <button
+              type="button"
+              onClick={handleReplayVideo}
+              className="p-1 rounded-md text-slate-400 hover:text-cyan-300 hover:bg-cyan-950/60 transition-colors"
+              title="Replay walk-in and wave animation"
+              aria-label="Replay greeting animation"
+            >
+              <RotateCcw className="h-3 w-3" />
+            </button>
           )}
 
-          {/* Beak pointing downwards to avatar */}
+          {/* Downward Beak pointing to Avatar head */}
           <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0c1527] border-r border-b border-cyan-400/50 transform rotate-45" />
         </div>
       </div>
 
-      {/* 2. Center 3D Avatar Character Stage with Real Hand Waving */}
+      {/* 2. Center 3D Avatar Character Stage: User's Transparent Walking & Waving Video Clip */}
       <div
         className="relative z-10 w-full h-[400px] sm:h-[460px] flex items-end justify-center transition-transform duration-150 ease-out"
         style={{
-          transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${isHovered ? 1.03 : 1}, ${isHovered ? 1.03 : 1}, 1)`,
+          transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${isHovered ? 1.02 : 1}, ${isHovered ? 1.02 : 1}, 1)`,
           transformStyle: "preserve-3d",
         }}
       >
@@ -218,41 +236,26 @@ export function InteractiveAvatar({
           }}
         />
 
-        {/* Base Body Layer (With subtle welcoming body tilt) */}
-        <div
-          className={`relative w-full h-full ${isWelcoming ? "animate-avatar-welcome-body" : ""}`}
-        >
-          <Image
-            src="/albert-avatar-body.png"
-            alt="Albert Linson 3D AI Digital Twin"
-            fill
-            sizes="(max-width: 640px) 300px, 380px"
-            priority
-            className="object-contain object-bottom filter contrast-[1.05] brightness-[1.02] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_20px_45px_rgba(6,182,212,0.35)] transition-all duration-300"
-          />
-
-          {/* Independent Waving Right Arm Layer (Pivots directly at elbow 35.17% 48.5%) */}
-          <div
-            className={`absolute inset-0 w-full h-full pointer-events-none ${
-              isWelcoming ? "animate-arm-wave" : ""
-            }`}
+        {/* Transparent Walking & Waving Video Clip */}
+        <div className="relative w-full h-full flex items-end justify-center pointer-events-none">
+          <video
+            ref={videoRef}
+            src="/albert-avatar-walk-wave.webm"
+            poster="/albert-avatar-poster.png"
+            playsInline
+            autoPlay
+            muted
+            loop={false}
+            preload="auto"
+            className="w-full h-full object-contain object-bottom filter contrast-[1.05] brightness-[1.02] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_20px_45px_rgba(6,182,212,0.35)] transition-all duration-300"
             style={{
-              transformOrigin: "35.17% 48.5%", // Exact elbow pivot (115px / 327px, 420px / 866px)
+              background: "transparent",
             }}
-          >
-            <Image
-              src="/albert-avatar-arm.png"
-              alt="Albert Linson Waving Hand"
-              fill
-              sizes="(max-width: 640px) 300px, 380px"
-              priority
-              className="object-contain object-bottom filter contrast-[1.05] brightness-[1.02] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_20px_45px_rgba(6,182,212,0.35)] transition-all duration-300"
-            />
-          </div>
+          />
         </div>
       </div>
 
-      {/* 3. Bottom Interactive Action Capsule Pill (Exact Match to User Reference) */}
+      {/* 3. Bottom Interactive Action Capsule Pill (Exact Approved Design) */}
       <div className="relative z-20 mt-3 transition-transform duration-300 ease-out group-hover:scale-105">
         <div
           className={`px-5 py-2 sm:px-6 sm:py-2.5 rounded-full bg-[#0c1527]/95 border border-cyan-400/50 text-white text-xs sm:text-[13px] font-medium shadow-[0_10px_30px_rgba(0,0,0,0.5)] backdrop-blur-md flex items-center space-x-2.5 transition-all duration-300 ${
