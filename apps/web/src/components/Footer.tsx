@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Github, Linkedin, Mail, Lock, ExternalLink, ShieldCheck } from "lucide-react";
+import { Github, Linkedin, Mail, Lock, ExternalLink, ShieldCheck, MessageCircle, Phone } from "lucide-react";
 import { masterProfile } from "@/lib/profileData";
 
 export function Footer() {
@@ -31,13 +31,14 @@ export function Footer() {
             </p>
             <div className="flex items-center space-x-2 pt-2">
               <a
-                href={masterProfile.personal.github}
+                href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
                 target="_blank"
                 rel="noreferrer"
-                className="p-2 rounded-lg bg-swiss-white border border-swiss-divider text-gray-700 hover:text-swiss-navy hover:border-swiss-blue/40 transition-colors shadow-sm"
-                aria-label="GitHub Profile"
+                className="p-2 rounded-lg bg-emerald-50 border border-emerald-500/40 text-emerald-700 hover:text-emerald-800 hover:bg-emerald-100 transition-colors shadow-sm"
+                aria-label="WhatsApp (+91 9910705796)"
+                title="Chat on WhatsApp: +91 9910705796"
               >
-                <Github className="h-4 w-4" />
+                <MessageCircle className="h-4 w-4" />
               </a>
               <a
                 href={masterProfile.personal.linkedin}
@@ -45,16 +46,39 @@ export function Footer() {
                 rel="noreferrer"
                 className="p-2 rounded-lg bg-swiss-white border border-swiss-divider text-gray-700 hover:text-swiss-navy hover:border-swiss-blue/40 transition-colors shadow-sm"
                 aria-label="LinkedIn Profile"
+                title="LinkedIn Profile"
               >
                 <Linkedin className="h-4 w-4" />
+              </a>
+              <a
+                href={masterProfile.personal.github}
+                target="_blank"
+                rel="noreferrer"
+                className="p-2 rounded-lg bg-swiss-white border border-swiss-divider text-gray-700 hover:text-swiss-navy hover:border-swiss-blue/40 transition-colors shadow-sm"
+                aria-label="GitHub Profile"
+                title="GitHub Profile"
+              >
+                <Github className="h-4 w-4" />
               </a>
               <a
                 href={`mailto:${masterProfile.personal.email}`}
                 className="p-2 rounded-lg bg-swiss-white border border-swiss-divider text-gray-700 hover:text-swiss-navy hover:border-swiss-blue/40 transition-colors shadow-sm"
                 aria-label="Send Email"
+                title="Email: albertkalampadan@gmail.com"
               >
                 <Mail className="h-4 w-4" />
               </a>
+              <a
+                href="tel:+919910705796"
+                className="p-2 rounded-lg bg-swiss-white border border-swiss-divider text-gray-700 hover:text-swiss-navy hover:border-swiss-blue/40 transition-colors shadow-sm"
+                aria-label="Call Direct"
+                title="Call: +91 9910705796"
+              >
+                <Phone className="h-4 w-4" />
+              </a>
+            </div>
+            <div className="text-[11px] text-gray-500 pt-1">
+              Reach Out: <a href="https://wa.me/919910705796" target="_blank" rel="noreferrer" className="text-emerald-700 font-semibold hover:underline">+91 9910705796 (WhatsApp)</a> &bull; <a href={`mailto:${masterProfile.personal.email}`} className="text-swiss-blue font-semibold hover:underline">{masterProfile.personal.email}</a>
             </div>
           </div>
 

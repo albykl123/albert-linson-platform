@@ -12,7 +12,9 @@ import {
   CheckCircle2, 
   ArrowUpRight, 
   Shield, 
-  Sparkles 
+  Sparkles,
+  MessageCircle,
+  Phone
 } from "lucide-react";
 import { masterProfile } from "@/lib/profileData";
 import { InteractiveAvatar } from "@/components/InteractiveAvatar";
@@ -79,11 +81,22 @@ export default function HomePage() {
               </Link>
 
               <a
+                href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-lg border border-emerald-500/40 bg-emerald-50 hover:bg-emerald-100 text-emerald-800 text-sm font-semibold transition-all shadow-sm"
+                title="Chat with Albert on WhatsApp (+91 9910705796)"
+              >
+                <MessageCircle className="h-4 w-4 text-emerald-600" />
+                <span>WhatsApp: +91 9910705796</span>
+              </a>
+
+              <a
                 href={`mailto:${masterProfile.personal.email}`}
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-gray-700 text-sm font-medium transition-all"
+                className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-gray-700 text-sm font-medium transition-all"
               >
                 <Mail className="h-4 w-4 text-gray-500" />
-                <span>Contact Me</span>
+                <span>Email</span>
               </a>
             </div>
 
@@ -444,20 +457,36 @@ export default function HomePage() {
       {/* 6. Recruiter Contact & Resume Banner */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider bg-swiss-light rounded-2xl mb-16">
         <div className="max-w-3xl mx-auto text-center">
-          <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Direct Recruiter Outreach</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Reach Out To Me &bull; Direct Outreach</span>
           <h2 className="text-2xl sm:text-3xl font-bold text-swiss-navy mt-2 tracking-tight">
             Interested in discussing an engineering or technical recruitment opportunity?
           </h2>
           <p className="mt-4 text-xs sm:text-sm text-gray-600 leading-relaxed">
-            I am actively pursuing roles in Frontend Development, UI/UX Engineering, Software Development, and Technical Recruitment. Review my verified background or contact me directly.
+            I am actively pursuing roles in Frontend Development, UI/UX Engineering, Software Development, and Technical Recruitment. Connect directly with me on WhatsApp, email, or telephone.
           </p>
           <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold shadow-sm transition-all"
+            >
+              <MessageCircle className="h-4 w-4" />
+              <span>WhatsApp: +91 9910705796</span>
+            </a>
             <a
               href={`mailto:${masterProfile.personal.email}`}
               className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-swiss-navy text-swiss-white hover:bg-swiss-navy/90 text-sm font-semibold shadow-sm transition-all"
             >
               <Mail className="h-4 w-4" />
               <span>Email: {masterProfile.personal.email}</span>
+            </a>
+            <a
+              href="tel:+919910705796"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold shadow-sm transition-all"
+            >
+              <Phone className="h-4 w-4 text-swiss-blue" />
+              <span>Call: +91 9910705796</span>
             </a>
             <Link
               href="/resume"

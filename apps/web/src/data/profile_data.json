@@ -29,7 +29,9 @@
         "proficiency": "Basic"
       }
     ],
-    "bio": "Results-driven professional with a Bachelor of Computer Applications and currently pursuing a Master of Computer Applications (MCA). Experienced in US IT recruitment, business development, IT operations, frontend development and UI/UX design. Demonstrated leadership in institutional event management, public relations, technical coordination and cross-functional team management. Skilled in talent sourcing, stakeholder engagement, client relationship management and operational execution, with academic research experience in medical imaging and computational analysis."
+    "bio": "Results-driven professional with a Bachelor of Computer Applications and currently pursuing a Master of Computer Applications (MCA). Experienced in US IT recruitment, business development, IT operations, frontend development and UI/UX design. Demonstrated leadership in institutional event management, public relations, technical coordination and cross-functional team management. Skilled in talent sourcing, stakeholder engagement, client relationship management and operational execution, with academic research experience in medical imaging and computational analysis.",
+    "whatsapp": "https://wa.me/919910705796",
+    "whatsapp_number": "+91 9910705796"
   },
   "summary": "Results-driven professional with a Bachelor of Computer Applications and currently pursuing a Master of Computer Applications (MCA). Experienced in US IT recruitment, business development, IT operations, frontend development and UI/UX design. Demonstrated leadership in institutional event management, public relations, technical coordination and cross-functional team management. Skilled in talent sourcing, stakeholder engagement, client relationship management and operational execution, with academic research experience in medical imaging and computational analysis.",
   "skills": {
@@ -284,7 +286,7 @@
       "company": "Innova Solutions",
       "location": "Noida / Remote, India",
       "employment_type": "Full-Time",
-      "period": "December 2025 – Present",
+      "period": "December 2025 \u2013 Present",
       "tools": [
         "ATS Platforms",
         "Job Portals",
@@ -314,7 +316,7 @@
       "company": "Herbal Energy",
       "location": "Delhi, India",
       "employment_type": "Full-Time",
-      "period": "October 2025 – November 2025",
+      "period": "October 2025 \u2013 November 2025",
       "tools": [
         "IT Infrastructure",
         "Technical Operations",
@@ -339,7 +341,7 @@
       "company": "Algospark Technologies",
       "location": "Delhi NCR, India",
       "employment_type": "Full-Time",
-      "period": "August 2025 – October 2025",
+      "period": "August 2025 \u2013 October 2025",
       "tools": [
         "Cold Calling",
         "Email Outreach",
@@ -365,7 +367,7 @@
       "company": "Municipal Corporation of Delhi",
       "location": "New Delhi, India",
       "employment_type": "Internship",
-      "period": "May 2024 – April 2025",
+      "period": "May 2024 \u2013 April 2025",
       "tools": [
         "Figma",
         "Adobe XD",
@@ -425,14 +427,14 @@
       "degree": "Bachelor of Computer Applications (BCA)",
       "institution": "CHRIST (Deemed to be University)",
       "location": "Delhi NCR, India",
-      "period": "2022–2025",
+      "period": "2022\u20132025",
       "details": "Graduated with Specialization in Advanced Technological Skills. Coursework covered Data Structures, Database Systems, Computer Networks, and Web Technologies.",
       "specialization": "Advanced Technological Skills"
     },
     {
       "id": "edu-3",
-      "degree": "Class XII – CBSE",
-      "institution": "St. Columba’s School",
+      "degree": "Class XII \u2013 CBSE",
+      "institution": "St. Columba\u2019s School",
       "location": "New Delhi, India",
       "period": "Completed",
       "details": "Central Board of Secondary Education (CBSE). Focused on Computer Science and Mathematics with departmental leadership.",
@@ -446,7 +448,7 @@
       "role_level": "Event Head",
       "organization": "CCHS MEDIA & Technical Team",
       "institution": "Centre for Counselling & Health Services (CCHS), CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2023 – 2025",
+      "period": "2023 \u2013 2025",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Led event operations and coordinated the overall management and technical teams.",
@@ -464,11 +466,11 @@
     },
     {
       "id": "lead-placetrials",
-      "title": "Core Team Member – Scholarship & Public Relations Head",
+      "title": "Core Team Member \u2013 Scholarship & Public Relations Head",
       "role_level": "Core Team Member & PR Head",
       "organization": "Placetrials 2026",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2025 – 2026",
+      "period": "2025 \u2013 2026",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Led scholarship-related coordination and public relations activities as part of the core organising team.",
@@ -486,11 +488,11 @@
     },
     {
       "id": "lead-globalfest",
-      "title": "Core Team Member – Overall Management",
+      "title": "Core Team Member \u2013 Overall Management",
       "role_level": "Core Team Member",
       "organization": "Global Fest 2.0",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2024 – 2025",
+      "period": "2024 \u2013 2025",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Coordinated teams, operational responsibilities and interdepartmental communication as part of the core management team.",
@@ -531,11 +533,11 @@
     },
     {
       "id": "lead-st-columba-pe",
-      "title": "Head – Physical Education Department",
+      "title": "Head \u2013 Physical Education Department",
       "role_level": "Department Head",
-      "organization": "St. Columba’s School, New Delhi",
-      "institution": "St. Columba’s School, New Delhi",
-      "period": "2021 – 2022",
+      "organization": "St. Columba\u2019s School, New Delhi",
+      "institution": "St. Columba\u2019s School, New Delhi",
+      "period": "2021 \u2013 2022",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Led student-level coordination for physical education activities, sports initiatives and school events.",
@@ -553,11 +555,11 @@
     },
     {
       "id": "lead-corporate-club-head",
-      "title": "Corporate Club — Core Team Member & Overall Event Management Head",
+      "title": "Corporate Club \u2014 Core Team Member & Overall Event Management Head",
       "role_level": "Core Team Member & Overall Event Management Head",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 – Present",
+      "period": "2026 \u2013 Present",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Serves as the executive head of overall event management for the School of Sciences Corporate Club, directing event planning, operational schedules, and execution teams.",
@@ -579,10 +581,10 @@
       "role_level": "Team Leader",
       "organization": "Centre for Counselling & Health Services (CCHS)",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 – 2028",
+      "period": "2026 \u2013 2028",
       "category": "Student Welfare & Peer Education",
       "responsibilities": [
-        "Advanced peer leadership appointment following multi-year service as Peer Educator (2022–2025); mentors junior peer educators and coordinates wellness outreach programs.",
+        "Advanced peer leadership appointment following multi-year service as Peer Educator (2022\u20132025); mentors junior peer educators and coordinates wellness outreach programs.",
         "Assists CCHS professional staff in organizing university-wide student mental health awareness weeks, stress mitigation drives, and orientation bootcamps."
       ],
       "skills": [
@@ -601,7 +603,7 @@
       "role_level": "Peer Educator",
       "organization": "Centre for Counselling & Health Services (CCHS)",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 – 2025",
+      "period": "2022 \u2013 2025",
       "category": "Student Welfare & Peer Education",
       "responsibilities": [
         "Completed structured peer education training under CCHS to support student orientation, well-being awareness, and healthy university community living.",
@@ -619,7 +621,7 @@
     },
     {
       "id": "lead-aparoksha-2023",
-      "title": "Aparoksha 2023 — Event Head",
+      "title": "Aparoksha 2023 \u2014 Event Head",
       "role_level": "Event Head",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
@@ -641,7 +643,7 @@
     },
     {
       "id": "lead-aparoksha-2022",
-      "title": "Aparoksha 2022 — Event Head",
+      "title": "Aparoksha 2022 \u2014 Event Head",
       "role_level": "Event Head",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
@@ -667,7 +669,7 @@
       "role_level": "Member",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 – Present",
+      "period": "2026 \u2013 Present",
       "category": "Branding, Media & Communications",
       "responsibilities": [
         "Designs digital promotional material, social media creative assets, and official announcements representing School of Sciences events.",
@@ -684,11 +686,11 @@
     },
     {
       "id": "lead-sdg-cell",
-      "title": "SDG Cell — Member",
+      "title": "SDG Cell \u2014 Member",
       "role_level": "Member",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 – Present",
+      "period": "2026 \u2013 Present",
       "category": "Sustainability & Institutional Engagement",
       "responsibilities": [
         "Contributes to United Nations Sustainable Development Goals (SDG) awareness campaigns, sustainability drives, and institutional campus initiatives.",
@@ -705,11 +707,11 @@
     },
     {
       "id": "lead-swo-literary",
-      "title": "Student Welfare Office (SWO) — Art & Literary Club Member",
+      "title": "Student Welfare Office (SWO) \u2014 Art & Literary Club Member",
       "role_level": "Member",
       "organization": "Student Welfare Office (SWO)",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 – 2024",
+      "period": "2022 \u2013 2024",
       "category": "Cultural & Campus Engagement",
       "responsibilities": [
         "Active member for 2 years contributing to university literary events, creative writing workshops, and cultural fests.",
@@ -728,9 +730,9 @@
       "id": "lead-disaster-mgmt",
       "title": "Disaster Management Team Member",
       "role_level": "Team Member",
-      "organization": "St. Columba’s School, New Delhi",
-      "institution": "St. Columba’s School, New Delhi",
-      "period": "2020 – 2022",
+      "organization": "St. Columba\u2019s School, New Delhi",
+      "institution": "St. Columba\u2019s School, New Delhi",
+      "period": "2020 \u2013 2022",
       "category": "Disaster Management & Community Participation",
       "responsibilities": [
         "Participated in institutional safety preparedness protocols, evacuation drills, and campus emergency response simulations.",
@@ -1014,7 +1016,7 @@
       "name": "lunova-os",
       "full_name": "albykl123/lunova-os",
       "url": "https://github.com/albykl123/lunova-os",
-      "description": "Lunova OS 1.0 Aurora — Beyond the Desktop. Debian 13 Trixie + KDE Plasma 6 Linux Distribution",
+      "description": "Lunova OS 1.0 Aurora \u2014 Beyond the Desktop. Debian 13 Trixie + KDE Plasma 6 Linux Distribution",
       "language": "QML / C++",
       "is_source": true,
       "visibility": "public",

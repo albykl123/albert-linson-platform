@@ -91,15 +91,15 @@ function getDeterministicResponse(userQuery: string): { response: string; sugges
     };
   }
 
-  if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("interview") || q.includes("hire") || q.includes("schedule") || q.includes("reach")) {
+  if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("interview") || q.includes("hire") || q.includes("schedule") || q.includes("reach") || q.includes("whatsapp")) {
     return {
-      response: "You can reach Albert directly via phone at +91 9910705796 or email at albertkalampadan@gmail.com. He is located in Delhi, India, and works flexible hours including US Eastern Standard Time (EST) shifts.",
+      response: "You can reach Albert directly via WhatsApp or phone at +91 9910705796, or email at albertkalampadan@gmail.com. He is located in Delhi, India, and works flexible hours including US Eastern Standard Time (EST) shifts.",
       suggestions: [
-        "Open Career Studio to dispatch an auto-apply package",
+        "Chat with Albert on WhatsApp",
         "View LinkedIn profile",
         "Download resume"
       ],
-      actionLink: { label: "Send Email Directly", href: "mailto:albertkalampadan@gmail.com" }
+      actionLink: { label: "Chat on WhatsApp (+91 9910705796)", href: "https://wa.me/919910705796?text=Hi%20Albert,%20I%20would%20like%20to%20connect%20regarding%20an%20opportunity." }
     };
   }
 

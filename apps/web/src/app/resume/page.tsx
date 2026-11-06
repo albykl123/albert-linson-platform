@@ -10,6 +10,7 @@ import {
   MapPin, 
   Mail, 
   Phone, 
+  MessageCircle,
   ExternalLink, 
   Globe, 
   FileText, 
@@ -56,7 +57,8 @@ export default function ResumeAndSkillsPage() {
     const textContent = `
 ================================================================================
 ${masterProfile.personal.full_legal_name.toUpperCase()}
-${masterProfile.personal.email} | ${masterProfile.personal.phone} | ${masterProfile.personal.location}
+${masterProfile.personal.email} | ${masterProfile.personal.phone} (WhatsApp) | ${masterProfile.personal.location}
+WhatsApp: https://wa.me/919910705796
 LinkedIn: ${masterProfile.personal.linkedin} | GitHub: ${masterProfile.personal.github}
 ================================================================================
 
@@ -240,7 +242,7 @@ ${(masterProfile.certifications || [])
   <div class="subhead">${masterProfile.personal.sub_headline}</div>
   <div class="contact-line">
     ${masterProfile.personal.location} &bull; 
-    ${masterProfile.personal.phone} &bull; 
+    <a href="https://wa.me/919910705796">${masterProfile.personal.phone} (WhatsApp)</a> &bull; 
     <a href="mailto:${masterProfile.personal.email}">${masterProfile.personal.email}</a> &bull; 
     <a href="${masterProfile.personal.linkedin}">LinkedIn</a> &bull; 
     <a href="${masterProfile.personal.github}">GitHub</a>
@@ -486,6 +488,17 @@ ${(masterProfile.certifications || [])
                   <Phone className="h-3.5 w-3.5 text-gray-400" />
                   <span>{masterProfile.personal.phone}</span>
                 </span>
+                <span>&bull;</span>
+                <a 
+                  href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20viewed%20your%20resume%20and%20would%20like%20to%20connect." 
+                  target="_blank" 
+                  rel="noreferrer" 
+                  className="inline-flex items-center space-x-1 text-emerald-700 hover:text-emerald-800 hover:underline font-medium"
+                  title="Direct WhatsApp: +91 9910705796"
+                >
+                  <MessageCircle className="h-3.5 w-3.5 text-emerald-600" />
+                  <span>WhatsApp</span>
+                </a>
                 <span>&bull;</span>
                 <a href={masterProfile.personal.linkedin} target="_blank" rel="noreferrer" className="text-blue-700 hover:underline">
                   LinkedIn

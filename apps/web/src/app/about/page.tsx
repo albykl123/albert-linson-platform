@@ -195,6 +195,14 @@ export default function AboutPage() {
               </p>
               <div className="space-y-2">
                 <a
+                  href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block w-full py-2.5 px-4 rounded-xl bg-emerald-600 text-white text-xs font-semibold hover:bg-emerald-700 transition-colors shadow-sm"
+                >
+                  Chat on WhatsApp (+91 9910705796)
+                </a>
+                <a
                   href={`mailto:${masterProfile.personal.email}`}
                   className="block w-full py-2.5 px-4 rounded-xl bg-ivory-charcoal text-ivory-base text-xs font-semibold hover:bg-ivory-charcoal/90 transition-colors"
                 >

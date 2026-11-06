@@ -32,6 +32,8 @@ export interface ProfileData {
     email: string;
     secondary_email?: string;
     phone: string;
+    whatsapp?: string;
+    whatsapp_number?: string;
     linkedin: string;
     github: string;
     portfolio_url: string;
