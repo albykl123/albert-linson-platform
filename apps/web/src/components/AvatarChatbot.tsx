@@ -17,7 +17,6 @@ import {
   Minimize2,
   ChevronDown
 } from "lucide-react";
-import { AvatarFollower } from "./AvatarFollower";
 
 export interface ChatMessage {
   id: string;
@@ -63,7 +62,7 @@ export function AvatarChatbot() {
     }
   ]);
 
-  // Listen for open-albert-chat event from InteractiveAvatar, AvatarFollower, or external links
+  // Listen for open-albert-chat event from InteractiveAvatar or external buttons
   useEffect(() => {
     const handleOpenEvent = (e: Event) => {
       const customEvent = e as CustomEvent<{ initialMessage?: string }>;
@@ -180,20 +179,17 @@ export function AvatarChatbot() {
 
   return (
     <>
-      {/* 1. Global Interactive Mouse Follower Companion */}
-      <AvatarFollower onOpenChat={() => setIsOpen(true)} isChatOpen={isOpen} />
-
-      {/* 2. Global Floating Interactive Avatar Trigger (Bottom Right) */}
+      {/* 1. Global Floating Executive Copilot Launcher (Bottom Right) */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         {/* Floating Tooltip Speech Bubble on Hover (when closed) */}
         {!isOpen && isHovered && (
-          <div className="mb-3 mr-1 p-3 rounded-2xl bg-slate-900/95 border border-cyan-500/40 text-white shadow-2xl backdrop-blur-md max-w-xs text-xs animate-in fade-in slide-in-from-bottom-2 duration-200">
+          <div className="mb-3 mr-1 p-3.5 rounded-2xl bg-slate-900/95 border border-cyan-500/40 text-white shadow-2xl backdrop-blur-md max-w-xs text-xs animate-in fade-in slide-in-from-bottom-2 duration-200">
             <div className="flex items-center space-x-1.5 text-cyan-400 font-semibold mb-1">
               <Sparkles className="h-3.5 w-3.5" />
               <span>Albert AI &bull; Interactive Copilot</span>
             </div>
             <p className="text-slate-200 leading-relaxed text-[11px]">
-              Hi! Hover over me or click to chat about my US IT recruiting background, software builds, or schedule an interview!
+              Hi! Click to ask me anything about Albert&apos;s US IT recruiting background, software builds, or schedule an interview!
             </p>
           </div>
         )}
@@ -234,7 +230,7 @@ export function AvatarChatbot() {
         )}
       </div>
 
-      {/* 3. Expanded Interactive Chatbot Window */}
+      {/* 2. Expanded Interactive Chatbot Window */}
       {isOpen && (
         <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[95vw] sm:w-[420px] max-h-[85vh] h-[640px] flex flex-col rounded-3xl bg-slate-950 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,0,0,0.85)] backdrop-blur-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 font-sans">
           {/* Header */}
