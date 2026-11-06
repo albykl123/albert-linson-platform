@@ -436,7 +436,7 @@ class ATSEngine:
                     evidence=f"Found only {metric_count} numbers in the entire document.",
                     explanation="No measurable results, percentages, or dollar values identified.",
                     why_it_matters="Without proof points, candidate claims read as unverified assertions.",
-                    recommendation="Include specific figures (e.g. 'Reduced load times by 42%', 'Managed \$120K budget').",
+                    recommendation="Include specific figures (e.g. 'Reduced load times by 42%', 'Managed $120K budget').",
                     one_click_fix_available=True,
                     fix_type="insert_metric_placeholders",
                 )

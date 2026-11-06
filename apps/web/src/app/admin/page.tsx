@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { masterProfile } from "@/lib/profileData";
 import { freeStackData } from "@/lib/freestackData";
 import { 
@@ -20,7 +20,8 @@ import {
 export default function AdminPage() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [passcode, setPasscode] = useState("");
-  const [authError, setAuthError] = useState(false);
+  const [authError, setAuthError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Editable Profile State
   const [headline, setHeadline] = useState(masterProfile.personal.headline);
@@ -34,14 +35,49 @@ export default function AdminPage() {
   const [isSyncing, setIsSyncing] = useState(false);
   const [syncStatus, setSyncStatus] = useState("Catalog Up-to-Date");
 
-  const handleLogin = (e: React.FormEvent) => {
+  // Verify existing session on mount
+  useEffect(() => {
+    fetch("/api/auth")
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.authenticated) {
+          setIsAuthenticated(true);
+        }
+      })
+      .catch(() => {});
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Default admin authorization check
-    if (passcode === "albert2026" || passcode === "admin") {
-      setIsAuthenticated(true);
-      setAuthError(false);
-    } else {
-      setAuthError(true);
+    setAuthError("");
+    setIsSubmitting(true);
+
+    try {
+      const res = await fetch("/api/auth", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ passcode }),
+      });
+
+      const data = await res.json();
+      if (res.ok && data.authenticated) {
+        setIsAuthenticated(true);
+        setPasscode("");
+      } else {
+        setAuthError(data.error || "Authentication failed.");
+      }
+    } catch (err) {
+      setAuthError("Network error during authentication.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleLogout = async () => {
+    try {
+      await fetch("/api/auth", { method: "DELETE" });
+    } finally {
+      setIsAuthenticated(false);
     }
   };
 
@@ -69,7 +105,7 @@ export default function AdminPage() {
           </div>
           <h1 className="text-xl font-bold text-white tracking-tight">Admin Control Center</h1>
           <p className="text-xs text-gray-400 mt-1 mb-6">
-            Private owner authorization required to configure platform telemetry and intelligence models.
+            Private owner authorization required. Authenticated via secure server-side session.
           </p>
 
           <form onSubmit={handleLogin} className="space-y-4">
@@ -82,21 +118,18 @@ export default function AdminPage() {
                 className="w-full px-4 py-2.5 rounded-xl bg-midnight-950 border border-midnight-800 text-white text-xs focus:outline-none focus:border-electric-500 text-center tracking-widest"
               />
               {authError && (
-                <div className="text-red-400 text-[11px] mt-1.5">Invalid administrator passcode.</div>
+                <div className="text-red-400 text-[11px] mt-1.5">{authError}</div>
               )}
             </div>
 
             <button
               type="submit"
-              className="w-full py-2.5 rounded-xl bg-electric-500 hover:bg-electric-400 text-white text-xs font-semibold shadow-md shadow-electric-500/20 transition-all"
+              disabled={isSubmitting}
+              className="w-full py-2.5 rounded-xl bg-electric-500 hover:bg-electric-400 text-white text-xs font-semibold shadow-md shadow-electric-500/20 transition-all disabled:opacity-50"
             >
-              Authenticate Session
+              {isSubmitting ? "Verifying..." : "Authenticate Session"}
             </button>
           </form>
-
-          <div className="mt-6 text-[10px] text-gray-500">
-            Hint: Use <code>albert2026</code> to unlock administration.
-          </div>
         </div>
       </div>
     );
@@ -117,7 +150,7 @@ export default function AdminPage() {
         </div>
 
         <button
-          onClick={() => setIsAuthenticated(false)}
+          onClick={handleLogout}
           className="text-xs text-gray-400 hover:text-white px-3 py-1.5 rounded-lg bg-midnight-900 border border-midnight-800"
         >
           Sign Out

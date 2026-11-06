@@ -1,4 +1,4 @@
-import profileJson from "../../../packages/shared/profile_data.json";
+import profileJson from "@/data/profile_data.json";
 
 export interface ProfileData {
   personal: {

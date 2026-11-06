@@ -9,7 +9,7 @@ param()
 $ErrorActionPreference = "Stop"
 
 Write-Host "==========================================================" -ForegroundColor Cyan
-Write-Host " ALBERT LINSON PLATFORM — PRODUCTION BUILD" -ForegroundColor Cyan
+Write-Host " ALBERT LINSON PLATFORM -- PRODUCTION BUILD" -ForegroundColor Cyan
 Write-Host "==========================================================" -ForegroundColor Cyan
 
 $root = Split-Path $PSScriptRoot -Parent

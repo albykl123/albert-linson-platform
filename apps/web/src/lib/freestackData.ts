@@ -1,4 +1,4 @@
-import freestackJson from "../../../packages/shared/freestack_data.json";
+import freestackJson from "@/data/freestack_data.json";
 
 export interface FreeStackService {
   name: string;

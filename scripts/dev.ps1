@@ -11,7 +11,7 @@ param(
 )
 
 Write-Host "==========================================================" -ForegroundColor Cyan
-Write-Host " ALBERT LINSON PLATFORM — LOCAL DEVELOPMENT ENVIRONMENT" -ForegroundColor Cyan
+Write-Host " ALBERT LINSON PLATFORM -- LOCAL DEVELOPMENT ENVIRONMENT" -ForegroundColor Cyan
 Write-Host "==========================================================" -ForegroundColor Cyan
 
 $root = Split-Path $PSScriptRoot -Parent

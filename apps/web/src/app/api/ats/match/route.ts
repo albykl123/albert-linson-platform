@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { analyzeJobDescription } from "@/lib/jobMatcher";
 
-export const runtime = "edge";
-
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();

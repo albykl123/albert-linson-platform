@@ -36,8 +36,13 @@ def run_sync():
     out_file = Path(__file__).resolve().parent.parent / "packages" / "shared" / "freestack_data.json"
     out_file.parent.mkdir(parents=True, exist_ok=True)
     out_file.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
+    web_data_file = Path(__file__).resolve().parent.parent / "apps" / "web" / "src" / "data" / "freestack_data.json"
+    web_data_file.parent.mkdir(parents=True, exist_ok=True)
+    web_data_file.write_text(json.dumps(data, indent=2), encoding="utf-8")
+
     print(f"Successfully synced {data['total_services']} services across {data['total_categories']} categories!")
-    print(f"Output saved to: {out_file}")
+    print(f"Output saved to: {out_file} and {web_data_file}")
 
 if __name__ == "__main__":
     run_sync()

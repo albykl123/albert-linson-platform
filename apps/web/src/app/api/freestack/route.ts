@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { searchFreeStack, freeStackData } from "@/lib/freestackData";
 
-export const runtime = "edge";
-
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const q = searchParams.get("q") || "";

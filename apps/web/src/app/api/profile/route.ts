@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 import { masterProfile } from "@/lib/profileData";
 
-export const runtime = "edge";
-
 export async function GET() {
   return NextResponse.json(masterProfile, {
     status: 200,

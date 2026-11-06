@@ -9,7 +9,7 @@ param(
 )
 
 Write-Host "==========================================================" -ForegroundColor Cyan
-Write-Host " ALBERT LINSON PLATFORM — SYSTEM HEALTH CHECK" -ForegroundColor Cyan
+Write-Host " ALBERT LINSON PLATFORM -- SYSTEM HEALTH CHECK" -ForegroundColor Cyan
 Write-Host " Target URL: $BaseUrl" -ForegroundColor Cyan
 Write-Host "==========================================================" -ForegroundColor Cyan
 

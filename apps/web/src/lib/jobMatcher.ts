@@ -49,7 +49,7 @@ export function analyzeJobDescription(resumeText: string, jdText: string): JDAna
   let matchedCount = 0;
   const keywordStuffingRisks: string[] = [];
 
-  for (const skill of detectedInJD) {
+  for (const skill of Array.from(detectedInJD)) {
     const escaped = skill.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const regex = new RegExp(`\\b${escaped}\\b`, "gi");
     const matches = resumeLower.match(regex);

@@ -40,8 +40,8 @@ if ($gitStatus) {
 
 # 3. Cloudflare Deployment Instructions
 Write-Host "`n[3/3] Cloudflare Deployment Options:" -ForegroundColor Yellow
-Write-Host '  Option A (Direct Wrangler Pages):' -ForegroundColor White
-Write-Host '    npx wrangler pages deploy apps/web/.next --project-name albert-linson-platform' -ForegroundColor Gray
+Write-Host '  Option A (Direct OpenNext Cloudflare Workers Deploy):' -ForegroundColor White
+Write-Host '    Set-Location apps/web; npx @opennextjs/cloudflare; npx wrangler deploy' -ForegroundColor Gray
 Write-Host '  Option B (GitHub Actions Automated CI/CD):' -ForegroundColor White
 Write-Host '    git add .' -ForegroundColor Gray
 Write-Host "    git commit -m 'Release v1.0.0'" -ForegroundColor Gray
