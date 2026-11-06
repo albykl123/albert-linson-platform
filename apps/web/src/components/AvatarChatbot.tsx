@@ -17,14 +17,26 @@ import {
   Minimize2,
   ChevronDown
 } from "lucide-react";
+import { AvatarFollower } from "./AvatarFollower";
 
-interface ChatMessage {
+export interface ChatMessage {
   id: string;
   sender: "user" | "albert_ai";
   text: string;
   timestamp: string;
   actionLink?: { label: string; href: string };
   suggestions?: string[];
+}
+
+/**
+ * Global helper to trigger opening the Albert AI chatbot from any component or link
+ */
+export function openAlbertChat(initialMessage?: string) {
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent("open-albert-chat", { detail: { initialMessage } })
+    );
+  }
 }
 
 export function AvatarChatbot() {
@@ -50,6 +62,22 @@ export function AvatarChatbot() {
       ]
     }
   ]);
+
+  // Listen for open-albert-chat event from InteractiveAvatar, AvatarFollower, or external links
+  useEffect(() => {
+    const handleOpenEvent = (e: Event) => {
+      const customEvent = e as CustomEvent<{ initialMessage?: string }>;
+      setIsOpen(true);
+      if (customEvent.detail?.initialMessage) {
+        handleSendMessage(customEvent.detail.initialMessage);
+      }
+    };
+
+    window.addEventListener("open-albert-chat", handleOpenEvent);
+    return () => {
+      window.removeEventListener("open-albert-chat", handleOpenEvent);
+    };
+  }, []);
 
   // Auto-scroll to bottom of messages
   useEffect(() => {
@@ -116,7 +144,7 @@ export function AvatarChatbot() {
       const fallbackMsg: ChatMessage = {
         id: `ai-err-${Date.now()}`,
         sender: "albert_ai",
-        text: "Albert specializes in US IT technical recruitment at Innova Solutions and full-stack software development with React, Next.js, and Python. You can also contact him directly at albertkalampadan@gmail.com.",
+        text: "Albert specializes in US IT technical recruitment at Innova Solutions (~70% hiring success) and full-stack software development with React, Next.js, and Python. You can also contact him directly at albertkalampadan@gmail.com.",
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
         actionLink: { label: "Contact Albert Directly", href: "mailto:albertkalampadan@gmail.com" },
         suggestions: ["Download verified resume", "View all software projects"]
@@ -152,7 +180,10 @@ export function AvatarChatbot() {
 
   return (
     <>
-      {/* 1. Global Floating Interactive Avatar Trigger (Bottom Right) */}
+      {/* 1. Global Interactive Mouse Follower Companion */}
+      <AvatarFollower onOpenChat={() => setIsOpen(true)} isChatOpen={isOpen} />
+
+      {/* 2. Global Floating Interactive Avatar Trigger (Bottom Right) */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
         {/* Floating Tooltip Speech Bubble on Hover (when closed) */}
         {!isOpen && isHovered && (
@@ -184,14 +215,14 @@ export function AvatarChatbot() {
             {/* Pulsing Holographic Ring */}
             <span className="absolute -inset-1 rounded-full bg-cyan-400 opacity-40 blur-sm group-hover:opacity-75 transition-opacity animate-pulse"></span>
 
-            {/* Circular Avatar Image with Online Status Dot */}
-            <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full overflow-hidden border-2 border-white/90 bg-slate-950">
+            {/* Circular Avatar Cutout with Gradient Backdrop & Online Status Dot */}
+            <div className="relative h-16 w-16 sm:h-20 sm:w-20 rounded-full overflow-hidden border-2 border-white/90 bg-gradient-to-b from-slate-800 to-slate-950 flex items-center justify-center">
               <Image
-                src="/albert-avatar.jpg"
+                src="/albert-avatar-cutout.png"
                 alt="Albert AI Avatar"
                 fill
                 sizes="80px"
-                className="object-cover object-top filter contrast-[1.05] group-hover:scale-110 transition-transform duration-300"
+                className="object-contain object-top filter contrast-[1.05] group-hover:scale-110 transition-transform duration-300 pt-1"
               />
             </div>
 
@@ -203,19 +234,19 @@ export function AvatarChatbot() {
         )}
       </div>
 
-      {/* 2. Expanded Interactive Chatbot Window */}
+      {/* 3. Expanded Interactive Chatbot Window */}
       {isOpen && (
-        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[95vw] sm:w-[420px] max-h-[85vh] h-[640px] flex flex-col rounded-3xl bg-slate-950 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,0,0,0.8)] backdrop-blur-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 font-sans">
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-[95vw] sm:w-[420px] max-h-[85vh] h-[640px] flex flex-col rounded-3xl bg-slate-950 border border-cyan-500/30 shadow-[0_0_50px_rgba(0,0,0,0.85)] backdrop-blur-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 font-sans">
           {/* Header */}
           <div className="px-5 py-4 bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border-b border-slate-800 flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="relative h-11 w-11 rounded-full overflow-hidden border-2 border-cyan-400/80 shadow-[0_0_12px_rgba(6,182,212,0.5)]">
+              <div className="relative h-11 w-11 rounded-full overflow-hidden border-2 border-cyan-400/80 shadow-[0_0_12px_rgba(6,182,212,0.5)] bg-slate-900">
                 <Image
-                  src="/albert-avatar.jpg"
+                  src="/albert-avatar-cutout.png"
                   alt="Albert AI Digital Twin"
                   fill
                   sizes="44px"
-                  className="object-cover object-top"
+                  className="object-contain object-top pt-0.5"
                 />
               </div>
               <div>
