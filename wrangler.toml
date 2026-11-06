@@ -1,0 +1,21 @@
+name = "albert-linson-platform"
+compatibility_date = "2024-11-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "apps/web/.next"
+
+# Free-tier Cloudflare D1 Relational SQLite Database
+[[d1_databases]]
+binding = "DB"
+database_name = "albert-linson-db"
+database_id = "albert-linson-d1-prod"
+
+# Free-tier Cloudflare R2 Private Document Storage
+[[r2_buckets]]
+binding = "RESUME_STORAGE"
+bucket_name = "albert-linson-resumes"
+
+[vars]
+ENVIRONMENT = "production"
+NEXT_PUBLIC_APP_NAME = "Albert Linson Personal Intelligence Platform"
+OPENROUTER_MODEL = "openrouter/free"
+OPENROUTER_FALLBACK_MODEL = "google/gemini-2.0-flash-exp:free"

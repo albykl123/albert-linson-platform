@@ -1,0 +1,15 @@
+Stripe is seeking a Senior Backend Engineer to join our Core Payments Infrastructure team.
+
+Role Overview:
+You will design, build, and operate distributed financial systems processing billions in transaction volume.
+
+Core Requirements:
+- 4+ years of professional backend engineering experience with Python and FastAPI.
+- Deep expertise in PostgreSQL database modeling, indexing, and query optimization.
+- Hands-on experience containerizing services with Docker and deploying to AWS.
+- Demonstrated track record architecting reliable REST APIs and microservices.
+- Excellent communication and cross-functional leadership skills.
+
+Preferred Qualifications:
+- Experience with Kubernetes cluster orchestration and Terraform infrastructure as code.
+- Knowledge of payment processing gateways, Kafka message queues, or Redis caching.
