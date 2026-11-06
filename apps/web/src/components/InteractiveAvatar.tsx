@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
-import { Sparkles, Mic, Volume2, VolumeX, RotateCcw } from "lucide-react";
+import { Sparkles, Mic, Volume2, RotateCcw } from "lucide-react";
 import { openAlbertChat } from "./AvatarChatbot";
 
 interface InteractiveAvatarProps {
@@ -19,16 +19,13 @@ export function InteractiveAvatar({
 }: InteractiveAvatarProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const [isWelcoming, setIsWelcoming] = useState(true);
-  const [isMuted, setIsMuted] = useState(true);
-  const [hasPlayedAudio, setHasPlayedAudio] = useState(false);
 
-  // Initialize and play avatar walking & waving clip on first load / refresh
+  // Initialize and play silent avatar walking & waving clip on first load / refresh
   useEffect(() => {
     setIsWelcoming(true);
 
@@ -37,47 +34,17 @@ export function InteractiveAvatar({
       video.currentTime = 0;
       const playPromise = video.play();
       if (playPromise !== undefined) {
-        playPromise.catch(() => {
-          // Fallback if browser requires interaction
-        });
+        playPromise.catch(() => {});
       }
     }
 
-    // Prepare audio playback
-    const audio = new Audio("/albert-avatar-audio.mp3");
-    audio.volume = 0.9;
-    audioRef.current = audio;
-
-    // Browser audio autoplay handling: play voice greeting on first interaction if blocked on load
-    const triggerAudioOnInteraction = () => {
-      if (!hasPlayedAudio && audioRef.current) {
-        audioRef.current.play().then(() => {
-          setHasPlayedAudio(true);
-          setIsMuted(false);
-        }).catch(() => {});
-      }
-      window.removeEventListener("pointerdown", triggerAudioOnInteraction);
-      window.removeEventListener("scroll", triggerAudioOnInteraction);
-      window.removeEventListener("keydown", triggerAudioOnInteraction);
-    };
-
-    window.addEventListener("pointerdown", triggerAudioOnInteraction, { passive: true });
-    window.addEventListener("scroll", triggerAudioOnInteraction, { passive: true });
-    window.addEventListener("keydown", triggerAudioOnInteraction, { passive: true });
-
-    // Video duration is 5.0 seconds
+    // Video duration is 3.0 seconds
     const timer = setTimeout(() => {
       setIsWelcoming(false);
-    }, 5000);
+    }, 3000);
 
     return () => {
       clearTimeout(timer);
-      window.removeEventListener("pointerdown", triggerAudioOnInteraction);
-      window.removeEventListener("scroll", triggerAudioOnInteraction);
-      window.removeEventListener("keydown", triggerAudioOnInteraction);
-      if (audioRef.current) {
-        audioRef.current.pause();
-      }
     };
   }, []);
 
@@ -89,33 +56,9 @@ export function InteractiveAvatar({
       videoRef.current.currentTime = 0;
       videoRef.current.play().catch(() => {});
     }
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play().then(() => {
-        setIsMuted(false);
-        setHasPlayedAudio(true);
-      }).catch(() => {});
-    }
     setTimeout(() => {
       setIsWelcoming(false);
-    }, 5000);
-  };
-
-  // Toggle audio sound
-  const handleToggleAudio = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (audioRef.current) {
-      if (!isMuted) {
-        audioRef.current.pause();
-        setIsMuted(true);
-      } else {
-        audioRef.current.currentTime = 0;
-        audioRef.current.play().then(() => {
-          setIsMuted(false);
-          setHasPlayedAudio(true);
-        }).catch(() => {});
-      }
-    }
+    }, 3000);
   };
 
   // Mouse move handler for smooth 3D tilt
@@ -191,27 +134,16 @@ export function InteractiveAvatar({
             )}
           </span>
 
-          {/* Sound Audio Controller Button */}
-          <button
-            type="button"
-            onClick={handleToggleAudio}
-            className="p-1 rounded-md text-cyan-400 hover:text-cyan-200 hover:bg-cyan-950/60 transition-colors ml-1"
-            title={isMuted ? "Unmute avatar voice" : "Mute avatar voice"}
-            aria-label="Toggle avatar greeting audio"
-          >
-            {isMuted ? <VolumeX className="h-3.5 w-3.5" /> : <Volume2 className="h-3.5 w-3.5 animate-pulse" />}
-          </button>
-
           {/* Replay Walking & Waving Clip Button */}
           {!isWelcoming && (
             <button
               type="button"
               onClick={handleReplayVideo}
-              className="p-1 rounded-md text-slate-400 hover:text-cyan-300 hover:bg-cyan-950/60 transition-colors"
+              className="p-1 rounded-md text-slate-400 hover:text-cyan-300 hover:bg-cyan-950/60 transition-colors ml-1"
               title="Replay walk-in and wave animation"
               aria-label="Replay greeting animation"
             >
-              <RotateCcw className="h-3 w-3" />
+              <RotateCcw className="h-3.5 w-3.5" />
             </button>
           )}
 
@@ -220,7 +152,7 @@ export function InteractiveAvatar({
         </div>
       </div>
 
-      {/* 2. Center 3D Avatar Character Stage: User's Transparent Walking & Waving Video Clip */}
+      {/* 2. Center 3D Avatar Character Stage: Silent Transparent Walking & Waving Video Clip */}
       <div
         className="relative z-10 w-full h-[400px] sm:h-[460px] flex items-end justify-center transition-transform duration-150 ease-out"
         style={{
@@ -236,7 +168,7 @@ export function InteractiveAvatar({
           }}
         />
 
-        {/* Transparent Walking & Waving Video Clip */}
+        {/* Silent Transparent Walking & Waving Video Clip */}
         <div className="relative w-full h-full flex items-end justify-center pointer-events-none">
           <video
             ref={videoRef}
@@ -247,6 +179,7 @@ export function InteractiveAvatar({
             muted
             loop={false}
             preload="auto"
+            onEnded={() => setIsWelcoming(false)}
             className="w-full h-full object-contain object-bottom filter contrast-[1.05] brightness-[1.02] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_20px_45px_rgba(6,182,212,0.35)] transition-all duration-300"
             style={{
               background: "transparent",
