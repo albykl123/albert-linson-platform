@@ -16,8 +16,10 @@ import {
   Unlock,
   Search,
   ArrowUpRight,
-  Sparkles
+  Sparkles,
+  Bot
 } from "lucide-react";
+import { openAlbertChat } from "./AvatarChatbot";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -87,7 +89,19 @@ export function Navbar() {
         </nav>
 
         {/* Right CTA & Discrete Owner Access */}
-        <div className="hidden sm:flex items-center space-x-2.5">
+        <div className="hidden sm:flex items-center space-x-2">
+          <button
+            onClick={() => openAlbertChat()}
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-cyan-500/40 bg-slate-950 text-cyan-300 hover:bg-slate-900 text-xs font-semibold shadow-[0_0_12px_rgba(6,182,212,0.25)] transition-all hover:scale-[1.02] cursor-pointer"
+            title="Converse with Albert's AI Digital Twin"
+          >
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+            </span>
+            <span>AI Twin</span>
+          </button>
+
           <Link
             href="/matcher"
             className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-swiss-navy text-white hover:bg-swiss-navy/90 text-xs font-semibold shadow-sm transition-all"
@@ -166,22 +180,37 @@ export function Navbar() {
               </Link>
             );
           })}
-          <div className="pt-3 border-t border-swiss-divider flex items-center justify-between">
-            <Link
-              href="/resume"
-              onClick={() => setIsOpen(false)}
-              className="text-xs font-semibold text-swiss-blue"
+          <div className="pt-3 border-t border-swiss-divider space-y-2">
+            <button
+              onClick={() => {
+                setIsOpen(false);
+                openAlbertChat();
+              }}
+              className="w-full flex items-center justify-center space-x-2 py-2 rounded-lg border border-cyan-500/40 bg-slate-950 text-cyan-300 text-xs font-semibold shadow-sm"
             >
-              Download Resume
-            </Link>
-            <Link
-              href="/admin"
-              onClick={() => setIsOpen(false)}
-              className="text-xs text-gray-500 hover:text-swiss-navy flex items-center space-x-1"
-            >
-              <Lock className="h-3 w-3" />
-              <span>Owner Portal</span>
-            </Link>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-cyan-500"></span>
+              </span>
+              <span>Talk to Albert AI Digital Twin</span>
+            </button>
+            <div className="flex items-center justify-between pt-1">
+              <Link
+                href="/resume"
+                onClick={() => setIsOpen(false)}
+                className="text-xs font-semibold text-swiss-blue"
+              >
+                Download Resume
+              </Link>
+              <Link
+                href="/admin"
+                onClick={() => setIsOpen(false)}
+                className="text-xs text-gray-500 hover:text-swiss-navy flex items-center space-x-1"
+              >
+                <Lock className="h-3 w-3" />
+                <span>Owner Portal</span>
+              </Link>
+            </div>
           </div>
         </div>
       )}

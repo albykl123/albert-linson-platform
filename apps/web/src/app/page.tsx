@@ -109,7 +109,7 @@ export default function HomePage() {
           </div>
 
           {/* Right Column: 3D Holographic Interactive Avatar Stage */}
-          <div className="lg:col-span-5 flex justify-center">
+          <div className="lg:col-span-5 flex justify-center order-first lg:order-last mb-8 lg:mb-0">
             <div className="w-full max-w-sm sm:max-w-md">
               <InteractiveAvatar />
             </div>

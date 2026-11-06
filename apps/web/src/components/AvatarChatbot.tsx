@@ -344,16 +344,23 @@ export function AvatarChatbot() {
     <>
       {/* 1. Global Floating Executive Copilot Launcher (Bottom Right) */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end">
-        {/* Floating Tooltip Speech Bubble on Hover (when closed) */}
-        {!isOpen && isHovered && (
-          <div className="mb-3 mr-1 p-3.5 rounded-2xl bg-slate-900/95 border border-cyan-500/40 text-white shadow-2xl backdrop-blur-md max-w-xs text-xs animate-in fade-in slide-in-from-bottom-2 duration-200">
-            <div className="flex items-center space-x-1.5 text-cyan-400 font-semibold mb-1">
-              <Sparkles className="h-3.5 w-3.5" />
-              <span>Albert AI &bull; Interactive Copilot</span>
+        {/* Floating Tooltip Speech Bubble (Visible prompt on every page) */}
+        {!isOpen && (
+          <div 
+            onClick={() => setIsOpen(true)}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="mb-2 mr-1 px-3 py-2 rounded-2xl bg-slate-950/95 border border-cyan-400/60 text-white shadow-[0_10px_25px_rgba(0,0,0,0.6)] backdrop-blur-md text-xs cursor-pointer group hover:border-cyan-300 transition-all hover:scale-105 flex items-center space-x-2 select-none"
+          >
+            <Sparkles className="h-3 w-3 text-cyan-400 animate-spin [animation-duration:6s]" />
+            <div className="text-[11px] font-semibold text-cyan-300 flex items-center space-x-1">
+              <span>Albert AI Twin</span>
+              <span className="text-slate-400 font-normal hidden sm:inline">&bull; Speak or Chat</span>
             </div>
-            <p className="text-slate-200 leading-relaxed text-[11px]">
-              Hi! Click to speak or text with Albert&apos;s AI Twin regarding US IT recruiting, software builds, or schedule an interview!
-            </p>
+            <div className="flex items-center space-x-1 pl-1.5 border-l border-slate-800 text-cyan-400">
+              <Mic className="h-3 w-3" />
+              <Volume2 className="h-3 w-3" />
+            </div>
           </div>
         )}
 
