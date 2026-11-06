@@ -38,10 +38,10 @@ export function InteractiveAvatar({
       }
     }
 
-    // Video duration is 3.0 seconds
+    // Video duration is 3.4 seconds
     const timer = setTimeout(() => {
       setIsWelcoming(false);
-    }, 3000);
+    }, 3400);
 
     return () => {
       clearTimeout(timer);
@@ -58,7 +58,7 @@ export function InteractiveAvatar({
     }
     setTimeout(() => {
       setIsWelcoming(false);
-    }, 3000);
+    }, 3400);
   };
 
   // Mouse move handler for smooth 3D tilt
