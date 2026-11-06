@@ -19,14 +19,20 @@ export interface JDAnalysisResult {
   recommendation: string;
 }
 
-// Canonical tech vocabulary dictionary
+// Canonical tech, recruitment, business & engineering vocabulary dictionary
 const KNOWN_TECH_KEYWORDS = [
   "python", "javascript", "typescript", "react", "next.js", "node.js",
   "fastapi", "sql", "sqlite", "postgresql", "docker", "kubernetes", "aws",
   "cloudflare", "git", "ci/cd", "html", "css", "tailwind", "figma",
   "ui/ux", "machine learning", "artificial intelligence", "rest api",
   "graphql", "linux", "c++", "c", "bash", "powershell", "ats", "recruitment",
-  "agile", "scrum", "data analysis", "microservices", "redis", "mongodb"
+  "us it recruitment", "talent sourcing", "candidate screening", "talent acquisition",
+  "interview coordination", "technical staffing", "lead generation", "client acquisition",
+  "cold calling", "market research", "client relationship management", "event management",
+  "public relations", "stakeholder management", "cross-functional coordination",
+  "android studio", "kotlin", "jetpack compose", "bootstrap", "adobe xd",
+  "medical imaging", "computational analysis", "agile", "scrum", "data analysis",
+  "microservices", "redis", "mongodb"
 ];
 
 export function analyzeJobDescription(resumeText: string, jdText: string): JDAnalysisResult {
