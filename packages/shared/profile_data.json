@@ -69,7 +69,7 @@
       "period": "Dec 2025 – July 2026",
       "highlights": [
         "Managed full-cycle US IT recruitment across demanding enterprise technology requirements, covering talent sourcing, rigorous candidate screening, interviewing, and onboarding.",
-        "Improved placement success rate by 70% through structured requirement mapping and data-driven candidate qualification.",
+        "Streamlined US IT technical recruitment through structured requirement mapping, technical competency screening, and robust talent pipeline delivery.",
         "Built and maintained robust candidate talent pipelines utilizing industry ATS tools, LinkedIn Recruiter, and technology job portals.",
         "Collaborated directly with US-based account managers and client technical leads to translate technical job descriptions into actionable screening criteria.",
         "Consistently met and exceeded weekly submission quotas and client hiring targets with documented metric tracking."
@@ -107,7 +107,7 @@
       "period": "May 2024 – Apr 2025",
       "highlights": [
         "Designed and prototyped responsive citizen-facing user interfaces in Figma and Adobe XD, aligning with municipal design standards and accessibility guidelines.",
-        "Modernized civic web interfaces and portal navigation, leading to a measured 70% reduction in user-reported usability issues and support tickets.",
+        "Modernized civic web interfaces and portal navigation in Figma and React, resolving high-friction citizen workflows and streamlining support resolution.",
         "Collaborated with core engineering staff on Android UI prototyping, mobile layout testing, and cross-browser frontend optimization."
       ]
     }
@@ -242,7 +242,7 @@
       "description": "Civic services dashboard designed and prototyped for the Municipal Corporation of Delhi, unifying citizen complaint tracking, public sanitation metrics, and municipal service status into an accessible, responsive web interface.",
       "technologies": ["Figma", "Adobe XD", "HTML5", "CSS3", "JavaScript", "Bootstrap"],
       "highlights": [
-        "Designed accessible, mobile-first citizen interfaces resulting in 70% decrease in user-reported navigation friction.",
+        "Designed accessible, mobile-first citizen interfaces and streamlined grievance redressal navigation compliant with municipal usability standards.",
         "Conducted end-user usability testing across diverse citizen demographics in Delhi."
       ],
       "github_url": "https://github.com/albertlinson/mcd-civic-dashboard",

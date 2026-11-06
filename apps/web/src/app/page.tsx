@@ -83,8 +83,8 @@ export default function HomePage() {
             <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">FreeStack Services</div>
           </div>
           <div className="glass-card p-5 rounded-2xl text-center">
-            <div className="text-2xl sm:text-3xl font-extrabold text-green-400">70%</div>
-            <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Proven Impact Metric</div>
+            <div className="text-2xl sm:text-3xl font-extrabold text-green-400">$0/mo</div>
+            <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Zero-Cost Cloud Ops</div>
           </div>
         </div>
       </section>
