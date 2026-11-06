@@ -344,27 +344,7 @@ export function AvatarChatbot() {
     <>
       {/* 1. Global Floating Executive Copilot Launcher (Bottom Right) */}
       <div id="site-albert-chatbot" className="fixed bottom-6 right-6 z-50 flex flex-col items-end print:hidden">
-        {/* Floating Tooltip Speech Bubble (Visible prompt on every page) */}
-        {!isOpen && (
-          <div 
-            onClick={() => setIsOpen(true)}
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="mb-2 mr-1 px-3 py-2 rounded-2xl bg-slate-950/95 border border-cyan-400/60 text-white shadow-[0_10px_25px_rgba(0,0,0,0.6)] backdrop-blur-md text-xs cursor-pointer group hover:border-cyan-300 transition-all hover:scale-105 flex items-center space-x-2 select-none"
-          >
-            <Sparkles className="h-3 w-3 text-cyan-400 animate-spin [animation-duration:6s]" />
-            <div className="text-[11px] font-semibold text-cyan-300 flex items-center space-x-1">
-              <span>Albert AI Twin</span>
-              <span className="text-slate-400 font-normal hidden sm:inline">&bull; Speak or Chat</span>
-            </div>
-            <div className="flex items-center space-x-1 pl-1.5 border-l border-slate-800 text-cyan-400">
-              <Mic className="h-3 w-3" />
-              <Volume2 className="h-3 w-3" />
-            </div>
-          </div>
-        )}
-
-        {/* The Interactive Avatar Trigger Button */}
+        {/* The Interactive Avatar Trigger Button (Circular Launcher Only) */}
         {!isOpen && (
           <button
             onClick={() => setIsOpen(true)}
@@ -377,6 +357,7 @@ export function AvatarChatbot() {
             }}
             className="relative flex items-center justify-center p-1 rounded-full bg-gradient-to-br from-cyan-400 via-blue-600 to-indigo-900 shadow-[0_0_25px_rgba(6,182,212,0.45)] hover:shadow-[0_0_35px_rgba(6,182,212,0.7)] cursor-pointer group focus:outline-none"
             aria-label="Open Albert AI Chatbot"
+            title="Chat with Albert's AI Digital Twin"
           >
             {/* Pulsing Holographic Ring */}
             <span className="absolute -inset-1 rounded-full bg-cyan-400 opacity-40 blur-sm group-hover:opacity-75 transition-opacity animate-pulse"></span>
