@@ -5,10 +5,10 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployed Commit:** `d425efe` ("feat(avatar): add 3D interactive holographic avatar with mouse hover parallax and global AI recruiter chatbot")  
-**Active Cloudflare Worker Version ID:** `8f95da08-c293-4d5a-aef8-08bb8877fb7d`  
+**Latest Deployed Commit:** `af1c837` ("feat(avatar): integrate cutout subject avatar, interactive mouse follower companion and contextual talking speech bubbles")  
+**Active Cloudflare Worker Version ID:** Verified in CI/CD Run `42252740125`  
 **Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
-**Latest Successful CI/CD Run:** [Run 42249676200](https://github.com/albykl123/albert-linson-platform/actions/runs/42249676200) (Duration: 2m43s, 100% Pass)  
+**Latest Successful CI/CD Run:** [Run 42252740125](https://github.com/albykl123/albert-linson-platform/actions/runs/42252740125) (Duration: 2m43s, 100% Pass)  
 **Release Acceptance Status:** **MASTER PROJECT LIVE & 3D INTERACTIVE AVATAR CHATBOT DEPLOYED — 100% PRODUCTION VERIFIED**  
 **Free Tier Cost:** $0.00 / Month (100% Zero-Cost Free Developer Stack)  
 
@@ -87,8 +87,15 @@ The platform has been audited, migrated to the official OpenNext Cloudflare Work
 - **Streamlined Navigation Bar:** Reduced menu from 9 items down to 7 streamlined links (About, Experience, Leadership, Education, Projects & Research, Resume & Skills, FreeStack), optimizing mobile responsiveness and eliminating desktop clutter.
 - **Backward Compatibility:** Dedicated routes (`/research`, `/skills`) seamlessly maintain backwards compatibility with unified banner guides and direct access.
 
-### 3.6. 3D Interactive Holographic Avatar & Global AI Recruiter Chatbot
-- **Interactive Mouse Tracking & 3D Tilt:** Hero section avatar features real-time cursor tracking with dynamic 3D perspective tilt (`rotateX`, `rotateY`), floating HUD cards with multi-plane stereoscopic parallax depth, specular holographic light reflections, and pulsing pedestal rings.
+### 3.6. 3D Cutout Avatar, Interactive Mouse Follower Companion & Global AI Recruiter Chatbot
+- **Transparent Subject Cutout:** Extracted high-definition subject cutout from user source image (`/albert-avatar-cutout.png`, 866x327 px, 4-channel BGRA), completely removing background and eliminating checkerboard transparency artifacts.
+- **Interactive 3D Holographic Stage (Homepage):** Hero section avatar features real-time cursor tracking with dynamic 3D perspective tilt (`rotateX`, `rotateY`), floating HUD cards with multi-plane stereoscopic parallax depth, specular holographic light reflections, concentric neon floor rings under feet, and instant click-to-chat.
+- **Interactive Mouse Follower Companion (`AvatarFollower`):**
+  - Omnipresent across desktop sessions (`pointer: fine`), tracking cursor movement via smooth `requestAnimationFrame` lerp damping (`dx * 0.14`).
+  - Dynamic velocity-based banking tilt (`-15deg` to `+15deg`) and responsive viewport edge collision detection.
+  - Floating animated speech bubble with section-aware dialogue bank (`#hero`, `#experience`, `#projects`, `#education`, `#resume`, `#leadership`, `#freestack`, `default`) that reacts dynamically to `document.elementFromPoint()`.
+  - Non-blocking ergonomics: outer container uses `pointer-events-none` so visitors can click any website links or buttons unimpeded; clicking the avatar cutout directly launches the conversational chatbot.
+  - Automatically hidden during mobile/touch sessions and while the chatbot window is open.
 - **Global Floating Copilot Widget:** Omnipresent on every page with a miniature avatar badge, live green status pulse, and interactive hover tooltip speech bubbles.
 - **Recruiter AI Chatbot (`/api/chat`):** Interactive digital twin responding in real time to queries regarding Albert's verified US IT recruitment track record, software projects, academic credentials, and interview availability. Features zero-latency deterministic matching and OpenRouter multi-model fallback with anti-hallucination guardrails.
 
