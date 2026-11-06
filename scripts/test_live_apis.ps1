@@ -39,7 +39,7 @@ try {
     Write-Host "  Failed: $($_.Exception.Message)" -ForegroundColor Red
 }
 
-# 5. Test Admin Auth: Unauthorized / Wrong Passcode
+# 5. Test Admin Auth Security: Unauthorized / Wrong Passcode
 Write-Host "`n[5/6] Testing Admin Auth Security (GET /api/auth & Invalid Passcode POST)..."
 try {
     $authStatus = Invoke-RestMethod -Uri "$baseUrl/api/auth" -Method GET
@@ -49,23 +49,25 @@ try {
 }
 
 try {
-    $invalidAuth = Invoke-RestMethod -Uri "$baseUrl/api/auth" -Method POST -Body '{"passcode":"wrong-passcode"}' -ContentType "application/json"
+    $invalidAuth = Invoke-RestMethod -Uri "$baseUrl/api/auth" -Method POST -Body '{"passcode":"compromised-or-invalid-passcode"}' -ContentType "application/json"
     Write-Host "  Security Alert: Wrong passcode succeeded unexpectedly!" -ForegroundColor Red
 } catch {
     Write-Host "  Success! Invalid passcode properly rejected with HTTP 401" -ForegroundColor Green
 }
 
-# 6. Test Admin Auth: Authorized with ADMIN_SECRET_KEY
-Write-Host "`n[6/6] Testing Admin Auth Session with configured Secret..."
-$adminKey = "6kQt1vaComCajsXucrQSphRV3fFvQ3NNU4-ffrGQrvQ"
-$session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
-try {
-    $validAuth = Invoke-RestMethod -Uri "$baseUrl/api/auth" -Method POST -Body (@{ passcode = $adminKey } | ConvertTo-Json) -ContentType "application/json" -WebSession $session
-    Write-Host "  Success! Authenticated: $($validAuth.authenticated)" -ForegroundColor Green
-    
-    # Check session cookie verification
-    $verifySession = Invoke-RestMethod -Uri "$baseUrl/api/auth" -Method GET -WebSession $session
-    Write-Host "  Session Cookie Verified: $($verifySession.authenticated)" -ForegroundColor Green
-} catch {
-    Write-Host "  Valid Auth Failed: $($_.Exception.Message)" -ForegroundColor Yellow
+# 6. Test Admin Auth Session with Environment Variable (if provided)
+Write-Host "`n[6/6] Testing Admin Auth Session with `$env:ADMIN_SECRET_KEY..."
+if ($env:ADMIN_SECRET_KEY) {
+    $session = New-Object Microsoft.PowerShell.Commands.WebRequestSession
+    try {
+        $validAuth = Invoke-RestMethod -Uri "$baseUrl/api/auth" -Method POST -Body (@{ passcode = $env:ADMIN_SECRET_KEY } | ConvertTo-Json) -ContentType "application/json" -WebSession $session
+        Write-Host "  Success! Authenticated: $($validAuth.authenticated)" -ForegroundColor Green
+        
+        $verifySession = Invoke-RestMethod -Uri "$baseUrl/api/auth" -Method GET -WebSession $session
+        Write-Host "  Session Cookie Verified: $($verifySession.authenticated)" -ForegroundColor Green
+    } catch {
+        Write-Host "  Valid Auth Failed: $($_.Exception.Message)" -ForegroundColor Yellow
+    }
+} else {
+    Write-Host "  `$env:ADMIN_SECRET_KEY not set locally. Passcode not exposed." -ForegroundColor Gray
 }

@@ -37,6 +37,8 @@ backups/
 .env.production
 *.pem
 *.key
+*.tmp
+.secret*
 
 # IDE & OS
 .vscode/

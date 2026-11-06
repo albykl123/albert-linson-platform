@@ -160,8 +160,61 @@ function removeR2Binding() {
   }
 }
 
+async function syncWorkerSecrets() {
+  const secretKey = process.env.ADMIN_SECRET_KEY;
+  if (secretKey) {
+    try {
+      console.log('[Security] Syncing encrypted ADMIN_SECRET_KEY to Cloudflare Worker...');
+      const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/workers/scripts/albert-linson-platform/secrets`, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          name: 'ADMIN_SECRET_KEY',
+          text: secretKey.trim(),
+          type: 'secret_text',
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        console.log('[Security] Successfully updated Cloudflare Worker secret: ADMIN_SECRET_KEY');
+      } else {
+        console.warn('[Security] Secret sync notice (ADMIN_SECRET_KEY):', JSON.stringify(data.errors || data));
+      }
+    } catch (err) {
+      console.warn('[Security] Secret sync warning (ADMIN_SECRET_KEY):', err.message);
+    }
+  } else {
+    console.log('[Security] Skipping Worker secret update: ADMIN_SECRET_KEY not in env.');
+  }
+
+  const openrouterKey = process.env.OPENROUTER_API_KEY;
+  if (openrouterKey) {
+    try {
+      console.log('[Security] Syncing encrypted OPENROUTER_API_KEY to Cloudflare Worker...');
+      const res = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/workers/scripts/albert-linson-platform/secrets`, {
+        method: 'PUT',
+        headers,
+        body: JSON.stringify({
+          name: 'OPENROUTER_API_KEY',
+          text: openrouterKey.trim(),
+          type: 'secret_text',
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        console.log('[Security] Successfully updated Cloudflare Worker secret: OPENROUTER_API_KEY');
+      } else {
+        console.warn('[Security] Secret sync notice (OPENROUTER_API_KEY):', JSON.stringify(data.errors || data));
+      }
+    } catch (err) {
+      console.warn('[Security] Secret sync warning (OPENROUTER_API_KEY):', err.message);
+    }
+  }
+}
+
 async function main() {
   await verifyAuthAndWorkersApi();
+  await syncWorkerSecrets();
   await getOrProvisionD1();
   await verifyOrHandleR2();
   console.log('--- Cloudflare Resource Provisioning & Verification Finished ---');
