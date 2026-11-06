@@ -15,7 +15,8 @@ import {
   Lock,
   Unlock,
   Search,
-  ArrowUpRight
+  ArrowUpRight,
+  Sparkles
 } from "lucide-react";
 
 export function Navbar() {
@@ -42,6 +43,7 @@ export function Navbar() {
     { href: "/education", label: "Education" },
     { href: "/projects", label: "Projects & Research", activeRoutes: ["/projects", "/research"] },
     { href: "/resume", label: "Resume & Skills", activeRoutes: ["/resume", "/skills"] },
+    { href: "/matcher", label: "JD Matcher" },
   ];
 
   return (
@@ -85,10 +87,19 @@ export function Navbar() {
         </nav>
 
         {/* Right CTA & Discrete Owner Access */}
-        <div className="hidden sm:flex items-center space-x-3">
+        <div className="hidden sm:flex items-center space-x-2.5">
+          <Link
+            href="/matcher"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-swiss-navy text-white hover:bg-swiss-navy/90 text-xs font-semibold shadow-sm transition-all"
+            title="Recruiter JD Matcher"
+          >
+            <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+            <span>JD Matcher</span>
+          </Link>
+
           <Link
             href="/resume"
-            className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg border border-swiss-divider bg-swiss-light text-swiss-navy hover:bg-swiss-divider/50 text-xs font-semibold transition-all shadow-sm"
+            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-swiss-divider bg-swiss-light text-swiss-navy hover:bg-swiss-divider/50 text-xs font-semibold transition-all shadow-sm"
           >
             <FileText className="h-3.5 w-3.5 text-swiss-blue" />
             <span>Resume</span>

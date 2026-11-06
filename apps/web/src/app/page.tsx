@@ -47,16 +47,24 @@ export default function HomePage() {
             {/* Action Call-to-Actions */}
             <div className="mt-8 flex flex-wrap gap-3 items-center">
               <Link
-                href="/projects"
+                href="/matcher"
                 className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-swiss-navy text-swiss-white hover:bg-swiss-navy/90 text-sm font-semibold shadow-sm transition-all"
               >
-                <span>View My Work</span>
+                <Sparkles className="h-4 w-4 text-cyan-400" />
+                <span>Match Your JD</span>
+              </Link>
+
+              <Link
+                href="/projects"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-light hover:bg-swiss-divider/50 text-swiss-navy text-sm font-semibold transition-all"
+              >
+                <span>Projects</span>
                 <ArrowRight className="h-4 w-4" />
               </Link>
 
               <Link
                 href="/experience"
-                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-light hover:bg-swiss-divider/50 text-swiss-navy text-sm font-semibold transition-all"
+                className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold transition-all"
               >
                 <Briefcase className="h-4 w-4 text-swiss-blue" />
                 <span>Experience</span>
@@ -67,7 +75,7 @@ export default function HomePage() {
                 className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold transition-all"
               >
                 <FileText className="h-4 w-4 text-swiss-blue" />
-                <span>Resume & Skills</span>
+                <span>Resume</span>
               </Link>
 
               <a

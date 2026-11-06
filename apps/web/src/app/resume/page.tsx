@@ -187,6 +187,15 @@ ${(masterProfile.certifications || [])
             </div>
 
             {/* Document Export Buttons */}
+            <Link
+              href="/matcher"
+              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-swiss-navy text-white hover:bg-swiss-navy/90 text-xs font-semibold shadow-sm transition-all"
+              title="Evaluate your open Job Description against this resume"
+            >
+              <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+              <span>Match with Your JD</span>
+            </Link>
+
             <button
               onClick={handlePrint}
               className="inline-flex items-center space-x-1.5 px-3.5 py-1.5 rounded-lg bg-paper-surface border border-paper-border hover:bg-paper-border/50 text-paper-graphite text-xs font-semibold shadow-sm transition-all"

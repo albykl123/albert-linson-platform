@@ -7,6 +7,18 @@ export const dynamic = "force-dynamic";
 function getDeterministicResponse(userQuery: string): { response: string; suggestions: string[]; actionLink?: { label: string; href: string } } {
   const q = userQuery.toLowerCase();
 
+  if (q.includes("match") || q.includes("jd") || q.includes("job description") || q.includes("fit") || q.includes("alignment") || q.includes("requisition")) {
+    return {
+      response: "You can test candidate compatibility in real time using our interactive Recruiter JD Matcher. Paste your open job description to generate an evidence-based compatibility score, view matching experience and projects, and inspect transparent skill gap analysis.",
+      suggestions: [
+        "Open Recruiter JD Matcher",
+        "Tell me about his US IT recruiting track record",
+        "Download verified master resume"
+      ],
+      actionLink: { label: "Launch Recruiter JD Matcher", href: "/matcher" }
+    };
+  }
+
   if (q.includes("recruit") || q.includes("innova") || q.includes("staffing") || q.includes("sourcing") || q.includes("talent") || q.includes("us it")) {
     return {
       response: "Albert currently works as a US IT Recruiter at Innova Solutions (Dec 2025 – Present). He directs end-to-end technical staffing across cloud, DevOps, and full-stack requisitions for US-based enterprise clients. Using ATS platforms and targeted talent sourcing, he has improved placement success rates by approximately 70% through disciplined candidate qualification.",

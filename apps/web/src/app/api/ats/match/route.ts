@@ -1,24 +1,27 @@
 import { NextRequest, NextResponse } from "next/server";
 import { analyzeJobDescription } from "@/lib/jobMatcher";
 
+export const dynamic = "force-dynamic";
+
 export async function POST(req: NextRequest) {
   try {
-    const body = await req.json();
-    const resumeText = body.resumeText || "";
-    const jdText = body.jdText || "";
+    const body = await req.json().catch(() => ({}));
+    const jdText = (body.jdText || "").trim();
+    const resumeText = (body.resumeText || "").trim();
 
-    if (!resumeText.trim() || !jdText.trim()) {
+    if (!jdText) {
       return NextResponse.json(
-        { error: "Both resumeText and jdText are required" },
+        { error: "A job description (jdText) is required for analysis." },
         { status: 400 }
       );
     }
 
+    // Runs explainable evidence-grounded matching
     const result = analyzeJobDescription(resumeText, jdText);
     return NextResponse.json(result, { status: 200 });
-  } catch (error) {
+  } catch (error: any) {
     return NextResponse.json(
-      { error: "Failed to analyze job description match" },
+      { error: "Failed to analyze job description match", details: error.message },
       { status: 500 }
     );
   }
