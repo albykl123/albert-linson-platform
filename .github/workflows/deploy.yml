@@ -52,7 +52,7 @@ jobs:
 
       - name: Install Frontend Dependencies
         working-directory: apps/web
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Run TypeScript Verification
         working-directory: apps/web
@@ -74,7 +74,7 @@ jobs:
 
       - name: Install Frontend Dependencies
         working-directory: apps/web
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Provision or Verify Cloudflare D1 Database & R2 Bucket
         working-directory: apps/web
@@ -106,7 +106,7 @@ jobs:
           NEXT_PUBLIC_SITE_URL: "https://albertlinson.com"
           ADMIN_SECRET_KEY: ${{ secrets.ADMIN_SECRET_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: npx @opennextjs/cloudflare
+        run: npx @opennextjs/cloudflare --dangerouslyUseUnsupportedNextVersion || npx @opennextjs/cloudflare
 
       - name: Deploy to Cloudflare Workers
         uses: cloudflare/wrangler-action@v3
