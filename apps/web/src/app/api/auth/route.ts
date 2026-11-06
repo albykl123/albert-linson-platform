@@ -2,8 +2,16 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const dynamic = "force-dynamic";
 
-// Server-side secret key from environment variable
-const ADMIN_SECRET = (process.env.ADMIN_SECRET_KEY || "").trim();
+// Dynamic resolver for server-side master authentication secret
+function getAdminSecret(): string {
+  const secret = (
+    process.env.ADMIN_SECRET_KEY ||
+    (globalThis as any).ADMIN_SECRET_KEY ||
+    (process.env as any).ADMIN_SECRET ||
+    ""
+  ).trim();
+  return secret;
+}
 
 // Constant-time comparison using bitwise XOR across SHA-256 digests
 async function timingSafeEqual(a: string, b: string): Promise<boolean> {
@@ -95,7 +103,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Master password required" }, { status: 400 });
     }
 
-    if (!ADMIN_SECRET) {
+    const adminSecret = getAdminSecret();
+    if (!adminSecret) {
       return NextResponse.json(
         { error: "Server authentication key not configured. Set ADMIN_SECRET_KEY." },
         { status: 403 }
@@ -103,7 +112,7 @@ export async function POST(req: NextRequest) {
     }
 
     const inputPasscode = passcode.trim();
-    const isValid = await verifyMasterPassword(inputPasscode, ADMIN_SECRET);
+    const isValid = await verifyMasterPassword(inputPasscode, adminSecret);
 
     if (!isValid) {
       return NextResponse.json({ error: "Invalid master password" }, { status: 401 });
@@ -111,7 +120,7 @@ export async function POST(req: NextRequest) {
 
     // Authentication successful
     const response = NextResponse.json({ authenticated: true }, { status: 200 });
-    const sessionToken = await generateSessionToken(ADMIN_SECRET);
+    const sessionToken = await generateSessionToken(adminSecret);
 
     // Set secure, tamper-proof session cookie (invalidates all v1/v2/v3 sessions)
     response.cookies.set({
@@ -131,12 +140,13 @@ export async function POST(req: NextRequest) {
 }
 
 export async function GET(req: NextRequest) {
+  const adminSecret = getAdminSecret();
   const sessionCookie = req.cookies.get("albert_admin_session_v4");
-  if (!sessionCookie || !sessionCookie.value || !ADMIN_SECRET) {
+  if (!sessionCookie || !sessionCookie.value || !adminSecret) {
     return NextResponse.json({ authenticated: false }, { status: 200 });
   }
 
-  const expectedToken = await generateSessionToken(ADMIN_SECRET);
+  const expectedToken = await generateSessionToken(adminSecret);
   const isAuthenticated = sessionCookie.value === expectedToken;
   return NextResponse.json({ authenticated: isAuthenticated }, { status: 200 });
 }

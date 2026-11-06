@@ -34,6 +34,7 @@ backups/
 # Environment & Credentials
 .env
 .env.local
+apps/web/.env.local
 .env.production
 *.pem
 *.key
