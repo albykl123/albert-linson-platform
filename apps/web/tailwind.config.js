@@ -9,6 +9,39 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Theme 1: Swiss Editorial (Main Identity & Hero)
+        swiss: {
+          white: "#FFFFFF",
+          light: "#F4F6F8",
+          navy: "#14243A",
+          blue: "#4776A8",
+          divider: "#DCE4ED",
+        },
+        // Theme 2: Warm Ivory (Personal Storytelling, About & Journey)
+        ivory: {
+          base: "#FAF8F2",
+          cream: "#EEEAE0",
+          charcoal: "#26352E",
+          sage: "#879C85",
+          beige: "#D7C9B5",
+        },
+        // Theme 3: Modern Corporate (Technology, Skills & Projects)
+        corporate: {
+          white: "#FFFFFF",
+          pale: "#EDF3FA",
+          slate: "#26364B",
+          cobalt: "#3979CB",
+          border: "#D5E3F4",
+        },
+        // Theme 4: Paper & Typography (Resume & Academic Publications)
+        paper: {
+          offwhite: "#F7F5EF",
+          surface: "#EAE6DA",
+          graphite: "#252525",
+          beige: "#A79D8B",
+          border: "#D5CFC2",
+        },
+        // Legacy palette compatibility
         midnight: {
           950: "#07090e",
           900: "#0b0f19",

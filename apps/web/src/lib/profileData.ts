@@ -1,5 +1,11 @@
 import profileJson from "@/data/profile_data.json";
 
+export interface SkillItem {
+  name: string;
+  category: string;
+  evidence: string;
+}
+
 export interface ProfileData {
   personal: {
     name: string;
@@ -12,6 +18,7 @@ export interface ProfileData {
     linkedin: string;
     github: string;
     portfolio_url: string;
+    languages?: Array<{ name: string; proficiency: string }>;
     bio: string;
   };
   summary: string;
@@ -21,12 +28,20 @@ export interface ProfileData {
     backend_and_cloud: string[];
     recruitment_and_business: string[];
   };
+  skill_levels?: {
+    professional_experience: SkillItem[];
+    project_experience: SkillItem[];
+    learning_familiarity: SkillItem[];
+  };
   experience: Array<{
     id: string;
     role: string;
     company: string;
     location: string;
+    employment_type?: string;
     period: string;
+    tools?: string[];
+    responsibilities?: string[];
     highlights: string[];
   }>;
   education: Array<{
@@ -36,6 +51,14 @@ export interface ProfileData {
     location: string;
     period: string;
     details: string;
+    specialization?: string;
+  }>;
+  certifications?: Array<{
+    id: string;
+    name: string;
+    issuer: string;
+    year: string;
+    description: string;
   }>;
   research: Array<{
     id: string;
@@ -54,6 +77,8 @@ export interface ProfileData {
     tagline: string;
     description: string;
     technologies: string[];
+    architecture?: string;
+    my_contribution?: string;
     highlights: string[];
     github_url: string;
     status: string;

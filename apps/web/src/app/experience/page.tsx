@@ -1,55 +1,106 @@
 import React from "react";
 import { masterProfile } from "@/lib/profileData";
-import { Briefcase, Calendar, MapPin, CheckCircle2 } from "lucide-react";
+import { Briefcase, Calendar, MapPin, CheckCircle2, Wrench, ShieldCheck, Tag } from "lucide-react";
 
 export default function ExperiencePage() {
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-      <div className="mb-12 border-b border-midnight-800 pb-8">
-        <span className="text-xs font-semibold uppercase tracking-widest text-electric-400">Career History</span>
-        <h1 className="text-4xl font-extrabold text-white mt-2">Verified Professional Experience</h1>
-        <p className="text-gray-300 mt-3 text-sm max-w-2xl leading-relaxed">
-          Chronological timeline of enterprise roles, recruitment management, technical operations, and frontend engineering.
-        </p>
-      </div>
+    <div className="bg-ivory-base text-ivory-charcoal min-h-screen py-16 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto">
+        {/* Header */}
+        <div className="mb-12 border-b border-ivory-cream pb-8">
+          <span className="text-xs font-bold uppercase tracking-widest text-ivory-sage">Career Journey & Timeline</span>
+          <h1 className="text-4xl sm:text-5xl font-bold text-ivory-charcoal mt-2 tracking-tight">
+            Verified Professional Experience
+          </h1>
+          <p className="text-gray-700 mt-3 text-base max-w-2xl leading-relaxed">
+            Chronological documentation of full-time employment, technical management, business development, and software internships based strictly on authentic records.
+          </p>
+        </div>
 
-      <div className="relative border-l-2 border-midnight-800 ml-4 sm:ml-8 space-y-12">
-        {masterProfile.experience.map((exp, index) => (
-          <div key={exp.id} className="relative pl-6 sm:pl-10">
-            {/* Timeline bullet icon */}
-            <div className="absolute -left-[17px] top-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-midnight-900 border-2 border-electric-500 text-electric-400 shadow-md shadow-electric-500/20">
-              <Briefcase className="h-4 w-4" />
-            </div>
-
-            <div className="glass-panel p-6 sm:p-8 rounded-2xl">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-midnight-800/80 gap-2">
-                <div>
-                  <h3 className="text-xl font-bold text-white tracking-tight">{exp.role}</h3>
-                  <div className="text-sm font-semibold text-electric-400 mt-0.5">{exp.company}</div>
-                </div>
-                <div className="flex flex-wrap items-center gap-3 text-xs text-gray-400">
-                  <span className="inline-flex items-center space-x-1">
-                    <Calendar className="h-3.5 w-3.5 text-gray-500" />
-                    <span>{exp.period}</span>
-                  </span>
-                  <span className="inline-flex items-center space-x-1">
-                    <MapPin className="h-3.5 w-3.5 text-gray-500" />
-                    <span>{exp.location}</span>
-                  </span>
-                </div>
+        {/* Experience Timeline */}
+        <div className="relative border-l-2 border-ivory-beige/60 ml-4 sm:ml-8 space-y-12">
+          {masterProfile.experience.map((exp) => (
+            <div key={exp.id} className="relative pl-6 sm:pl-10">
+              {/* Timeline marker */}
+              <div className="absolute -left-[17px] top-1.5 flex h-8 w-8 items-center justify-center rounded-full bg-ivory-cream border-2 border-ivory-sage text-ivory-charcoal shadow-sm">
+                <Briefcase className="h-4 w-4" />
               </div>
 
-              <div className="mt-5 space-y-3">
-                {exp.highlights.map((highlight, idx) => (
-                  <div key={idx} className="flex items-start space-x-3 text-xs sm:text-sm text-gray-300 leading-relaxed">
-                    <CheckCircle2 className="h-4 w-4 text-electric-400/80 shrink-0 mt-0.5" />
-                    <span>{highlight}</span>
+              <div className="bg-ivory-cream/60 p-6 sm:p-8 rounded-2xl border border-ivory-beige/50 shadow-sm">
+                {/* Title & Metadata */}
+                <div className="flex flex-col sm:flex-row sm:items-start justify-between pb-4 border-b border-ivory-beige/40 gap-2">
+                  <div>
+                    <div className="flex items-center space-x-2 flex-wrap gap-y-1">
+                      <h3 className="text-xl font-bold text-ivory-charcoal tracking-tight">{exp.role}</h3>
+                      <span className={`px-2 py-0.5 rounded text-[11px] font-semibold uppercase tracking-wider ${
+                        exp.employment_type === "Internship"
+                          ? "bg-ivory-sage/20 text-ivory-charcoal border border-ivory-sage/30"
+                          : "bg-ivory-charcoal text-ivory-base"
+                      }`}>
+                        {exp.employment_type || "Full-Time"}
+                      </span>
+                    </div>
+                    <div className="text-sm font-semibold text-ivory-sage mt-1">{exp.company}</div>
                   </div>
-                ))}
+
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-gray-700">
+                    <span className="inline-flex items-center space-x-1">
+                      <Calendar className="h-3.5 w-3.5 text-ivory-sage" />
+                      <span>{exp.period}</span>
+                    </span>
+                    <span className="inline-flex items-center space-x-1">
+                      <MapPin className="h-3.5 w-3.5 text-ivory-sage" />
+                      <span>{exp.location}</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Key Responsibilities */}
+                {exp.responsibilities && (
+                  <div className="mt-5">
+                    <h4 className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Core Responsibilities</h4>
+                    <ul className="space-y-2">
+                      {exp.responsibilities.map((resp, idx) => (
+                        <li key={idx} className="flex items-start space-x-2.5 text-xs sm:text-sm text-gray-800 leading-relaxed">
+                          <CheckCircle2 className="h-4 w-4 text-ivory-sage shrink-0 mt-0.5" />
+                          <span>{resp}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
+                {/* Demonstrable Outcomes / Highlights */}
+                <div className="mt-5 pt-4 border-t border-ivory-beige/30">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-gray-600 mb-2">Demonstrable Outcomes</h4>
+                  <ul className="space-y-1.5">
+                    {exp.highlights.map((h, idx) => (
+                      <li key={idx} className="text-xs text-gray-700 leading-relaxed flex items-start space-x-2">
+                        <span className="text-ivory-sage font-bold">&bull;</span>
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Tools & Technologies */}
+                {exp.tools && (
+                  <div className="mt-5 pt-4 border-t border-ivory-beige/30 flex items-center flex-wrap gap-1.5">
+                    <span className="text-xs font-semibold text-gray-600 mr-1 flex items-center space-x-1">
+                      <Wrench className="h-3 w-3 text-ivory-sage" />
+                      <span>Tools:</span>
+                    </span>
+                    {exp.tools.map((t) => (
+                      <span key={t} className="px-2 py-0.5 text-[11px] rounded bg-ivory-base text-ivory-charcoal border border-ivory-beige/60 font-medium">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );

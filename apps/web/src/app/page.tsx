@@ -2,175 +2,281 @@ import React from "react";
 import Link from "next/link";
 import { 
   ArrowRight, 
-  Sparkles, 
-  FolderGit2, 
+  FileText, 
+  Mail, 
+  Briefcase, 
   GraduationCap, 
+  FolderGit2, 
   Layers, 
-  Search, 
-  ShieldCheck, 
-  Terminal, 
-  Code, 
-  Cpu, 
+  ExternalLink, 
   CheckCircle2, 
-  ExternalLink 
+  ArrowUpRight,
+  Shield,
+  Sparkles
 } from "lucide-react";
-import { Hero3D } from "@/components/Hero3D";
 import { masterProfile } from "@/lib/profileData";
 import { freeStackData } from "@/lib/freestackData";
 
 export default function HomePage() {
   return (
-    <div className="relative min-h-screen">
-      {/* 3D Constellation Hero Background */}
-      <Hero3D />
-
-      {/* Hero Section */}
-      <section className="relative px-4 pt-20 pb-24 sm:px-6 lg:px-8 max-w-7xl mx-auto flex flex-col items-center text-center">
-        <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full border border-electric-500/30 bg-electric-500/10 text-electric-300 text-xs font-medium mb-8 backdrop-blur-sm shadow-sm animate-pulse">
-          <Sparkles className="h-3.5 w-3.5 text-electric-400" />
-          <span>Personal Intelligence Ecosystem &bull; Production v1.0</span>
-        </div>
-
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white max-w-4xl leading-[1.1]">
-          Building <span className="bg-gradient-to-r from-electric-400 via-blue-300 to-violet-400 bg-clip-text text-transparent">Intelligent Digital</span> Experiences.
-        </h1>
-
-        <p className="mt-6 text-lg sm:text-xl text-gray-300 max-w-2xl font-normal leading-relaxed">
-          I am <strong className="text-white font-semibold">{masterProfile.personal.name}</strong> — {masterProfile.personal.sub_headline}.
-          Bridging technical systems, AI career intelligence, and computational research.
-        </p>
-
-        {/* CTA Button Group */}
-        <div className="mt-10 flex flex-wrap gap-4 justify-center items-center">
-          <Link
-            href="/studio"
-            className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-electric-500 to-blue-600 hover:from-electric-400 hover:to-blue-500 text-white font-semibold text-sm shadow-lg shadow-electric-500/25 transition-all transform hover:-translate-y-0.5"
-          >
-            <Sparkles className="h-4 w-4" />
-            <span>Launch Career Studio</span>
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-
-          <Link
-            href="/projects"
-            className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl border border-midnight-700 bg-midnight-900/80 hover:bg-midnight-800 text-gray-200 hover:text-white font-medium text-sm backdrop-blur-sm transition-all"
-          >
-            <FolderGit2 className="h-4 w-4 text-electric-400" />
-            <span>Explore Projects</span>
-          </Link>
-
-          <Link
-            href="/resume"
-            className="inline-flex items-center space-x-2 px-6 py-3.5 rounded-xl border border-midnight-700 bg-midnight-900/80 hover:bg-midnight-800 text-gray-200 hover:text-white font-medium text-sm backdrop-blur-sm transition-all"
-          >
-            <CheckCircle2 className="h-4 w-4 text-green-400" />
-            <span>Verified Public Resume</span>
-          </Link>
-        </div>
-
-        {/* Quick Metric Badges */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl">
-          <div className="glass-card p-5 rounded-2xl text-center">
-            <div className="text-2xl sm:text-3xl font-extrabold text-white">4+</div>
-            <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Major Projects</div>
+    <div className="bg-swiss-white text-swiss-navy min-h-screen">
+      {/* 1. Hero Section (Swiss Editorial) */}
+      <section className="pt-20 pb-20 sm:pt-28 sm:pb-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="max-w-4xl">
+          {/* Subtle Credential Tag */}
+          <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full border border-swiss-divider bg-swiss-light text-swiss-navy text-xs font-medium mb-6">
+            <span className="h-2 w-2 rounded-full bg-swiss-blue"></span>
+            <span>Verified Professional Profile &bull; MCA (Pursuing), Christ University</span>
           </div>
-          <div className="glass-card p-5 rounded-2xl text-center">
-            <div className="text-2xl sm:text-3xl font-extrabold text-electric-400">3</div>
-            <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Research Papers</div>
+
+          {/* Headline & Name */}
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold tracking-tight text-swiss-navy leading-[1.08]">
+            {masterProfile.personal.name}
+          </h1>
+
+          <p className="mt-4 text-xl sm:text-2xl font-medium text-swiss-blue tracking-tight">
+            {masterProfile.personal.headline}
+          </p>
+
+          <p className="mt-6 text-base sm:text-lg text-gray-700 leading-relaxed max-w-3xl">
+            {masterProfile.summary}
+          </p>
+
+          {/* Action Call-to-Actions */}
+          <div className="mt-10 flex flex-wrap gap-3 items-center">
+            <Link
+              href="/projects"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-swiss-navy text-swiss-white hover:bg-swiss-navy/90 text-sm font-semibold shadow-sm transition-all"
+            >
+              <span>View My Work</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
+
+            <Link
+              href="/experience"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-light hover:bg-swiss-divider/50 text-swiss-navy text-sm font-semibold transition-all"
+            >
+              <Briefcase className="h-4 w-4 text-swiss-blue" />
+              <span>Explore My Experience</span>
+            </Link>
+
+            <Link
+              href="/resume"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold transition-all"
+            >
+              <FileText className="h-4 w-4 text-swiss-blue" />
+              <span>Download Resume</span>
+            </Link>
+
+            <a
+              href={`mailto:${masterProfile.personal.email}`}
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-gray-700 text-sm font-medium transition-all"
+            >
+              <Mail className="h-4 w-4 text-gray-500" />
+              <span>Contact Me</span>
+            </a>
           </div>
-          <div className="glass-card p-5 rounded-2xl text-center">
-            <div className="text-2xl sm:text-3xl font-extrabold text-violet-400">{freeStackData.total_services}+</div>
-            <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">FreeStack Services</div>
-          </div>
-          <div className="glass-card p-5 rounded-2xl text-center">
-            <div className="text-2xl sm:text-3xl font-extrabold text-green-400">$0/mo</div>
-            <div className="text-xs text-gray-400 mt-1 uppercase tracking-wider">Zero-Cost Cloud Ops</div>
+
+          {/* Verified Facts Bar */}
+          <div className="mt-16 pt-8 border-t border-swiss-divider grid grid-cols-2 md:grid-cols-4 gap-6 text-left">
+            <div>
+              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Location</div>
+              <div className="text-sm font-semibold text-swiss-navy mt-1">{masterProfile.personal.location}</div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Education</div>
+              <div className="text-sm font-semibold text-swiss-navy mt-1">MCA (Pursuing) & BCA</div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Core Expertise</div>
+              <div className="text-sm font-semibold text-swiss-navy mt-1">Full-Stack & Recruitment</div>
+            </div>
+            <div>
+              <div className="text-xs uppercase tracking-wider text-gray-500 font-semibold">Research</div>
+              <div className="text-sm font-semibold text-swiss-navy mt-1">2 Focused Manuscripts</div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Projects Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-midnight-900">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-          <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-electric-400">Portfolio Highlights</div>
-            <h2 className="text-3xl font-bold text-white mt-2">Verified Software Systems</h2>
+      {/* 2. Areas of Verified Expertise */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider bg-swiss-light">
+        <div className="max-w-2xl mb-10">
+          <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Competencies</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-swiss-navy mt-1 tracking-tight">
+            Verified Areas of Professional Expertise
+          </h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="p-6 rounded-xl bg-swiss-white border border-swiss-divider shadow-sm">
+            <div className="h-10 w-10 rounded-lg bg-swiss-light border border-swiss-divider flex items-center justify-center text-swiss-blue mb-4">
+              <Briefcase className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-base text-swiss-navy">US IT Recruitment</h3>
+            <p className="mt-2 text-xs text-gray-600 leading-relaxed">
+              Full-cycle technical candidate sourcing, requirements mapping, competency screening, and talent pipeline management with ATS workflows.
+            </p>
           </div>
-          <Link href="/projects" className="mt-4 md:mt-0 text-sm text-electric-400 hover:text-electric-300 inline-flex items-center space-x-1">
-            <span>View all projects</span>
+
+          <div className="p-6 rounded-xl bg-swiss-white border border-swiss-divider shadow-sm">
+            <div className="h-10 w-10 rounded-lg bg-swiss-light border border-swiss-divider flex items-center justify-center text-swiss-blue mb-4">
+              <Layers className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-base text-swiss-navy">Frontend & UI/UX Design</h3>
+            <p className="mt-2 text-xs text-gray-600 leading-relaxed">
+              Responsive web interfaces using React, Next.js, HTML5/CSS3, Bootstrap, Tailwind CSS, and Figma prototyping compliant with usability standards.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-swiss-white border border-swiss-divider shadow-sm">
+            <div className="h-10 w-10 rounded-lg bg-swiss-light border border-swiss-divider flex items-center justify-center text-swiss-blue mb-4">
+              <FolderGit2 className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-base text-swiss-navy">Systems & OS Development</h3>
+            <p className="mt-2 text-xs text-gray-600 leading-relaxed">
+              Low-level software development including 32-bit protected-mode x86 kernels in C and assembly, interrupt handlers, and desktop automation.
+            </p>
+          </div>
+
+          <div className="p-6 rounded-xl bg-swiss-white border border-swiss-divider shadow-sm">
+            <div className="h-10 w-10 rounded-lg bg-swiss-light border border-swiss-divider flex items-center justify-center text-swiss-blue mb-4">
+              <GraduationCap className="h-5 w-5" />
+            </div>
+            <h3 className="font-bold text-base text-swiss-navy">Computational Research</h3>
+            <p className="mt-2 text-xs text-gray-600 leading-relaxed">
+              Quantitative methodology in medical ultrasound multi-modal fusion and evidence-guided iterative prompt synthesis for LLM test reliability.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* 3. Featured Software Projects */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Portfolio Highlights</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-swiss-navy mt-1 tracking-tight">
+              Featured Software Projects
+            </h2>
+          </div>
+          <Link
+            href="/projects"
+            className="mt-4 sm:mt-0 inline-flex items-center space-x-1 text-sm font-semibold text-swiss-blue hover:text-swiss-navy transition-colors"
+          >
+            <span>View all 8 projects</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {masterProfile.projects.slice(0, 3).map((proj) => (
-            <div key={proj.id} className="glass-card p-6 rounded-2xl flex flex-col justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {masterProfile.projects.slice(0, 4).map((proj) => (
+            <div
+              key={proj.id}
+              className="p-8 rounded-xl bg-swiss-white border border-swiss-divider hover:border-swiss-blue/40 shadow-sm transition-all flex flex-col justify-between"
+            >
               <div>
-                <div className="flex items-center justify-between mb-3">
-                  <span className="px-2.5 py-1 text-[11px] font-semibold bg-electric-500/10 text-electric-400 border border-electric-500/20 rounded-md">
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+                  <span className="px-2.5 py-0.5 rounded font-medium bg-swiss-light border border-swiss-divider text-swiss-navy">
                     {proj.status}
                   </span>
                   {proj.github_url && (
-                    <a href={proj.github_url} target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white" aria-label="GitHub Repository">
-                      <FolderGit2 className="h-4 w-4" />
+                    <a
+                      href={proj.github_url}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center space-x-1 text-gray-500 hover:text-swiss-navy transition-colors"
+                    >
+                      <span className="text-[11px]">Repository</span>
+                      <ArrowUpRight className="h-3.5 w-3.5" />
                     </a>
                   )}
                 </div>
-                <h3 className="text-xl font-bold text-white tracking-tight">{proj.title}</h3>
-                <p className="text-xs font-medium text-electric-300 mt-1">{proj.tagline}</p>
-                <p className="text-xs text-gray-300 mt-3 leading-relaxed">{proj.description}</p>
+
+                <h3 className="text-xl font-bold text-swiss-navy tracking-tight">{proj.title}</h3>
+                <p className="text-xs font-semibold text-swiss-blue mt-1">{proj.tagline}</p>
+                <p className="text-xs text-gray-600 mt-3 leading-relaxed">{proj.description}</p>
+
+                {proj.architecture && (
+                  <div className="mt-4 p-3 rounded-lg bg-swiss-light border border-swiss-divider text-[11px] text-gray-700">
+                    <span className="font-semibold text-swiss-navy">Architecture: </span>
+                    {proj.architecture}
+                  </div>
+                )}
               </div>
 
-              <div className="mt-6 pt-4 border-t border-midnight-800">
-                <div className="flex flex-wrap gap-1.5">
-                  {proj.technologies.map((tech) => (
-                    <span key={tech} className="px-2 py-0.5 text-[10px] bg-midnight-800 text-gray-300 rounded">
-                      {tech}
-                    </span>
-                  ))}
-                </div>
+              <div className="mt-6 pt-4 border-t border-swiss-divider flex flex-wrap gap-1.5">
+                {proj.technologies.map((t) => (
+                  <span key={t} className="px-2 py-0.5 text-[11px] rounded bg-swiss-light text-gray-700 font-medium">
+                    {t}
+                  </span>
+                ))}
               </div>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Academic Research Highlights */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-midnight-900 bg-midnight-950/40">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
+      {/* 4. Featured Academic Research (EXACTLY TWO PAPERS) */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider bg-swiss-light">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
           <div>
-            <div className="text-xs font-semibold uppercase tracking-widest text-violet-400">Scientific Inquiries</div>
-            <h2 className="text-3xl font-bold text-white mt-2">Academic Research Library</h2>
+            <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Scholarly Inquiries</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-swiss-navy mt-1 tracking-tight">
+              Academic Research (Exactly 2 Papers)
+            </h2>
           </div>
-          <Link href="/research" className="mt-4 md:mt-0 text-sm text-violet-400 hover:text-violet-300 inline-flex items-center space-x-1">
-            <span>View full research bibliography</span>
+          <Link
+            href="/research"
+            className="mt-4 sm:mt-0 inline-flex items-center space-x-1 text-sm font-semibold text-swiss-blue hover:text-swiss-navy transition-colors"
+          >
+            <span>Read full methodologies</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {masterProfile.research.map((paper) => (
-            <div key={paper.id} className="glass-panel p-8 rounded-2xl relative overflow-hidden">
-              <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
-                <span className="font-semibold text-violet-400">{paper.category}</span>
-                <span className="px-2 py-0.5 rounded bg-midnight-800 border border-midnight-700">{paper.status}</span>
+            <div
+              key={paper.id}
+              className="p-8 rounded-xl bg-swiss-white border border-swiss-divider shadow-sm flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
+                  <span className="font-semibold text-swiss-blue">{paper.category}</span>
+                  <span className="px-2 py-0.5 rounded bg-swiss-light border border-swiss-divider text-gray-700 text-[11px]">
+                    {paper.status}
+                  </span>
+                </div>
+
+                <h3 className="text-lg font-bold text-swiss-navy leading-snug tracking-tight">
+                  {paper.title}
+                </h3>
+
+                <p className="mt-3 text-xs text-gray-600 leading-relaxed">
+                  {paper.abstract}
+                </p>
+
+                <div className="mt-4 p-3 rounded-lg bg-swiss-light border border-swiss-divider text-[11px] text-gray-700">
+                  <span className="font-semibold text-swiss-navy">Methodology: </span>
+                  {paper.methodology}
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-white leading-snug">{paper.title}</h3>
-              <p className="mt-4 text-xs text-gray-300 leading-relaxed line-clamp-4">{paper.abstract}</p>
-              <div className="mt-6 pt-4 border-t border-midnight-800 flex items-center justify-between">
-                <span className="text-xs text-gray-400 font-medium">{paper.role}</span>
+
+              <div className="mt-6 pt-4 border-t border-swiss-divider flex items-center justify-between text-xs">
+                <span className="text-gray-500 font-medium">{paper.role}</span>
                 {paper.paper_url && paper.paper_url !== "#" ? (
                   <a
                     href={paper.paper_url}
                     target="_blank"
                     rel="noreferrer"
-                    className="inline-flex items-center space-x-1 text-xs text-electric-400 hover:text-electric-300 font-semibold"
+                    className="inline-flex items-center space-x-1 font-semibold text-swiss-blue hover:text-swiss-navy"
                   >
-                    <span>Read Manuscript</span>
+                    <span>View Manuscript</span>
                     <ExternalLink className="h-3.5 w-3.5" />
                   </a>
                 ) : (
-                  <span className="text-xs text-gray-500">Peer Review Pending</span>
+                  <span className="text-gray-400">Manuscript Completed</span>
                 )}
               </div>
             </div>
@@ -178,35 +284,92 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FreeStack Intelligence Spotlight */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-midnight-900">
-        <div className="glass-card p-8 sm:p-12 rounded-3xl relative overflow-hidden border border-electric-500/20 bg-gradient-to-br from-midnight-900 via-midnight-900/90 to-midnight-850">
-          <div className="max-w-2xl">
-            <span className="px-3 py-1 text-xs font-semibold bg-electric-500/10 text-electric-400 border border-electric-500/20 rounded-full">
-              FreeStack Intelligence Engine
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white mt-4 tracking-tight">
-              Curated Free Cloud Infrastructure & Developer Tools
-            </h2>
-            <p className="text-sm text-gray-300 mt-3 leading-relaxed">
-              Explore <strong>{freeStackData.total_services}</strong> curated developer resources across <strong>{freeStackData.total_categories}</strong> technical categories, synchronized directly from the authoritative <code>ripienaar/free-for-dev</code> repository.
-            </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/freestack"
-                className="inline-flex items-center space-x-2 px-5 py-3 rounded-xl bg-electric-500 hover:bg-electric-400 text-white font-semibold text-xs shadow-md transition-all"
-              >
-                <Search className="h-3.5 w-3.5" />
-                <span>Search 1,369+ Free Services</span>
-              </Link>
-              <Link
-                href="/studio"
-                className="inline-flex items-center space-x-2 px-5 py-3 rounded-xl border border-midnight-700 bg-midnight-800 hover:bg-midnight-700 text-gray-200 text-xs font-medium transition-all"
-              >
-                <Sparkles className="h-3.5 w-3.5 text-electric-400" />
-                <span>Open ATS Resume Studio</span>
+      {/* 5. Experience & Education Highlights */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Career Highlights */}
+          <div>
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Work History</span>
+                <h2 className="text-2xl font-bold text-swiss-navy mt-1">Professional Experience</h2>
+              </div>
+              <Link href="/experience" className="text-xs font-semibold text-swiss-blue hover:underline">
+                All Roles &rarr;
               </Link>
             </div>
+
+            <div className="space-y-6">
+              {masterProfile.experience.slice(0, 3).map((exp) => (
+                <div key={exp.id} className="p-5 rounded-xl border border-swiss-divider bg-swiss-white hover:bg-swiss-light/40 transition-colors">
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span className="font-semibold text-swiss-navy">{exp.company}</span>
+                    <span>{exp.period}</span>
+                  </div>
+                  <div className="text-sm font-bold text-swiss-blue mt-1">{exp.role}</div>
+                  <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                    {exp.highlights[0]}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Education Highlights */}
+          <div>
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Academic Path</span>
+                <h2 className="text-2xl font-bold text-swiss-navy mt-1">Education Credentials</h2>
+              </div>
+              <Link href="/education" className="text-xs font-semibold text-swiss-blue hover:underline">
+                Full Details &rarr;
+              </Link>
+            </div>
+
+            <div className="space-y-6">
+              {masterProfile.education.slice(0, 3).map((edu) => (
+                <div key={edu.id} className="p-5 rounded-xl border border-swiss-divider bg-swiss-white hover:bg-swiss-light/40 transition-colors">
+                  <div className="flex items-center justify-between text-xs text-gray-500">
+                    <span className="font-semibold text-swiss-navy">{edu.institution}</span>
+                    <span>{edu.period}</span>
+                  </div>
+                  <div className="text-sm font-bold text-swiss-navy mt-1">{edu.degree}</div>
+                  <p className="text-xs text-gray-600 mt-2 leading-relaxed">
+                    {edu.details}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Recruiter Contact & Resume Banner */}
+      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider bg-swiss-light rounded-2xl mb-16">
+        <div className="max-w-3xl mx-auto text-center">
+          <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Direct Recruiter Outreach</span>
+          <h2 className="text-2xl sm:text-3xl font-bold text-swiss-navy mt-2 tracking-tight">
+            Interested in discussing an engineering or technical recruitment opportunity?
+          </h2>
+          <p className="mt-4 text-xs sm:text-sm text-gray-600 leading-relaxed">
+            I am actively pursuing roles in Frontend Development, UI/UX Engineering, Software Development, and Technical Recruitment. Review my verified background or contact me directly.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-4">
+            <a
+              href={`mailto:${masterProfile.personal.email}`}
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-swiss-navy text-swiss-white hover:bg-swiss-navy/90 text-sm font-semibold shadow-sm transition-all"
+            >
+              <Mail className="h-4 w-4" />
+              <span>Email: {masterProfile.personal.email}</span>
+            </a>
+            <Link
+              href="/resume"
+              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold shadow-sm transition-all"
+            >
+              <FileText className="h-4 w-4 text-swiss-blue" />
+              <span>Download Verified Resume</span>
+            </Link>
           </div>
         </div>
       </section>

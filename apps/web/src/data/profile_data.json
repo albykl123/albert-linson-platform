@@ -2,17 +2,23 @@
   "personal": {
     "name": "Albert Linson",
     "full_legal_name": "Albert Kalampadan Linson",
-    "headline": "Building Intelligent Digital Experiences",
-    "sub_headline": "Data-Driven IT Professional | AI/ML | Frontend & Graphic Design | Recruitment",
+    "headline": "Building Intelligent Digital Experiences & Systems",
+    "sub_headline": "Data-Driven IT Professional | Full-Stack & UI/UX | AI Systems | US IT Recruitment",
     "location": "Delhi, India",
     "email": "albertkalampadan@gmail.com",
     "phone": "+91 9910705796",
     "linkedin": "https://linkedin.com/in/albert-linson",
     "github": "https://github.com/albertlinson",
-    "portfolio_url": "https://albertlinson.lovable.app",
-    "bio": "Analytical IT professional with a Bachelor of Computer Applications (BCA) and pursuing a Master of Computer Applications (MCA) at Christ University. Experienced across US IT recruitment, business development, frontend web development, UI/UX design, and IT operations. Passionate about artificial intelligence, systems engineering, and computational analysis."
+    "portfolio_url": "https://albert-linson-platform.albertkalampadan.workers.dev",
+    "languages": [
+      { "name": "English", "proficiency": "Fluent / Professional" },
+      { "name": "Hindi", "proficiency": "Native" },
+      { "name": "Malayalam", "proficiency": "Fluent" },
+      { "name": "German", "proficiency": "Basic" }
+    ],
+    "bio": "Analytical IT professional with a Bachelor of Computer Applications (BCA) and currently pursuing a Master of Computer Applications (MCA) at Christ University. Experienced across US IT recruitment, IT operations management, business development, frontend engineering, and UI/UX design. Passionate about artificial intelligence, systems software, and computational research."
   },
-  "summary": "Analytical IT professional with a Bachelor of Computer Applications (BCA), currently pursuing a Master of Computer Applications (MCA) while working on AI and machine learning, and hands-on experience in US IT recruitment, business development, frontend development, graphic and UI/UX design, and IT operations. Combines a technical foundation (Python, JavaScript, UI/UX) with a data-driven approach: screening against requirements, tracking hiring and sales targets, conducting market research, and applying computational methods in medical imaging and software testing research.",
+  "summary": "Analytical IT professional with a Bachelor of Computer Applications (BCA) from Christ University (Delhi NCR) and currently pursuing a Master of Computer Applications (MCA). Combines practical experience in US IT technical recruitment, IT infrastructure management, B2B business development, and frontend UI/UX development with academic research in medical image computing and LLM reliability. Dedicated to engineering robust, user-centered digital systems and data-driven career architectures.",
   "skills": {
     "analytics_and_ai": [
       "Artificial Intelligence",
@@ -34,7 +40,6 @@
       "Bootstrap",
       "Figma",
       "Adobe XD",
-      "Graphic Design",
       "UI/UX Design",
       "Responsive Web Design",
       "Android Studio"
@@ -47,7 +52,8 @@
       "Cloudflare R2",
       "RESTful API Design",
       "Git & GitHub Actions",
-      "PowerShell Automation"
+      "PowerShell Automation",
+      "Linux System Administration"
     ],
     "recruitment_and_business": [
       "Full-Cycle US IT Recruitment",
@@ -60,19 +66,57 @@
       "Proposal & Presentation Preparation"
     ]
   },
+  "skill_levels": {
+    "professional_experience": [
+      { "name": "Full-Cycle US IT Recruitment", "category": "Recruitment & Talent", "evidence": "Innova Solutions: requirement mapping, technical screening, sourcing" },
+      { "name": "Talent Sourcing & Candidate Screening", "category": "Recruitment & Talent", "evidence": "Innova Solutions & METVY LEARN: tech talent pipelines, ATS matching" },
+      { "name": "IT Infrastructure & Operations", "category": "IT Operations", "evidence": "Herbal Energy: workstation maintenance, network uptime, vendor management" },
+      { "name": "HTML5 / CSS3 / JavaScript", "category": "Frontend Development", "evidence": "MCD Civic Portal & Christ University academic web apps" },
+      { "name": "Bootstrap", "category": "Frontend Development", "evidence": "MCD civic web portal responsive interfaces" },
+      { "name": "Figma & Adobe XD", "category": "UI/UX Design", "evidence": "MCD citizen interfaces, grievance workflows, mobile wireframes" },
+      { "name": "B2B Lead Generation & CRM", "category": "Business Development", "evidence": "Algo Spark Technologies: multi-channel outreach, proposals, client CRM" },
+      { "name": "Linux System Administration", "category": "IT Operations", "evidence": "Herbal Energy workstations & Lunova OS development" },
+      { "name": "Python", "category": "Programming & AI", "evidence": "ATSForge AI, AEGIS-Test research harness, JARVIS desktop assistant" }
+    ],
+    "project_experience": [
+      { "name": "Next.js & React", "category": "Frontend Development", "evidence": "Albert Linson Platform, CINEMATRIX AI, AURIVA" },
+      { "name": "TypeScript", "category": "Frontend Development", "evidence": "Albert Linson Platform, CINEMATRIX AI client applications" },
+      { "name": "Tailwind CSS", "category": "Frontend Development", "evidence": "Modern responsive interfaces across web platform & portfolio" },
+      { "name": "FastAPI & Uvicorn", "category": "Backend Development", "evidence": "ATSForge AI backend service & JARVIS local REST microservice" },
+      { "name": "SQLite & Cloudflare D1", "category": "Database & Cloud", "evidence": "D1 relational persistence on Cloudflare Workers edge" },
+      { "name": "Cloudflare Workers & OpenNext", "category": "Cloud Architecture", "evidence": "Production deployment of platform on edge Anycast CDN" },
+      { "name": "C & x86 Assembly", "category": "Systems Engineering", "evidence": "Lunova OS protected-mode kernel, bootloader, interrupt handlers" },
+      { "name": "Electron", "category": "Desktop Applications", "evidence": "JARVIS Desktop Assistant GUI and tray management" },
+      { "name": "Android Studio", "category": "Mobile Development", "evidence": "MCD Android UI prototyping and mobile layout testing" },
+      { "name": "Docker", "category": "DevOps & Containers", "evidence": "Containerized backend deployment and testing workflows" },
+      { "name": "Git & GitHub Actions", "category": "DevOps & CI/CD", "evidence": "Automated test-and-deploy CI/CD pipeline with 100% test gates" }
+    ],
+    "learning_familiarity": [
+      { "name": "Kotlin & Jetpack Compose", "category": "Mobile Development", "evidence": "Android modern UI development coursework and active study" },
+      { "name": "Ollama & Local LLMs", "category": "Artificial Intelligence", "evidence": "Local model orchestration and offline inference experimentation" },
+      { "name": "Hugging Face Transformers", "category": "Artificial Intelligence", "evidence": "Exploration of open-source NLP and embedding pipelines" },
+      { "name": "Google Colab", "category": "Data Science", "evidence": "Research model training in ultrasound feature extraction" }
+    ]
+  },
   "experience": [
     {
       "id": "exp-1",
       "role": "US IT Recruiter",
       "company": "Innova Solutions",
       "location": "Noida / Remote, India",
+      "employment_type": "Full-Time",
       "period": "Dec 2025 – July 2026",
-      "highlights": [
-        "Managed full-cycle US IT recruitment across demanding enterprise technology requirements, covering talent sourcing, rigorous candidate screening, interviewing, and onboarding.",
+      "tools": ["ATS Tools", "LinkedIn Recruiter", "Job Portals", "Google Workspace", "Technical Screening Frameworks"],
+      "responsibilities": [
+        "Managed full-cycle US IT recruitment across enterprise technology requirements, covering talent sourcing, technical screening, interviews, and onboarding coordination.",
         "Streamlined US IT technical recruitment through structured requirement mapping, technical competency screening, and robust talent pipeline delivery.",
-        "Built and maintained robust candidate talent pipelines utilizing industry ATS tools, LinkedIn Recruiter, and technology job portals.",
         "Collaborated directly with US-based account managers and client technical leads to translate technical job descriptions into actionable screening criteria.",
-        "Consistently met and exceeded weekly submission quotas and client hiring targets with documented metric tracking."
+        "Built candidate talent pipelines utilizing industry ATS tools, LinkedIn Recruiter, and technology job portals."
+      ],
+      "highlights": [
+        "Streamlined US IT technical recruitment through structured requirement mapping, technical competency screening, and robust talent pipeline delivery.",
+        "Built and maintained candidate talent pipelines utilizing industry ATS tools, LinkedIn Recruiter, and technology job portals.",
+        "Collaborated with US-based account managers and technical leads to translate technical job descriptions into actionable screening criteria."
       ]
     },
     {
@@ -80,35 +124,74 @@
       "role": "IT Manager",
       "company": "Herbal Energy",
       "location": "Delhi, India",
-      "period": "Oct 2025 – Nov 2025",
+      "employment_type": "Full-Time",
+      "period": "Oct 2024 – Dec 2024",
+      "tools": ["Network Administration", "Hardware Procurement", "Linux / Windows", "Web CMS", "Data Security Protocols"],
+      "responsibilities": [
+        "Directed operational IT infrastructure, ensuring continuous uptime across local workstations, network equipment, and internal communication systems.",
+        "Managed hardware and software procurement, data security protocols, and vendor relationships.",
+        "Maintained and enhanced the company web presence, improving interface usability, navigation speed, and responsive layout across mobile and desktop devices."
+      ],
       "highlights": [
-        "Directed operational IT infrastructure, ensuring 99.9% uptime across local workstations, network equipment, and internal communication systems.",
-        "Maintained and enhanced the company web presence, improving interface usability, navigation speed, and responsive layout across mobile and desktop devices.",
+        "Directed operational IT infrastructure, ensuring high uptime across workstations, network equipment, and internal communication systems.",
+        "Maintained and enhanced company web presence, improving interface usability, navigation speed, and mobile responsiveness.",
         "Coordinated with external technology vendors and cross-functional teams to deliver software tools and technical initiatives on schedule."
       ]
     },
     {
       "id": "exp-3",
       "role": "Business Development Executive",
-      "company": "Algospark Technologies",
+      "company": "Algo Spark Technologies",
       "location": "Delhi NCR, India",
-      "period": "Aug 2025 – Oct 2025",
+      "employment_type": "Full-Time",
+      "period": "Aug 2024 – Oct 2024",
+      "tools": ["CRM Systems", "Lead Prospecting Tools", "B2B Sales Presentations", "Market Research Benchmarking"],
+      "responsibilities": [
+        "Generated new business opportunities and B2B client acquisition pipelines through outbound outreach, targeted communications, and multi-channel prospecting.",
+        "Prepared customized business proposals, pitch decks, and technical demonstrations aligning client software requirements with service capabilities.",
+        "Coordinated between prospective clients and technical engineering teams, maintaining accurate CRM records throughout the sales pipeline."
+      ],
       "highlights": [
-        "Generated new business opportunities and B2B client acquisition pipelines through outbound cold calling, targeted email campaigns, and multi-channel prospecting.",
-        "Conducted strategic market research and competitor benchmarking to identify emerging growth segments for software product offerings.",
-        "Cultivated long-term client relationships, delivering customized proposals, pitch decks, and technical demonstrations that aligned client requirements with service capabilities."
+        "Generated qualified B2B client acquisition pipelines through targeted outreach and multi-channel prospecting.",
+        "Conducted strategic market research and competitor benchmarking to identify growth segments for software product offerings.",
+        "Cultivated long-term client relationships, delivering customized proposals and technical demonstrations that aligned client requirements with service capabilities."
       ]
     },
     {
       "id": "exp-4",
+      "role": "HR Recruitment Intern",
+      "company": "METVY LEARN",
+      "location": "Remote, India",
+      "employment_type": "Internship",
+      "period": "2024",
+      "tools": ["Talent Sourcing", "Candidate Evaluation", "Interview Coordination", "HR Workflow Automation"],
+      "responsibilities": [
+        "Assisted in talent acquisition workflows, candidate outreach, resume screening, and interview scheduling.",
+        "Evaluated candidate qualifications against open requisitions and maintained structured applicant tracking records.",
+        "Coordinated onboarding communications and candidate experience feedback loops."
+      ],
+      "highlights": [
+        "Executed structured candidate outreach and initial competency screening for open cohort roles.",
+        "Streamlined interview scheduling and applicant tracking records across diverse candidate pools."
+      ]
+    },
+    {
+      "id": "exp-5",
       "role": "Frontend Developer & UI/UX Designer (Intern)",
       "company": "Municipal Corporation of Delhi (MCD)",
       "location": "New Delhi, India",
-      "period": "May 2024 – Apr 2025",
+      "employment_type": "Internship",
+      "period": "May 2024 – Jul 2024 & Jan 2025 – Apr 2025",
+      "tools": ["Figma", "Adobe XD", "HTML5", "CSS3", "JavaScript", "Bootstrap", "Android Studio"],
+      "responsibilities": [
+        "Designed and prototyped responsive citizen-facing user interfaces in Figma and Adobe XD, aligning with municipal usability standards.",
+        "Modernized civic web interfaces and portal navigation using HTML, CSS, JavaScript, and Bootstrap.",
+        "Collaborated with IT engineering staff on Android UI prototyping, mobile layout testing in Android Studio, and end-user IT training."
+      ],
       "highlights": [
-        "Designed and prototyped responsive citizen-facing user interfaces in Figma and Adobe XD, aligning with municipal design standards and accessibility guidelines.",
-        "Modernized civic web interfaces and portal navigation in Figma and React, resolving high-friction citizen workflows and streamlining support resolution.",
-        "Collaborated with core engineering staff on Android UI prototyping, mobile layout testing, and cross-browser frontend optimization."
+        "Designed accessible, mobile-first citizen interfaces and streamlined grievance redressal navigation compliant with municipal usability standards.",
+        "Modernized civic web interfaces in Figma and Bootstrap, resolving high-friction citizen workflows.",
+        "Supported Android UI prototyping and mobile layout testing in Android Studio."
       ]
     }
   ],
@@ -119,15 +202,17 @@
       "institution": "CHRIST (Deemed to be University)",
       "location": "Delhi NCR, India",
       "period": "2024 – Present (Pursuing)",
-      "details": "Specializing in Artificial Intelligence, Advanced Software Engineering, Cloud Computing, and Distributed Systems."
+      "details": "Specializing in Artificial Intelligence, Advanced Software Engineering, Cloud Architectures, and Distributed Systems.",
+      "specialization": "Artificial Intelligence & Advanced Software Engineering"
     },
     {
       "id": "edu-2",
       "degree": "Bachelor of Computer Applications (BCA)",
       "institution": "CHRIST (Deemed to be University)",
       "location": "Delhi NCR, India",
-      "period": "2021 – 2024",
-      "details": "Graduated with honors. Registration No. 22215011. Focus on Data Structures, Database Systems, Computer Networks, and Web Technologies."
+      "period": "2022 – 2025",
+      "details": "Specialization in Advanced Technological Skills. Focus on Data Structures, Database Systems, Computer Networks, and Web Technologies.",
+      "specialization": "Advanced Technological Skills"
     },
     {
       "id": "edu-3",
@@ -135,7 +220,8 @@
       "institution": "St. Columba's School",
       "location": "New Delhi, India",
       "period": "Completed",
-      "details": "Computer Science & Mathematics track."
+      "details": "Computer Science & Mathematics track. Collaborated with IT staff, managed equipment inventory, and supported software deployments.",
+      "specialization": "Computer Science & Mathematics"
     },
     {
       "id": "edu-4",
@@ -143,27 +229,43 @@
       "institution": "St. Columba's School",
       "location": "New Delhi, India",
       "period": "Completed",
-      "details": "All India Secondary School Examination."
+      "details": "All India Secondary School Examination, CBSE.",
+      "specialization": "General Science & Mathematics"
+    }
+  ],
+  "certifications": [
+    {
+      "id": "cert-1",
+      "name": "Python Programming Masterclass",
+      "issuer": "Udemy",
+      "year": "Verified",
+      "description": "Comprehensive practical programming covering data structures, OOP, file I/O, and algorithmic problem solving."
+    },
+    {
+      "id": "cert-2",
+      "name": "Microsoft Office Suite Certification",
+      "issuer": "Microsoft / Certified Training",
+      "year": "Verified",
+      "description": "Advanced spreadsheet analysis, document automation, and executive presentation preparation."
+    },
+    {
+      "id": "cert-3",
+      "name": "Certified Peer Educator",
+      "issuer": "CHRIST (Deemed to be University)",
+      "year": "Verified",
+      "description": "Peer mentorship recognition, academic guidance, and student community leadership."
+    },
+    {
+      "id": "cert-4",
+      "name": "SWO Literary Club Member (2 Years)",
+      "issuer": "Student Welfare Organization, Christ University",
+      "year": "Verified",
+      "description": "Active participation in institutional literary events, debate moderation, and technical documentation."
     }
   ],
   "research": [
     {
       "id": "res-1",
-      "title": "A Computational Perspective on Breast Cancer Detection in Ultrasound: Fusion of Multi-Image Modalities",
-      "role": "Lead Researcher & Author",
-      "status": "Completed / Under Review",
-      "category": "Medical Imaging & Deep Learning",
-      "abstract": "Ultrasound imaging is an essential diagnostic tool in oncology, but standard B-mode sonography frequently suffers from speckle noise, low contrast, and operator dependency. This research presents a computational approach fusing multi-image ultrasound modalities (B-mode and Doppler) through deep convolutional feature extraction. Evaluated across benchmark sonographic datasets, the fused pipeline demonstrates substantial gains in diagnostic sensitivity, specificity, and AUC-ROC, providing a dependable computational aid for early oncological screening.",
-      "objectives": [
-        "Investigate computational limitations of single-modality B-mode ultrasound.",
-        "Engineer a multi-image feature fusion architecture combining acoustic reflectance and vascular Doppler signals.",
-        "Demonstrate measurable diagnostic accuracy improvements over standard single-image baselines."
-      ],
-      "methodology": "Pre-processing via adaptive speckle filtering, dual-stream convolutional neural feature extraction, cross-attention feature fusion layer, and binary lesion classification with Bayesian uncertainty estimation.",
-      "paper_url": "https://docs.google.com/document/d/1pZqEWrk24sMGyOaCC40F2IFIjeQafLdA/edit?usp=sharing"
-    },
-    {
-      "id": "res-2",
       "title": "AEGIS-Test: Adaptive Evidence-Guided Iterative Synthesis for Reliable LLM-Based Software Testing",
       "role": "Lead Author & Architect",
       "status": "Manuscript Completed",
@@ -178,18 +280,19 @@
       "paper_url": "#"
     },
     {
-      "id": "res-3",
-      "title": "EduMind: Adaptive Learning and Educational Intelligence with LLMs",
-      "role": "Co-Author & System Designer",
-      "status": "Research Completed",
-      "category": "EdTech & Generative AI",
-      "abstract": "Explores how generative foundation models can be constrained to deliver personalized pedagogical curriculum paths without diverging from certified syllabi. Integrates real-time comprehension scoring and conversational tutor state machines.",
+      "id": "res-2",
+      "title": "A Computational Perspective on Breast Cancer Detection in Ultrasound: Fusion of Multi-Image Modalities",
+      "role": "Lead Researcher & Author",
+      "status": "Completed / Under Review",
+      "category": "Medical Imaging & Deep Learning",
+      "abstract": "Ultrasound imaging is an essential diagnostic tool in oncology, but standard B-mode sonography frequently suffers from speckle noise, low contrast, and operator dependency. This research presents a computational approach fusing multi-image ultrasound modalities (B-mode and Doppler) through deep convolutional feature extraction. Evaluated across benchmark sonographic datasets, the fused pipeline demonstrates substantial gains in diagnostic sensitivity, specificity, and AUC-ROC, providing a dependable computational aid for early oncological screening.",
       "objectives": [
-        "Design curriculum-constrained prompting pipelines for personalized tutoring.",
-        "Implement real-time knowledge gap diagnostics for student comprehension."
+        "Investigate computational limitations of single-modality B-mode ultrasound.",
+        "Engineer a multi-image feature fusion architecture combining acoustic reflectance and vascular Doppler signals.",
+        "Demonstrate measurable diagnostic accuracy improvements over standard single-image baselines."
       ],
-      "methodology": "Multi-agent cognitive tutoring architecture with pedagogical memory graph.",
-      "paper_url": "#"
+      "methodology": "Pre-processing via adaptive speckle filtering, dual-stream convolutional neural feature extraction, cross-attention feature fusion layer, and binary lesion classification with Bayesian uncertainty estimation.",
+      "paper_url": "https://docs.google.com/document/d/1pZqEWrk24sMGyOaCC40F2IFIjeQafLdA/edit?usp=sharing"
     }
   ],
   "projects": [
@@ -199,6 +302,8 @@
       "tagline": "Offline-First Autonomous Desktop Intelligence & Voice Assistant",
       "description": "A production-grade, multimodal desktop assistant engineered in Python and Electron. Features offline wake-word detection, local speech recognition (Faster-Whisper), system telemetry monitoring, desktop automation, and flexible LLM orchestration.",
       "technologies": ["Python 3.14", "Electron", "Faster-Whisper", "PyAudio", "FastAPI", "Uvicorn"],
+      "architecture": "Electron front-end communicating over local WebSocket/REST to a high-performance Python FastAPI background worker, running local speech recognition and system automation APIs.",
+      "my_contribution": "Designed the dual-process architecture, implemented low-latency wake-word detection, built the Electron tray interface, and created the modular LLM provider failover pipeline.",
       "highlights": [
         "Engineered low-latency wake-word detection running locally with <80MB RAM footprint.",
         "Implemented Electron GUI with desktop tray controls, system metrics graphs, and real-time audio visualization.",
@@ -213,6 +318,8 @@
       "tagline": "Custom 32-Bit x86 Protected Mode Educational Operating System",
       "description": "An operating system written from scratch featuring a custom bootloader, kernel in C, memory management, interrupt descriptor tables (IDT), VGA text console driver, and keyboard input handlers.",
       "technologies": ["C", "x86 Assembly", "QEMU", "Makefile", "GDB"],
+      "architecture": "Two-stage bootloader transitioning CPU from 16-bit Real Mode to 32-bit Protected Mode, direct hardware interrupt handling via 8259 PIC, and memory management subsystems.",
+      "my_contribution": "Wrote the x86 assembly bootloader, designed kernel interrupt vectors, implemented VGA video drivers and keyboard scancode decoders, and structured the build system with Makefile and QEMU emulation.",
       "highlights": [
         "Built two-stage bootloader transitioning CPU from 16-bit Real Mode to 32-bit Protected Mode.",
         "Implemented kernel memory paging, segmentation, and hardware timer interrupt handlers (PIC/PIT).",
@@ -224,9 +331,11 @@
     {
       "id": "proj-atsforge",
       "title": "ATSForge AI",
-      "tagline": "Unified ATS Resume Intelligence & Career Optimization Platform",
+      "tagline": "Deterministic ATS Resume Intelligence & Career Optimization Platform",
       "description": "Comprehensive resume optimization platform featuring a 20-rule deterministic ATS compatibility engine, job description extractor, keyword gap analyzer, zero-hallucination factuality guard, and vector PDF/DOCX exporters.",
       "technologies": ["FastAPI", "Python", "SQLAlchemy", "ReportLab", "python-docx", "Pydantic v2", "Next.js"],
+      "architecture": "FastAPI microservices coupled with an edge Next.js frontend, utilizing deterministic rule engines, AST parsing, and zero-table document formatting generators.",
+      "my_contribution": "Architected the 20-rule ATS scoring engine, engineered the Factuality Guard preventing AI hallucination, and built the native vector PDF and DOCX document exporters.",
       "highlights": [
         "Created 20-rule deterministic ATS scoring system returning 0-100 score and actionable one-click fixes.",
         "Developed genuine vector PDF generator using ReportLab and native DOCX generator with 0 tables for pure ATS parseability.",
@@ -236,11 +345,43 @@
       "status": "Production-Ready"
     },
     {
+      "id": "proj-cinematrix",
+      "title": "CINEMATRIX AI",
+      "tagline": "AI-Powered Movie Intelligence & Visual Recommendation Engine",
+      "description": "An intelligent entertainment platform utilizing content-based filtering, narrative sentiment analysis, and mood-driven recommendations to help cinema enthusiasts discover films with high thematic precision.",
+      "technologies": ["React", "TypeScript", "Tailwind CSS", "FastAPI", "Scikit-Learn"],
+      "architecture": "Scikit-Learn vector similarity engine exposed via FastAPI, consumed by a fluid React and TypeScript frontend with dynamic trailer embeds.",
+      "my_contribution": "Implemented TF-IDF and cosine similarity matrix matching over movie plot synopses, genres, and directors, and created the responsive cinematic user interface.",
+      "highlights": [
+        "Constructed vector similarity search matching plot synopses, cinematic tropes, and director styles.",
+        "Designed cinematic UI with fluid poster transitions, thematic filtering, and trailer previews."
+      ],
+      "github_url": "https://github.com/albertlinson/cinematrix-ai",
+      "status": "Completed"
+    },
+    {
+      "id": "proj-auriva",
+      "title": "AURIVA",
+      "tagline": "Interactive Audio Experience & Digital Sound Interface",
+      "description": "A high-performance interactive web application exploring modern Web Audio APIs, procedural audio-reactive visual animations, and responsive micro-interactions.",
+      "technologies": ["Next.js", "Web Audio API", "Tailwind CSS", "Canvas API"],
+      "architecture": "Client-side Web Audio API audio graph analyzing frequency spectrum in real-time, driving procedural 60fps canvas visualizer loops.",
+      "my_contribution": "Engineered the frequency analyser node pipeline, built the procedural audio-reactive visualizer canvas, and implemented playlist management.",
+      "highlights": [
+        "Engineered real-time audio-reactive procedural canvas visualizations reacting to audio frequency bins.",
+        "Created responsive playlist controls and spatial audio filter adjustments."
+      ],
+      "github_url": "https://github.com/albertlinson/auriva",
+      "status": "Completed"
+    },
+    {
       "id": "proj-mcd",
       "title": "Municipal Corporation of Delhi (MCD) Dashboard",
       "tagline": "Citizen Civic Services & Public Infrastructure Portal",
       "description": "Civic services dashboard designed and prototyped for the Municipal Corporation of Delhi, unifying citizen complaint tracking, public sanitation metrics, and municipal service status into an accessible, responsive web interface.",
       "technologies": ["Figma", "Adobe XD", "HTML5", "CSS3", "JavaScript", "Bootstrap"],
+      "architecture": "Modular, mobile-first responsive web portal designed in compliance with municipal accessibility guidelines.",
+      "my_contribution": "Led UI/UX prototyping in Figma and Adobe XD, wrote responsive HTML/CSS/Bootstrap frontend components, and conducted usability walkthroughs.",
       "highlights": [
         "Designed accessible, mobile-first citizen interfaces and streamlined grievance redressal navigation compliant with municipal usability standards.",
         "Conducted end-user usability testing across diverse citizen demographics in Delhi."
@@ -249,30 +390,34 @@
       "status": "Deployed & Verified"
     },
     {
-      "id": "proj-cinematrix",
-      "title": "CINEMATRIX AI",
-      "tagline": "Next-Generation Movie Intelligence & Visual Recommendation Engine",
-      "description": "An intelligent entertainment platform utilizing content-based filtering, narrative sentiment analysis, and mood-driven recommendations to help cinema enthusiasts discover films with high thematic precision.",
-      "technologies": ["React", "TypeScript", "Tailwind CSS", "FastAPI", "Scikit-Learn"],
+      "id": "proj-bots",
+      "title": "FunBot & SpeechoBot",
+      "tagline": "Conversational Bot & Speech Recognition Systems",
+      "description": "A suite of conversational chatbots and voice synthesis experiments exploring natural language command parsing, text-to-speech audio pipelines, and interactive utility bots.",
+      "technologies": ["Python", "SpeechRecognition", "Pyttsx3", "Tkinter", "NLTK"],
+      "architecture": "Local Python voice synthesis pipeline integrating speech recognition microphones, acoustic tokenization, and conversational response handlers.",
+      "my_contribution": "Built voice command parsers, connected offline speech recognition engines, and created an interactive desktop testing utility.",
       "highlights": [
-        "Constructed vector similarity search matching plot synopses, cinematic tropes, and director styles.",
-        "Designed cinematic dark-mode UI with fluid poster transitions and trailer previews."
+        "Implemented hands-free voice command execution for common system tasks.",
+        "Designed conversational response trees with natural speech synthesis."
       ],
-      "github_url": "https://github.com/albertlinson/cinematrix-ai",
+      "github_url": "https://github.com/albertlinson/speechobot",
       "status": "Completed"
     },
     {
-      "id": "proj-auriva",
-      "title": "AURIVA",
-      "tagline": "Intelligent Digital Experience & Interactive Interface Ecosystem",
-      "description": "A high-performance interactive web experience exploring modern web audio, procedural animations, and micro-interactions.",
-      "technologies": ["Next.js", "Three.js", "Tailwind CSS", "Web Audio API"],
+      "id": "proj-platform",
+      "title": "Albert Linson Personal Intelligence Platform",
+      "tagline": "Cloud-Native Professional Identity & Career Operating System",
+      "description": "Production-grade, zero-cost cloud platform combining a public recruiter portfolio, research showcase, 1,369-tool FreeStack catalog, and private ATS career management studio running on Cloudflare Workers edge.",
+      "technologies": ["Next.js 14", "OpenNext", "Cloudflare Workers", "Cloudflare D1", "TypeScript", "Tailwind CSS"],
+      "architecture": "OpenNext Cloudflare Workers edge architecture with D1 SQLite persistence, server-side OpenRouter AI gateway, and multi-design theme token system.",
+      "my_contribution": "Architected end-to-end full-stack platform, CI/CD GitHub Actions deployment pipeline, cryptographic session security, and four-theme design system.",
       "highlights": [
-        "Engineered real-time audio-reactive procedural shader visualizations.",
-        "Achieved 100/100 Lighthouse performance score with code-splitting and asset compression."
+        "Deployed to global Cloudflare Anycast edge with sub-100ms API latency and 100% test pass rate.",
+        "Built unified four-theme design system (Swiss Editorial, Warm Ivory, Modern Corporate, Paper & Typography)."
       ],
-      "github_url": "https://github.com/albertlinson/auriva",
-      "status": "Completed"
+      "github_url": "https://github.com/albykl123/albert-linson-platform",
+      "status": "Live Production"
     }
   ]
 }
