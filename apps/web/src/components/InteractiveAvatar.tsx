@@ -152,9 +152,9 @@ export function InteractiveAvatar({
         </div>
       </div>
 
-      {/* 2. Center 3D Avatar Character Stage: Silent Transparent Walking & Waving Video Clip */}
+      {/* 2. Center 3D Avatar Character Stage: Silent Walking & Waving Video Clip */}
       <div
-        className="relative z-10 w-full h-[400px] sm:h-[460px] flex items-end justify-center transition-transform duration-150 ease-out"
+        className="relative z-10 w-full max-w-[340px] sm:max-w-[380px] h-[400px] sm:h-[460px] flex items-end justify-center rounded-2xl overflow-hidden transition-transform duration-150 ease-out"
         style={{
           transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${isHovered ? 1.02 : 1}, ${isHovered ? 1.02 : 1}, 1)`,
           transformStyle: "preserve-3d",
@@ -168,22 +168,19 @@ export function InteractiveAvatar({
           }}
         />
 
-        {/* Silent Transparent Walking & Waving Video Clip */}
-        <div className="relative w-full h-full flex items-end justify-center pointer-events-none">
+        {/* Silent Walking & Waving Video Clip */}
+        <div className="relative w-full h-full flex items-end justify-center pointer-events-none overflow-hidden rounded-2xl">
           <video
             ref={videoRef}
-            src="/albert-avatar-walk-wave.webm"
-            poster="/albert-avatar-poster.png"
+            src="/albert-avatar-walk-wave.webm?v=3.4-latest"
+            poster="/albert-avatar-poster.png?v=3.4-latest"
             playsInline
             autoPlay
             muted
             loop={false}
             preload="auto"
             onEnded={() => setIsWelcoming(false)}
-            className="w-full h-full object-contain object-bottom filter contrast-[1.05] brightness-[1.02] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_20px_45px_rgba(6,182,212,0.35)] transition-all duration-300"
-            style={{
-              background: "transparent",
-            }}
+            className="w-full h-full object-cover object-center filter contrast-[1.05] brightness-[1.02] drop-shadow-[0_15px_35px_rgba(0,0,0,0.65)] group-hover:drop-shadow-[0_20px_45px_rgba(6,182,212,0.35)] transition-all duration-300"
           />
         </div>
       </div>
