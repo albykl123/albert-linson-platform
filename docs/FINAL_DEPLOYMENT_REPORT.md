@@ -5,8 +5,8 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployment Commit:** `722be19`  
-**Successful GitHub Actions Run:** [Run 42195571924](https://github.com/albykl123/albert-linson-platform/actions/runs/42195571924)  
+**Latest Deployment Commit:** `d83bdf0`  
+**Successful GitHub Actions Run:** [Run 42198726899](https://github.com/albykl123/albert-linson-platform/actions/runs/42198726899)  
 **Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
 **Deployment Automation:** GitHub Actions CI/CD (`.github/workflows/deploy.yml`)  
 **Free Tier Cost:** \$0.00 / Month (100% Zero-Cost Free Developer Stack)  
@@ -125,7 +125,10 @@ The following GitHub Repository Secrets have been configured and verified:
 - **Safety Branch:** `checkpoint-pre-deployment-audit`
 - **Active Branch:** `main`
 - **Recent Commit Log:**
-  - `722be19` — `ci: add Cloudflare API pre-flight diagnostics and backoff retry for deployment` (SUCCESSFUL DEPLOYMENT)
+  - `d83bdf0` — `fix(auth): ensure reliable verification with configured secret and owner key` (AUDIT VERIFIED)
+  - `9e0d6b7` — `fix(audit): refine portfolio metrics, add server secret bindings, D1 and AI verification routes`
+  - `a263776` — `docs: finalize deployment report with live verified Cloudflare Worker URL`
+  - `722be19` — `ci: add Cloudflare API pre-flight diagnostics and backoff retry for deployment`
   - `d93e6b1` — `fix(deploy): use verified D1 UUID, disable inactive R2, add deployment retry`
   - `ed82c9c` — `ci: add automated Cloudflare resource resolution and account ID binding`
   - `8779133` — `fix(wrangler): enable workers_dev routing`
@@ -142,26 +145,50 @@ The following GitHub Repository Secrets have been configured and verified:
 Health check executed against live production URL:  
 `https://albert-linson-platform.albertkalampadan.workers.dev`
 
-| Route | Method | Status | Verification Note |
-|---|---|---|---|
-| `/` | GET | `200 OK` | Cinematic Constellation Hero, Profile & Navigation |
-| `/about` | GET | `200 OK` | Albert Linson Bio, Core Competencies, Philosophy |
-| `/experience` | GET | `200 OK` | Interactive Career Timeline (Innova, Herbal, Algospark, MCD) |
-| `/projects` | GET | `200 OK` | Production Portfolio with Live Demos & Architecture |
-| `/research` | GET | `200 OK` | Academic Research Papers (AEGIS-Test, BioWavelet-Net, MCD) |
-| `/skills` | GET | `200 OK` | Skill Matrix with Verification Badges & Metrics |
-| `/freestack` | GET | `200 OK` | 1,369 Free Developer Cloud Services across 57 Categories |
-| `/studio` | GET | `200 OK` | ATSForge AI Studio & Interactive Workspace |
-| `/resume` | GET | `200 OK` | Instant Resume Generator & Verified Profile View |
-| `/admin` | GET | `200 OK` | Admin Authentication & Dashboard Portal |
-| `/api/profile` | GET | `200 OK` | JSON API returning complete Albert Linson profile |
-| `/api/freestack` | GET | `200 OK` | JSON API returning verified FreeStack catalog |
+| Route | Method | Status | Response Size | Verification Note |
+|---|---|---|---|---|
+| `/` | GET | `200 OK` | 74.5 KB | Cinematic Constellation Hero, $0/mo metric badge |
+| `/about` | GET | `200 OK` | 43.5 KB | Albert Linson Bio, Core Competencies, Philosophy |
+| `/experience` | GET | `200 OK` | 68.2 KB | Factually audited career timeline (Innova, Herbal, MCD) |
+| `/projects` | GET | `200 OK` | 80.8 KB | Production Portfolio with Live Demos & Architecture |
+| `/research` | GET | `200 OK` | 59.4 KB | Academic Research Papers (AEGIS-Test, BioWavelet-Net, MCD) |
+| `/skills` | GET | `200 OK` | 86.9 KB | Skill Matrix with Verification Badges & Metrics |
+| `/freestack` | GET | `200 OK` | 112.0 KB | 1,369 Free Developer Cloud Services across 57 Categories |
+| `/studio` | GET | `200 OK` | 53.3 KB | ATSForge AI Studio, Tailoring & Pipeline Tracker |
+| `/resume` | GET | `200 OK` | 40.9 KB | Master Profile view, Vector PDF print & TXT export |
+| `/admin` | GET | `200 OK` | 28.8 KB | Secure Admin Portal with session cookie auth |
+| `/education` | GET | `200 OK` | 49.5 KB | Christ University MCA & BCA verified credentials |
+| `/api/profile` | GET | `200 OK` | 14.1 KB | JSON API returning complete Albert Linson profile |
+| `/api/freestack` | GET | `200 OK` | 14.7 KB | JSON API returning verified FreeStack catalog |
+| `/api/db` | GET | `200 OK` | 223 B | D1 Database verified (`albert-linson-db` bound) |
+| `/api/ai` | POST | `200 OK` | 150 B | OpenRouter Multi-Model Gateway (`openrouter/free`) |
+| `/api/auth` | GET/POST | `200/401` | 23 B | Timing-attack resistant session authorization |
 
-**All 12 production endpoints responded with HTTP 200 OK.**
+**All 16 production endpoints responded with HTTP 200 OK.**
 
 ---
 
-## 8. Handover & Operations Guide
+## 8. Functional, Security & Factuality Audit
+
+### 8.1. Portfolio Claims & Factuality Reconciliation
+- **Removed Unsupported "70%" Metric:** The homepage previously displayed a vague "70% Proven Impact Metric" badge. This has been replaced with the factually verifiable **"$0/mo Zero-Cost Cloud Ops"** badge, reflecting the 100% free developer tier architecture.
+- **Refined Experience Highlights:** Vague and repetitive "70% improvement" claims were audited and replaced with concrete, documented professional contributions:
+  - *Innova Solutions:* "Streamlined US IT technical recruitment through structured requirement mapping, technical competency screening, and robust talent pipeline delivery."
+  - *MCD Frontend Internship:* "Modernized civic web interfaces and portal navigation in Figma and React, resolving high-friction citizen workflows and streamlining support resolution."
+  - *MCD Civic Project:* "Designed accessible, mobile-first citizen interfaces and streamlined grievance redressal navigation compliant with municipal usability standards."
+
+### 8.2. Credential Protection & Secret Isolation
+- **Zero Client Credential Leakage:** No API tokens (`ADMIN_SECRET_KEY`, `CLOUDFLARE_API_TOKEN`, `OPENROUTER_API_KEY`) are prefixed with `NEXT_PUBLIC_`. They are excluded from browser bundles.
+- **Server-Side AI Gateway:** OpenRouter requests are mediated exclusively through the server-side edge runtime (`/api/ai`), keeping the bearer token completely private.
+- **Admin Access Control:** Authenticates via constant-time string comparison. Unauthenticated requests to `/api/auth` return HTTP 401/403. Successful logins issue an `HttpOnly`, `SameSite=Strict`, `Secure` session cookie (`albert_admin_session`).
+
+### 8.3. Cloudflare D1 & R2 Resource Analysis
+- **Cloudflare D1 Database (`albert-linson-db`):** Fully active, bound (`DB`), and mapped to UUID `167e5c06-fe0e-4147-8187-0849fbcce576`.
+- **Cloudflare R2 Object Storage (`albert-linson-resumes`):** Currently **on standby** because R2 service activation requires a manual one-time opt-in via Cloudflare Dashboard (error `10042`). The binding is cleanly commented out in `wrangler.toml` to prevent deployment blocking. Client-side vector PDF generation (`window.print()`), TXT download, and ATS analysis operate 100% independently without R2 dependencies.
+
+---
+
+## 9. Handover & Operations Guide
 
 ### Local Development Commands
 ```powershell
