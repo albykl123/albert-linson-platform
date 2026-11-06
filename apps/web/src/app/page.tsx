@@ -15,7 +15,6 @@ import {
   Sparkles 
 } from "lucide-react";
 import { masterProfile } from "@/lib/profileData";
-import { freeStackData } from "@/lib/freestackData";
 import { InteractiveAvatar } from "@/components/InteractiveAvatar";
 
 export default function HomePage() {

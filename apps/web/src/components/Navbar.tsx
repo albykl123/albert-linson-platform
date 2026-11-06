@@ -41,7 +41,6 @@ export function Navbar() {
     { href: "/education", label: "Education" },
     { href: "/projects", label: "Projects & Research", activeRoutes: ["/projects", "/research"] },
     { href: "/resume", label: "Resume & Skills", activeRoutes: ["/resume", "/skills"] },
-    { href: "/freestack", label: "FreeStack" },
   ];
 
   return (

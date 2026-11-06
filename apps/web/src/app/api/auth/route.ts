@@ -1,17 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getAdminSecret, generateSessionToken } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
-
-// Dynamic resolver for server-side master authentication secret
-function getAdminSecret(): string {
-  const secret = (
-    process.env.ADMIN_SECRET_KEY ||
-    (globalThis as any).ADMIN_SECRET_KEY ||
-    (process.env as any).ADMIN_SECRET ||
-    ""
-  ).trim();
-  return secret;
-}
 
 // Constant-time comparison using bitwise XOR across SHA-256 digests
 async function timingSafeEqual(a: string, b: string): Promise<boolean> {
@@ -83,15 +73,6 @@ async function verifyMasterPassword(candidate: string, storedSecret: string): Pr
     return verifyPBKDF2(candidate, storedSecret);
   }
   return timingSafeEqual(candidate, storedSecret);
-}
-
-// Session token generation (v4 with SHA-256 HMAC salted token)
-async function generateSessionToken(secret: string): Promise<string> {
-  const encoder = new TextEncoder();
-  const data = encoder.encode(secret + ":albert-platform-session-salt-v4");
-  const hashBuffer = await crypto.subtle.digest("SHA-256", data);
-  const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map((b) => b.toString(16).padStart(2, "0")).join("");
 }
 
 export async function POST(req: NextRequest) {

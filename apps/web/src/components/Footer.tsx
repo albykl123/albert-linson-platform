@@ -67,7 +67,6 @@ export function Footer() {
             <h4 className="text-xs font-semibold uppercase tracking-wider text-swiss-navy mb-3">Resources</h4>
             <ul className="space-y-2 text-xs">
               <li><Link href="/resume" className="hover:text-swiss-navy transition-colors font-medium">Download Resume (PDF/TXT)</Link></li>
-              <li><Link href="/freestack" className="hover:text-swiss-navy transition-colors">FreeStack Catalog (1,369 Tools)</Link></li>
               <li>
                 <Link href="/admin" className="inline-flex items-center space-x-1 text-gray-500 hover:text-swiss-navy transition-colors">
                   <Lock className="h-3 w-3" />
