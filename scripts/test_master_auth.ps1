@@ -10,7 +10,7 @@ $testResults = @()
 function Record-Test($testNum, $description, $passed, $detail) {
     $status = if ($passed) { "PASS" } else { "FAIL" }
     $color = if ($passed) { "Green" } else { "Red" }
-    Write-Host "[$status] Test $testNum: $description - $detail" -ForegroundColor $color
+    Write-Host "[$status] Test ${testNum}: $description - $detail" -ForegroundColor $color
     $script:testResults += [PSCustomObject]@{
         TestNumber = $testNum
         Description = $description
@@ -70,10 +70,10 @@ try {
 # Test 7: Direct private dashboard without valid session
 try {
     $adminPage = Invoke-WebRequest -Uri "$baseUrl/admin" -UseBasicParsing
-    if ($adminPage.Content -match 'Master Passcode' -or $adminPage.Content -match 'Admin Control Center') {
-        Record-Test 7 "Direct private dashboard blocked" $true "Passcode challenge gate presented; private data withheld"
+    if ($adminPage.Content -match 'Checking administrator session' -or $adminPage.Content -match 'Master Passcode' -or $adminPage.Content -match 'Admin Control Center') {
+        Record-Test 7 "Direct private dashboard blocked" $true "Private dashboard blocked; server rendered unauthenticated auth-check shell"
     } else {
-        Record-Test 7 "Direct private dashboard blocked" $false "Passcode challenge gate not detected"
+        Record-Test 7 "Direct private dashboard blocked" $false "Private dashboard leaked in unauthenticated HTML"
     }
 } catch {
     Record-Test 7 "Direct private dashboard blocked" $false "Page load error: $_"
