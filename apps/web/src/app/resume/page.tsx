@@ -271,7 +271,7 @@ ${(masterProfile.certifications || [])
                   Leadership, Campus Involvement & Event Management
                 </h2>
                 <Link href="/leadership" className="text-[11px] text-blue-700 hover:underline print:hidden">
-                  View all 13 records &rarr;
+                  View all {masterProfile.leadership?.length || 14} records &rarr;
                 </Link>
               </div>
               <div className="space-y-4">

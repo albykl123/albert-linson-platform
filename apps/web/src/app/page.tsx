@@ -293,14 +293,14 @@ export default function HomePage() {
               Leadership & Event Management
             </h2>
             <p className="text-xs text-gray-600 mt-1">
-              13 verified roles across event operations, peer education, student welfare, media, and sustainability.
+              {masterProfile.leadership?.length || 14} verified roles across event operations, public relations, peer education, student welfare, media, and sustainability.
             </p>
           </div>
           <Link
             href="/leadership"
             className="mt-4 sm:mt-0 inline-flex items-center space-x-1 text-sm font-semibold text-swiss-blue hover:text-swiss-navy transition-colors"
           >
-            <span>View all 13 records</span>
+            <span>View all {masterProfile.leadership?.length || 14} records</span>
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>

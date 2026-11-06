@@ -50,7 +50,7 @@ export default function SkillsPage() {
                   Demonstrated Through Professional Work
                 </h2>
                 <p className="text-xs text-gray-600">
-                  Applied in employment and structured roles at Innova Solutions, Herbal Energies, Algo Spark Technologies, METVY LEARN, and MCD.
+                  Applied in employment and structured roles at Innova Solutions, Herbal Energy, Algospark Technologies, METVY LEARN, and Municipal Corporation of Delhi.
                 </p>
               </div>
             </div>

@@ -2,10 +2,10 @@
   "personal": {
     "name": "Albert Linson",
     "full_legal_name": "Albert Kalampadan Linson",
-    "headline": "Building Intelligent Digital Experiences, Scalable Systems & AI Solutions",
-    "sub_headline": "Data-Driven IT Professional | Full-Stack & UI/UX | Android | AI Systems | US IT Recruitment | Student Leader",
+    "headline": "US IT Recruiter & Full-Stack Technologist | MCA Candidate",
+    "sub_headline": "US IT Recruitment | IT Operations & Management | Business Development | Frontend & UI/UX",
     "location": "Delhi, India",
-    "email": "albertkalampaadan@gmail.com",
+    "email": "albertkalampadan@gmail.com",
     "secondary_email": "albertkalampadan@gmail.com",
     "phone": "+91 9910705796",
     "linkedin": "https://linkedin.com/in/albert-linson",
@@ -29,124 +29,92 @@
         "proficiency": "Basic"
       }
     ],
-    "bio": "Analytical IT professional with a Bachelor of Computer Applications (BCA) and currently pursuing a Master of Computer Applications (MCA) at CHRIST (Deemed to be University), Delhi NCR. Hands-on experience across US IT technical recruitment, business development, IT infrastructure management, frontend web development, and UI/UX design. Passionate about artificial intelligence, systems software, and computational research, with extensive leadership across university event management, student welfare, peer education, and media teams."
+    "bio": "Results-driven professional with a Bachelor of Computer Applications and currently pursuing a Master of Computer Applications (MCA). Experienced in US IT recruitment, business development, IT operations, frontend development and UI/UX design. Demonstrated leadership in institutional event management, public relations, technical coordination and cross-functional team management. Skilled in talent sourcing, stakeholder engagement, client relationship management and operational execution, with academic research experience in medical imaging and computational analysis."
   },
-  "summary": "Analytical IT professional with a Bachelor of Computer Applications (BCA) from CHRIST (Deemed to be University), Delhi NCR, and currently pursuing a Master of Computer Applications (MCA). Multidisciplinary background encompassing full-cycle US IT technical recruitment, IT infrastructure management, B2B business development, and frontend UI/UX design. Demonstrates proven leadership across university clubs, core event management, peer education, and media coordination, paired with rigorous academic research in medical ultrasound computing and LLM test reliability.",
+  "summary": "Results-driven professional with a Bachelor of Computer Applications and currently pursuing a Master of Computer Applications (MCA). Experienced in US IT recruitment, business development, IT operations, frontend development and UI/UX design. Demonstrated leadership in institutional event management, public relations, technical coordination and cross-functional team management. Skilled in talent sourcing, stakeholder engagement, client relationship management and operational execution, with academic research experience in medical imaging and computational analysis.",
   "skills": {
-    "frontend_and_design": [
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
-      "Bootstrap",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Figma",
-      "Adobe XD",
-      "UI/UX Design",
-      "Responsive Web Design",
-      "Android Studio"
+    "recruitment_and_hr": [
+      "US IT Recruitment",
+      "Talent Sourcing",
+      "Candidate Screening",
+      "ATS",
+      "Interview Coordination",
+      "Talent Acquisition"
     ],
-    "backend_and_cloud": [
-      "Python",
-      "FastAPI",
-      "SQL",
-      "MySQL",
-      "SQLite / Cloudflare D1",
-      "Node.js",
-      "RESTful API Design",
-      "Cloudflare Workers & Pages",
-      "Cloudflare R2",
-      "Git & GitHub Actions",
-      "Linux System Administration",
-      "PowerShell Automation"
+    "business_development": [
+      "Lead Generation",
+      "Client Acquisition",
+      "Cold Calling",
+      "Market Research",
+      "Client Relationship Management"
     ],
-    "recruitment_and_business": [
-      "Full-Cycle US IT Recruitment",
-      "Talent Acquisition",
-      "Candidate Sourcing",
-      "ATS Tools & Screening",
-      "Business Development",
-      "IT Operations Management",
-      "Event Management & Planning",
+    "leadership_and_operations": [
+      "Event Management",
       "Team Leadership",
-      "Media & Branding Coordination",
-      "Peer Education & Mentoring"
+      "Public Relations",
+      "Stakeholder Management",
+      "Operations Management",
+      "Cross-functional Coordination"
     ],
-    "analytics_and_ai": [
-      "OpenRouter",
-      "Ollama",
-      "Hugging Face",
-      "Google Colab",
-      "Docker",
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Data Analysis",
-      "Computational Analysis"
-    ],
-    "frontend_development": [
-      "HTML5",
-      "CSS3",
-      "JavaScript (ES6+)",
+    "design_and_development": [
+      "HTML",
+      "CSS",
+      "JavaScript",
       "Bootstrap",
-      "React",
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS"
-    ],
-    "programming_and_backend": [
-      "Python",
-      "FastAPI",
-      "SQL",
-      "MySQL",
-      "SQLite / Cloudflare D1",
-      "Node.js",
-      "RESTful API Design"
-    ],
-    "android_development": [
-      "Kotlin",
-      "Jetpack Compose",
-      "Android Studio",
-      "Gradle",
-      "Android UI Prototyping"
-    ],
-    "ai_and_development": [
-      "OpenRouter",
-      "Ollama",
-      "Hugging Face",
-      "Google Colab",
-      "Docker",
-      "Machine Learning",
-      "Data Analysis",
-      "Computational Analysis"
-    ],
-    "design": [
       "Figma",
       "Adobe XD",
-      "UI/UX Design",
-      "Responsive Web Design",
-      "Wireframing & Prototyping"
+      "UI/UX Design"
     ],
-    "development_tools": [
+    "tools_and_technologies": [
       "Git",
       "GitHub",
-      "VS Code",
-      "Linux System Administration",
-      "Cloudflare Workers & Pages",
-      "PowerShell Automation"
+      "Android Studio",
+      "Kotlin",
+      "Jetpack Compose",
+      "Microsoft Office"
     ],
-    "professional_skills": [
-      "Full-Cycle US IT Recruitment",
+    "frontend_and_design": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Bootstrap",
+      "Figma",
+      "Adobe XD",
+      "UI/UX Design",
+      "Responsive Design"
+    ],
+    "backend_and_cloud": [
+      "Git",
+      "GitHub",
+      "Android Studio",
+      "Kotlin",
+      "Jetpack Compose",
+      "Microsoft Office",
+      "Python",
+      "FastAPI",
+      "SQLite / Cloudflare D1",
+      "Cloudflare Workers & Pages"
+    ],
+    "recruitment_and_business": [
+      "US IT Recruitment",
+      "Talent Sourcing",
+      "Candidate Screening",
+      "ATS Platforms",
+      "Interview Coordination",
       "Talent Acquisition",
-      "Candidate Sourcing",
-      "ATS Tools & Screening",
-      "Business Development",
-      "IT Operations Management",
-      "Event Management & Planning",
-      "Team Leadership",
-      "Media & Branding Coordination",
-      "Peer Education & Mentoring"
+      "Lead Generation",
+      "Client Acquisition",
+      "Cold Calling",
+      "Market Research",
+      "Client Relationship Management"
+    ],
+    "analytics_and_ai": [
+      "Medical Imaging",
+      "Computational Analysis",
+      "AI-assisted Healthcare Applications",
+      "Ultrasound Multi-Image Modality Fusion",
+      "Deep Learning Feature Extraction",
+      "OpenRouter"
     ]
   },
   "skill_levels": {
@@ -316,81 +284,115 @@
       "company": "Innova Solutions",
       "location": "Noida / Remote, India",
       "employment_type": "Full-Time",
-      "period": "Dec 2025 – July 2026",
+      "period": "December 2025 – Present",
       "tools": [
-        "ATS Tools",
-        "LinkedIn Recruiter",
+        "ATS Platforms",
         "Job Portals",
-        "Google Workspace",
-        "Technical Screening Frameworks"
+        "Professional Networks",
+        "Technical Screening",
+        "Client Collaboration",
+        "Candidate Sourcing"
       ],
       "responsibilities": [
-        "Managed full-cycle US IT recruitment across demanding enterprise technology requisitions, covering talent sourcing, technical screening, interviews, and onboarding coordination.",
-        "Streamlined US IT technical recruitment through structured requirement mapping, technical competency screening, and robust talent pipeline delivery.",
-        "Collaborated directly with US-based account managers and client technical leads to translate complex job descriptions into actionable candidate screening criteria.",
-        "Built and maintained candidate talent pipelines utilizing industry ATS tools, LinkedIn Recruiter, and technology job portals."
+        "Manage end-to-end US IT recruitment, including sourcing, screening, evaluation, submissions and onboarding.",
+        "Build candidate pipelines using ATS platforms, job portals and professional networks.",
+        "Collaborate with US-based clients and hiring managers to fulfil technical staffing requirements.",
+        "Improved placement success rate by approximately 70% through effective candidate screening.",
+        "Work toward weekly recruitment targets, submission quotas and hiring deliverables."
       ],
       "highlights": [
-        "Streamlined US IT technical recruitment through structured requirement mapping, technical competency screening, and robust talent pipeline delivery.",
-        "Built candidate talent pipelines utilizing industry ATS tools, LinkedIn Recruiter, and technology job portals.",
-        "Collaborated with US-based account managers and technical leads to translate technical job descriptions into actionable screening criteria."
+        "Manage end-to-end US IT recruitment, including sourcing, screening, evaluation, submissions and onboarding.",
+        "Build candidate pipelines using ATS platforms, job portals and professional networks.",
+        "Collaborate with US-based clients and hiring managers to fulfil technical staffing requirements.",
+        "Improved placement success rate by approximately 70% through effective candidate screening.",
+        "Work toward weekly recruitment targets, submission quotas and hiring deliverables."
       ]
     },
     {
       "id": "exp-2",
       "role": "IT Manager",
-      "company": "Herbal Energies",
+      "company": "Herbal Energy",
       "location": "Delhi, India",
       "employment_type": "Full-Time",
-      "period": "Oct 2024 – Dec 2024",
+      "period": "October 2025 – November 2025",
       "tools": [
-        "Network Administration",
-        "Hardware Procurement",
-        "Linux / Windows",
-        "Web CMS",
-        "Data Security Protocols"
+        "IT Infrastructure",
+        "Technical Operations",
+        "Website Maintenance",
+        "UI/UX Enhancements",
+        "Vendor Coordination"
       ],
       "responsibilities": [
-        "Directed operational IT infrastructure, ensuring continuous uptime across local workstations, network equipment, and internal communication systems.",
-        "Managed hardware and software procurement, data security protocols, and vendor relationships.",
-        "Maintained and enhanced the company web presence, improving interface usability, navigation speed, and responsive layout across mobile and desktop devices."
+        "Oversaw IT infrastructure, technical operations and day-to-day technology requirements.",
+        "Managed website maintenance and enhancements, improving user interface and functionality.",
+        "Coordinated with vendors and internal stakeholders to support seamless IT operations."
       ],
       "highlights": [
-        "Directed operational IT infrastructure, ensuring high uptime across workstations, network equipment, and internal communication systems.",
-        "Maintained and enhanced company web presence, improving interface usability, navigation speed, and mobile responsiveness.",
-        "Coordinated with external technology vendors and cross-functional teams to deliver software tools and technical initiatives on schedule."
+        "Oversaw IT infrastructure, technical operations and day-to-day technology requirements.",
+        "Managed website maintenance and enhancements, improving user interface and functionality.",
+        "Coordinated with vendors and internal stakeholders to support seamless IT operations."
       ]
     },
     {
       "id": "exp-3",
       "role": "Business Development Executive",
-      "company": "Algo Spark Technologies",
+      "company": "Algospark Technologies",
       "location": "Delhi NCR, India",
       "employment_type": "Full-Time",
-      "period": "Aug 2024 – Oct 2024",
+      "period": "August 2025 – October 2025",
       "tools": [
-        "CRM Systems",
-        "Lead Prospecting Tools",
-        "B2B Sales Presentations",
-        "Market Research Benchmarking"
+        "Cold Calling",
+        "Email Outreach",
+        "Lead Generation",
+        "Market Research",
+        "Client Relationship Management",
+        "Sales Proposals & Presentations"
       ],
       "responsibilities": [
-        "Generated new business opportunities and B2B client acquisition pipelines through outbound outreach, targeted communications, and multi-channel prospecting.",
-        "Prepared customized business proposals, pitch decks, and technical demonstrations aligning client software requirements with service capabilities.",
-        "Coordinated between prospective clients and technical engineering teams, maintaining accurate CRM records throughout the sales pipeline."
+        "Generated business opportunities through cold calling, email outreach and lead-generation strategies.",
+        "Developed client relationships and conducted market research to identify prospective customers and growth opportunities.",
+        "Aligned client requirements with internal service offerings and supported proposals, presentations and sales reports."
       ],
       "highlights": [
-        "Generated qualified B2B client acquisition pipelines through targeted outreach and multi-channel prospecting.",
-        "Conducted strategic market research and competitor benchmarking to identify growth segments for software product offerings.",
-        "Cultivated long-term client relationships, delivering customized proposals and technical demonstrations that aligned client requirements with service capabilities."
+        "Generated business opportunities through cold calling, email outreach and lead-generation strategies.",
+        "Developed client relationships and conducted market research to identify prospective customers and growth opportunities.",
+        "Aligned client requirements with internal service offerings and supported proposals, presentations and sales reports."
       ]
     },
     {
       "id": "exp-4",
+      "role": "Frontend Developer & UI/UX Designer Intern",
+      "company": "Municipal Corporation of Delhi",
+      "location": "New Delhi, India",
+      "employment_type": "Internship",
+      "period": "May 2024 – April 2025",
+      "tools": [
+        "Figma",
+        "Adobe XD",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Bootstrap",
+        "UI/UX Design",
+        "Responsive Web Design"
+      ],
+      "responsibilities": [
+        "Designed user-centric interfaces using Figma and Adobe XD and improved website usability and responsiveness.",
+        "Contributed to frontend enhancements and a better digital user experience.",
+        "Helped reduce user-reported interface issues by approximately 70%."
+      ],
+      "highlights": [
+        "Designed user-centric interfaces using Figma and Adobe XD and improved website usability and responsiveness.",
+        "Contributed to frontend enhancements and a better digital user experience.",
+        "Helped reduce user-reported interface issues by approximately 70%."
+      ]
+    },
+    {
+      "id": "exp-5",
       "role": "HR Recruiter",
       "company": "METVY LEARN",
       "location": "Remote, India",
-      "employment_type": "Full-Time / Contract (1 Year)",
+      "employment_type": "Prior Professional Experience",
       "period": "2024 (1 Year)",
       "tools": [
         "Talent Sourcing",
@@ -399,40 +401,12 @@
         "Candidate Coordination"
       ],
       "responsibilities": [
-        "Handled end-to-end recruitment coordination, talent sourcing, interview scheduling, and candidate documentation.",
-        "Screened applicant profiles against specific cohort and role requirements, maintaining structured applicant tracking pipelines.",
-        "Facilitated stakeholder communication between interviewers, mentors, and prospective candidates."
+        "Managed recruitment coordination, talent sourcing, interview scheduling, and candidate documentation.",
+        "Screened applicant profiles against specific cohort requirements, maintaining structured applicant tracking pipelines."
       ],
       "highlights": [
         "Managed recruitment, candidate scheduling, and documentation across 1 year of active talent acquisition operations.",
         "Streamlined interview scheduling workflows and maintained accurate candidate evaluation records."
-      ]
-    },
-    {
-      "id": "exp-5",
-      "role": "Frontend Developer & UI/UX Designer (Intern)",
-      "company": "Municipal Corporation of Delhi (MCD)",
-      "location": "New Delhi, India",
-      "employment_type": "Internship",
-      "period": "May 2024 – Jul 2024 & Jan 2025 – Apr 2025",
-      "tools": [
-        "Figma",
-        "Adobe XD",
-        "HTML5",
-        "CSS3",
-        "JavaScript",
-        "Bootstrap",
-        "Android Studio"
-      ],
-      "responsibilities": [
-        "Designed and prototyped responsive citizen-facing user interfaces in Figma and Adobe XD, aligning with municipal usability standards.",
-        "Modernized civic web interfaces and portal navigation using HTML, CSS, JavaScript, and Bootstrap.",
-        "Collaborated with IT engineering staff on Android UI prototyping, mobile layout testing in Android Studio, and end-user IT training."
-      ],
-      "highlights": [
-        "Designed accessible, mobile-first citizen interfaces and streamlined grievance redressal navigation compliant with municipal usability standards.",
-        "Modernized civic web interfaces in Figma and Bootstrap, resolving high-friction citizen workflows.",
-        "Supported Android UI prototyping and mobile layout testing in Android Studio."
       ]
     }
   ],
@@ -442,220 +416,143 @@
       "degree": "Master of Computer Applications (MCA)",
       "institution": "CHRIST (Deemed to be University)",
       "location": "Delhi NCR, India",
-      "period": "Currently Pursuing (2024 – 2026)",
-      "details": "Pursuing advanced master's curriculum focusing on Advanced Software Engineering, Cloud Architectures, Distributed Systems, and Applied Artificial Intelligence.",
-      "specialization": "Artificial Intelligence & Advanced Software Systems"
+      "period": "Currently pursuing",
+      "details": "Pursuing Master of Computer Applications focusing on advanced computing, software engineering, and computational analysis.",
+      "specialization": "Advanced Computing & Computational Analysis"
     },
     {
       "id": "edu-2",
       "degree": "Bachelor of Computer Applications (BCA)",
       "institution": "CHRIST (Deemed to be University)",
       "location": "Delhi NCR, India",
-      "period": "2022 – 2025",
-      "details": "Graduated with Specialization in Advanced Technological Skills. Coursework covered Data Structures, Database Management Systems, Object-Oriented Programming, Computer Networks, Web Development, and Cloud Computing.",
+      "period": "2022–2025",
+      "details": "Graduated with Specialization in Advanced Technological Skills. Coursework covered Data Structures, Database Systems, Computer Networks, and Web Technologies.",
       "specialization": "Advanced Technological Skills"
     },
     {
       "id": "edu-3",
-      "degree": "Senior School Certificate Examination (Class XII — CBSE)",
-      "institution": "St. Columba's School",
+      "degree": "Class XII – CBSE",
+      "institution": "St. Columba’s School",
       "location": "New Delhi, India",
-      "period": "2020 – 2022",
-      "details": "Central Board of Secondary Education (CBSE). Focused on Computer Science and Mathematics. Actively participated in school IT equipment maintenance, disaster management team, and overall event management.",
+      "period": "Completed",
+      "details": "Central Board of Secondary Education (CBSE). Focused on Computer Science and Mathematics with departmental leadership.",
       "specialization": "Computer Science & Mathematics"
-    },
-    {
-      "id": "edu-4",
-      "degree": "Secondary School Examination (Class X — CBSE)",
-      "institution": "St. Columba's School",
-      "location": "New Delhi, India",
-      "period": "2019 – 2020",
-      "details": "Central Board of Secondary Education (CBSE) Secondary School Examination.",
-      "specialization": "General Science & Mathematics"
     }
   ],
   "leadership": [
     {
-      "id": "lead-1",
-      "title": "Disaster Management Team Member",
-      "role_level": "Team Member",
-      "organization": "St. Columba's School, New Delhi",
-      "institution": "St. Columba's School, New Delhi",
-      "period": "2020 – 2022",
-      "category": "Disaster Management & Community Participation",
-      "responsibilities": [
-        "Participated in institutional safety preparedness protocols, evacuation drills, and campus emergency response simulations.",
-        "Collaborated with faculty and student teams to promote safety awareness and rapid assistance protocols across secondary school cohorts."
-      ],
-      "skills": [
-        "Disaster Preparedness",
-        "Emergency Awareness",
-        "Safety Awareness",
-        "Preparedness Activities",
-        "Team Collaboration"
-      ],
-      "verification_status": "Verified",
-      "public_visibility": true
-    },
-    {
-      "id": "lead-2",
-      "title": "Event Head & Overall Event Management Core Team Head",
-      "role_level": "Core Team Head",
-      "organization": "St. Columba's School, New Delhi",
-      "institution": "St. Columba's School, New Delhi",
-      "period": "2019 – 2022",
-      "category": "Leadership & Event Management",
-      "responsibilities": [
-        "Headed core event management operations for major institutional functions, annual celebrations, and inter-house competitions.",
-        "Coordinated student logistics teams, technical stage crews, schedule planning, and venue arrangements to ensure seamless execution."
-      ],
-      "skills": [
-        "Event Management",
-        "Event Planning",
-        "Event Operations",
-        "Team Leadership",
-        "Student Leadership",
-        "Responsibility Ownership"
-      ],
-      "verification_status": "Verified",
-      "public_visibility": true
-    },
-    {
-      "id": "lead-3",
-      "title": "Adikala — Music & Dance Team Member",
-      "role_level": "Team Member",
-      "organization": "School of Sciences",
-      "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 – 2025",
-      "category": "Cultural & Campus Engagement",
-      "responsibilities": [
-        "Contributed to departmental cultural productions, musical rehearsals, and collaborative artistic showcases within the School of Sciences.",
-        "Supported stage team coordination, prop logistics, and schedule management during inter-departmental university fests."
-      ],
-      "skills": [
-        "Cultural Coordination",
-        "Team Collaboration",
-        "Interpersonal Communication",
-        "Student Engagement"
-      ],
-      "verification_status": "Verified",
-      "public_visibility": true
-    },
-    {
-      "id": "lead-4",
-      "title": "Corporate Club — Club Member",
-      "role_level": "Member",
-      "organization": "School of Sciences",
-      "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 – 2025",
-      "category": "Leadership & Event Management",
-      "responsibilities": [
-        "Participated in professional development seminars, guest speaker symposiums, and industry transition workshops organized by the Corporate Club.",
-        "Assisted in coordinating campus corporate interface events and student business challenge sessions."
-      ],
-      "skills": [
-        "Corporate Relations",
-        "Professional Development",
-        "Event Coordination",
-        "Team Collaboration"
-      ],
-      "verification_status": "Verified",
-      "public_visibility": true
-    },
-    {
-      "id": "lead-5",
-      "title": "Student Welfare Office (SWO) — Art & Literary Club Member",
-      "role_level": "Member",
-      "organization": "Student Welfare Office (SWO)",
-      "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 – 2024",
-      "category": "Cultural & Campus Engagement",
-      "responsibilities": [
-        "Active member for 2 years contributing to university literary events, creative writing workshops, and cultural fests.",
-        "Assisted in documentation, event announcements, stage assistance, and peer participant facilitation during major university campus festivals."
-      ],
-      "skills": [
-        "Student Welfare",
-        "Literary Events",
-        "Public Communication",
-        "Event Support",
-        "Creative Coordination"
-      ],
-      "verification_status": "Verified",
-      "public_visibility": true
-    },
-    {
-      "id": "lead-6",
-      "title": "Peer Educator",
-      "role_level": "Peer Educator",
-      "organization": "Centre for Counselling & Health Services (CCHS)",
-      "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 – 2025",
-      "category": "Student Welfare & Peer Education",
-      "responsibilities": [
-        "Completed structured peer education training under CCHS to support student orientation, well-being awareness, and healthy university community living.",
-        "Facilitated peer-level wellness sessions, anti-stress initiatives, and community discussions; connected fellow students with official CCHS university counselling resources.",
-        "Maintained peer support ethics, active listening, and confidential student guidance boundaries without acting as a clinical therapist."
-      ],
-      "skills": [
-        "Peer Education",
-        "Peer Mentoring",
-        "Student Engagement",
-        "Health Awareness",
-        "Student Well-being",
-        "Interpersonal Communication"
-      ],
-      "progression_note": "Foundational peer mentorship role (2022–2025), advancing to Advanced Peer Educator (2026–2028).",
-      "verification_status": "Verified",
-      "public_visibility": true
-    },
-    {
-      "id": "lead-7",
-      "title": "Technical & Media Team Leader",
-      "role_level": "Team Leader",
-      "organization": "Centre for Counselling & Health Services (CCHS)",
-      "institution": "CHRIST (Deemed to be University), Delhi NCR",
+      "id": "lead-cchs-media",
+      "title": "Event Head",
+      "role_level": "Event Head",
+      "organization": "CCHS MEDIA & Technical Team",
+      "institution": "Centre for Counselling & Health Services (CCHS), CHRIST (Deemed to be University), Delhi NCR",
       "period": "2023 – 2025",
-      "category": "Branding, Media & Communications",
+      "category": "Leadership & Event Management",
       "responsibilities": [
-        "Led the student technical and digital media crew responsible for CCHS event promotion, campaign graphics, and audio/video setups for university wellness workshops.",
-        "Oversaw digital content creation, workshop presentations, and technical stage setups across university counselling awareness events."
+        "Led event operations and coordinated the overall management and technical teams.",
+        "Delegated responsibilities and supported event planning, logistics and execution."
       ],
       "skills": [
-        "Media Coordination",
-        "Technical Coordination",
-        "Team Leadership",
-        "Digital Media",
-        "Branding",
-        "Content Coordination"
+        "Event Operations",
+        "Technical Teams Coordination",
+        "Overall Management",
+        "Event Planning",
+        "Logistics & Execution"
       ],
       "verification_status": "Verified",
       "public_visibility": true
     },
     {
-      "id": "lead-8",
-      "title": "Branding & Media Team Member",
-      "role_level": "Member",
+      "id": "lead-placetrials",
+      "title": "Core Team Member – Scholarship & Public Relations Head",
+      "role_level": "Core Team Member & PR Head",
+      "organization": "Placetrials 2026",
+      "institution": "CHRIST (Deemed to be University), Delhi NCR",
+      "period": "2025 – 2026",
+      "category": "Leadership & Event Management",
+      "responsibilities": [
+        "Led scholarship-related coordination and public relations activities as part of the core organising team.",
+        "Managed communications, promotional activities and stakeholder coordination."
+      ],
+      "skills": [
+        "Public Relations",
+        "Scholarship Coordination",
+        "Stakeholder Management",
+        "Promotional Communications",
+        "Core Team Leadership"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-globalfest",
+      "title": "Core Team Member – Overall Management",
+      "role_level": "Core Team Member",
+      "organization": "Global Fest 2.0",
+      "institution": "CHRIST (Deemed to be University), Delhi NCR",
+      "period": "2024 – 2025",
+      "category": "Leadership & Event Management",
+      "responsibilities": [
+        "Coordinated teams, operational responsibilities and interdepartmental communication as part of the core management team.",
+        "Supported event planning, logistics and on-ground execution."
+      ],
+      "skills": [
+        "Overall Event Management",
+        "Interdepartmental Communication",
+        "Operational Coordination",
+        "On-Ground Execution",
+        "Logistics"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-nukkad-natak",
+      "title": "Event Coordinator",
+      "role_level": "Event Coordinator",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 – Present",
-      "category": "Branding, Media & Communications",
+      "period": "2024",
+      "year": 2024,
+      "category": "Cultural & Campus Engagement",
       "responsibilities": [
-        "Designs digital promotional material, social media creative assets, and official announcements representing School of Sciences events.",
-        "Coordinates branding guidelines and multimedia documentation across academic symposiums and student club initiatives."
+        "Coordinated the Nukkad Natak (street play) and other School of Sciences events.",
+        "Supported participant coordination, logistics, planning and on-ground execution."
       ],
       "skills": [
-        "Branding",
-        "Digital Media",
-        "Content Coordination",
-        "Stakeholder Communication",
-        "Media Coordination"
+        "Event Coordination",
+        "Nukkad Natak (Street Play)",
+        "Participant Coordination",
+        "Logistics & Planning",
+        "Campus Engagement"
       ],
       "verification_status": "Verified",
       "public_visibility": true
     },
     {
-      "id": "lead-9",
+      "id": "lead-st-columba-pe",
+      "title": "Head – Physical Education Department",
+      "role_level": "Department Head",
+      "organization": "St. Columba’s School, New Delhi",
+      "institution": "St. Columba’s School, New Delhi",
+      "period": "2021 – 2022",
+      "category": "Leadership & Event Management",
+      "responsibilities": [
+        "Led student-level coordination for physical education activities, sports initiatives and school events.",
+        "Demonstrated leadership, discipline, teamwork and organisational skills."
+      ],
+      "skills": [
+        "Physical Education Coordination",
+        "Sports Initiatives",
+        "Student Leadership",
+        "Teamwork & Discipline",
+        "Organisational Skills"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-corporate-club-head",
       "title": "Corporate Club — Core Team Member & Overall Event Management Head",
       "role_level": "Core Team Member & Overall Event Management Head",
       "organization": "School of Sciences",
@@ -664,45 +561,20 @@
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Serves as the executive head of overall event management for the School of Sciences Corporate Club, directing event planning, operational schedules, and execution teams.",
-        "Leads student committee heads in coordinating industry corporate sessions, alumni speaker panels, and professional networking symposiums.",
-        "Ensures end-to-end accountability, cross-functional crew alignment, and professional decorum across all club activities."
+        "Leads student committee heads in coordinating industry corporate sessions, alumni speaker panels, and professional networking symposiums."
       ],
       "skills": [
         "Event Management",
         "Event Leadership",
-        "Event Planning",
-        "Event Operations",
+        "Corporate Relations",
         "Team Leadership",
-        "Programme Coordination",
-        "Responsibility Ownership"
+        "Operational Planning"
       ],
       "verification_status": "Verified",
       "public_visibility": true
     },
     {
-      "id": "lead-10",
-      "title": "SDG Cell — Member",
-      "role_level": "Member",
-      "organization": "School of Sciences",
-      "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 – Present",
-      "category": "Sustainability & Institutional Engagement",
-      "responsibilities": [
-        "Contributes to United Nations Sustainable Development Goals (SDG) awareness campaigns, sustainability drives, and institutional campus initiatives.",
-        "Organizes student awareness workshops focusing on sustainable tech practices, waste reduction, and community environmental responsibility."
-      ],
-      "skills": [
-        "Sustainable Development Awareness",
-        "SDG Engagement",
-        "Institutional Participation",
-        "Public Communication",
-        "Team Collaboration"
-      ],
-      "verification_status": "Verified",
-      "public_visibility": true
-    },
-    {
-      "id": "lead-11",
+      "id": "lead-advanced-peer",
       "title": "Advanced Peer Educator",
       "role_level": "Team Leader",
       "organization": "Centre for Counselling & Health Services (CCHS)",
@@ -711,47 +583,42 @@
       "category": "Student Welfare & Peer Education",
       "responsibilities": [
         "Advanced peer leadership appointment following multi-year service as Peer Educator (2022–2025); mentors junior peer educators and coordinates wellness outreach programs.",
-        "Assists CCHS professional staff in organizing university-wide student mental health awareness weeks, stress mitigation drives, and orientation bootcamps.",
-        "Promotes student well-being advocacy with strict ethical boundaries, serving as a trusted student liaison to professional counselling services."
+        "Assists CCHS professional staff in organizing university-wide student mental health awareness weeks, stress mitigation drives, and orientation bootcamps."
       ],
       "skills": [
         "Peer Mentoring",
         "Peer Education",
-        "Student Leadership",
         "Student Well-being",
-        "Student Welfare",
         "Health Awareness",
         "Interpersonal Communication"
       ],
-      "progression_note": "Direct progression from Peer Educator (2022–2025) to Advanced Peer Educator (2026–2028). Verified source period 2026–2028.",
       "verification_status": "Verified",
       "public_visibility": true
     },
     {
-      "id": "lead-12",
-      "title": "Aparoksha 2022 — Event Head",
-      "role_level": "Event Head",
-      "organization": "School of Sciences",
+      "id": "lead-peer-educator",
+      "title": "Peer Educator",
+      "role_level": "Peer Educator",
+      "organization": "Centre for Counselling & Health Services (CCHS)",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022",
-      "year": 2022,
-      "category": "Leadership & Event Management",
+      "period": "2022 – 2025",
+      "category": "Student Welfare & Peer Education",
       "responsibilities": [
-        "Served as Event Head for the flagship science festival Aparoksha 2022, managing competition tracks, participant registration, and judge coordination.",
-        "Supervised event volunteer crews, stage setup, timing schedules, and prize distribution workflows to ensure punctual festival execution."
+        "Completed structured peer education training under CCHS to support student orientation, well-being awareness, and healthy university community living.",
+        "Facilitated peer-level wellness sessions, anti-stress initiatives, and community discussions; connected fellow students with official CCHS university counselling resources."
       ],
       "skills": [
-        "Event Execution",
-        "Event Planning",
-        "Event Operations",
-        "Team Coordination",
-        "Team Leadership"
+        "Peer Education",
+        "Peer Mentoring",
+        "Student Well-being",
+        "Health Awareness",
+        "Active Listening"
       ],
       "verification_status": "Verified",
       "public_visibility": true
     },
     {
-      "id": "lead-13",
+      "id": "lead-aparoksha-2023",
       "title": "Aparoksha 2023 — Event Head",
       "role_level": "Event Head",
       "organization": "School of Sciences",
@@ -767,8 +634,113 @@
         "Event Leadership",
         "Event Operations",
         "Programme Coordination",
-        "Responsibility Ownership",
         "Stakeholder Communication"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-aparoksha-2022",
+      "title": "Aparoksha 2022 — Event Head",
+      "role_level": "Event Head",
+      "organization": "School of Sciences",
+      "institution": "CHRIST (Deemed to be University), Delhi NCR",
+      "period": "2022",
+      "year": 2022,
+      "category": "Leadership & Event Management",
+      "responsibilities": [
+        "Served as Event Head for the flagship science festival Aparoksha 2022, managing competition tracks, participant registration, and judge coordination.",
+        "Supervised event volunteer crews, stage setup, timing schedules, and prize distribution workflows to ensure punctual festival execution."
+      ],
+      "skills": [
+        "Event Execution",
+        "Event Planning",
+        "Volunteer Supervision",
+        "Team Coordination"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-branding-media",
+      "title": "Branding & Media Team Member",
+      "role_level": "Member",
+      "organization": "School of Sciences",
+      "institution": "CHRIST (Deemed to be University), Delhi NCR",
+      "period": "2026 – Present",
+      "category": "Branding, Media & Communications",
+      "responsibilities": [
+        "Designs digital promotional material, social media creative assets, and official announcements representing School of Sciences events.",
+        "Coordinates branding guidelines and multimedia documentation across academic symposiums and student club initiatives."
+      ],
+      "skills": [
+        "Branding",
+        "Digital Media",
+        "Content Coordination",
+        "Media Coordination"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-sdg-cell",
+      "title": "SDG Cell — Member",
+      "role_level": "Member",
+      "organization": "School of Sciences",
+      "institution": "CHRIST (Deemed to be University), Delhi NCR",
+      "period": "2026 – Present",
+      "category": "Sustainability & Institutional Engagement",
+      "responsibilities": [
+        "Contributes to United Nations Sustainable Development Goals (SDG) awareness campaigns, sustainability drives, and institutional campus initiatives.",
+        "Organizes student awareness workshops focusing on sustainable tech practices and community environmental responsibility."
+      ],
+      "skills": [
+        "Sustainable Development",
+        "SDG Engagement",
+        "Public Communication",
+        "Team Collaboration"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-swo-literary",
+      "title": "Student Welfare Office (SWO) — Art & Literary Club Member",
+      "role_level": "Member",
+      "organization": "Student Welfare Office (SWO)",
+      "institution": "CHRIST (Deemed to be University), Delhi NCR",
+      "period": "2022 – 2024",
+      "category": "Cultural & Campus Engagement",
+      "responsibilities": [
+        "Active member for 2 years contributing to university literary events, creative writing workshops, and cultural fests.",
+        "Assisted in documentation, event announcements, stage assistance, and peer participant facilitation during major university campus festivals."
+      ],
+      "skills": [
+        "Student Welfare",
+        "Literary Events",
+        "Public Communication",
+        "Creative Coordination"
+      ],
+      "verification_status": "Verified",
+      "public_visibility": true
+    },
+    {
+      "id": "lead-disaster-mgmt",
+      "title": "Disaster Management Team Member",
+      "role_level": "Team Member",
+      "organization": "St. Columba’s School, New Delhi",
+      "institution": "St. Columba’s School, New Delhi",
+      "period": "2020 – 2022",
+      "category": "Disaster Management & Community Participation",
+      "responsibilities": [
+        "Participated in institutional safety preparedness protocols, evacuation drills, and campus emergency response simulations.",
+        "Collaborated with faculty and student teams to promote safety awareness and rapid assistance protocols across secondary school cohorts."
+      ],
+      "skills": [
+        "Disaster Preparedness",
+        "Safety Awareness",
+        "Emergency Response",
+        "Team Collaboration"
       ],
       "verification_status": "Verified",
       "public_visibility": true
@@ -776,32 +748,46 @@
   ],
   "certifications": [
     {
-      "id": "cert-1",
-      "name": "Python Programming Masterclass",
-      "issuer": "Udemy",
+      "id": "cert-art-therapy",
+      "name": "Art Therapy Programme",
+      "issuer": "Centre for Counselling & Health Services (CCHS), CHRIST (Deemed to be University)",
       "year": "Verified",
-      "description": "Comprehensive practical programming covering data structures, OOP, file I/O, and algorithmic problem solving."
+      "description": "Structured mental health facilitation, creative expression, and student well-being under CCHS."
     },
     {
-      "id": "cert-2",
-      "name": "Microsoft Office Suite 2013 Certification",
-      "issuer": "Microsoft / Certified Training",
+      "id": "cert-gatekeeper",
+      "name": "Gatekeeper Training Programme",
+      "issuer": "Centre for Counselling & Health Services (CCHS), CHRIST (Deemed to be University)",
       "year": "Verified",
-      "description": "Advanced spreadsheet analysis, document automation, and executive presentation preparation."
+      "description": "Certified suicide prevention, psychological first aid, and student distress identification protocol."
     },
     {
-      "id": "cert-3",
+      "id": "cert-peer-educator",
       "name": "Certified Peer Educator",
       "issuer": "Centre for Counselling & Health Services (CCHS), CHRIST (Deemed to be University)",
       "year": "Verified",
       "description": "Peer mentorship recognition, student mental health awareness, and student community leadership."
     },
     {
-      "id": "cert-4",
+      "id": "cert-swo-literary",
       "name": "SWO Art & Literary Club Member (2 Years)",
       "issuer": "Student Welfare Office (SWO), CHRIST (Deemed to be University)",
       "year": "Verified",
       "description": "Active participation in institutional literary events, debate moderation, and cultural fest coordination."
+    },
+    {
+      "id": "cert-python",
+      "name": "Python Programming Masterclass",
+      "issuer": "Udemy",
+      "year": "Verified",
+      "description": "Comprehensive practical programming covering data structures, OOP, file I/O, and algorithmic problem solving."
+    },
+    {
+      "id": "cert-msoffice",
+      "name": "Microsoft Office Suite 2013 Certification",
+      "issuer": "Microsoft / Certified Training",
+      "year": "Verified",
+      "description": "Advanced spreadsheet analysis, document automation, and executive presentation preparation."
     }
   ],
   "research": [

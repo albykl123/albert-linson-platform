@@ -41,7 +41,7 @@ export default function LeadershipPage() {
 
           <div className="mt-8 flex flex-wrap gap-4 text-xs text-ivory-text/70">
             <div className="flex items-center gap-2 bg-ivory-surface px-3 py-1.5 rounded border border-ivory-border">
-              <span className="font-semibold text-ivory-text">13</span> Verified Engagement Records
+              <span className="font-semibold text-ivory-text">{records.length}</span> Verified Engagement Records
             </div>
             <div className="flex items-center gap-2 bg-ivory-surface px-3 py-1.5 rounded border border-ivory-border">
               <span className="font-semibold text-ivory-text">2</span> Institutions (St. Columba&apos;s & Christ Univ)
