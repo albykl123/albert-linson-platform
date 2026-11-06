@@ -5,11 +5,11 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployed Commit:** `5583929` ("feat(studio): add autonomous job market auto-pilot with zero-approval application dispatch and shortlist tracker")  
-**Active Cloudflare Worker Version ID:** `6e29ee97-77ce-48d9-ae28-fceeb8f380fa`  
+**Latest Deployed Commit:** `69e6a04` ("feat(navigation): merge projects & research into unified showcase, merge resume & skills with 4-tier matrix switcher")  
+**Active Cloudflare Worker Version ID:** `aab821e2-c22f-4f94-a220-bc5d27f270eb`  
 **Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
-**Latest Successful CI/CD Run:** [Run 42241358059](https://github.com/albykl123/albert-linson-platform/actions/runs/42241358059) (Duration: 2m35s, 100% Pass)  
-**Release Acceptance Status:** **MASTER PROJECT LIVE & AUTONOMOUS AUTO-PILOT ENGINE DEPLOYED — 100% PRODUCTION VERIFIED**  
+**Latest Successful CI/CD Run:** [Run 42243661632](https://github.com/albykl123/albert-linson-platform/actions/runs/42243661632) (Duration: 2m52s, 100% Pass)  
+**Release Acceptance Status:** **MASTER PROJECT LIVE & UNIFIED SECTIONS DEPLOYED — 100% PRODUCTION VERIFIED**  
 **Free Tier Cost:** $0.00 / Month (100% Zero-Cost Free Developer Stack)  
 
 ---
@@ -81,7 +81,13 @@ The platform has been audited, migrated to the official OpenNext Cloudflare Work
 - **Autonomous Zero-Approval Dispatch:** Cold outreach application emails with tailored deliverables are dispatched directly to hiring managers with unique telemetry tracking (`AUTONOMOUSLY_DISPATCHED_NO_APPROVAL_REQUIRED`).
 - **Recruiter Shortlist & Executive RSVP Synthesis:** Ingests incoming interview requests and synthesizes calendar-synchronized, professional RSVP responses offering concrete interview availability windows.
 
-### 3.5. Security & Administration
+### 3.5. Unified Sections & Streamlined Navigation
+- **Projects & Academic Research (`/projects`):** Unified showcase displaying 8 verified software engineering projects alongside 2 academic research manuscripts. Features live interactive filter tabs (`All Works (10)`, `Software Systems (8)`, `Academic Research (2)`), real-time search, and direct anchor navigation (`#projects`, `#research`).
+- **Master Resume & Skills Architecture (`/resume`):** Merged executive resume and evidence-backed capabilities matrix with 3 interactive view modes (`Master Resume`, `4-Tier Skills Library`, and `Combined Document`). Incorporates print-ready styling, vector PDF generation, ATS plain-text download, and direct cross-verification between resume claims and skill evidence tiers.
+- **Streamlined Navigation Bar:** Reduced menu from 9 items down to 7 streamlined links (About, Experience, Leadership, Education, Projects & Research, Resume & Skills, FreeStack), optimizing mobile responsiveness and eliminating desktop clutter.
+- **Backward Compatibility:** Dedicated routes (`/research`, `/skills`) seamlessly maintain backwards compatibility with unified banner guides and direct access.
+
+### 3.6. Security & Administration
 - **Zero Hardcoded Secrets:** Replaced all legacy passcodes with server-side cookie authentication validating `ADMIN_SECRET_KEY`.
 - **Secret Isolation:** API tokens (`CLOUDFLARE_API_TOKEN`, `OPENROUTER_API_KEY`) run strictly server-side and are never exposed in browser bundles or `NEXT_PUBLIC_` variables.
 
