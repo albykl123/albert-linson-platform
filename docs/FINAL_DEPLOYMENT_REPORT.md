@@ -5,10 +5,10 @@
 **Target Infrastructure:** Cloudflare Workers + OpenNext (`@opennextjs/cloudflare`)  
 **Production Repository:** [https://github.com/albykl123/albert-linson-platform](https://github.com/albykl123/albert-linson-platform)  
 **Primary Branch:** `main`  
-**Latest Deployed Commit:** `2aa0aa5` ("refactor(avatar): streamline UX by removing cursor-following companion, retaining 3D hero avatar and bottom-right executive AI copilot")  
-**Active Cloudflare Worker Version ID:** Verified in CI/CD Run `42255635764`  
+**Latest Deployed Commit:** `fd65fc4` ("feat(freestack): isolate FreeStack module exclusively to Admin Control Center and protect routes/API from public access")  
+**Active Cloudflare Worker Version ID:** Verified in CI/CD Run `42257630555`  
 **Verified Production URL:** [https://albert-linson-platform.albertkalampadan.workers.dev](https://albert-linson-platform.albertkalampadan.workers.dev)  
-**Latest Successful CI/CD Run:** [Run 42255635764](https://github.com/albykl123/albert-linson-platform/actions/runs/42255635764) (Duration: 2m40s, 100% Pass)  
+**Latest Successful CI/CD Run:** [Run 42257630555](https://github.com/albykl123/albert-linson-platform/actions/runs/42257630555) (Duration: 2m32s, 100% Pass)  
 **Release Acceptance Status:** **MASTER PROJECT LIVE & 3D INTERACTIVE AVATAR CHATBOT DEPLOYED — 100% PRODUCTION VERIFIED**  
 **Free Tier Cost:** $0.00 / Month (100% Zero-Cost Free Developer Stack)  
 
@@ -63,10 +63,11 @@ The platform has been audited, migrated to the official OpenNext Cloudflare Work
 - **Academic Research Publications:** Full metadata, methodology, and abstracts for 3 research papers (AEGIS-Test, BioWavelet-Net, MCD Civic Dashboard).
 - **Engineering Projects Portfolio:** Deep technical showcases for JARVIS Desktop Agent, Lunova OS, ATSForge AI, MCD Governance Portal, and Algospark.
 
-### 3.2. FreeStack Intelligence Engine
-- **1,369 Curated Services across 57 Categories:** Synced directly from `ripienaar/free-for-dev`.
-- **Search & Filter:** Instant client-side and API filtering with category badges and side-by-side comparison modal.
-- **Automated Sync Pipeline:** Python ingestion script (`scripts/sync_freestack.py`) updates both shared catalog and frontend data.
+### 3.2. FreeStack Intelligence Engine (Exclusively Restricted to Admin Control Center)
+- **100% Admin-Only Isolation:** FreeStack has been completely removed from public visibility (Navbar, Footer, Homepage). Only authenticated platform administrators can access the directory.
+- **Whole Elemental Module in Admin (`/admin?tab=freestack`):** Houses the full 1,369 curated services across 57 categories from `ripienaar/free-for-dev`, live search bar, category dropdown selector, responsive service cards, compare drawer, side-by-side comparison modal, and sync maintenance controls.
+- **Edge API Security (`/api/freestack`):** Gated by `verifyAdminRequest()`. Rejects unauthenticated public access with `HTTP 401 Unauthorized` and `albert_admin_session_v4` HMAC cookie validation.
+- **Route Protection (`/freestack`):** Public visits to `/freestack` are automatically routed to admin authorization.
 
 ### 3.3. ATSForge Private Career Studio
 - **20-Rule ATS Audit Engine:** Deterministic scoring across formatting, technology keywords, quantifiable achievements, contact details, and density penalties.
@@ -84,7 +85,7 @@ The platform has been audited, migrated to the official OpenNext Cloudflare Work
 ### 3.5. Unified Sections & Streamlined Navigation
 - **Projects & Academic Research (`/projects`):** Unified showcase displaying 8 verified software engineering projects alongside 2 academic research manuscripts. Features live interactive filter tabs (`All Works (10)`, `Software Systems (8)`, `Academic Research (2)`), real-time search, and direct anchor navigation (`#projects`, `#research`).
 - **Master Resume & Skills Architecture (`/resume`):** Merged executive resume and evidence-backed capabilities matrix with 3 interactive view modes (`Master Resume`, `4-Tier Skills Library`, and `Combined Document`). Incorporates print-ready styling, vector PDF generation, ATS plain-text download, and direct cross-verification between resume claims and skill evidence tiers.
-- **Streamlined Navigation Bar:** Reduced menu from 9 items down to 7 streamlined links (About, Experience, Leadership, Education, Projects & Research, Resume & Skills, FreeStack), optimizing mobile responsiveness and eliminating desktop clutter.
+- **Streamlined Navigation Bar:** Clean 6-item executive menu (About, Experience, Leadership, Education, Projects & Research, Resume & Skills), optimizing mobile responsiveness and completely eliminating external directory clutter.
 - **Backward Compatibility:** Dedicated routes (`/research`, `/skills`) seamlessly maintain backwards compatibility with unified banner guides and direct access.
 
 ### 3.6. 3D Cutout Avatar & Global Executive AI Recruiter Chatbot
