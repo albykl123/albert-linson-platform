@@ -12,6 +12,7 @@ $routes = @(
     "/resume",
     "/admin",
     "/education",
+    "/leadership",
     "/api/profile",
     "/api/freestack",
     "/api/db",

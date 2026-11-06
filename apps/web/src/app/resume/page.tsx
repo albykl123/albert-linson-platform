@@ -68,6 +68,15 @@ ${masterProfile.research
   )
   .join("\n\n")}
 
+LEADERSHIP, CAMPUS INVOLVEMENT & EVENT MANAGEMENT
+--------------------------------------------------------------------------------
+${(masterProfile.leadership || [])
+  .map(
+    (l) =>
+      `* ${l.title} - ${l.organization} (${l.period})\n  Category: ${l.category} | Level: ${l.role_level}\n  Responsibilities: ${l.responsibilities.join("; ")}\n  Keywords: ${l.skills.join(", ")}`
+  )
+  .join("\n\n")}
+
 CERTIFICATIONS & HONORS
 --------------------------------------------------------------------------------
 ${(masterProfile.certifications || [])
@@ -253,6 +262,41 @@ ${(masterProfile.certifications || [])
               ))}
             </div>
           </section>
+
+          {/* Leadership, Campus Involvement & Event Management */}
+          {masterProfile.leadership && (
+            <section className="mb-8">
+              <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
+                <h2 className="text-xs font-bold uppercase tracking-widest text-paper-graphite">
+                  Leadership, Campus Involvement & Event Management
+                </h2>
+                <Link href="/leadership" className="text-[11px] text-blue-700 hover:underline print:hidden">
+                  View all 13 records &rarr;
+                </Link>
+              </div>
+              <div className="space-y-4">
+                {masterProfile.leadership.slice(0, 5).map((lead) => (
+                  <div key={lead.id} className="text-xs text-gray-800">
+                    <div className="flex flex-col sm:flex-row sm:items-baseline justify-between">
+                      <div>
+                        <span className="font-bold text-sm text-paper-graphite">{lead.title}</span>
+                        <span className="text-gray-700 font-medium"> &bull; {lead.organization} ({lead.institution})</span>
+                      </div>
+                      <span className="text-gray-500 font-medium text-[11px]">{lead.period}</span>
+                    </div>
+                    <div className="text-[11px] text-gray-600 italic mt-0.5">
+                      Category: {lead.category} &bull; Role: {lead.role_level}
+                    </div>
+                    <ul className="list-disc pl-4 space-y-0.5 text-xs text-gray-700 mt-1">
+                      {lead.responsibilities.map((resp, rIdx) => (
+                        <li key={rIdx}>{resp}</li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Certifications & Recognition */}
           {masterProfile.certifications && (

@@ -82,7 +82,31 @@ export default function AboutPage() {
               </div>
             </section>
 
-            {/* 4. Core Professional Philosophy */}
+            {/* 4. Leadership & Campus Engagement Narrative */}
+            <section className="bg-ivory-cream/60 p-8 rounded-2xl border border-ivory-beige/40">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-xl font-bold text-ivory-charcoal flex items-center space-x-2">
+                  <Award className="h-5 w-5 text-ivory-sage" />
+                  <span>Leadership, Event Management & Campus Impact</span>
+                </h2>
+                <Link href="/leadership" className="text-xs font-semibold text-ivory-sage hover:underline">
+                  All 13 Records &rarr;
+                </Link>
+              </div>
+              <div className="space-y-4 text-sm text-gray-800 leading-relaxed">
+                <p>
+                  Leadership and institutional service have been core pillars of my personal development since my schooling at St. Columba&apos;s School, New Delhi, through my university journey at CHRIST (Deemed to be University).
+                </p>
+                <p>
+                  Currently, I serve as <strong>Overall Event Management Head & Core Team Member of the Corporate Club</strong> (School of Sciences), directing end-to-end event planning, cross-functional student crews, and corporate speaker symposiums. In parallel, I serve as an <strong>Advanced Peer Educator</strong> under the Centre for Counselling & Health Services (CCHS), mentoring junior peer educators and leading campus mental well-being initiatives following three years of service as a Certified Peer Educator (2022–2025).
+                </p>
+                <p>
+                  My previous leadership includes serving as <strong>Event Head for Aparoksha 2022 and Aparoksha 2023</strong> (annual science festival), <strong>Technical & Media Team Leader</strong> for CCHS (2023–2025), and <strong>Event Head & Overall Event Management Core Team Head</strong> at St. Columba&apos;s School (2019–2022).
+                </p>
+              </div>
+            </section>
+
+            {/* 5. Core Professional Philosophy */}
             <section className="bg-ivory-cream/60 p-8 rounded-2xl border border-ivory-beige/40">
               <h2 className="text-xl font-bold text-ivory-charcoal mb-4 flex items-center space-x-2">
                 <HeartHandshake className="h-5 w-5 text-ivory-sage" />

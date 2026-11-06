@@ -101,6 +101,24 @@ export default function ExperiencePage() {
             </div>
           ))}
         </div>
+
+        {/* Link to Dedicated Leadership Portfolio */}
+        <div className="mt-16 p-6 sm:p-8 rounded-2xl bg-ivory-cream border border-ivory-beige/60 text-center">
+          <h2 className="text-xl font-bold text-ivory-charcoal">
+            Looking for Campus Leadership, Event Management & Student Engagement?
+          </h2>
+          <p className="text-xs sm:text-sm text-gray-700 mt-2 max-w-xl mx-auto leading-relaxed">
+            I maintain a dedicated, structured portfolio covering 13 verified roles across event headship, CCHS peer education, media leadership, and university clubs.
+          </p>
+          <div className="mt-5">
+            <a
+              href="/leadership"
+              className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-lg bg-ivory-charcoal text-ivory-base text-xs font-bold uppercase tracking-wider hover:bg-black transition-colors"
+            >
+              <span>Explore Leadership & Campus Engagement (13 Records) &rarr;</span>
+            </a>
+          </div>
+        </div>
       </div>
     </div>
   );

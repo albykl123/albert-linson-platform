@@ -279,7 +279,7 @@ I welcome the opportunity to discuss how my technical skills, analytical discipl
 
 Sincerely,
 Albert Kalampadan Linson
-Delhi, India | +91 9910705796 | albertkalampadan@gmail.com
+Delhi, India | +91 9910705796 | albertkalampaadan@gmail.com
 LinkedIn: linkedin.com/in/albert-linson | GitHub: github.com/albertlinson`;
   }, [targetCompany, targetJobTitle]);
 
@@ -676,7 +676,7 @@ LinkedIn: linkedin.com/in/albert-linson | GitHub: github.com/albertlinson`;
                     </span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Connected to <strong>albertkalampadan@gmail.com</strong>. Application packages require explicit approval prior to dispatch.
+                    Connected to <strong>albertkalampaadan@gmail.com</strong>. Application packages require explicit approval prior to dispatch.
                   </p>
                   <button
                     onClick={() => setActiveTab("gmail")}

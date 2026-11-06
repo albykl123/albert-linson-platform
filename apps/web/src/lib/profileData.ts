@@ -6,6 +6,22 @@ export interface SkillItem {
   evidence: string;
 }
 
+export interface LeadershipRecord {
+  id: string;
+  title: string;
+  role_level: string;
+  organization: string;
+  institution: string;
+  period: string;
+  category: string;
+  year?: number;
+  responsibilities: string[];
+  skills: string[];
+  progression_note?: string;
+  verification_status: string;
+  public_visibility: boolean;
+}
+
 export interface ProfileData {
   personal: {
     name: string;
@@ -14,6 +30,7 @@ export interface ProfileData {
     sub_headline: string;
     location: string;
     email: string;
+    secondary_email?: string;
     phone: string;
     linkedin: string;
     github: string;
@@ -23,15 +40,25 @@ export interface ProfileData {
   };
   summary: string;
   skills: {
-    analytics_and_ai: string[];
     frontend_and_design: string[];
     backend_and_cloud: string[];
     recruitment_and_business: string[];
+    analytics_and_ai: string[];
+    frontend_development?: string[];
+    programming_and_backend?: string[];
+    android_development?: string[];
+    ai_and_development?: string[];
+    design?: string[];
+    development_tools?: string[];
+    professional_skills?: string[];
   };
   skill_levels?: {
-    professional_experience: SkillItem[];
-    project_experience: SkillItem[];
-    learning_familiarity: SkillItem[];
+    professional_work?: SkillItem[];
+    professional_experience?: SkillItem[];
+    project_experience?: SkillItem[];
+    academic_experience?: SkillItem[];
+    currently_learning?: SkillItem[];
+    learning_familiarity?: SkillItem[];
   };
   experience: Array<{
     id: string;
@@ -53,6 +80,7 @@ export interface ProfileData {
     details: string;
     specialization?: string;
   }>;
+  leadership: LeadershipRecord[];
   certifications?: Array<{
     id: string;
     name: string;

@@ -284,6 +284,84 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* 5. Featured Leadership, Event Management & Campus Engagement */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-12">
+          <div>
+            <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Institutional Impact</span>
+            <h2 className="text-2xl sm:text-3xl font-bold text-swiss-navy mt-1 tracking-tight">
+              Leadership & Event Management
+            </h2>
+            <p className="text-xs text-gray-600 mt-1">
+              13 verified roles across event operations, peer education, student welfare, media, and sustainability.
+            </p>
+          </div>
+          <Link
+            href="/leadership"
+            className="mt-4 sm:mt-0 inline-flex items-center space-x-1 text-sm font-semibold text-swiss-blue hover:text-swiss-navy transition-colors"
+          >
+            <span>View all 13 records</span>
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="p-6 rounded-xl border border-swiss-divider bg-swiss-white hover:border-swiss-blue/40 shadow-sm transition-all flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-swiss-blue">Corporate Club</span>
+                <span className="font-mono text-[11px] bg-swiss-light px-2 py-0.5 rounded">2026 – Present</span>
+              </div>
+              <h3 className="text-base font-bold text-swiss-navy">Overall Event Management Head</h3>
+              <p className="text-xs text-gray-500 mt-0.5">School of Sciences, Christ University</p>
+              <p className="text-xs text-gray-600 mt-3 leading-relaxed">
+                Directs overall event planning, committee coordination, and execution teams for corporate interface events and speaker symposiums.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-swiss-divider flex flex-wrap gap-1">
+              <span className="text-[10px] bg-swiss-light text-gray-700 px-1.5 py-0.5 rounded">Event Operations</span>
+              <span className="text-[10px] bg-swiss-light text-gray-700 px-1.5 py-0.5 rounded">Team Leadership</span>
+            </div>
+          </div>
+
+          <div className="p-6 rounded-xl border border-swiss-divider bg-swiss-white hover:border-swiss-blue/40 shadow-sm transition-all flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-swiss-blue">CCHS Christ University</span>
+                <span className="font-mono text-[11px] bg-swiss-light px-2 py-0.5 rounded">2026 – 2028</span>
+              </div>
+              <h3 className="text-base font-bold text-swiss-navy">Advanced Peer Educator</h3>
+              <p className="text-xs text-gray-500 mt-0.5">Centre for Counselling & Health Services</p>
+              <p className="text-xs text-gray-600 mt-3 leading-relaxed">
+                Mentors junior peer educators and coordinates campus mental health and stress mitigation initiatives following 3 years of service as Peer Educator.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-swiss-divider flex flex-wrap gap-1">
+              <span className="text-[10px] bg-swiss-light text-gray-700 px-1.5 py-0.5 rounded">Peer Mentoring</span>
+              <span className="text-[10px] bg-swiss-light text-gray-700 px-1.5 py-0.5 rounded">Student Well-being</span>
+            </div>
+          </div>
+
+          <div className="p-6 rounded-xl border border-swiss-divider bg-swiss-white hover:border-swiss-blue/40 shadow-sm transition-all flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between text-xs text-gray-500 mb-2">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-swiss-blue">St. Columba&apos;s School</span>
+                <span className="font-mono text-[11px] bg-swiss-light px-2 py-0.5 rounded">2019 – 2022</span>
+              </div>
+              <h3 className="text-base font-bold text-swiss-navy">Event Head & Overall Core Team Head</h3>
+              <p className="text-xs text-gray-500 mt-0.5">St. Columba&apos;s School, New Delhi</p>
+              <p className="text-xs text-gray-600 mt-3 leading-relaxed">
+                Headed core event management operations for major institutional functions, annual celebrations, and inter-house competitions.
+              </p>
+            </div>
+            <div className="mt-4 pt-3 border-t border-swiss-divider flex flex-wrap gap-1">
+              <span className="text-[10px] bg-swiss-light text-gray-700 px-1.5 py-0.5 rounded">Event Planning</span>
+              <span className="text-[10px] bg-swiss-light text-gray-700 px-1.5 py-0.5 rounded">Student Leadership</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* 5. Experience & Education Highlights */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-swiss-divider">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">

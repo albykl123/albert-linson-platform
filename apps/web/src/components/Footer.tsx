@@ -55,10 +55,11 @@ export function Footer() {
             <ul className="space-y-2 text-xs">
               <li><Link href="/about" className="hover:text-swiss-navy transition-colors">About Me</Link></li>
               <li><Link href="/experience" className="hover:text-swiss-navy transition-colors">Professional Experience</Link></li>
+              <li><Link href="/leadership" className="hover:text-swiss-navy transition-colors">Leadership & Engagement</Link></li>
               <li><Link href="/education" className="hover:text-swiss-navy transition-colors">Education & Credentials</Link></li>
               <li><Link href="/skills" className="hover:text-swiss-navy transition-colors">Skills Library</Link></li>
               <li><Link href="/projects" className="hover:text-swiss-navy transition-colors">Software Projects</Link></li>
-              <li><Link href="/research" className="hover:text-swiss-navy transition-colors">Academic Research</Link></li>
+              <li><Link href="/research" className="hover:text-swiss-navy transition-colors">Academic Research (2 Papers)</Link></li>
             </ul>
           </div>
 
