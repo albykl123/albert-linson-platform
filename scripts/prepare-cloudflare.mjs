@@ -17,6 +17,32 @@ const headers = {
   'Content-Type': 'application/json',
 };
 
+async function verifyAuthAndWorkersApi() {
+  console.log('Verifying Cloudflare API Token & Account access...');
+  try {
+    const tokenRes = await fetch('https://api.cloudflare.com/client/v4/user/tokens/verify', { headers });
+    const tokenData = await tokenRes.json();
+    console.log('[Auth] Token status:', tokenData.success ? `Active (Status: ${tokenData.result?.status})` : JSON.stringify(tokenData.errors));
+
+    const subRes = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/workers/subdomain`, { headers });
+    const subData = await subRes.json();
+    if (subData.success && subData.result?.subdomain) {
+      console.log(`[Workers] Verified registered subdomain: ${subData.result.subdomain}.workers.dev`);
+    } else {
+      console.warn('[Workers] Subdomain query response:', JSON.stringify(subData));
+    }
+
+    const svcRes = await fetch(`https://api.cloudflare.com/client/v4/accounts/${accountId}/workers/services/albert-linson-platform`, { headers });
+    console.log(`[Workers] Worker service endpoint check: HTTP ${svcRes.status} (${svcRes.statusText})`);
+    if (svcRes.status === 503) {
+      console.warn('[Workers] Cloudflare Workers API returned 503 Service Unavailable (upstream gateway latency). Waiting 15s...');
+      await new Promise((r) => setTimeout(r, 15000));
+    }
+  } catch (err) {
+    console.warn('[Auth/Workers] Pre-flight check warning:', err.message);
+  }
+}
+
 async function getOrProvisionD1() {
   console.log('Inspecting Cloudflare D1 database: albert-linson-db...');
   try {
@@ -135,6 +161,7 @@ function removeR2Binding() {
 }
 
 async function main() {
+  await verifyAuthAndWorkersApi();
   await getOrProvisionD1();
   await verifyOrHandleR2();
   console.log('--- Cloudflare Resource Provisioning & Verification Finished ---');
