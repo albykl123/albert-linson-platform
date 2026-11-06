@@ -299,7 +299,8 @@ data['leadership'] = [
         "role_level": "Core Team Member",
         "organization": "Global Fest 2.0",
         "institution": "CHRIST (Deemed to be University), Delhi NCR",
-        "period": "2024 – 2025",
+        "period": "2026",
+        "year": 2026,
         "category": "Leadership & Event Management",
         "responsibilities": [
             "Coordinated teams, operational responsibilities and interdepartmental communication as part of the core management team.",
