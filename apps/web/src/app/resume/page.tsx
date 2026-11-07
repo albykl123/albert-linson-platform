@@ -103,7 +103,7 @@ ${masterProfile.projects
   )
   .join("\n\n")}
 
-ACADEMIC RESEARCH PAPERS (EXACTLY 2 MANUSCRIPTS)
+ACADEMIC RESEARCH PAPERS
 --------------------------------------------------------------------------------
 ${masterProfile.research
   .map(
@@ -605,7 +605,7 @@ ${(masterProfile.certifications || [])
             <section className="mb-8">
               <div className="flex items-center justify-between border-b border-gray-300 pb-1 mb-3">
                 <h3 className="text-xs font-bold uppercase tracking-widest text-paper-graphite resume-section-title">
-                  Academic Research (Exactly 2 Papers)
+                  Academic Research
                 </h3>
                 <Link href="/projects#research" className="text-[11px] text-blue-700 hover:underline print:hidden">
                   Methodology & Papers &rarr;

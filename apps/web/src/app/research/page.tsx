@@ -57,7 +57,7 @@ export default function ResearchPage() {
         <div className="mb-12 border-b border-corporate-border pb-8">
           <span className="text-xs font-bold uppercase tracking-widest text-corporate-cobalt">Academic Inquiries</span>
           <h1 className="text-4xl sm:text-5xl font-bold text-corporate-slate mt-2 tracking-tight">
-            Academic Research (Exactly 2 Papers)
+            Academic Research
           </h1>
           <p className="text-gray-600 mt-3 text-base max-w-2xl leading-relaxed">
             Strictly limited to authentic research manuscripts in software testing reliability and multi-modal ultrasound diagnostics. Other technical initiatives belong in the software projects showcase.

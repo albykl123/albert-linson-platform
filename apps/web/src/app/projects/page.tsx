@@ -450,7 +450,7 @@ export default function ProjectsAndResearchPage() {
                   Academic Research Manuscripts ({filteredResearch.length})
                 </h2>
               </div>
-              <span className="text-xs text-gray-500 font-medium">Strictly 2 Verified Scientific Inquiries</span>
+              <span className="text-xs text-gray-500 font-medium">Verified Scientific Inquiries</span>
             </div>
 
             {filteredResearch.length === 0 ? (

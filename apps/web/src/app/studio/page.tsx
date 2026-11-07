@@ -131,7 +131,7 @@ ${masterProfile.education
   .map((edu) => `${edu.degree} - ${edu.institution} (${edu.period})\n${edu.details}`)
   .join("\n\n")}
 
-ACADEMIC RESEARCH (EXACTLY 2 PAPERS)
+ACADEMIC RESEARCH
 ${masterProfile.research
   .map((r, i) => `[${i + 1}] ${r.title} (${r.status})\n${r.abstract}`)
   .join("\n\n")}
@@ -369,7 +369,7 @@ LinkedIn: linkedin.com/in/albert-linson | GitHub: github.com/albykl123`;
     skillsCount: 24,
     recommendedUpdates: [
       {
-        title: "Feature Exactly 2 Research Papers",
+        title: "Feature Verified Research Papers",
         detail: "Align Publications section on LinkedIn with verified papers (AEGIS-Test & Ultrasound Cancer Detection).",
         status: "Aligned",
       },

@@ -254,7 +254,7 @@ export default function HomePage() {
           <div>
             <span className="text-xs font-bold uppercase tracking-widest text-swiss-blue">Scholarly Inquiries</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-swiss-navy mt-1 tracking-tight">
-              Academic Research (Exactly 2 Papers)
+              Academic Research
             </h2>
           </div>
           <Link

@@ -751,7 +751,7 @@ export default function AdminPage() {
                     <option value="experience">Professional Experience</option>
                     <option value="skills">Technical & Sourcing Skills</option>
                     <option value="leadership">Leadership & Campus Involvement</option>
-                    <option value="research">Academic Research (Strictly 2 Papers)</option>
+                    <option value="research">Academic Research</option>
                   </select>
                 </div>
 
