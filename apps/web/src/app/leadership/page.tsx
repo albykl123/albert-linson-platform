@@ -301,7 +301,7 @@ export default function LeadershipPage() {
               <span>Professional Experience</span>
             </Link>
             <a
-              href="mailto:albertkalampadan@gmail.com"
+              href={`mailto:${masterProfile.personal.email}`}
               className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-blue-600 text-white text-xs sm:text-sm font-semibold hover:bg-blue-700 transition-all shadow-sm"
             >
               <Mail className="h-4 w-4" />

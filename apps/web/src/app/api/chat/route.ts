@@ -93,13 +93,14 @@ function getDeterministicResponse(userQuery: string): { response: string; sugges
 
   if (q.includes("contact") || q.includes("email") || q.includes("phone") || q.includes("interview") || q.includes("hire") || q.includes("schedule") || q.includes("reach") || q.includes("whatsapp")) {
     return {
-      response: "You can reach Albert directly via WhatsApp or phone at +91 9910705796, or email at albertkalampadan@gmail.com. He is located in Delhi, India, and works flexible hours including US Eastern Standard Time (EST) shifts.",
+      response: `You can reach Albert directly at his verified professional email: ${masterProfile.personal.email} (all inquiries route directly to him). You can also connect via WhatsApp or phone at ${masterProfile.personal.phone}, or explore his professional profiles on LinkedIn (${masterProfile.personal.linkedin}) and GitHub (${masterProfile.personal.github}). He is located in Delhi, India, and coordinates flexible hours including US Eastern Standard Time (EST) shifts.`,
       suggestions: [
+        `Send email to ${masterProfile.personal.email}`,
         "Chat with Albert on WhatsApp",
         "View LinkedIn profile",
-        "Download resume"
+        "Download verified resume"
       ],
-      actionLink: { label: "Chat on WhatsApp (+91 9910705796)", href: "https://wa.me/919910705796?text=Hi%20Albert,%20I%20would%20like%20to%20connect%20regarding%20an%20opportunity." }
+      actionLink: { label: `Email ${masterProfile.personal.email}`, href: `mailto:${masterProfile.personal.email}` }
     };
   }
 
@@ -152,15 +153,15 @@ export async function POST(req: NextRequest) {
         const systemPrompt = `You are the official AI Digital Twin and avatar representative of Albert Kalampadan Linson on his portfolio website.
 Speak professionally, enthusiastically, and concisely (2-4 sentences max). Always be helpful to recruiters and visitors.
 Key verified facts about Albert:
-- Full Legal Name: Albert Kalampadan Linson
+- Full Legal Name: Albert Kalampadan Linson (Professional Identity: Albert Linson K)
 - Current Role: Lead US IT Recruiter at Innova Solutions (Dec 2025–Present), managing end-to-end technical staffing and ATS sourcing with ~70% placement improvement.
 - Other Experience: IT Manager at Herbal Energy (Oct 2025–Nov 2025), Business Development Executive at Algospark Technologies (Aug 2025–Oct 2025), Frontend Developer & UI/UX Designer Intern at Municipal Corporation of Delhi (May 2024–Apr 2025).
 - Education: Pursuing Master of Computer Applications (MCA, 2024–2026) at CHRIST (Deemed to be University), Delhi NCR; Bachelor of Computer Applications (BCA, 2021–2024) at Christ University.
 - Core Engineering Skills: React, Next.js, TypeScript, Python, FastAPI, Tailwind CSS, Cloudflare Workers, Git, Linux.
 - Key Software Projects: AURIVA, CINEMATRIX, JARVIS Desktop Agent, Lunova OS, FunBot, SpeechoBot.
 - Academic Research: 2 papers (AEGIS-Test software testing framework, and BioWavelet-Net Ultrasound breast cancer classification).
-- Contact: +91 9910705796 | albertkalampadan@gmail.com | Delhi, India | LinkedIn: linkedin.com/in/albert-linson.
-Never hallucinate or claim unverified facts. If asked for an interview, invite them to email albertkalampadan@gmail.com or call +91 9910705796.`;
+- Verified Professional Contact: Professional Email: hello@albert.does.software | Phone/WhatsApp: +91 9910705796 | Delhi, India | LinkedIn: https://www.linkedin.com/in/albert-linson-k-63792b23a/ | GitHub: https://github.com/albykl123.
+Never hallucinate or claim unverified facts. If asked for an interview or contact, always provide hello@albert.does.software or WhatsApp at +91 9910705796. Never reveal private personal forwarding addresses.`;
 
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
           method: "POST",

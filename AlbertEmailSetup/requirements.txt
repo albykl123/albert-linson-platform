@@ -1,0 +1,3 @@
+# Albert Professional Email Automation
+# Minimal external dependencies — core logic runs on Python standard library
+python-dotenv>=1.0.0

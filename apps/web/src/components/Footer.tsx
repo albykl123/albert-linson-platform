@@ -64,7 +64,7 @@ export function Footer() {
                 href={`mailto:${masterProfile.personal.email}`}
                 className="p-2 rounded-lg bg-swiss-white border border-swiss-divider text-gray-700 hover:text-swiss-navy hover:border-swiss-blue/40 transition-colors shadow-sm"
                 aria-label="Send Email"
-                title="Email: albertkalampadan@gmail.com"
+                title={`Email: ${masterProfile.personal.email}`}
               >
                 <Mail className="h-4 w-4" />
               </a>

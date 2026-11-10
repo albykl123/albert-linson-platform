@@ -95,7 +95,7 @@ export async function harvestJobs(queryTerms?: string[]): Promise<{
     const timeout = setTimeout(() => controller.abort(), 3500);
 
     const res = await fetch("https://remoteok.com/api?tag=recruiting,react,python", {
-      headers: { "User-Agent": "AlbertLinsonPlatform/1.0 (JobMatcherBot; albertkalampadan@gmail.com)" },
+      headers: { "User-Agent": "AlbertLinsonPlatform/1.0 (JobMatcherBot; hello@albert.does.software)" },
       signal: controller.signal
     });
     clearTimeout(timeout);

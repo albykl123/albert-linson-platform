@@ -295,9 +295,9 @@ Beyond hands-on development, my background in US IT technical recruitment at Inn
 I welcome the opportunity to discuss how my technical skills, analytical discipline, and dedication to high-quality software can support ${targetCompany || "your team"}. Thank you for your time and consideration.
 
 Sincerely,
-Albert Kalampadan Linson
-Delhi, India | +91 9910705796 | albertkalampadan@gmail.com
-LinkedIn: linkedin.com/in/albert-linson | GitHub: github.com/albykl123`;
+Albert Linson K
+Delhi, India | +91 9910705796 | hello@albert.does.software
+LinkedIn: https://www.linkedin.com/in/albert-linson-k-63792b23a/ | GitHub: github.com/albykl123`;
   }, [targetCompany, targetJobTitle]);
 
   const [coverLetterText, setCoverLetterText] = useState(generatedCoverLetter);
@@ -558,14 +558,14 @@ I am available for our 30-minute introductory call at any of the following times
 2. Thursday between 10:00 AM – 1:00 PM EST (7:30 PM – 10:30 PM IST)
 3. Friday between 1:00 PM – 4:00 PM EST (10:30 PM – 1:30 AM IST)
 
-You can reach me directly on my phone at +91 9910705796 or via email at albertkalampadan@gmail.com.
+You can reach me directly on my phone at +91 9910705796 or via email at hello@albert.does.software.
 
 Looking forward to meeting with you!
 
 Warm regards,
-Albert Kalampadan Linson
-+91 9910705796 | albertkalampadan@gmail.com
-LinkedIn: linkedin.com/in/albert-linson`
+Albert Linson K
++91 9910705796 | hello@albert.does.software
+LinkedIn: https://www.linkedin.com/in/albert-linson-k-63792b23a/`
     }
   ]);
 
@@ -969,7 +969,7 @@ LinkedIn: linkedin.com/in/albert-linson`
                     </span>
                   </div>
                   <p className="text-xs text-slate-600 leading-relaxed">
-                    Connected to <strong>albertkalampadan@gmail.com</strong>. Application packages require explicit approval prior to dispatch.
+                    Identity routed via <strong>hello@albert.does.software</strong>. Application packages require explicit owner approval prior to dispatch.
                   </p>
                   <button
                     onClick={() => setActiveTab("gmail")}

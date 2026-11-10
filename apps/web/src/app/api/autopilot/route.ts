@@ -104,14 +104,14 @@ I am available for our 30-minute introductory call at any of the following times
 1. Tomorrow between 2:00 PM – 6:00 PM EST (11:30 PM – 3:30 AM IST)
 2. Day after tomorrow between 9:00 AM – 1:00 PM EST (6:30 PM – 10:30 PM IST)
 
-You can also reach me directly on my phone at +91 9910705796 or via email at albertkalampadan@gmail.com.
+You can also reach me directly on my phone at +91 9910705796 or via email at hello@albert.does.software.
 
 Looking forward to our conversation!
 
 Warm regards,
-Albert Kalampadan Linson
-+91 9910705796 | albertkalampadan@gmail.com
-LinkedIn: linkedin.com/in/albert-linson`
+Albert Linson K
++91 9910705796 | hello@albert.does.software
+LinkedIn: https://www.linkedin.com/in/albert-linson-k-63792b23a/`
       }
     ]
   }, { status: 200 });

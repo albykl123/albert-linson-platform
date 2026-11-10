@@ -1,0 +1,3 @@
+"""
+AlbertEmailSetup Automated Test Suite.
+"""

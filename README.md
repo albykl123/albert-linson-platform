@@ -10,25 +10,31 @@ Designed for Windows 10 & 11 &bull; PowerShell-First Development &bull; 100% Fre
 
 ## Key Features
 
-1. **Cinematic Public Portfolio**:
+1. **Verified Professional Email Identity (`hello@albert.does.software`)**:
+   - Subdomain `albert.does.software` claimed and active with authoritative DNS MX routing to `mail.does.software` (Priority 10).
+   - Inbound email forwarding with Sender Rewriting Scheme (SRS) to private destination inbox.
+   - Centralized contact identity across all pages, footers, resume exports (PDF, DOCX, TXT), AI Copilot, and Digital Twin.
+   - Private administrative management console at `/admin/email-identity` and autonomous Python daemon `AlbertEmailSetup` (port 3050).
+2. **Cinematic Public Portfolio**:
    - Interactive procedural 3D constellation canvas (`Hero3D`) with responsive physics and zero CPU leak, backed by an elegant CSS glow fallback.
    - Verified professional identity, career timeline, education credentials, skills matrix, and interactive projects showcase.
-2. **Academic Research Hub**:
+3. **Academic Research Hub**:
    - Complete scientific library featuring research on *Multimodal Ultrasound Fusion for Breast Cancer Detection*, *AEGIS-Test for Reliable LLM Testing*, and *EduMind Adaptive Learning*.
-3. **ATSForge AI Career Studio (`/studio`)**:
+4. **ATSForge AI Career Studio (`/studio`)**:
    - **20-Rule Deterministic ATS Compatibility Engine** producing a 0-100 score, severity findings, and **One-Click Automated Fixes**.
    - **Job Description Matcher & Keyword Gap Analyzer** extracting mandatory vs. preferred requirements.
    - **Strict Zero-Hallucination Factuality Guard** preventing fabricated credentials.
    - **6 ATS-Compliant Templates** and multi-format exporters (selectable vector PDF, Word DOCX, clean plaintext, JSON Resume).
    - **Application Pipeline Tracker** managing job applications and interview feedback.
-4. **FreeStack Intelligence Directory (`/freestack`)**:
+5. **FreeStack Intelligence Directory (`/freestack`)**:
    - **1,369 Curated Free Developer Services** across **57 Categories** parsed from `ripienaar/free-for-dev`.
    - Instant search, category filters, and **Side-by-Side Comparison**.
-5. **OpenRouter AI Gateway**:
+6. **OpenRouter AI Gateway**:
    - Cascading multi-model router prioritizing 100% free variants (`openrouter/free`, `google/gemini-2.0-flash-exp:free`, `meta-llama/llama-3.3-70b-instruct:free`).
    - Deterministic AST heuristic fallback for 100% offline, zero-API-key use.
-6. **Admin Control Center (`/admin`)**:
+7. **Admin Control Center (`/admin` & `/admin/email-identity`)**:
    - Passcode-secured owner studio with profile editor, telemetry monitors, FreeStack sync triggers, and model configuration.
+   - Dedicated Email Identity control center for live health telemetry, authoritative MX verification, delivery testing, and 45-day lease renewal tracking.
 
 ---
 
@@ -60,9 +66,10 @@ Designed for Windows 10 & 11 &bull; PowerShell-First Development &bull; 100% Fre
 
 ## Automated Test Results
 
-- **Backend & ATS Tests**: 20/20 Passing (100% Pass Rate).
-- **Execution Time**: ~6.0 seconds.
-- **Coverage**: ATS Scoring, Exporters, Factuality Guard, Matcher, Pipeline, OpenRouter Gateway, FreeStack Ingestion.
+- **Backend, ATS & Email Identity Tests**: 29/29 Passing (100% Pass Rate).
+- **AlbertEmailSetup Autonomous Daemon Tests**: 16/16 Passing (100% Pass Rate).
+- **Total Platform Tests**: 45/45 Passing (100% Pass Rate).
+- **Coverage**: ATS Scoring, Exporters, Factuality Guard, Matcher, Pipeline, OpenRouter Gateway, FreeStack Ingestion, Professional Email Identity, DNS MX Resolution, SRS Routing, Renewal Lifecycle.
 
 ---
 

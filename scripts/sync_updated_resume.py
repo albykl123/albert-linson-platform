@@ -6,11 +6,12 @@ with open('packages/shared/profile_data.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # 1. Personal Information Updates from Resume
-data['personal']['name'] = 'Albert Linson'
+data['personal']['name'] = 'Albert Linson K'
 data['personal']['full_legal_name'] = 'Albert Kalampadan Linson'
-data['personal']['email'] = 'albertkalampadan@gmail.com'
-data['personal']['secondary_email'] = 'albertkalampadan@gmail.com'
+data['personal']['email'] = 'hello@albert.does.software'
+data['personal']['secondary_email'] = 'hello@albert.does.software'
 data['personal']['phone'] = '+91 9910705796'
+data['personal']['linkedin'] = 'https://www.linkedin.com/in/albert-linson-k-63792b23a/'
 data['personal']['location'] = 'Delhi, India'
 data['personal']['headline'] = 'US IT Recruiter & Full-Stack Technologist | MCA Candidate'
 data['personal']['sub_headline'] = 'US IT Recruitment | IT Operations & Management | Business Development | Frontend & UI/UX'

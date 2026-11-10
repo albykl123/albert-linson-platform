@@ -479,10 +479,14 @@ ${(masterProfile.certifications || [])
                   <span>{masterProfile.personal.location}</span>
                 </span>
                 <span>&bull;</span>
-                <span className="inline-flex items-center space-x-1">
+                <a
+                  href={`mailto:${masterProfile.personal.email}`}
+                  className="inline-flex items-center space-x-1 hover:text-blue-600 transition-colors"
+                  title={`Email ${masterProfile.personal.email}`}
+                >
                   <Mail className="h-3.5 w-3.5 text-gray-400" />
                   <span>{masterProfile.personal.email}</span>
-                </span>
+                </a>
                 <span>&bull;</span>
                 <span className="inline-flex items-center space-x-1">
                   <Phone className="h-3.5 w-3.5 text-gray-400" />

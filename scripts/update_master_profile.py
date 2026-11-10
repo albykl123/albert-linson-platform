@@ -2,15 +2,15 @@ import json
 
 data = {
   "personal": {
-    "name": "Albert Linson",
+    "name": "Albert Linson K",
     "full_legal_name": "Albert Kalampadan Linson",
     "headline": "Building Intelligent Digital Experiences, Scalable Systems & AI Solutions",
     "sub_headline": "Data-Driven IT Professional | Full-Stack & UI/UX | Android | AI Systems | US IT Recruitment | Student Leader",
     "location": "Delhi, India",
-    "email": "albertkalampaadan@gmail.com",
-    "secondary_email": "albertkalampadan@gmail.com",
+    "email": "hello@albert.does.software",
+    "secondary_email": "hello@albert.does.software",
     "phone": "+91 9910705796",
-    "linkedin": "https://linkedin.com/in/albert-linson",
+    "linkedin": "https://www.linkedin.com/in/albert-linson-k-63792b23a/",
     "github": "https://github.com/albykl123",
     "portfolio_url": "https://albert-linson-platform.albertkalampadan.workers.dev",
     "languages": [

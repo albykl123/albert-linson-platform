@@ -17,7 +17,9 @@ export async function GET(req: NextRequest) {
       status: "awaiting_credentials",
       message: "Google OAuth credentials not configured in environment.",
       instructions: "To authorize Gmail draft composition, create an OAuth 2.0 Client in Google Cloud Console with scope 'https://www.googleapis.com/auth/gmail.compose' and set GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET in Cloudflare Worker secrets.",
-      configuredEmail: "albertkalampadan@gmail.com",
+      configuredEmail: process.env.PERSONAL_FORWARD_EMAIL 
+        ? `${process.env.PERSONAL_FORWARD_EMAIL.slice(0, 2)}***${process.env.PERSONAL_FORWARD_EMAIL.slice(process.env.PERSONAL_FORWARD_EMAIL.indexOf("@") - 1)}`
+        : "Protected in Environment (PERSONAL_FORWARD_EMAIL)",
       targetScope: "https://www.googleapis.com/auth/gmail.compose"
     }, { status: 200 });
   }

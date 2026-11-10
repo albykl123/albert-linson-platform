@@ -296,7 +296,7 @@ export function AvatarChatbot() {
         throw new Error("Chat request failed");
       }
     } catch (err) {
-      const fallbackText = "Albert specializes in US IT technical recruitment at Innova Solutions (~70% hiring success) and full-stack software development with React, Next.js, and Python. You can reach him directly on WhatsApp or phone at +91 9910705796, or email at albertkalampadan@gmail.com.";
+      const fallbackText = "Albert specializes in US IT technical recruitment at Innova Solutions (~70% hiring success) and full-stack software development with React, Next.js, and Python. You can reach him directly at his professional email hello@albert.does.software, or on WhatsApp / phone at +91 9910705796.";
       const fallbackMsg: ChatMessage = {
         id: `ai-err-${Date.now()}`,
         sender: "albert_ai",

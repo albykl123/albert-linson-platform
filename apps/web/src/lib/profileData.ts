@@ -126,3 +126,31 @@ export interface ProfileData {
 }
 
 export const masterProfile: ProfileData = profileJson as ProfileData;
+
+export interface VerifiedContactIdentity {
+  name: string;
+  professionalEmail: string;
+  subdomain: string;
+  website: string;
+  linkedin: string;
+  github: string;
+  phone: string;
+  whatsapp: string;
+  forwardingConfigured: boolean;
+}
+
+export function isValidEmail(email: string): boolean {
+  return /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email);
+}
+
+export const verifiedContact: VerifiedContactIdentity = {
+  name: masterProfile.personal.name || "Albert Linson K",
+  professionalEmail: masterProfile.personal.email || "hello@albert.does.software",
+  subdomain: "albert.does.software",
+  website: masterProfile.personal.portfolio_url || "https://albert-linson-platform.albertkalampadan.workers.dev",
+  linkedin: masterProfile.personal.linkedin || "https://www.linkedin.com/in/albert-linson-k-63792b23a/",
+  github: masterProfile.personal.github || "https://github.com/albykl123",
+  phone: masterProfile.personal.phone || "+91 9910705796",
+  whatsapp: masterProfile.personal.whatsapp || "https://wa.me/919910705796",
+  forwardingConfigured: true,
+};

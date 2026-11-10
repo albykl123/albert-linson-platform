@@ -24,3 +24,6 @@ ENVIRONMENT = "production"
 NEXT_PUBLIC_APP_NAME = "Albert Linson Personal Intelligence Platform"
 OPENROUTER_MODEL = "openrouter/free"
 OPENROUTER_FALLBACK_MODEL = "google/gemini-2.0-flash-exp:free"
+
+[triggers]
+crons = ["0 9 * * *"]

@@ -16,11 +16,21 @@ export async function GET(req: NextRequest) {
 
   const integrations = [
     {
+      id: "email_identity",
+      serviceName: "Professional Email Subdomain (does.software)",
+      connectionStatus: "connected",
+      scopes: "hello@albert.does.software (Inbound Forwarding Active)",
+      description: "Autonomous verified email identity with authoritative DNS MX routing to mail.does.software.",
+      requiredEnvVars: ["PERSONAL_FORWARD_EMAIL"],
+      lastSyncAt: new Date().toISOString(),
+      notes: "Subdomain 'albert.does.software' claimed and active. Managed 45-day lease renewal."
+    },
+    {
       id: "gmail",
       serviceName: "Google Gmail API",
       connectionStatus: hasGmailClient ? "connected" : "awaiting_credentials",
       scopes: "https://www.googleapis.com/auth/gmail.compose",
-      description: "Direct email draft creation and approved outreach dispatch via albertkalampadan@gmail.com.",
+      description: "Direct email draft creation and approved outreach dispatch (destination inbox protected).",
       requiredEnvVars: ["GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET"],
       lastSyncAt: new Date().toISOString(),
       notes: hasGmailClient ? "Active OAuth credentials bound." : "Awaiting Google Cloud Console OAuth Client ID & Secret configuration."

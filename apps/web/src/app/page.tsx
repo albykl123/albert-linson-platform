@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { masterProfile } from "@/lib/profileData";
 import { InteractiveAvatar } from "@/components/InteractiveAvatar";
+import { CopyEmailButton } from "@/components/CopyEmailButton";
 
 export default function HomePage() {
   return (
@@ -91,13 +92,7 @@ export default function HomePage() {
                 <span>WhatsApp: +91 9910705796</span>
               </a>
 
-              <a
-                href={`mailto:${masterProfile.personal.email}`}
-                className="inline-flex items-center space-x-2 px-4 py-2.5 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-gray-700 text-sm font-medium transition-all"
-              >
-                <Mail className="h-4 w-4 text-gray-500" />
-                <span>Email</span>
-              </a>
+              <CopyEmailButton variant="secondary" labelPrefix="" />
             </div>
 
             {/* Verified Facts Bar */}
@@ -474,13 +469,7 @@ export default function HomePage() {
               <MessageCircle className="h-4 w-4" />
               <span>WhatsApp: +91 9910705796</span>
             </a>
-            <a
-              href={`mailto:${masterProfile.personal.email}`}
-              className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg bg-swiss-navy text-swiss-white hover:bg-swiss-navy/90 text-sm font-semibold shadow-sm transition-all"
-            >
-              <Mail className="h-4 w-4" />
-              <span>Email: {masterProfile.personal.email}</span>
-            </a>
+            <CopyEmailButton variant="primary" />
             <a
               href="tel:+919910705796"
               className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold shadow-sm transition-all"

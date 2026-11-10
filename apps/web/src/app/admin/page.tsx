@@ -37,7 +37,8 @@ import {
   XCircle,
   Clock,
   Eye,
-  BookOpen
+  BookOpen,
+  Mail
 } from "lucide-react";
 
 type AdminTab = "overview" | "career" | "outreach" | "cms" | "trends" | "analytics" | "integrations" | "freestack";
@@ -461,6 +462,15 @@ export default function AdminPage() {
             <Layers className="h-4 w-4" />
             <span>FreeStack Directory</span>
           </button>
+
+          <Link
+            href="/admin/email-identity"
+            className="px-3.5 py-2 rounded-xl transition-all flex items-center space-x-1.5 whitespace-nowrap bg-emerald-50 text-emerald-800 hover:bg-emerald-100 border border-emerald-300 shadow-sm"
+          >
+            <Mail className="h-4 w-4 text-emerald-600" />
+            <span>Email Identity (does.software)</span>
+            <span className="px-1.5 py-0.2 rounded-full bg-emerald-600 text-white text-[10px]">Active</span>
+          </Link>
         </div>
 
         {/* TAB 1: OVERVIEW & TELEMETRY */}
@@ -507,7 +517,7 @@ export default function AdminPage() {
             {/* Quick Actions Card */}
             <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
               <h3 className="text-base font-bold text-slate-900 mb-3">Administrative Operations</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
                 <button
                   onClick={() => setActiveTab("career")}
                   className="p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50/50 text-left transition-all"
@@ -534,6 +544,15 @@ export default function AdminPage() {
                   <div className="font-bold text-slate-900">Update Profile CMS</div>
                   <p className="text-slate-500 mt-1 text-[11px]">Edit verified credentials and synchronize to public platform.</p>
                 </button>
+
+                <Link
+                  href="/admin/email-identity"
+                  className="p-4 rounded-xl border border-emerald-300 bg-emerald-50/40 hover:bg-emerald-50 text-left transition-all block"
+                >
+                  <Mail className="h-5 w-5 text-emerald-600 mb-2" />
+                  <div className="font-bold text-slate-900">Email Identity Hub</div>
+                  <p className="text-slate-500 mt-1 text-[11px]">hello@albert.does.software routing, lease countdown & MX checks.</p>
+                </Link>
               </div>
             </div>
           </div>
