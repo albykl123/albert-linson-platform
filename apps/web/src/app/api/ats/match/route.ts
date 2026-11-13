@@ -1,10 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { analyzeJobDescription } from "@/lib/jobMatcher";
+import { verifyAdminRequest } from "@/lib/auth";
 
 export const dynamic = "force-dynamic";
 
 export async function POST(req: NextRequest) {
   try {
+    const isAuthorized = await verifyAdminRequest(req);
+    if (!isAuthorized) {
+      return NextResponse.json(
+        { error: "Unauthorized access: Owner session required for ATS matching analysis." },
+        { status: 401 }
+      );
+    }
+
     const body = await req.json().catch(() => ({}));
     const jdText = (body.jdText || "").trim();
     const resumeText = (body.resumeText || "").trim();

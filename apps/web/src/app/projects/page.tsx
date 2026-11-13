@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { masterProfile } from "@/lib/profileData";
 import { ProjectDemosModal } from "@/components/ProjectDemosModal";
+import { ProjectThumbnail } from "@/components/ProjectThumbnail";
 import githubReposData from "@/data/github_repos.json";
 import { 
   FolderGit2, 
@@ -20,15 +21,19 @@ import {
   Search, 
   Filter, 
   Sparkles, 
-  FileText,
-  Copy,
-  Check,
-  Zap,
-  Play,
-  Github,
-  GitFork,
-  Star,
-  GitBranch
+  FileText, 
+  Copy, 
+  Check, 
+  Zap, 
+  Play, 
+  Github, 
+  GitFork, 
+  Star, 
+  GitBranch,
+  ChevronDown,
+  ChevronUp,
+  ShieldCheck,
+  Target
 } from "lucide-react";
 
 export default function ProjectsAndResearchPage() {
@@ -37,6 +42,11 @@ export default function ProjectsAndResearchPage() {
   const [isDemoModalOpen, setIsDemoModalOpen] = useState(false);
   const [demoTarget, setDemoTarget] = useState<"jarvis" | "auriva" | "cinematrix">("jarvis");
   const [copiedCitationId, setCopiedCitationId] = useState<string | null>(null);
+  const [expandedProjectId, setExpandedProjectId] = useState<string | null>(null);
+
+  const toggleProjectExpand = (id: string) => {
+    setExpandedProjectId((prev) => (prev === id ? null : id));
+  };
 
   // Sync tab with URL hash or query if present on client mount
   useEffect(() => {
@@ -262,13 +272,25 @@ export default function ProjectsAndResearchPage() {
                     "project-auriva": "auriva",
                     "project-cinematrix": "cinematrix"
                   };
+                  const isExpanded = expandedProjectId === project.id;
 
                   return (
-                    <div
+                    <article
                       key={project.id}
-                      className="p-6 rounded-2xl bg-corporate-white border border-corporate-border shadow-sm flex flex-col justify-between hover:shadow-md transition-shadow"
+                      className="p-6 rounded-2xl bg-corporate-white border border-corporate-border shadow-xs flex flex-col justify-between hover:shadow-md hover:border-corporate-cobalt/40 transition-all duration-200"
                     >
                       <div>
+                        {/* 16:9 Visual Thumbnail / Architecture Blueprint */}
+                        <div className="mb-4">
+                          <ProjectThumbnail
+                            projectId={project.id}
+                            title={project.title}
+                            category={project.category}
+                            imageUrl={project.thumbnail}
+                            technologies={project.technologies}
+                          />
+                        </div>
+
                         {/* Header & Badges */}
                         <div className="flex items-start justify-between gap-4 mb-2">
                           <span className="text-[10px] font-bold uppercase tracking-wider text-corporate-cobalt px-2.5 py-0.5 rounded bg-corporate-pale border border-corporate-border">
@@ -290,7 +312,7 @@ export default function ProjectsAndResearchPage() {
                                 href={project.github_url}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg border border-corporate-border bg-corporate-white hover:bg-corporate-pale text-corporate-slate text-[11px] font-semibold transition-all shadow-xs"
+                                className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-lg border border-corporate-border bg-corporate-white hover:bg-corporate-pale text-corporate-slate text-[11px] font-semibold transition-all shadow-2xs"
                                 title="View GitHub Repository"
                               >
                                 <Github className="h-3 w-3 text-slate-700" />
@@ -312,9 +334,9 @@ export default function ProjectsAndResearchPage() {
                           {project.description}
                         </p>
 
-                        {/* Highlights */}
+                        {/* Key Highlights */}
                         <div className="mt-4 space-y-1.5">
-                          {project.highlights.map((h, i) => (
+                          {project.highlights.slice(0, 3).map((h, i) => (
                             <div key={i} className="flex items-start space-x-2 text-xs text-gray-700">
                               <CheckCircle2 className="h-3.5 w-3.5 text-corporate-cobalt shrink-0 mt-0.5" />
                               <span className="leading-snug">{h}</span>
@@ -323,18 +345,89 @@ export default function ProjectsAndResearchPage() {
                         </div>
                       </div>
 
-                      {/* Tech Stack Tags */}
-                      <div className="mt-6 pt-4 border-t border-corporate-border flex flex-wrap gap-1.5">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2.5 py-1 text-[11px] bg-corporate-pale text-corporate-slate rounded-md border border-corporate-border font-medium"
-                          >
-                            {tech}
+                      {/* Tech Stack & Expand Trigger */}
+                      <div className="mt-6 pt-4 border-t border-corporate-border space-y-4">
+                        <div className="flex flex-wrap gap-1.5">
+                          {project.technologies.map((tech) => (
+                            <span
+                              key={tech}
+                              className="px-2 py-0.5 text-[10px] bg-corporate-pale text-corporate-slate rounded-md border border-corporate-border font-mono"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+
+                        {/* Read More Accordion Toggle */}
+                        <div className="flex items-center justify-between pt-2">
+                          <span className="text-[11px] text-gray-500 font-medium">
+                            {isExpanded ? "Showing architecture & outcomes" : "Deep-dive technical architecture"}
                           </span>
-                        ))}
+                          <button
+                            onClick={() => toggleProjectExpand(project.id)}
+                            aria-expanded={isExpanded}
+                            aria-controls={`project-detail-${project.id}`}
+                            className="inline-flex items-center space-x-1 px-3 py-1.5 rounded-lg border border-corporate-border bg-corporate-white hover:bg-corporate-pale text-corporate-slate text-xs font-semibold transition-colors"
+                          >
+                            <span>{isExpanded ? "Collapse" : "Read More"}</span>
+                            {isExpanded ? (
+                              <ChevronUp className="h-3.5 w-3.5 text-corporate-cobalt" />
+                            ) : (
+                              <ChevronDown className="h-3.5 w-3.5 text-corporate-cobalt" />
+                            )}
+                          </button>
+                        </div>
                       </div>
-                    </div>
+
+                      {/* Expanded Technical Deep-Dive Panel */}
+                      {isExpanded && (
+                        <div
+                          id={`project-detail-${project.id}`}
+                          role="region"
+                          aria-label={`Technical deep dive for ${project.title}`}
+                          className="mt-4 pt-4 border-t border-corporate-border/80 bg-corporate-pale/50 -mx-6 -mb-6 p-6 rounded-b-2xl space-y-4 animate-in fade-in duration-200"
+                        >
+                          {project.architecture && (
+                            <div>
+                              <div className="text-[11px] font-bold uppercase tracking-wider text-corporate-slate mb-1 flex items-center space-x-1.5">
+                                <Cpu className="h-3.5 w-3.5 text-corporate-cobalt" />
+                                <span>System Architecture</span>
+                              </div>
+                              <p className="text-xs text-gray-700 leading-relaxed font-sans">
+                                {project.architecture}
+                              </p>
+                            </div>
+                          )}
+
+                          {project.my_contribution && (
+                            <div>
+                              <div className="text-[11px] font-bold uppercase tracking-wider text-corporate-slate mb-1 flex items-center space-x-1.5">
+                                <Target className="h-3.5 w-3.5 text-indigo-600" />
+                                <span>My Personal Contribution</span>
+                              </div>
+                              <p className="text-xs text-gray-700 leading-relaxed font-sans">
+                                {project.my_contribution}
+                              </p>
+                            </div>
+                          )}
+
+                          <div>
+                            <div className="text-[11px] font-bold uppercase tracking-wider text-corporate-slate mb-1.5 flex items-center space-x-1.5">
+                              <ShieldCheck className="h-3.5 w-3.5 text-emerald-600" />
+                              <span>Verified Engineering Outcomes</span>
+                            </div>
+                            <ul className="space-y-1">
+                              {project.highlights.map((h, hIdx) => (
+                                <li key={hIdx} className="text-xs text-gray-600 flex items-start space-x-1.5">
+                                  <span className="text-corporate-cobalt font-bold">&bull;</span>
+                                  <span>{h}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      )}
+                    </article>
                   );
                 })}
               </div>
@@ -440,7 +533,7 @@ export default function ProjectsAndResearchPage() {
           </section>
         )}
 
-        {/* SECTION 2: ACADEMIC RESEARCH (EXACTLY 2 PAPERS + INTERACTIVE EXPLORER) */}
+        {/* SECTION 2: ACADEMIC RESEARCH & INTERACTIVE EXPLORER */}
         {(activeTab === "all" || activeTab === "research") && (
           <section id="research" className="mb-16">
             <div className="flex items-center justify-between mb-6 pb-3 border-b border-corporate-border">

@@ -1,7 +1,8 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { OwnerAuthGate } from "@/components/OwnerAuthGate";
 import { 
   Sparkles, 
   FileText, 
@@ -22,7 +23,8 @@ import {
   ExternalLink,
   ChevronRight,
   ShieldCheck,
-  RefreshCw
+  RefreshCw,
+  LogOut
 } from "lucide-react";
 import { masterProfile } from "@/lib/profileData";
 import { JDAnalysisResult } from "@/lib/jobMatcher";
@@ -73,11 +75,28 @@ Requirements:
 ];
 
 export default function RecruiterMatcherPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
   const [jdText, setJdText] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [analysisResult, setAnalysisResult] = useState<JDAnalysisResult | null>(null);
   const [copiedSummary, setCopiedSummary] = useState(false);
   const [uploadError, setUploadError] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth")
+      .then((res) => res.json())
+      .then((data) => {
+        setIsAuthenticated(Boolean(data.authenticated));
+      })
+      .catch(() => {
+        setIsAuthenticated(false);
+      });
+  }, []);
+
+  const handleLogout = async () => {
+    await fetch("/api/auth", { method: "DELETE" }).catch(() => {});
+    setIsAuthenticated(false);
+  };
 
   const handleLoadSample = (sample: typeof SAMPLE_JDS[0]) => {
     setJdText(sample.text);
@@ -140,8 +159,47 @@ export default function RecruiterMatcherPage() {
     setTimeout(() => setCopiedSummary(false), 2000);
   };
 
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-swiss-light flex items-center justify-center p-8">
+        <div className="flex items-center space-x-3 text-sm text-gray-600">
+          <div className="w-5 h-5 border-2 border-swiss-navy border-t-transparent rounded-full animate-spin" />
+          <span>Verifying owner session security...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <OwnerAuthGate
+        moduleName="Job Description Matcher"
+        moduleDescription="The ATS semantic job-description matching engine evaluates internal resume data and scoring heuristics. Access is strictly reserved for the verified platform owner."
+        onAuthenticated={() => setIsAuthenticated(true)}
+      />
+    );
+  }
+
   return (
     <div className="bg-swiss-white text-swiss-navy min-h-screen pb-24">
+      {/* Owner Session Indicator & Logout */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+        <div className="flex items-center justify-between px-4 py-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 print:hidden">
+          <div className="flex items-center space-x-2">
+            <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            <span className="font-semibold">Owner Authentication Active</span>
+            <span className="text-amber-700">&bull; Confidential JD Matcher Unlocked</span>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="inline-flex items-center space-x-1 font-semibold text-rose-700 hover:text-rose-900 hover:underline"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            <span>Lock & Sign Out</span>
+          </button>
+        </div>
+      </div>
+
       {/* 1. Header Banner */}
       <section className="pt-12 pb-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-b border-swiss-divider">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">

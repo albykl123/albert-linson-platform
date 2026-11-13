@@ -69,6 +69,24 @@ export interface ProfileData {
     location: string;
     employment_type?: string;
     period: string;
+    summary_50_words?: string;
+    role_overview?: string;
+    key_responsibilities?: string[];
+    work_contributions?: string[];
+    tools_and_platforms?: string[];
+    skills_applied?: string[];
+    kpis?: Array<{
+      kpi_name: string;
+      status: string;
+      baseline: string;
+      final_value: string;
+      measurement_period: string;
+      calculation_formula: string;
+      evidence_source: string;
+      business_outcome: string;
+      is_published: boolean;
+    }>;
+    additional_context?: string;
     tools?: string[];
     responsibilities?: string[];
     highlights: string[];
@@ -79,6 +97,12 @@ export interface ProfileData {
     institution: string;
     location: string;
     period: string;
+    academic_status?: string;
+    graduation_year?: string;
+    cgpa_status?: string;
+    cgpa?: number | string | null;
+    grading_scale?: string;
+    coursework?: string[];
     details: string;
     specialization?: string;
   }>;
@@ -112,6 +136,14 @@ export interface ProfileData {
     highlights: string[];
     github_url: string;
     status: string;
+    thumbnail?: string;
+    category?: string;
+    problem_addressed?: string;
+    objectives?: string[];
+    key_features?: string[];
+    challenges_and_solutions?: string;
+    verified_outcomes?: string[];
+    live_url?: string;
   }>;
   github_repositories?: Array<{
     name: string;

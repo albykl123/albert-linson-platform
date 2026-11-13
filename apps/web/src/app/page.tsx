@@ -477,13 +477,15 @@ export default function HomePage() {
               <Phone className="h-4 w-4 text-swiss-blue" />
               <span>Call: +91 9910705796</span>
             </a>
-            <Link
-              href="/resume"
+            <a
+              href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20am%20a%20recruiter%20and%20would%20like%20to%20request%20your%20verified%20resume."
+              target="_blank"
+              rel="noreferrer"
               className="inline-flex items-center space-x-2 px-6 py-3 rounded-lg border border-swiss-divider bg-swiss-white hover:bg-swiss-light text-swiss-navy text-sm font-semibold shadow-sm transition-all"
             >
               <FileText className="h-4 w-4 text-swiss-blue" />
-              <span>Download Verified Resume</span>
-            </Link>
+              <span>Request Verified Resume</span>
+            </a>
           </div>
         </div>
       </section>

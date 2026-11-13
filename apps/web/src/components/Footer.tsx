@@ -91,15 +91,31 @@ export function Footer() {
               <li><Link href="/leadership" className="hover:text-swiss-navy transition-colors">Leadership & Engagement</Link></li>
               <li><Link href="/education" className="hover:text-swiss-navy transition-colors">Education & Credentials</Link></li>
               <li><Link href="/projects" className="hover:text-swiss-navy transition-colors font-medium">Projects & Research</Link></li>
-              <li><Link href="/resume" className="hover:text-swiss-navy transition-colors font-medium">Resume & Skills</Link></li>
             </ul>
           </div>
 
-          {/* Resources & Document Access */}
+          {/* Resources & Recruiter Verification */}
           <div>
-            <h4 className="text-xs font-semibold uppercase tracking-wider text-swiss-navy mb-3">Resources</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wider text-swiss-navy mb-3">Recruiter Inquiries</h4>
             <ul className="space-y-2 text-xs">
-              <li><Link href="/resume" className="hover:text-swiss-navy transition-colors font-medium">Download Resume (PDF/TXT)</Link></li>
+              <li>
+                <a
+                  href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20am%20a%20recruiter%20and%20would%20like%20to%20request%20your%20verified%20resume."
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:text-swiss-navy transition-colors font-medium text-emerald-700"
+                >
+                  Request Official Resume
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@albert.does.software?subject=Technical%20Opportunity%20Inquiry"
+                  className="hover:text-swiss-navy transition-colors"
+                >
+                  Direct Email Outreach
+                </a>
+              </li>
               <li>
                 <Link href="/admin" className="inline-flex items-center space-x-1 text-gray-500 hover:text-swiss-navy transition-colors">
                   <Lock className="h-3 w-3" />

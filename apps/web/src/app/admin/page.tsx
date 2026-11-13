@@ -38,7 +38,11 @@ import {
   Clock,
   Eye,
   BookOpen,
-  Mail
+  Mail,
+  Target,
+  GraduationCap,
+  Image as ImageIcon,
+  Wrench
 } from "lucide-react";
 
 type AdminTab = "overview" | "career" | "outreach" | "cms" | "trends" | "analytics" | "integrations" | "freestack";
@@ -67,13 +71,42 @@ export default function AdminPage() {
   const [analyticsData, setAnalyticsData] = useState<any>(null);
   const [integrationsData, setIntegrationsData] = useState<any[]>([]);
 
-  // 4. CMS State
-  const [cmsSection, setCmsSection] = useState("summary");
+  // 4. CMS & Faculty Review State
+  const [cmsSubTab, setCmsSubTab] = useState<"experience" | "kpis" | "education" | "projects" | "standard">("experience");
+  const [cmsSection, setCmsSection] = useState("experience");
   const [cmsTitle, setCmsTitle] = useState(masterProfile.personal.headline);
   const [cmsContent, setCmsContent] = useState(masterProfile.summary);
-  const [cmsStatus, setCmsStatus] = useState("published");
+  const [cmsStatus, setCmsStatus] = useState("PUBLISHED");
   const [cmsSaved, setCmsSaved] = useState(false);
   const [cmsError, setCmsError] = useState<string | null>(null);
+
+  // Experience Sub-Editor
+  const [selectedExpId, setSelectedExpId] = useState(masterProfile.experience[0]?.id || "exp-1");
+  const [expSummary50, setExpSummary50] = useState(masterProfile.experience[0]?.summary_50_words || "");
+  const [expTools, setExpTools] = useState((masterProfile.experience[0]?.tools_and_platforms || []).join(", "));
+  const [expSkills, setExpSkills] = useState((masterProfile.experience[0]?.skills_applied || []).join(", "));
+  const [expWorkflowStatus, setExpWorkflowStatus] = useState("APPROVED");
+
+  // KPI Sub-Editor
+  const [selectedKpiOrg, setSelectedKpiOrg] = useState("Innova Solutions");
+  const [kpiName, setKpiName] = useState("Candidate Submittal-to-Interview Conversion");
+  const [kpiBaseline, setKpiBaseline] = useState("");
+  const [kpiFinal, setKpiFinal] = useState("");
+  const [kpiFormula, setKpiFormula] = useState("(Client Interviews Scheduled / Total Qualified Submissions) × 100");
+  const [kpiEvidence, setKpiEvidence] = useState("");
+  const [kpiStatus, setKpiStatus] = useState("NEEDS_OWNER_INPUT");
+
+  // Education Sub-Editor
+  const [selectedEduId, setSelectedEduId] = useState(masterProfile.education[0]?.id || "edu-1");
+  const [eduCgpa, setEduCgpa] = useState("");
+  const [eduGradingScale, setEduGradingScale] = useState("10.0 CGPA Scale");
+  const [eduStatus, setEduStatus] = useState("NEEDS_OWNER_INPUT");
+
+  // Project Visuals Sub-Editor
+  const [selectedProjId, setSelectedProjId] = useState(masterProfile.projects[0]?.id || "proj-jarvis");
+  const [projThumbnailUrl, setProjThumbnailUrl] = useState("");
+  const [projAltText, setProjAltText] = useState("");
+  const [projStatus, setProjStatus] = useState("APPROVED");
 
   // Check auth and initial query tab
   useEffect(() => {
@@ -744,105 +777,671 @@ export default function AdminPage() {
           </div>
         )}
 
-        {/* TAB 4: PROFILE CMS */}
+        {/* TAB 4: PROFILE CMS & FACULTY REVIEW MANAGEMENT */}
         {activeTab === "cms" && (
           <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-6">
             <div>
-              <h3 className="text-base font-bold text-slate-900">Dynamic Professional Profile CMS</h3>
-              <p className="text-xs text-slate-500 mt-0.5">
-                Update verified professional credentials. Changes synchronize across the public website, Resume Builder, and Digital Twin.
+              <div className="flex items-center space-x-2 mb-1">
+                <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                <h3 className="text-base font-bold text-slate-900">Faculty Review & Professional Profile CMS</h3>
+              </div>
+              <p className="text-xs text-slate-500">
+                Structured owner editing for 50-word experience summaries, separated tools vs skills, the anti-fabrication KPI framework, verified education CGPAs, and project visual assets.
               </p>
             </div>
 
-            <form onSubmit={handleSaveCms} className="space-y-4 text-xs">
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {/* Sub-Tabs Selector */}
+            <div className="flex flex-wrap gap-2 border-b border-slate-200 pb-3">
+              {[
+                { id: "experience", label: "Experience & 50-Word Summaries", icon: <Briefcase className="h-3.5 w-3.5" /> },
+                { id: "kpis", label: "KPI & Anti-Fabrication Framework", icon: <Target className="h-3.5 w-3.5" /> },
+                { id: "education", label: "Education & CGPA Verification", icon: <GraduationCap className="h-3.5 w-3.5" /> },
+                { id: "projects", label: "Project Visuals & Screenshots", icon: <ImageIcon className="h-3.5 w-3.5" /> },
+                { id: "standard", label: "Raw JSON Synchronizer", icon: <Sliders className="h-3.5 w-3.5" /> },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => setCmsSubTab(tab.id as any)}
+                  className={`inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                    cmsSubTab === tab.id
+                      ? "bg-slate-900 text-white shadow-xs"
+                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
+                  }`}
+                >
+                  {tab.icon}
+                  <span>{tab.label}</span>
+                </button>
+              ))}
+            </div>
+
+            {/* SUB-VIEW 1: EXPERIENCE & 50-WORD SUMMARIES */}
+            {cmsSubTab === "experience" && (
+              <div className="space-y-5 text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Select Employer / Organization
+                    </label>
+                    <select
+                      value={selectedExpId}
+                      onChange={(e) => {
+                        const id = e.target.value;
+                        setSelectedExpId(id);
+                        const exp = masterProfile.experience.find((x) => x.id === id);
+                        if (exp) {
+                          setExpSummary50(exp.summary_50_words || "");
+                          setExpTools((exp.tools_and_platforms || exp.tools || []).join(", "));
+                          setExpSkills((exp.skills_applied || []).join(", "));
+                        }
+                      }}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white font-medium"
+                    >
+                      {masterProfile.experience.map((exp) => (
+                        <option key={exp.id} value={exp.id}>
+                          {exp.company} — {exp.role} ({exp.period})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Content Verification Status
+                    </label>
+                    <select
+                      value={expWorkflowStatus}
+                      onChange={(e) => setExpWorkflowStatus(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white font-bold"
+                    >
+                      <option value="PUBLISHED">PUBLISHED (Publicly Visible)</option>
+                      <option value="APPROVED">APPROVED (Staged for Next Deployment)</option>
+                      <option value="VERIFIED">VERIFIED (Authenticated Records Match)</option>
+                      <option value="UNDER_REVIEW">UNDER_REVIEW (Pending Faculty Audit)</option>
+                      <option value="NEEDS_OWNER_INPUT">NEEDS_OWNER_INPUT (Awaiting Owner Check)</option>
+                      <option value="DRAFT">DRAFT (Private Workspace Only)</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div>
-                  <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
-                    Target Section
-                  </label>
-                  <select
-                    value={cmsSection}
-                    onChange={(e) => setCmsSection(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white focus:outline-none focus:border-blue-500"
+                  <div className="flex items-center justify-between mb-1">
+                    <label className="font-bold uppercase tracking-wider text-slate-600">
+                      Approximately 50-Word Executive Summary
+                    </label>
+                    <span className="text-[11px] font-mono text-slate-500">
+                      Word Count: {expSummary50.trim() ? expSummary50.trim().split(/\s+/).length : 0} words (Target: ~50 words)
+                    </span>
+                  </div>
+                  <textarea
+                    rows={4}
+                    value={expSummary50}
+                    onChange={(e) => setExpSummary50(e.target.value)}
+                    className="w-full p-3 rounded-xl border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-500 leading-relaxed font-sans"
+                    placeholder="Concise 50-word synthesis of role scope, key responsibilities, personal contributions, and delivered value..."
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Tools & Platforms (Concrete Software/Systems - Comma Separated)
+                    </label>
+                    <input
+                      type="text"
+                      value={expTools}
+                      onChange={(e) => setExpTools(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                      placeholder="e.g. Bullhorn ATS, JobDiva, LinkedIn Recruiter, Dice..."
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Skills Applied (Professional Competencies - Comma Separated)
+                    </label>
+                    <input
+                      type="text"
+                      value={expSkills}
+                      onChange={(e) => setExpSkills(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                      placeholder="e.g. US IT Staffing, Boolean Search, Candidate Screening..."
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={async () => {
+                      setCmsSaved(false);
+                      setCmsError(null);
+                      const res = await fetch("/api/profile/cms", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          section: "experience",
+                          recordKey: selectedExpId,
+                          title: `Experience: ${selectedExpId}`,
+                          data: {
+                            id: selectedExpId,
+                            summary_50_words: expSummary50,
+                            tools_and_platforms: expTools.split(",").map((t) => t.trim()).filter(Boolean),
+                            skills_applied: expSkills.split(",").map((s) => s.trim()).filter(Boolean),
+                            status: expWorkflowStatus,
+                          },
+                          status: expWorkflowStatus,
+                          sourceEvidence: "Verified Owner Review Audit"
+                        }),
+                      });
+                      if (res.ok) {
+                        setCmsSaved(true);
+                        setTimeout(() => setCmsSaved(false), 3000);
+                      } else {
+                        setCmsError("Failed to save experience update.");
+                      }
+                    }}
+                    className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-black text-white font-bold shadow-xs transition-all"
                   >
-                    <option value="summary">Professional Summary</option>
-                    <option value="headline">Headline & Title</option>
-                    <option value="experience">Professional Experience</option>
-                    <option value="skills">Technical & Sourcing Skills</option>
-                    <option value="leadership">Leadership & Campus Involvement</option>
-                    <option value="research">Academic Research</option>
-                  </select>
+                    <Save className="h-4 w-4" />
+                    <span>Save Experience Record</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* SUB-VIEW 2: KPI & ANTI-FABRICATION FRAMEWORK */}
+            {cmsSubTab === "kpis" && (
+              <div className="space-y-5 text-xs">
+                <div className="p-4 rounded-xl bg-amber-50 border border-amber-200 text-amber-900 space-y-1">
+                  <div className="font-bold flex items-center space-x-1.5">
+                    <ShieldCheck className="h-4 w-4 text-emerald-600" />
+                    <span>Anti-Fabrication Policy Enforced</span>
+                  </div>
+                  <p className="text-[11px] leading-relaxed">
+                    Zero fabricated percentages, hiring counts, or revenue metrics permitted. Any metric lacking third-party verifiable evidence remains flagged as <strong>NEEDS_OWNER_INPUT</strong> and is suppressed from public display.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Organization
+                    </label>
+                    <select
+                      value={selectedKpiOrg}
+                      onChange={(e) => setSelectedKpiOrg(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white"
+                    >
+                      <option value="Innova Solutions">Innova Solutions</option>
+                      <option value="Herbal Energy">Herbal Energy</option>
+                      <option value="Algospark Technologies">Algospark Technologies</option>
+                      <option value="Municipal Corporation of Delhi">Municipal Corporation of Delhi</option>
+                      <option value="METVY LEARN">METVY LEARN</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      KPI Metric Name
+                    </label>
+                    <input
+                      type="text"
+                      value={kpiName}
+                      onChange={(e) => setKpiName(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Verification Status
+                    </label>
+                    <select
+                      value={kpiStatus}
+                      onChange={(e) => setKpiStatus(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white font-bold"
+                    >
+                      <option value="NEEDS_OWNER_INPUT">NEEDS_OWNER_INPUT (Suppressed from Public)</option>
+                      <option value="VERIFIED">VERIFIED (Evidence Attached)</option>
+                      <option value="APPROVED">APPROVED (Authorized to Publish)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Verified Baseline Value
+                    </label>
+                    <input
+                      type="text"
+                      value={kpiBaseline}
+                      onChange={(e) => setKpiBaseline(e.target.value)}
+                      placeholder="e.g. 10 submittals/week (leave blank if unverified)"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Verified Final Value
+                    </label>
+                    <input
+                      type="text"
+                      value={kpiFinal}
+                      onChange={(e) => setKpiFinal(e.target.value)}
+                      placeholder="e.g. 17 submittals/week (leave blank if unverified)"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Calculation Formula
+                    </label>
+                    <input
+                      type="text"
+                      value={kpiFormula}
+                      onChange={(e) => setKpiFormula(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 font-mono text-[11px]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Evidence Source Document
+                    </label>
+                    <input
+                      type="text"
+                      value={kpiEvidence}
+                      onChange={(e) => setKpiEvidence(e.target.value)}
+                      placeholder="e.g. Innova Solutions ATS Activity Export Q1 2026"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={async () => {
+                      setCmsSaved(false);
+                      setCmsError(null);
+                      const res = await fetch("/api/profile/cms", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          section: "kpi",
+                          recordKey: `kpi-${selectedKpiOrg.toLowerCase().replace(/\s+/g, "-")}`,
+                          title: `${selectedKpiOrg}: ${kpiName}`,
+                          data: {
+                            organization: selectedKpiOrg,
+                            kpi_name: kpiName,
+                            baseline: kpiBaseline || "Pending owner verification",
+                            final_value: kpiFinal || "Pending owner verification",
+                            calculation_formula: kpiFormula,
+                            evidence_source: kpiEvidence || "Pending owner document upload",
+                            status: kpiStatus,
+                          },
+                          status: kpiStatus,
+                          sourceEvidence: kpiEvidence || "Pending Owner Submission"
+                        }),
+                      });
+                      if (res.ok) {
+                        setCmsSaved(true);
+                        setTimeout(() => setCmsSaved(false), 3000);
+                      } else {
+                        setCmsError("Failed to save KPI record.");
+                      }
+                    }}
+                    className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-black text-white font-bold shadow-xs transition-all"
+                  >
+                    <Save className="h-4 w-4" />
+                    <span>Save KPI Framework Record</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* SUB-VIEW 3: EDUCATION & CGPA VERIFICATION */}
+            {cmsSubTab === "education" && (
+              <div className="space-y-5 text-xs">
+                <div className="p-4 rounded-xl bg-sky-50 border border-sky-200 text-sky-900 space-y-1">
+                  <div className="font-bold flex items-center space-x-1.5">
+                    <GraduationCap className="h-4 w-4 text-sky-600" />
+                    <span>Institutional Academic Scoring Safeguard</span>
+                  </div>
+                  <p className="text-[11px] leading-relaxed">
+                    Official CGPA or percentage must be verified from university marksheets before publication. Until an authentic grade card is supplied, the status remains <strong>NEEDS_OWNER_INPUT</strong>.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Academic Degree / Qualification
+                    </label>
+                    <select
+                      value={selectedEduId}
+                      onChange={(e) => {
+                        setSelectedEduId(e.target.value);
+                        const edu = masterProfile.education.find((x) => x.id === e.target.value);
+                        if (edu) {
+                          setEduCgpa(edu.cgpa ? String(edu.cgpa) : "");
+                          setEduGradingScale(edu.grading_scale || "10.0 CGPA Scale");
+                          setEduStatus(edu.cgpa_status || "NEEDS_OWNER_INPUT");
+                        }
+                      }}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white"
+                    >
+                      {masterProfile.education.map((edu) => (
+                        <option key={edu.id} value={edu.id}>
+                          {edu.degree} ({edu.institution})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Verification Status
+                    </label>
+                    <select
+                      value={eduStatus}
+                      onChange={(e) => setEduStatus(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white font-bold"
+                    >
+                      <option value="NEEDS_OWNER_INPUT">NEEDS_OWNER_INPUT (Pending Official Marksheet)</option>
+                      <option value="VERIFIED">VERIFIED (Marksheet Verified)</option>
+                      <option value="APPROVED">APPROVED (Publish to Website)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Cumulative Grade Point Average (CGPA) / Percentage
+                    </label>
+                    <input
+                      type="text"
+                      value={eduCgpa}
+                      onChange={(e) => setEduCgpa(e.target.value)}
+                      placeholder="e.g. 8.45 (or leave blank if pending grade card)"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Official Grading Scale
+                    </label>
+                    <input
+                      type="text"
+                      value={eduGradingScale}
+                      onChange={(e) => setEduGradingScale(e.target.value)}
+                      placeholder="e.g. 10.0 CGPA Scale or Percentage (%)"
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                    />
+                  </div>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={async () => {
+                      setCmsSaved(false);
+                      setCmsError(null);
+                      const res = await fetch("/api/profile/cms", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          section: "education",
+                          recordKey: selectedEduId,
+                          title: `Education: ${selectedEduId}`,
+                          data: {
+                            id: selectedEduId,
+                            cgpa: eduCgpa || null,
+                            grading_scale: eduGradingScale,
+                            cgpa_status: eduStatus,
+                          },
+                          status: eduStatus,
+                          sourceEvidence: "Official University Academic Transcript"
+                        }),
+                      });
+                      if (res.ok) {
+                        setCmsSaved(true);
+                        setTimeout(() => setCmsSaved(false), 3000);
+                      } else {
+                        setCmsError("Failed to save education record.");
+                      }
+                    }}
+                    className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-black text-white font-bold shadow-xs transition-all"
+                  >
+                    <Save className="h-4 w-4" />
+                    <span>Save Academic Record</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* SUB-VIEW 4: PROJECT VISUALS & SCREENSHOTS */}
+            {cmsSubTab === "projects" && (
+              <div className="space-y-5 text-xs">
+                <div className="p-4 rounded-xl bg-purple-50 border border-purple-200 text-purple-900 space-y-1">
+                  <div className="font-bold flex items-center space-x-1.5">
+                    <ImageIcon className="h-4 w-4 text-purple-600" />
+                    <span>16:9 Project Visual Assets Manager</span>
+                  </div>
+                  <p className="text-[11px] leading-relaxed">
+                    Projects without an owner-uploaded production screenshot automatically render our high-fidelity, branded <strong>16:9 Architecture Blueprints</strong> on the public portfolio. Upload genuine captures here.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Software Project
+                    </label>
+                    <select
+                      value={selectedProjId}
+                      onChange={(e) => {
+                        setSelectedProjId(e.target.value);
+                        const proj = masterProfile.projects.find((p) => p.id === e.target.value);
+                        if (proj) {
+                          setProjThumbnailUrl(proj.thumbnail || "");
+                          setProjAltText(`Screenshot of ${proj.title}`);
+                        }
+                      }}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white"
+                    >
+                      {masterProfile.projects.map((p) => (
+                        <option key={p.id} value={p.id}>
+                          {p.title} ({p.status})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Asset Status
+                    </label>
+                    <select
+                      value={projStatus}
+                      onChange={(e) => setProjStatus(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white font-bold"
+                    >
+                      <option value="APPROVED">APPROVED (Publish Live)</option>
+                      <option value="NEEDS_OWNER_INPUT">NEEDS_OWNER_INPUT (Use Architecture Placeholder)</option>
+                      <option value="DRAFT">DRAFT (Internal Preview)</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>
                   <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
-                    Record Title / Key
+                    Image File Path / Hosted Asset URL
                   </label>
                   <input
                     type="text"
-                    value={cmsTitle}
-                    onChange={(e) => setCmsTitle(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-500"
+                    value={projThumbnailUrl}
+                    onChange={(e) => setProjThumbnailUrl(e.target.value)}
+                    placeholder="e.g. /images/projects/jarvis-preview.png or https://..."
+                    className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800"
+                  />
+                  <span className="text-[10px] text-slate-400 mt-1 block">
+                    Supported formats: PNG, JPG, WebP. If left blank, the platform defaults to verified vector architecture diagram.
+                  </span>
+                </div>
+
+                <div className="pt-2 flex justify-end">
+                  <button
+                    onClick={async () => {
+                      setCmsSaved(false);
+                      setCmsError(null);
+                      const res = await fetch("/api/profile/cms", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          section: "projects",
+                          recordKey: selectedProjId,
+                          title: `Project Asset: ${selectedProjId}`,
+                          data: {
+                            id: selectedProjId,
+                            thumbnail: projThumbnailUrl || null,
+                            alt_text: projAltText,
+                            status: projStatus,
+                          },
+                          status: projStatus,
+                          sourceEvidence: "Owner Uploaded Project Screenshot"
+                        }),
+                      });
+                      if (res.ok) {
+                        setCmsSaved(true);
+                        setTimeout(() => setCmsSaved(false), 3000);
+                      } else {
+                        setCmsError("Failed to save project visual update.");
+                      }
+                    }}
+                    className="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-black text-white font-bold shadow-xs transition-all"
+                  >
+                    <Save className="h-4 w-4" />
+                    <span>Save Project Asset</span>
+                  </button>
+                </div>
+              </div>
+            )}
+
+            {/* SUB-VIEW 5: STANDARD RAW JSON / SECTION EDITOR */}
+            {cmsSubTab === "standard" && (
+              <form onSubmit={handleSaveCms} className="space-y-4 text-xs">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Target Section
+                    </label>
+                    <select
+                      value={cmsSection}
+                      onChange={(e) => setCmsSection(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white focus:outline-none focus:border-blue-500"
+                    >
+                      <option value="summary">Professional Summary</option>
+                      <option value="headline">Headline & Title</option>
+                      <option value="experience">Professional Experience</option>
+                      <option value="skills">Technical & Sourcing Skills</option>
+                      <option value="leadership">Leadership & Campus Involvement</option>
+                      <option value="research">Academic Research</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Record Title / Key
+                    </label>
+                    <input
+                      type="text"
+                      value={cmsTitle}
+                      onChange={(e) => setCmsTitle(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-500"
+                      required
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                      Publishing Workflow Status
+                    </label>
+                    <select
+                      value={cmsStatus}
+                      onChange={(e) => setCmsStatus(e.target.value)}
+                      className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white focus:outline-none focus:border-blue-500 font-semibold"
+                    >
+                      <option value="PUBLISHED">Published (Live Public View)</option>
+                      <option value="APPROVED">Approved (Staged)</option>
+                      <option value="VERIFIED">Verified (Internal)</option>
+                      <option value="UNDER_REVIEW">Under Review</option>
+                      <option value="DRAFT">Draft (Private)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
+                    Section Content / Structured Text
+                  </label>
+                  <textarea
+                    rows={8}
+                    value={cmsContent}
+                    onChange={(e) => setCmsContent(e.target.value)}
+                    className="w-full p-3.5 rounded-xl border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-500 leading-relaxed font-sans"
                     required
                   />
                 </div>
 
-                <div>
-                  <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
-                    Publishing Workflow Status
-                  </label>
-                  <select
-                    value={cmsStatus}
-                    onChange={(e) => setCmsStatus(e.target.value)}
-                    className="w-full p-2.5 rounded-xl border border-slate-300 text-slate-800 bg-white focus:outline-none focus:border-blue-500 font-semibold"
+                <div className="flex items-center justify-between pt-2">
+                  <div className="flex items-center space-x-2">
+                    {cmsSaved && (
+                      <span className="text-emerald-600 font-semibold flex items-center space-x-1">
+                        <CheckCircle2 className="h-4 w-4" />
+                        <span>Profile updated and synchronized to D1!</span>
+                      </span>
+                    )}
+                    {cmsError && (
+                      <span className="text-red-600 font-semibold flex items-center space-x-1">
+                        <AlertCircle className="h-4 w-4" />
+                        <span>{cmsError}</span>
+                      </span>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-sm transition-all"
                   >
-                    <option value="published">Published (Live Public View)</option>
-                    <option value="approved">Approved (Staged)</option>
-                    <option value="verified">Verified (Internal)</option>
-                    <option value="under_review">Under Review</option>
-                    <option value="draft">Draft (Private)</option>
-                  </select>
+                    <Save className="h-4 w-4" />
+                    <span>Save & Synchronize</span>
+                  </button>
                 </div>
-              </div>
+              </form>
+            )}
 
-              <div>
-                <label className="block font-bold uppercase tracking-wider text-slate-600 mb-1">
-                  Section Content / Structured Text
-                </label>
-                <textarea
-                  rows={8}
-                  value={cmsContent}
-                  onChange={(e) => setCmsContent(e.target.value)}
-                  className="w-full p-3.5 rounded-xl border border-slate-300 text-slate-800 focus:outline-none focus:border-blue-500 leading-relaxed font-sans"
-                  required
-                />
+            {/* Notification Feedback Banner */}
+            {(cmsSaved || cmsError) && (
+              <div className="pt-2">
+                {cmsSaved && (
+                  <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-semibold flex items-center space-x-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600" />
+                    <span>CMS Record saved and synced to database!</span>
+                  </div>
+                )}
+                {cmsError && (
+                  <div className="p-3 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-semibold flex items-center space-x-2">
+                    <AlertCircle className="h-4 w-4 text-rose-600" />
+                    <span>{cmsError}</span>
+                  </div>
+                )}
               </div>
-
-              <div className="flex items-center justify-between pt-2">
-                <div className="flex items-center space-x-2">
-                  {cmsSaved && (
-                    <span className="text-emerald-600 font-semibold flex items-center space-x-1">
-                      <CheckCircle2 className="h-4 w-4" />
-                      <span>Profile updated and synchronized to D1!</span>
-                    </span>
-                  )}
-                  {cmsError && (
-                    <span className="text-red-600 font-semibold flex items-center space-x-1">
-                      <AlertCircle className="h-4 w-4" />
-                      <span>{cmsError}</span>
-                    </span>
-                  )}
-                </div>
-
-                <button
-                  type="submit"
-                  className="inline-flex items-center space-x-2 px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-sm transition-all"
-                >
-                  <Save className="h-4 w-4" />
-                  <span>Save & Synchronize</span>
-                </button>
-              </div>
-            </form>
+            )}
           </div>
         )}
 

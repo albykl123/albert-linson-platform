@@ -38,15 +38,20 @@ export function Navbar() {
       .catch(() => {});
   }, [pathname]);
 
-  const navLinks = [
+  const publicNavLinks = [
     { href: "/about", label: "About" },
     { href: "/experience", label: "Experience" },
     { href: "/leadership", label: "Leadership" },
     { href: "/education", label: "Education" },
     { href: "/projects", label: "Projects & Research", activeRoutes: ["/projects", "/research"] },
-    { href: "/resume", label: "Resume & Skills", activeRoutes: ["/resume", "/skills"] },
-    { href: "/matcher", label: "JD Matcher" },
   ];
+
+  const ownerNavLinks = [
+    { href: "/resume", label: "Resume & Skills", activeRoutes: ["/resume", "/skills"], isOwnerOnly: true },
+    { href: "/matcher", label: "JD Matcher", isOwnerOnly: true },
+  ];
+
+  const navLinks = isOwnerAuth ? [...publicNavLinks, ...ownerNavLinks] : publicNavLinks;
 
   return (
     <header id="site-global-navbar" className="sticky top-0 z-50 w-full border-b border-swiss-divider bg-swiss-white/95 backdrop-blur-md transition-colors print:hidden">
@@ -76,13 +81,16 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all ${
+                className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all inline-flex items-center space-x-1 ${
                   isActive
                     ? "bg-swiss-light text-swiss-navy font-semibold border border-swiss-divider"
                     : "text-gray-600 hover:text-swiss-navy hover:bg-swiss-light/60"
                 }`}
               >
-                {link.label}
+                <span>{link.label}</span>
+                {(link as any).isOwnerOnly && (
+                  <span className="text-[9px] px-1 py-0.2 bg-amber-100 text-amber-800 rounded font-mono">Owner</span>
+                )}
               </Link>
             );
           })}
@@ -102,41 +110,55 @@ export function Navbar() {
             <span>AI Twin</span>
           </button>
 
-          <Link
-            href="/matcher"
-            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-swiss-navy text-white hover:bg-swiss-navy/90 text-xs font-semibold shadow-sm transition-all"
-            title="Recruiter JD Matcher"
-          >
-            <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
-            <span>JD Matcher</span>
-          </Link>
-
-          <Link
-            href="/resume"
-            className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-swiss-divider bg-swiss-light text-swiss-navy hover:bg-swiss-divider/50 text-xs font-semibold transition-all shadow-sm"
-          >
-            <FileText className="h-3.5 w-3.5 text-swiss-blue" />
-            <span>Resume</span>
-          </Link>
-
           {isOwnerAuth ? (
-            <Link
-              href="/studio"
-              className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-swiss-blue text-white text-xs font-semibold shadow-sm hover:bg-swiss-blue/90 transition-all"
-              title="Authenticated Owner Studio"
-            >
-              <Unlock className="h-3 w-3" />
-              <span>Studio</span>
-            </Link>
+            <>
+              <Link
+                href="/matcher"
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-swiss-navy text-white hover:bg-swiss-navy/90 text-xs font-semibold shadow-sm transition-all"
+                title="Recruiter JD Matcher"
+              >
+                <Sparkles className="h-3.5 w-3.5 text-cyan-400" />
+                <span>JD Matcher</span>
+              </Link>
+
+              <Link
+                href="/resume"
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-swiss-divider bg-swiss-light text-swiss-navy hover:bg-swiss-divider/50 text-xs font-semibold transition-all shadow-sm"
+              >
+                <FileText className="h-3.5 w-3.5 text-swiss-blue" />
+                <span>Resume</span>
+              </Link>
+
+              <Link
+                href="/studio"
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-swiss-blue text-white text-xs font-semibold shadow-sm hover:bg-swiss-blue/90 transition-all"
+                title="Authenticated Owner Studio"
+              >
+                <Unlock className="h-3 w-3" />
+                <span>Studio</span>
+              </Link>
+            </>
           ) : (
-            <Link
-              href="/admin"
-              className="p-2 text-gray-400 hover:text-swiss-navy transition-colors rounded-lg hover:bg-swiss-light"
-              title="Owner Sign-In"
-              aria-label="Owner Sign-In"
-            >
-              <Lock className="h-3.5 w-3.5" />
-            </Link>
+            <>
+              <a
+                href="https://wa.me/919910705796?text=Hi%20Albert,%20I%20came%20across%20your%20portfolio%20and%20would%20like%20to%20connect."
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-sm transition-all"
+                title="Connect on WhatsApp: +91 9910705796"
+              >
+                <span>Outreach</span>
+              </a>
+
+              <Link
+                href="/admin"
+                className="p-2 text-gray-400 hover:text-swiss-navy transition-colors rounded-lg hover:bg-swiss-light"
+                title="Owner Sign-In"
+                aria-label="Owner Sign-In"
+              >
+                <Lock className="h-3.5 w-3.5" />
+              </Link>
+            </>
           )}
         </div>
 
@@ -195,20 +217,33 @@ export function Navbar() {
               <span>Talk to Albert AI Digital Twin</span>
             </button>
             <div className="flex items-center justify-between pt-1">
-              <Link
-                href="/resume"
-                onClick={() => setIsOpen(false)}
-                className="text-xs font-semibold text-swiss-blue"
-              >
-                Download Resume
-              </Link>
+              {isOwnerAuth ? (
+                <Link
+                  href="/resume"
+                  onClick={() => setIsOpen(false)}
+                  className="text-xs font-semibold text-amber-800 flex items-center space-x-1"
+                >
+                  <FileText className="h-3 w-3" />
+                  <span>Resume & Skills (Owner)</span>
+                </Link>
+              ) : (
+                <a
+                  href="https://wa.me/919910705796"
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setIsOpen(false)}
+                  className="text-xs font-semibold text-emerald-700"
+                >
+                  Connect via WhatsApp
+                </a>
+              )}
               <Link
                 href="/admin"
                 onClick={() => setIsOpen(false)}
                 className="text-xs text-gray-500 hover:text-swiss-navy flex items-center space-x-1"
               >
                 <Lock className="h-3 w-3" />
-                <span>Owner Portal</span>
+                <span>{isOwnerAuth ? "Admin Portal" : "Owner Sign-In"}</span>
               </Link>
             </div>
           </div>

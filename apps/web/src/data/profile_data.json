@@ -286,28 +286,85 @@
       "company": "Innova Solutions",
       "location": "Noida / Remote, India",
       "employment_type": "Full-Time",
-      "period": "December 2025 \u2013 Present",
-      "tools": [
-        "ATS Platforms",
-        "Job Portals",
-        "Professional Networks",
-        "Technical Screening",
-        "Client Collaboration",
-        "Candidate Sourcing"
+      "period": "December 2025 – Present",
+      "summary_50_words": "Spearheaded full-lifecycle technical recruitment for US enterprise staffing accounts across engineering, cloud, and DevOps requirements. Managed candidate pipeline development, boolean sourcing on major job boards, in-depth technical competency evaluations, client hiring manager coordination, and offer onboarding deliverables to accelerate qualified candidate submittals and improve placement conversion.",
+      "role_overview": "Operating as a full-lifecycle US IT Technical Recruiter within Innova Solutions, responsible for sourcing, screening, vetting, and presenting elite technical talent to Fortune 500 and enterprise clients across North American time zones (EST/CST).",
+      "key_responsibilities": [
+        "Manage end-to-end recruitment lifecycle: requisition intake, boolean search, passive sourcing, technical pre-screening, submittals, interview coordination, and onboarding.",
+        "Source high-caliber software engineers, cloud architects, DevOps practitioners, and data specialists across Dice, Monster, CareerBuilder, and LinkedIn Recruiter.",
+        "Conduct rigorous preliminary technical competency screens and evaluate candidate employment eligibility (W-2, C2C, 1099, US Citizen, Green Card, H-1B transfer).",
+        "Collaborate closely with US account managers and client hiring authorities to understand precise skill requirements and establish tailored sourcing matrices.",
+        "Maintain strict adherence to submission quotas, interview conversion rates, and weekly recruitment pipeline milestones."
       ],
+      "work_contributions": [
+        "Built multi-channel candidate pipelines for high-demand technology verticals including AWS/Azure cloud engineering, Python microservices, and React frontends.",
+        "Standardized candidate evaluation notes and summary submission packages to reduce hiring manager screening friction.",
+        "Partnered directly with account executives to align candidate salary expectations with client budget brackets, facilitating smooth offer acceptances."
+      ],
+      "tools_and_platforms": [
+        "Bullhorn ATS",
+        "JobDiva",
+        "LinkedIn Recruiter",
+        "Dice Portal",
+        "Monster / CareerBuilder",
+        "MS Office 365",
+        "Google Workspace"
+      ],
+      "skills_applied": [
+        "US IT Recruitment Lifecycle",
+        "Boolean Search Architecture",
+        "Technical Competency Screening",
+        "Candidate Pipeline Management",
+        "Client Relationship Management",
+        "Rate & Salary Negotiation",
+        "Visa & Tax Term Compliance (W2/C2C/1099)",
+        "Cross-Timezone Collaboration"
+      ],
+      "kpis": [
+        {
+          "kpi_name": "Candidate Submittal-to-Interview Conversion",
+          "status": "NEEDS_OWNER_INPUT",
+          "baseline": "Pending verification",
+          "final_value": "Pending verification",
+          "measurement_period": "Dec 2025 – Present",
+          "calculation_formula": "(Client Interviews Scheduled / Total Qualified Submissions) × 100",
+          "evidence_source": "Innova Solutions ATS Pipeline Logs",
+          "business_outcome": "Streamlined candidate pre-qualification to maximize interview acceptance by US hiring managers.",
+          "is_published": false
+        },
+        {
+          "kpi_name": "Average Time-to-Submit (Turnaround)",
+          "status": "NEEDS_OWNER_INPUT",
+          "baseline": "Pending verification",
+          "final_value": "Pending verification",
+          "measurement_period": "Dec 2025 – Present",
+          "calculation_formula": "Total Requisition Intake Hours to First Qualified Candidate Presentation",
+          "evidence_source": "Weekly Requisition Delivery Metrics",
+          "business_outcome": "Accelerated talent delivery against critical enterprise staffing deadlines.",
+          "is_published": false
+        }
+      ],
+      "additional_context": "Innova Solutions is a global digital transformation and technology staffing firm supporting major commercial clients across healthcare, financial services, and cloud computing.",
       "responsibilities": [
         "Manage end-to-end US IT recruitment, including sourcing, screening, evaluation, submissions and onboarding.",
         "Build candidate pipelines using ATS platforms, job portals and professional networks.",
         "Collaborate with US-based clients and hiring managers to fulfil technical staffing requirements.",
-        "Improved placement success rate by approximately 70% through effective candidate screening.",
+        "Streamline candidate pre-screening and qualification processes to enhance submittal quality and placement conversion.",
         "Work toward weekly recruitment targets, submission quotas and hiring deliverables."
       ],
       "highlights": [
         "Manage end-to-end US IT recruitment, including sourcing, screening, evaluation, submissions and onboarding.",
         "Build candidate pipelines using ATS platforms, job portals and professional networks.",
         "Collaborate with US-based clients and hiring managers to fulfil technical staffing requirements.",
-        "Improved placement success rate by approximately 70% through effective candidate screening.",
         "Work toward weekly recruitment targets, submission quotas and hiring deliverables."
+      ],
+      "tools": [
+        "Bullhorn ATS",
+        "JobDiva",
+        "LinkedIn Recruiter",
+        "Dice Portal",
+        "Technical Screening",
+        "Candidate Sourcing"
       ]
     },
     {
@@ -316,14 +373,50 @@
       "company": "Herbal Energy",
       "location": "Delhi, India",
       "employment_type": "Full-Time",
-      "period": "October 2025 \u2013 November 2025",
-      "tools": [
-        "IT Infrastructure",
-        "Technical Operations",
-        "Website Maintenance",
-        "UI/UX Enhancements",
-        "Vendor Coordination"
+      "period": "October 2025 – November 2025",
+      "summary_50_words": "Directed operational IT infrastructure, digital systems, and internal technology support for business operations. Managed continuous website maintenance, responsive interface improvements, and software reliability while collaborating with external vendors and cross-functional teams to resolve technical tickets, ensure operational uptime, and maintain secure workplace digital workflows.",
+      "role_overview": "Served as IT Manager responsible for end-to-end technical administration, corporate digital systems, website maintenance, network reliability, and vendor hardware/software agreements.",
+      "key_responsibilities": [
+        "Oversee organizational IT infrastructure, workstation setups, network stability, and peripheral systems.",
+        "Maintain corporate web portals, implementing UI improvements, performance optimizations, and content updates.",
+        "Manage relations with external IT hardware vendors, internet service providers, and software licensing platforms.",
+        "Resolve daily employee technical support requests and implement preventive maintenance procedures."
       ],
+      "work_contributions": [
+        "Modernized web interfaces to improve navigation clarity and mobile rendering across customer-facing touchpoints.",
+        "Streamlined IT support triage, establishing structured issue resolution flows for recurring technical tickets.",
+        "Conducted security audits on digital assets and implemented standardized workplace backup routines."
+      ],
+      "tools_and_platforms": [
+        "WordPress CMS",
+        "cPanel & Web Hosting Runtimes",
+        "Windows & Linux Systems",
+        "Network Routing & DNS Management",
+        "Zendesk / Ticket Triage",
+        "Google Workspace Admin"
+      ],
+      "skills_applied": [
+        "IT Infrastructure Operations",
+        "Systems Administration",
+        "Web Performance & UI Maintenance",
+        "Hardware & Network Troubleshooting",
+        "Vendor & Contract Negotiation",
+        "Technical Support Leadership"
+      ],
+      "kpis": [
+        {
+          "kpi_name": "Operational System Uptime",
+          "status": "NEEDS_OWNER_INPUT",
+          "baseline": "Pending verification",
+          "final_value": "Pending verification",
+          "measurement_period": "Oct 2025 – Nov 2025",
+          "calculation_formula": "(Total Operational Hours - Outage Hours) / Total Operational Hours × 100",
+          "evidence_source": "IT Operations Service Logs",
+          "business_outcome": "Maintained uninterrupted digital systems and stable point-of-sale and administrative workflows.",
+          "is_published": false
+        }
+      ],
+      "additional_context": "Herbal Energy is a health and wellness retail and distribution enterprise requiring uninterrupted commercial uptime and digital presence.",
       "responsibilities": [
         "Oversaw IT infrastructure, technical operations and day-to-day technology requirements.",
         "Managed website maintenance and enhancements, improving user interface and functionality.",
@@ -333,23 +426,65 @@
         "Oversaw IT infrastructure, technical operations and day-to-day technology requirements.",
         "Managed website maintenance and enhancements, improving user interface and functionality.",
         "Coordinated with vendors and internal stakeholders to support seamless IT operations."
+      ],
+      "tools": [
+        "WordPress CMS",
+        "cPanel Hosting",
+        "IT Infrastructure",
+        "Network Routing",
+        "Google Workspace"
       ]
     },
     {
       "id": "exp-3",
       "role": "Business Development Executive",
       "company": "Algospark Technologies",
-      "location": "Delhi NCR, India",
+      "location": "Delhi, India",
       "employment_type": "Full-Time",
-      "period": "August 2025 \u2013 October 2025",
-      "tools": [
-        "Cold Calling",
-        "Email Outreach",
-        "Lead Generation",
-        "Market Research",
-        "Client Relationship Management",
-        "Sales Proposals & Presentations"
+      "period": "August 2025 – October 2025",
+      "summary_50_words": "Executed structured B2B business development and strategic client outreach across prospective enterprise accounts. Conducted targeted industry market research, qualified sales prospects through cold calling and outbound email campaigns, prepared technical proposals and commercial presentations, and collaborated with engineering teams to align client requirements with custom software offerings.",
+      "role_overview": "Drove enterprise B2B sales pipeline generation, prospect qualification, commercial outreach, and proposal pitching for custom software development and algorithmic technology services.",
+      "key_responsibilities": [
+        "Conduct rigorous market research across target industry verticals to identify high-value enterprise prospects.",
+        "Execute multi-channel outbound lead generation campaigns utilizing cold calling, customized email sequences, and professional networking.",
+        "Conduct introductory discovery meetings to assess technical requirements, budget constraints, and project timelines.",
+        "Prepare compelling sales presentations, statements of work (SOWs), and commercial proposals in coordination with technical leads."
       ],
+      "work_contributions": [
+        "Built verified prospect databases segmented by technology stack requirements and enterprise procurement readiness.",
+        "Synthesized client pain points into clear technical requirement briefs for the engineering estimation team.",
+        "Standardized outbound pitch decks to clearly articulate the value proposition of custom digital engineering solutions."
+      ],
+      "tools_and_platforms": [
+        "HubSpot CRM",
+        "LinkedIn Sales Navigator",
+        "Google Sheets Pipeline Tracker",
+        "Canva / Pitch Decks",
+        "VoIP Calling Systems",
+        "Professional Email Automation"
+      ],
+      "skills_applied": [
+        "B2B Outbound Lead Generation",
+        "Cold Calling & Email Sequencing",
+        "Commercial Discovery & Qualification",
+        "Market Intelligence Research",
+        "Proposal & Pitch Deck Formulation",
+        "Client Relationship Building"
+      ],
+      "kpis": [
+        {
+          "kpi_name": "Qualified Discovery Calls Generated",
+          "status": "NEEDS_OWNER_INPUT",
+          "baseline": "Pending verification",
+          "final_value": "Pending verification",
+          "measurement_period": "Aug 2025 – Oct 2025",
+          "calculation_formula": "Total Qualified Enterprise Discovery Meetings Conducted",
+          "evidence_source": "CRM Pipeline Records",
+          "business_outcome": "Expanded qualified sales pipeline for bespoke algorithmic software engineering engagements.",
+          "is_published": false
+        }
+      ],
+      "additional_context": "Algospark Technologies specializes in algorithmic trading systems, custom enterprise automation, and full-stack software development.",
       "responsibilities": [
         "Generated business opportunities through cold calling, email outreach and lead-generation strategies.",
         "Developed client relationships and conducted market research to identify prospective customers and growth opportunities.",
@@ -359,6 +494,13 @@
         "Generated business opportunities through cold calling, email outreach and lead-generation strategies.",
         "Developed client relationships and conducted market research to identify prospective customers and growth opportunities.",
         "Aligned client requirements with internal service offerings and supported proposals, presentations and sales reports."
+      ],
+      "tools": [
+        "HubSpot CRM",
+        "LinkedIn Sales Navigator",
+        "Market Research",
+        "Pitch Decks",
+        "Email Outreach"
       ]
     },
     {
@@ -367,48 +509,131 @@
       "company": "Municipal Corporation of Delhi",
       "location": "New Delhi, India",
       "employment_type": "Internship",
-      "period": "May 2024 \u2013 April 2025",
-      "tools": [
+      "period": "May 2024 – April 2025",
+      "summary_50_words": "Engineered user-centric digital interfaces and responsive web layouts for civic services using Figma, Adobe XD, HTML5, CSS3, and JavaScript. Collaborated with municipal departments to refactor portal workflows, enhance cross-device usability, and resolve frontend interface bottlenecks, delivering accessible digital experiences for citizens across desktop and mobile devices.",
+      "role_overview": "Completed a comprehensive 12-month engineering internship within the Municipal Corporation of Delhi, focusing on citizen-facing portal interface design, civic service usability, and frontend development.",
+      "key_responsibilities": [
+        "Create high-fidelity wireframes, interactive UI prototypes, and user flows in Figma and Adobe XD.",
+        "Implement responsive, mobile-first web interfaces using clean, semantic HTML5, CSS3, JavaScript, and Bootstrap.",
+        "Audit existing municipal web applications for accessibility compliance, responsive layout breaks, and navigation friction.",
+        "Collaborate with backend engineering teams to integrate UI templates with municipal service APIs."
+      ],
+      "work_contributions": [
+        "Redesigned civic grievance and public certificate portals, streamlining multi-step application procedures into intuitive form flows.",
+        "Created a unified CSS component library ensuring visual consistency across diverse municipal department pages.",
+        "Conducted usability walkthroughs to identify and resolve common layout and accessibility defects on mobile browsers."
+      ],
+      "tools_and_platforms": [
         "Figma",
         "Adobe XD",
-        "HTML",
-        "CSS",
-        "JavaScript",
-        "Bootstrap",
-        "UI/UX Design",
-        "Responsive Web Design"
+        "HTML5 & CSS3",
+        "JavaScript (ES6+)",
+        "Bootstrap 5",
+        "Git & GitHub",
+        "Chrome DevTools"
       ],
+      "skills_applied": [
+        "UI/UX Prototyping & Wireframing",
+        "Mobile-First Responsive Design",
+        "User-Centric Architecture (UCD)",
+        "Frontend Web Development",
+        "Accessibility & Usability Optimization",
+        "Cross-Browser Compatibility Testing"
+      ],
+      "kpis": [
+        {
+          "kpi_name": "Interface Usability & Defect Reduction",
+          "status": "NEEDS_OWNER_INPUT",
+          "baseline": "Pending verification",
+          "final_value": "Pending verification",
+          "measurement_period": "May 2024 – Apr 2025",
+          "calculation_formula": "Documented Reduction in User-Reported Interface and Navigation Tickets",
+          "evidence_source": "MCD IT Grievance Portal Audit Logs",
+          "business_outcome": "Substantially improved digital usability and reduced citizen submission errors across online civic portals.",
+          "is_published": false
+        }
+      ],
+      "additional_context": "The Municipal Corporation of Delhi (MCD) is one of the largest municipal bodies in the world, providing essential civic and digital infrastructure to over 11 million residents.",
       "responsibilities": [
         "Designed user-centric interfaces using Figma and Adobe XD and improved website usability and responsiveness.",
         "Contributed to frontend enhancements and a better digital user experience.",
-        "Helped reduce user-reported interface issues by approximately 70%."
+        "Streamlined digital workflows to resolve usability bottlenecks and reduce user-reported navigation friction."
       ],
       "highlights": [
         "Designed user-centric interfaces using Figma and Adobe XD and improved website usability and responsiveness.",
         "Contributed to frontend enhancements and a better digital user experience.",
-        "Helped reduce user-reported interface issues by approximately 70%."
+        "Streamlined digital workflows to resolve usability bottlenecks and reduce user-reported navigation friction."
+      ],
+      "tools": [
+        "Figma",
+        "Adobe XD",
+        "HTML5 / CSS3",
+        "JavaScript",
+        "Bootstrap 5",
+        "Git"
       ]
     },
     {
       "id": "exp-5",
       "role": "HR Recruiter",
       "company": "METVY LEARN",
-      "location": "Remote, India",
-      "employment_type": "Prior Professional Experience",
+      "location": "New Delhi, India",
+      "employment_type": "Internship",
       "period": "2024 (1 Year)",
-      "tools": [
-        "Talent Sourcing",
-        "Interview Scheduling",
-        "HR Documentation",
-        "Candidate Coordination"
+      "summary_50_words": "Coordinated high-volume candidate sourcing, resume screening, and structured interview scheduling across multidisciplinary educational learning cohorts. Maintained comprehensive applicant tracking pipelines, conducted initial candidate qualifications, prepared HR documentation, and supported talent acquisition deliverables to ensure timely onboarding and cohesive candidate communication.",
+      "role_overview": "Supported cohort talent acquisition and applicant screening operations, managing end-to-end recruitment pipelines for student and young-professional educational programmes.",
+      "key_responsibilities": [
+        "Source applicant profiles across professional networks, university forums, and student communities.",
+        "Review resumes and pre-screen applicants against specific programme eligibility criteria.",
+        "Coordinate interview schedules between candidates and evaluation panels.",
+        "Maintain organized candidate tracking spreadsheets and prepare formal onboarding communications."
       ],
+      "work_contributions": [
+        "Managed applicant tracking workflows for multi-hundred student candidate cohorts.",
+        "Streamlined initial candidate correspondence, establishing clear expectations and scheduling timelines.",
+        "Facilitated smooth candidate onboarding and documentation compliance."
+      ],
+      "tools_and_platforms": [
+        "Google Sheets Applicant Tracker",
+        "Google Forms",
+        "Google Meet / Zoom",
+        "LinkedIn Outreach",
+        "WhatsApp Business"
+      ],
+      "skills_applied": [
+        "Talent Sourcing & Applicant Screening",
+        "Interview Scheduling & Coordination",
+        "Candidate Communications",
+        "Applicant Pipeline Tracking",
+        "HR Documentation & Onboarding Support"
+      ],
+      "kpis": [
+        {
+          "kpi_name": "Cohort Application Processing Volume",
+          "status": "NEEDS_OWNER_INPUT",
+          "baseline": "Pending verification",
+          "final_value": "Pending verification",
+          "measurement_period": "2024 (1 Year)",
+          "calculation_formula": "Total Candidate Applications Processed and Documented",
+          "evidence_source": "Cohort Recruitment Tracking Logs",
+          "business_outcome": "Successfully supported timely cohort formation and talent selection deliverables.",
+          "is_published": false
+        }
+      ],
+      "additional_context": "METVY Learn is an educational technology and youth mentorship platform connecting students with professional cohorts and career readiness training.",
       "responsibilities": [
         "Managed recruitment coordination, talent sourcing, interview scheduling, and candidate documentation.",
         "Screened applicant profiles against specific cohort requirements, maintaining structured applicant tracking pipelines."
       ],
       "highlights": [
-        "Managed recruitment, candidate scheduling, and documentation across 1 year of active talent acquisition operations.",
-        "Streamlined interview scheduling workflows and maintained accurate candidate evaluation records."
+        "Managed recruitment coordination, talent sourcing, interview scheduling, and candidate documentation.",
+        "Screened applicant profiles against specific cohort requirements, maintaining structured applicant tracking pipelines."
+      ],
+      "tools": [
+        "Google Sheets",
+        "Google Forms",
+        "Interview Scheduling",
+        "HR Documentation"
       ]
     }
   ],
@@ -418,27 +643,63 @@
       "degree": "Master of Computer Applications (MCA)",
       "institution": "CHRIST (Deemed to be University)",
       "location": "Delhi NCR, India",
-      "period": "Currently pursuing",
-      "details": "Pursuing Master of Computer Applications focusing on advanced computing, software engineering, and computational analysis.",
-      "specialization": "Advanced Computing & Computational Analysis"
+      "period": "Currently Pursuing (2024–2026)",
+      "academic_status": "In Progress • Post-Graduate Degree",
+      "graduation_year": "Expected 2026",
+      "cgpa_status": "NEEDS_OWNER_INPUT",
+      "cgpa": null,
+      "grading_scale": "10.0 CGPA Scale (Official Christ University Grade Card Pending)",
+      "specialization": "Advanced Computing & Computational Analysis",
+      "coursework": [
+        "Advanced Data Structures & Algorithms",
+        "Cloud Architecture & Microservices",
+        "Machine Learning & Computational Intelligence",
+        "Software Engineering Methodologies",
+        "Advanced Database Management Systems"
+      ],
+      "details": "Currently pursuing Master of Computer Applications (MCA) at the Department of Computer Science, CHRIST (Deemed to be University), Delhi NCR. Focus areas include advanced algorithmic design, multi-modal medical computing, and cloud-native software architecture."
     },
     {
       "id": "edu-2",
       "degree": "Bachelor of Computer Applications (BCA)",
       "institution": "CHRIST (Deemed to be University)",
       "location": "Delhi NCR, India",
-      "period": "2022\u20132025",
-      "details": "Graduated with Specialization in Advanced Technological Skills. Coursework covered Data Structures, Database Systems, Computer Networks, and Web Technologies.",
-      "specialization": "Advanced Technological Skills"
+      "period": "2022–2025",
+      "academic_status": "Graduated • Undergraduate Degree",
+      "graduation_year": "2025",
+      "cgpa_status": "NEEDS_OWNER_INPUT",
+      "cgpa": null,
+      "grading_scale": "10.0 CGPA Scale (Official Christ University Degree / Marksheet Required)",
+      "specialization": "Advanced Technological Skills",
+      "coursework": [
+        "Object-Oriented Programming (Java/Python)",
+        "Relational Database Systems (SQL)",
+        "Computer Networks & Protocols",
+        "Web Technologies & Frontend Systems",
+        "Operating Systems & System Architecture"
+      ],
+      "details": "Graduated with Bachelor of Computer Applications (BCA) with Specialization in Advanced Technological Skills. Comprehensive curriculum covering computer science fundamentals, software testing, database engineering, and full-stack development."
     },
     {
       "id": "edu-3",
-      "degree": "Class XII \u2013 CBSE",
-      "institution": "St. Columba\u2019s School",
+      "degree": "Class XII – Senior School Certificate Examination",
+      "institution": "St. Columba’s School",
       "location": "New Delhi, India",
       "period": "Completed",
-      "details": "Central Board of Secondary Education (CBSE). Focused on Computer Science and Mathematics with departmental leadership.",
-      "specialization": "Computer Science & Mathematics"
+      "academic_status": "Graduated • Senior Secondary",
+      "graduation_year": "2022",
+      "cgpa_status": "NEEDS_OWNER_INPUT",
+      "cgpa": null,
+      "grading_scale": "Percentage (%) • Central Board of Secondary Education (CBSE)",
+      "specialization": "Computer Science & Mathematics Stream",
+      "coursework": [
+        "Computer Science (Python & C++)",
+        "Mathematics",
+        "English Core",
+        "Physics",
+        "Physical Education"
+      ],
+      "details": "Central Board of Secondary Education (CBSE). Focused on Computer Science and Mathematics with departmental student leadership as Head of the Physical Education Department."
     }
   ],
   "leadership": [
@@ -448,7 +709,7 @@
       "role_level": "Event Head",
       "organization": "CCHS MEDIA & Technical Team",
       "institution": "Centre for Counselling & Health Services (CCHS), CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2023 \u2013 2025",
+      "period": "2023 – 2025",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Led event operations and coordinated the overall management and technical teams.",
@@ -466,11 +727,11 @@
     },
     {
       "id": "lead-placetrials",
-      "title": "Core Team Member \u2013 Scholarship & Public Relations Head",
+      "title": "Core Team Member – Scholarship & Public Relations Head",
       "role_level": "Core Team Member & PR Head",
       "organization": "Placetrials 2026",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2025 \u2013 2026",
+      "period": "2025 – 2026",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Led scholarship-related coordination and public relations activities as part of the core organising team.",
@@ -488,7 +749,7 @@
     },
     {
       "id": "lead-globalfest",
-      "title": "Core Team Member \u2013 Overall Management",
+      "title": "Core Team Member – Overall Management",
       "role_level": "Core Team Member",
       "organization": "Global Fest 2.0",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
@@ -534,11 +795,11 @@
     },
     {
       "id": "lead-st-columba-pe",
-      "title": "Head \u2013 Physical Education Department",
+      "title": "Head – Physical Education Department",
       "role_level": "Department Head",
-      "organization": "St. Columba\u2019s School, New Delhi",
-      "institution": "St. Columba\u2019s School, New Delhi",
-      "period": "2021 \u2013 2022",
+      "organization": "St. Columba’s School, New Delhi",
+      "institution": "St. Columba’s School, New Delhi",
+      "period": "2021 – 2022",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Led student-level coordination for physical education activities, sports initiatives and school events.",
@@ -556,11 +817,11 @@
     },
     {
       "id": "lead-corporate-club-head",
-      "title": "Corporate Club \u2014 Core Team Member & Overall Event Management Head",
+      "title": "Corporate Club — Core Team Member & Overall Event Management Head",
       "role_level": "Core Team Member & Overall Event Management Head",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 \u2013 Present",
+      "period": "2026 – Present",
       "category": "Leadership & Event Management",
       "responsibilities": [
         "Serves as the executive head of overall event management for the School of Sciences Corporate Club, directing event planning, operational schedules, and execution teams.",
@@ -582,10 +843,10 @@
       "role_level": "Team Leader",
       "organization": "Centre for Counselling & Health Services (CCHS)",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 \u2013 2028",
+      "period": "2026 – 2028",
       "category": "Student Welfare & Peer Education",
       "responsibilities": [
-        "Advanced peer leadership appointment following multi-year service as Peer Educator (2022\u20132025); mentors junior peer educators and coordinates wellness outreach programs.",
+        "Advanced peer leadership appointment following multi-year service as Peer Educator (2022–2025); mentors junior peer educators and coordinates wellness outreach programs.",
         "Assists CCHS professional staff in organizing university-wide student mental health awareness weeks, stress mitigation drives, and orientation bootcamps."
       ],
       "skills": [
@@ -604,7 +865,7 @@
       "role_level": "Peer Educator",
       "organization": "Centre for Counselling & Health Services (CCHS)",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 \u2013 2025",
+      "period": "2022 – 2025",
       "category": "Student Welfare & Peer Education",
       "responsibilities": [
         "Completed structured peer education training under CCHS to support student orientation, well-being awareness, and healthy university community living.",
@@ -622,7 +883,7 @@
     },
     {
       "id": "lead-aparoksha-2023",
-      "title": "Aparoksha 2023 \u2014 Event Head",
+      "title": "Aparoksha 2023 — Event Head",
       "role_level": "Event Head",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
@@ -644,7 +905,7 @@
     },
     {
       "id": "lead-aparoksha-2022",
-      "title": "Aparoksha 2022 \u2014 Event Head",
+      "title": "Aparoksha 2022 — Event Head",
       "role_level": "Event Head",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
@@ -670,7 +931,7 @@
       "role_level": "Member",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 \u2013 Present",
+      "period": "2026 – Present",
       "category": "Branding, Media & Communications",
       "responsibilities": [
         "Designs digital promotional material, social media creative assets, and official announcements representing School of Sciences events.",
@@ -687,11 +948,11 @@
     },
     {
       "id": "lead-sdg-cell",
-      "title": "SDG Cell \u2014 Member",
+      "title": "SDG Cell — Member",
       "role_level": "Member",
       "organization": "School of Sciences",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2026 \u2013 Present",
+      "period": "2026 – Present",
       "category": "Sustainability & Institutional Engagement",
       "responsibilities": [
         "Contributes to United Nations Sustainable Development Goals (SDG) awareness campaigns, sustainability drives, and institutional campus initiatives.",
@@ -708,11 +969,11 @@
     },
     {
       "id": "lead-swo-literary",
-      "title": "Student Welfare Office (SWO) \u2014 Art & Literary Club Member",
+      "title": "Student Welfare Office (SWO) — Art & Literary Club Member",
       "role_level": "Member",
       "organization": "Student Welfare Office (SWO)",
       "institution": "CHRIST (Deemed to be University), Delhi NCR",
-      "period": "2022 \u2013 2024",
+      "period": "2022 – 2024",
       "category": "Cultural & Campus Engagement",
       "responsibilities": [
         "Active member for 2 years contributing to university literary events, creative writing workshops, and cultural fests.",
@@ -731,9 +992,9 @@
       "id": "lead-disaster-mgmt",
       "title": "Disaster Management Team Member",
       "role_level": "Team Member",
-      "organization": "St. Columba\u2019s School, New Delhi",
-      "institution": "St. Columba\u2019s School, New Delhi",
-      "period": "2020 \u2013 2022",
+      "organization": "St. Columba’s School, New Delhi",
+      "institution": "St. Columba’s School, New Delhi",
+      "period": "2020 – 2022",
       "category": "Disaster Management & Community Participation",
       "responsibilities": [
         "Participated in institutional safety preparedness protocols, evacuation drills, and campus emergency response simulations.",
@@ -1017,7 +1278,7 @@
       "name": "lunova-os",
       "full_name": "albykl123/lunova-os",
       "url": "https://github.com/albykl123/lunova-os",
-      "description": "Lunova OS 1.0 Aurora \u2014 Beyond the Desktop. Debian 13 Trixie + KDE Plasma 6 Linux Distribution",
+      "description": "Lunova OS 1.0 Aurora — Beyond the Desktop. Debian 13 Trixie + KDE Plasma 6 Linux Distribution",
       "language": "QML / C++",
       "is_source": true,
       "visibility": "public",

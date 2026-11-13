@@ -1,8 +1,9 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { masterProfile, SkillItem } from "@/lib/profileData";
+import { OwnerAuthGate } from "@/components/OwnerAuthGate";
 import { 
   Code2, 
   Layout, 
@@ -13,10 +14,30 @@ import {
   Wrench,
   Sparkles,
   ArrowRight,
-  FileText
+  FileText,
+  ShieldCheck,
+  LogOut
 } from "lucide-react";
 
 export default function SkillsPage() {
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth")
+      .then((res) => res.json())
+      .then((data) => {
+        setIsAuthenticated(Boolean(data.authenticated));
+      })
+      .catch(() => {
+        setIsAuthenticated(false);
+      });
+  }, []);
+
+  const handleLogout = async () => {
+    await fetch("/api/auth", { method: "DELETE" }).catch(() => {});
+    setIsAuthenticated(false);
+  };
+
   const levels = masterProfile.skill_levels;
 
   const profSkills = levels?.professional_work || levels?.professional_experience || [];
@@ -24,9 +45,45 @@ export default function SkillsPage() {
   const acadSkills = levels?.academic_experience || [];
   const learnSkills = levels?.currently_learning || levels?.learning_familiarity || [];
 
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-swiss-light flex items-center justify-center p-8">
+        <div className="flex items-center space-x-3 text-sm text-gray-600">
+          <div className="w-5 h-5 border-2 border-swiss-navy border-t-transparent rounded-full animate-spin" />
+          <span>Verifying owner session security...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <OwnerAuthGate
+        moduleName="Private Skills Inventory"
+        moduleDescription="The granular 4-tier skill proficiency matrix is an internal owner asset, restricted from public web indexing and unverified visitors."
+        onAuthenticated={() => setIsAuthenticated(true)}
+      />
+    );
+  }
+
   return (
     <div className="bg-corporate-white text-corporate-slate min-h-screen py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
+        {/* Owner Session Indicator & Logout */}
+        <div className="flex items-center justify-between px-4 py-2.5 mb-6 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 print:hidden">
+          <div className="flex items-center space-x-2">
+            <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            <span className="font-semibold">Owner Authentication Active</span>
+            <span className="text-amber-700">&bull; Confidential View Unlocked</span>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="inline-flex items-center space-x-1 font-semibold text-rose-700 hover:text-rose-900 hover:underline"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            <span>Lock & Sign Out</span>
+          </button>
+        </div>
         {/* Unified Section Banner */}
         <div className="mb-6 p-4 rounded-xl bg-corporate-pale border border-corporate-border flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center space-x-2 text-xs text-corporate-slate">

@@ -81,13 +81,17 @@ function getDeterministicResponse(userQuery: string): { response: string; sugges
 
   if (q.includes("resume") || q.includes("cv") || q.includes("download") || q.includes("pdf")) {
     return {
-      response: "You can download Albert's verified resume in ATS-optimized plain text or generate a vector PDF directly from the website. The resume features all verified work experience, education, leadership, and software projects.",
+      response: `Albert's full resume and granular skills inventory are private platform assets reserved for verified recruiter inquiries. You can request an official, ATS-optimized copy directly via WhatsApp (+91 9910705796) or email (${masterProfile.personal.email}).`,
       suggestions: [
-        "Take me to the resume page",
-        "Open ATS Career Studio",
-        "Schedule an interview"
+        "Request resume on WhatsApp",
+        `Email ${masterProfile.personal.email}`,
+        "Explore Verified Experience",
+        "View Software Projects"
       ],
-      actionLink: { label: "Download Resume (PDF/TXT)", href: "/resume" }
+      actionLink: { 
+        label: "Request Resume via WhatsApp", 
+        href: "https://wa.me/919910705796?text=Hi%20Albert,%20I%20am%20a%20recruiter%20and%20would%20like%20to%20request%20your%20verified%20resume." 
+      }
     };
   }
 
@@ -154,7 +158,7 @@ export async function POST(req: NextRequest) {
 Speak professionally, enthusiastically, and concisely (2-4 sentences max). Always be helpful to recruiters and visitors.
 Key verified facts about Albert:
 - Full Legal Name: Albert Kalampadan Linson (Professional Identity: Albert Linson K)
-- Current Role: Lead US IT Recruiter at Innova Solutions (Dec 2025–Present), managing end-to-end technical staffing and ATS sourcing with ~70% placement improvement.
+- Current Role: US IT Recruiter at Innova Solutions (Dec 2025–Present), managing end-to-end technical staffing, candidate screening, ATS pipeline sourcing, and client hiring coordination.
 - Other Experience: IT Manager at Herbal Energy (Oct 2025–Nov 2025), Business Development Executive at Algospark Technologies (Aug 2025–Oct 2025), Frontend Developer & UI/UX Designer Intern at Municipal Corporation of Delhi (May 2024–Apr 2025).
 - Education: Pursuing Master of Computer Applications (MCA, 2024–2026) at CHRIST (Deemed to be University), Delhi NCR; Bachelor of Computer Applications (BCA, 2021–2024) at Christ University.
 - Core Engineering Skills: React, Next.js, TypeScript, Python, FastAPI, Tailwind CSS, Cloudflare Workers, Git, Linux.

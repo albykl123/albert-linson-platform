@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { masterProfile, SkillItem } from "@/lib/profileData";
+import { OwnerAuthGate } from "@/components/OwnerAuthGate";
 import { 
   Printer, 
   Download, 
@@ -23,11 +24,25 @@ import {
   Wrench,
   Users,
   Layers,
-  ArrowRight
+  ArrowRight,
+  ShieldCheck,
+  LogOut
 } from "lucide-react";
 
 export default function ResumeAndSkillsPage() {
   const [viewMode, setViewMode] = useState<"resume" | "skills" | "combined">("resume");
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    fetch("/api/auth")
+      .then((res) => res.json())
+      .then((data) => {
+        setIsAuthenticated(Boolean(data.authenticated));
+      })
+      .catch(() => {
+        setIsAuthenticated(false);
+      });
+  }, []);
 
   useEffect(() => {
     if (typeof window !== "undefined") {
@@ -41,6 +56,11 @@ export default function ResumeAndSkillsPage() {
       }
     }
   }, []);
+
+  const handleLogout = async () => {
+    await fetch("/api/auth", { method: "DELETE" }).catch(() => {});
+    setIsAuthenticated(false);
+  };
 
   const handlePrint = () => {
     if (viewMode !== "resume") {
@@ -357,9 +377,46 @@ ${(masterProfile.certifications || [])
   const acadSkills = levels?.academic_experience || [];
   const learnSkills = levels?.currently_learning || levels?.learning_familiarity || [];
 
+  if (isAuthenticated === null) {
+    return (
+      <div className="min-h-screen bg-swiss-light flex items-center justify-center p-8">
+        <div className="flex items-center space-x-3 text-sm text-gray-600">
+          <div className="w-5 h-5 border-2 border-swiss-navy border-t-transparent rounded-full animate-spin" />
+          <span>Verifying owner session security...</span>
+        </div>
+      </div>
+    );
+  }
+
+  if (!isAuthenticated) {
+    return (
+      <OwnerAuthGate
+        moduleName="Verified Resume & Skills Hub"
+        moduleDescription="Access to master resume versions, plain-text ATS exports, and comprehensive 4-tier skill mappings is strictly reserved for the verified platform owner."
+        onAuthenticated={() => setIsAuthenticated(true)}
+      />
+    );
+  }
+
   return (
     <div className="bg-paper-offwhite text-paper-graphite min-h-screen py-12 px-4 sm:px-6 lg:px-8 print:p-0 print:m-0 print:bg-white print:min-h-0">
       <div className="max-w-4xl mx-auto print:max-w-none print:w-full">
+        {/* Owner Session Indicator & Logout */}
+        <div className="flex items-center justify-between px-4 py-2.5 mb-6 rounded-xl bg-amber-50 border border-amber-200 text-xs text-amber-900 print:hidden">
+          <div className="flex items-center space-x-2">
+            <ShieldCheck className="h-4 w-4 text-emerald-600" />
+            <span className="font-semibold">Owner Authentication Active</span>
+            <span className="text-amber-700">&bull; Confidential View Unlocked</span>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="inline-flex items-center space-x-1 font-semibold text-rose-700 hover:text-rose-900 hover:underline"
+          >
+            <LogOut className="h-3.5 w-3.5" />
+            <span>Lock & Sign Out</span>
+          </button>
+        </div>
+
         {/* Action Toolbar (Hidden during print) */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8 pb-4 border-b border-paper-border print:hidden">
           <div>

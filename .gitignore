@@ -42,6 +42,7 @@ apps/web/.env.local
 .secret*
 
 # IDE & OS
+*.tsbuildinfo
 .vscode/
 .idea/
 .DS_Store

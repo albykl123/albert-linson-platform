@@ -75,7 +75,7 @@ export function AvatarChatbot() {
         "Tell me about your US IT recruiting experience",
         "What software projects have you built?",
         "What are your academic research papers?",
-        "Open Recruiter JD Matcher"
+        "How can I contact Albert?"
       ]
     }
   ]);
