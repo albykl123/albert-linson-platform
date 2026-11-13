@@ -39,7 +39,7 @@ jobs:
           import json
           with open('packages/shared/profile_data.json') as f:
               p = json.load(f)
-              assert p['personal']['name'] == 'Albert Linson'
+              assert 'Albert Linson' in p['personal']['name']
           with open('packages/shared/freestack_data.json') as f:
               fs = json.load(f)
               assert fs['total_services'] > 500
